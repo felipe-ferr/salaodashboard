@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('#listarAgendamento').dataTable({
+    $('#listarServico').dataTable({
         "bJQueryUI": true,
         "oLanguage": {
             "sProcessing": "Processando...",

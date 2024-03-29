@@ -76,23 +76,38 @@ body{
     border-bottom: 1px solid var(--cinza-claro);
 }
 .container-principal{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
     grid-column: 4 / 12;
     height: 100vh;
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    box-sizing: border-box;
-    padding: 10%;
     background-color: var(--cinza-principal);
+    box-sizing: border-box;
 }
-.container-principal table{
+#listarServico_wrapper{
+    display: grid;
+    grid-template-columns: repeat(12, 1 1fr);
+    grid-template-rows: repeat(12, 1 1fr);
+    gap: 1px;
+ 
+}
+#listarServico_wrapper table{
+    width: 130%;
+}
+#listarServico_wrapper td, th{
+    padding: 20px;
     width: 100%;
+    border: none;
+    box-sizing: border-box;
+    background-color: var(--cinza-principal);
+    text-align: left;
 }
-.dataTables_filter{
-    
-}
-.dataTables_filter input{
-    border-radius: 15px;
-    
+#listarServico_wrapper thead{
+    padding: 20px;
+    border: none;
+    box-sizing: border-box;
+    background-color: var(--cinza-principal);
+    text-align: left;
 }
 

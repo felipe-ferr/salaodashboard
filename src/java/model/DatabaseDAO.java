@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DatabaseDAO {
-    public final String URL="jdbc:mysql://localhost:3306/agendamento";
+    public final String URL="jdbc:mysql://localhost:3306/sistema_salao";
     public final String USER="root";
     public final String SENHA="";
     public Connection conn;

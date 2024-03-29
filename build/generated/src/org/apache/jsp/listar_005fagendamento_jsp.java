@@ -109,7 +109,7 @@ public final class listar_005fagendamento_jsp extends org.apache.jasper.runtime.
       out.write("        <div class=\"container-principal\">\n");
       out.write("             <h1>Lista de Agendamentos</h1>\n");
       out.write("\n");
-      out.write("            <table class=\"table is-striped is-bordered is-hoverable\" id=\"listarAgendamento\">    \n");
+      out.write("            <table class=\"table is-striped is-hoverable\" id=\"listarAgendamento\">    \n");
       out.write("            <thead>\n");
       out.write("               <tr>\n");
       out.write("                <th>ID</th>\n");

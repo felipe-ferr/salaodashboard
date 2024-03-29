@@ -4,9 +4,9 @@
     Author     : felip
 --%>
 
-<%@page import="model.AgendamentoDAO"%>
+<%@page import="model.ServicoDAO"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="model.Agendamento"%>
+<%@page import="model.Servico"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -45,7 +45,7 @@
         <div class="grid-container">
             <div class="sidebar">
                 <span class="sidebar-titulo">Salão do Luciano</span>
-                <a href="#"><span class="material-symbols-outlined sidebar-icone">calendar_month</span>Agendamentos</a>
+                <a href="#"><span class="material-symbols-outlined sidebar-icone">calendar_month</span>Servicos</a>
                 <a href="#"><span class="material-symbols-outlined sidebar-icone">person</span>Clientes</a>
                 <a href="#"><span class="material-symbols-outlined sidebar-icone">cut</span>Serviços</a>
                 
@@ -55,51 +55,42 @@
             
         
         <div class="container-principal">
-             <h1>Lista de Agendamentos</h1>
+      
 
-            <table class="table is-striped is-bordered is-hoverable" id="listarAgendamento">    
+            <table class="table" id="listarServico">    
             <thead>
                <tr>
                 <th>ID</th>
-                <th>Serviço</th>
-                <th>Data</th>
-                <th>Horário</th>
+                <th>Duração</th>
+                <th>Status</th>
+                <th>Nome</th>
+                <th>Descrição</th>
                 <th>Valor</th>
             </tr>
             </thead>
+ 
             
-            <tfoot>
-               <tr>
-                <th>ID</th>
-                <th>Serviço</th>
-                <th>Data</th>
-                <th>Horário</th>
-                <th>Valor</th>
-            </tr>
-            </tfoot>
-            
-            <jsp:useBean class="model.AgendamentoDAO" id="a"/>
+            <jsp:useBean class="model.ServicoDAO" id="a"/>
             <tbody>
             <c:forEach var="a" items="${a.lista}">
-                
-           
+                   
             <tr>
-                <td>${a.idAgendamento}</td>
-                <td>${a.servico}</td>
-                <td>${a.data}</td>
-                <td>${a.horario}</td>
+                <td>${a.idservico}</td>
+                <td>${a.duracao}</td>
+                <td>${a.status}</td>
+                <td>${a.nome}</td>
+                <td>${a.descricao}</td>
                 <td>${a.valor}</td>
             </tr>
             </c:forEach>
             </tbody>
         </table> 
-        </div>
-        </div>
             
+           
+        </div>
+        </div>
             
  
-
-
         <script src="./static/bulma/jquery-3.7.1.js"></script>
         <script src="./static/bulma/dataTables.js"></script>
         <script src="./static/bulma/dataTables.bulma.js"></script>
