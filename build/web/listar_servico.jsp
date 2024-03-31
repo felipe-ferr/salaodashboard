@@ -19,7 +19,6 @@
         <link rel="stylesheet" href="./static/bulma/dataTables.bulma.css">
         <link rel="stylesheet" href="./static/bulma/font-awesome.min.css">
         <link rel="stylesheet" href="./static/bulma/css/bulma.css">
-        <link rel="stylesheet" href="./static/bulma/css/bulma.min.css">
         <link rel="stylesheet" href="./static/css/menu.css">
         
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,7 +31,7 @@
         
         <script src="static/js/bulmadatatable.js"></script>
        
-        <script type="text/javascript" src="static/js/traducao.js"></script>
+      
         
     
         <title>JSP Page</title>
@@ -43,29 +42,32 @@
     <body>
        
         <div class="grid-container">
-            <div class="sidebar">
+            <div id="side" class="sidebar">
                 <span class="sidebar-titulo">Salão do Luciano</span>
                 <a href="#"><span class="material-symbols-outlined sidebar-icone">calendar_month</span>Servicos</a>
                 <a href="#"><span class="material-symbols-outlined sidebar-icone">person</span>Clientes</a>
                 <a href="#"><span class="material-symbols-outlined sidebar-icone">cut</span>Serviços</a>
                 
-               <a href="#" class="bottom" ><span class="material-symbols-outlined sidebar-icone">dark_mode</span></span>Modo Escuro</a>
+                <a onclick="escuro()" href="#" class="bottom" ><span class="material-symbols-outlined sidebar-icone">dark_mode</span>
+                <span class="material-symbols-outlined sidebar-icone">light_mode</span>
+                </a>
             </div>
         
             
         
-        <div class="container-principal">
+        <div id="principal" class="container-principal">
       
 
-            <table class="table" id="listarServico">    
+            <table  class="table is-hoverable is-striped" id="listarServico">    
             <thead>
                <tr>
-                <th>ID</th>
-                <th>Duração</th>
-                <th>Status</th>
-                <th>Nome</th>
-                <th>Descrição</th>
-                <th>Valor</th>
+                <th style="text-align:left;">ID</th>
+                <th style="text-align:left;">Duração</th>
+                <th style="text-align:left;">Status</th>
+                <th style="text-align:left;">Nome</th>
+                <th style="text-align:left;">Descrição</th>
+                <th style="text-align:left;">Valor</th>
+                <th style="text-align:left;">Ações</th>
             </tr>
             </thead>
  
@@ -80,7 +82,10 @@
                 <td>${a.status}</td>
                 <td>${a.nome}</td>
                 <td>${a.descricao}</td>
-                <td>${a.valor}</td>
+                <td>R$${a.valor}</td>
+                <td class="acoes-td"><button class="botao-acoes"><i class="material-symbols-outlined">delete</i></button>
+                <button class="botao-acoes"><i class="material-symbols-outlined">edit</i></button>
+                </td>
             </tr>
             </c:forEach>
             </tbody>
@@ -95,6 +100,8 @@
         <script src="./static/bulma/dataTables.js"></script>
         <script src="./static/bulma/dataTables.bulma.js"></script>
         <script src="./static/js/bulmadatatable.js"></script>
+        <script type="text/javascript" src="static/js/traducao.js"></script>
+        <script type="text/javascript" src="static/js/modoescuro.js"></script>
      
         
     </body>

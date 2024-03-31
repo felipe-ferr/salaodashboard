@@ -1,17 +1,18 @@
 :root{
-    --cinza-claro: #eaeaea;
-    --cinza-principal: #f5f5f5;
+    --cor-clara: #eaeaea;
+    --cor-escura: #f5f5f5;
     --dourado: #b68815;
+    --cor-texto: #0F0300;
 }
 
 body{
     margin: 0;
+    padding: 0;
 }
 .grid-container{
     display: grid;
     grid-template-columns: repeat(12, 1 1fr);
     grid-template-rows: repeat(12, 1 1fr);
-    gap: 1px;
 }
 .sidebar{
     grid-column: 1 / 4;
@@ -21,6 +22,7 @@ body{
     justify-content: flex-start;
     flex-direction: column;
     position: relative;
+    background-color: var(--cor-escura);
     
 }
 .sidebar a{
@@ -32,13 +34,13 @@ body{
     padding: 5%;
     box-sizing: border-box;
     text-align: left;
-    color: black;
+    color: var(--cor-texto);
     text-decoration: none;
     transition-duration: 0.4s;
     font-family: 'Quicksand';
 }
 .sidebar .material-symbols-outlined{
-    color: black;
+    color: var(--cor-texto);
 }
 .sidebar .bottom{
     position: absolute;
@@ -51,11 +53,12 @@ body{
     align-items: center;
     justify-content: flex-start;
     width: 100%;
+    color: var(--cor-texto);
 }
 .sidebar a:hover {
     box-shadow: inset -2px 0px 0px 0px var(--dourado);
     color: var(--dourado);
-    background-color: var(--cinza-claro);
+    background-color: var(--cor-escura);
     font-weight: bold;
 }
 .sidebar .sidebar-icone{
@@ -73,41 +76,108 @@ body{
     font-size: 150%;
     box-sizing: border-box;
     padding: 5%;
-    border-bottom: 1px solid var(--cinza-claro);
+    border-bottom: 1px solid var(--cor-clara);
 }
 .container-principal{
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     flex-direction: column;
     grid-column: 4 / 12;
     height: 100vh;
-    background-color: var(--cinza-principal);
+    width: 100%;
+    background-color: var(--cor-clara);
     box-sizing: border-box;
+    padding: 2%;
 }
 #listarServico_wrapper{
-    display: grid;
-    grid-template-columns: repeat(12, 1 1fr);
-    grid-template-rows: repeat(12, 1 1fr);
-    gap: 1px;
- 
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--cor-escura);
+    border-radius: 10px;
+    padding: 2%;
+    
 }
 #listarServico_wrapper table{
-    width: 130%;
-}
-#listarServico_wrapper td, th{
-    padding: 20px;
-    width: 100%;
-    border: none;
-    box-sizing: border-box;
-    background-color: var(--cinza-principal);
-    text-align: left;
-}
-#listarServico_wrapper thead{
-    padding: 20px;
-    border: none;
-    box-sizing: border-box;
-    background-color: var(--cinza-principal);
-    text-align: left;
+    font-family: 'Quicksand';
+    color: var(--cor-texto);
+    margin: 0;
+    padding: 0;
+    table-layout: fixed; 
+    width: auto;
 }
 
+#listarServico_wrapper td{
+    border: none;
+    text-align: left;
+    background-color: var(--cor-escura); 
+    padding: 20px;
+}
+
+#listarServico_wrapper th{
+    width: auto;
+    border-bottom: 2px solid var(--dourado);
+    box-sizing: border-box;
+    background-color: var(--cor-escura);
+    text-align: left;
+    color: var(--cor-texto);
+    padding: 10px 3vw;
+}
+.pagination-list .is-current{
+    background-color: var(--dourado);
+    color: var(--cor-texto);
+    border: none;
+}
+.pagination-list .last .next .previous .first:enabled{
+    background-color: var(--dourado);
+    color: var(--cor-texto);
+    border: none;
+}
+.botao-acoes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--cor-clara);
+    border: none;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 7px;
+}
+.botao-acoes .material-symbols-outlined{
+    color: var(--dourado);
+}
+.acoes-td{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+}
+#dt-search-0{
+    background-color: var(--cor-clara);
+    border: none;
+    transition-duration: 0.3s;
+}
+#dt-search-0:focus{
+    outline: 1px solid var(--dourado);
+    border: 1px solid var(--dourado);
+}
+
+@media only screen and (max-width: 1200px) {
+    #listarServico_wrapper th{
+    width: auto;
+    border-bottom: 2px solid var(--dourado);
+    box-sizing: border-box;
+    background-color: red;
+    text-align: left;
+    color: var(--cor-texto);
+}
+.sidebar{
+    display: none;
+}
+.container-principal{
+    grid-column: 1 / 12; 
+}
+}
