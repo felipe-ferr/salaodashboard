@@ -14,6 +14,11 @@ public final class listar_005fservico_jsp extends org.apache.jasper.runtime.Http
 
   private static java.util.List<String> _jspx_dependants;
 
+  static {
+    _jspx_dependants = new java.util.ArrayList<String>(1);
+    _jspx_dependants.add("/sidebar.jsp");
+  }
+
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_forEach_var_items;
 
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
@@ -94,6 +99,25 @@ public final class listar_005fservico_jsp extends org.apache.jasper.runtime.Http
       out.write("    <body>\n");
       out.write("       \n");
       out.write("        <div class=\"grid-container\">\n");
+      out.write("            ");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("<!DOCTYPE html>\n");
+      out.write("<html>\n");
+      out.write("    <head>\n");
+      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
+      out.write("        <title>JSP Page</title>\n");
+      out.write("        <link rel=\"stylesheet\" href=\"./static/css/menu.css\">\n");
+      out.write("         <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n");
+      out.write("        <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n");
+      out.write("        <link href=\"https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap\" rel=\"stylesheet\">\n");
+      out.write("        \n");
+      out.write("        <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200\" />\n");
+      out.write("        \n");
+      out.write("    </head>\n");
+      out.write("    <body>\n");
+      out.write("    \n");
       out.write("            <div id=\"side\" class=\"sidebar\">\n");
       out.write("                <span class=\"sidebar-titulo\">Salão do Luciano</span>\n");
       out.write("                <a href=\"#\"><span class=\"material-symbols-outlined sidebar-icone\">calendar_month</span>Servicos</a>\n");
@@ -104,6 +128,10 @@ public final class listar_005fservico_jsp extends org.apache.jasper.runtime.Http
       out.write("                <span class=\"material-symbols-outlined sidebar-icone\">light_mode</span>\n");
       out.write("                </a>\n");
       out.write("            </div>\n");
+      out.write("   \n");
+      out.write("    </body>\n");
+      out.write("</html>\n");
+      out.write("\n");
       out.write("        \n");
       out.write("            \n");
       out.write("        \n");

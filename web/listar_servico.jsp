@@ -42,16 +42,7 @@
     <body>
        
         <div class="grid-container">
-            <div id="side" class="sidebar">
-                <span class="sidebar-titulo">Salão do Luciano</span>
-                <a href="#"><span class="material-symbols-outlined sidebar-icone">calendar_month</span>Servicos</a>
-                <a href="#"><span class="material-symbols-outlined sidebar-icone">person</span>Clientes</a>
-                <a href="#"><span class="material-symbols-outlined sidebar-icone">cut</span>Serviços</a>
-                
-                <a onclick="escuro()" href="#" class="bottom" ><span class="material-symbols-outlined sidebar-icone">dark_mode</span>
-                <span class="material-symbols-outlined sidebar-icone">light_mode</span>
-                </a>
-            </div>
+            <%@include file="sidebar.jsp" %>
         
             
         

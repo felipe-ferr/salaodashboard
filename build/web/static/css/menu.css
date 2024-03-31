@@ -81,7 +81,7 @@ body{
 .container-principal{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
     grid-column: 4 / 12;
     height: 100vh;
@@ -93,7 +93,7 @@ body{
 #listarServico_wrapper{
     width: 100%;
     display: flex;
-    align-items: center;
+    align-items: space-around;
     justify-content: center;
     flex-direction: column;
     background-color: var(--cor-escura);
@@ -108,6 +108,7 @@ body{
     padding: 0;
     table-layout: fixed; 
     width: auto;
+    margin-left: 5%;
 }
 
 #listarServico_wrapper td{
@@ -155,6 +156,7 @@ body{
     align-items: center;
     gap: 2px;
 }
+
 #dt-search-0{
     background-color: var(--cor-clara);
     border: none;
@@ -170,7 +172,6 @@ body{
     width: auto;
     border-bottom: 2px solid var(--dourado);
     box-sizing: border-box;
-    background-color: red;
     text-align: left;
     color: var(--cor-texto);
 }
@@ -179,5 +180,14 @@ body{
 }
 .container-principal{
     grid-column: 1 / 12; 
+}
+#listarServico_wrapper table{
+    font-family: 'Quicksand';
+    color: var(--cor-texto);
+    margin: 0;
+    padding: 0;
+    table-layout: fixed; 
+    width: auto;
+    margin-left: 3%;
 }
 }
