@@ -7,4 +7,4 @@
     </ul>
 </div>
 
-<link rel="stylesheet" href="./static/menu.css" type="text/css" >
+<link rel="stylesheet" href="./static/menu.css" type="text/aaaaaaaaaaaaaaaass" >

@@ -21,7 +21,6 @@ body{
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
-    position: relative;
     background-color: var(--cor-escura);
     
 }

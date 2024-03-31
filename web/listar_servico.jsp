@@ -68,9 +68,9 @@
             <c:forEach var="a" items="${a.lista}">
                    
             <tr>
+                <td>${a.status}</td>
                 <td>${a.idservico}</td>
                 <td>${a.duracao}</td>
-                <td>${a.status}</td>
                 <td>${a.nome}</td>
                 <td>${a.descricao}</td>
                 <td>R$${a.valor}</td>
