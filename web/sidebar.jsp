@@ -26,10 +26,15 @@
                 <a href="#"><span class="material-symbols-outlined sidebar-icone">person</span>Clientes</a>
                 <a href="#"><span class="material-symbols-outlined sidebar-icone">cut</span>Serviços</a>
                 
-                <a onclick="escuro()" href="#" class="bottom" ><span class="material-symbols-outlined sidebar-icone">dark_mode</span>
-                <span class="material-symbols-outlined sidebar-icone">light_mode</span>
-                </a>
+                <div class="tema-container bottom">
+                    <span>Modo Escuro</span>
+                    <div class="tema-btn-container">
+                        <button onclick="escuro()" id="botaodark" class="btn-esquerda"><span class="material-symbols-outlined">dark_mode</span></button>
+                        <button onclick="light()" id="botaolight" class="btn-active-direita btn-direita"><span class="material-symbols-outlined">light_mode</span></button>
+                    </div>
+                </div>
             </div>
    
+        <script type="text/javascript" src="static/js/modoescuro.js"></script>
     </body>
 </html>

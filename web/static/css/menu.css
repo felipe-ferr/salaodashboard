@@ -22,6 +22,7 @@ body{
     justify-content: flex-start;
     flex-direction: column;
     background-color: var(--cor-escura);
+    position: relative;
     
 }
 .sidebar a{
@@ -45,6 +46,70 @@ body{
     position: absolute;
     bottom: 0;
 }
+.sidebar .tema-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10%;
+    width: 100%;
+    padding: 5%;
+    box-sizing: border-box;
+    text-align: left;
+    color: var(--cor-texto);
+    text-decoration: none;
+    transition-duration: 0.4s;
+    font-family: 'Quicksand';
+}
+.tema-btn-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.btn-esquerda{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    padding: 15%;
+    box-sizing: border-box;
+    border-radius: 10px 0px 0px 10px;
+    background-color: var(--cor-clara);
+    transition-duration: 0.3s;
+}
+
+.btn-active-esquerda{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    padding: 15%;
+    box-sizing: border-box;
+    border-radius: 10px 0px 0px 10px;
+    background-color: var(--dourado);
+    transition-duration: 0.3s;
+}
+.btn-direita{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    padding: 15%;
+    box-sizing: border-box;
+    border-radius: 0px 10px 10px 0px;
+    background-color: var(--cor-clara);
+}
+.btn-active-direita{
+    background-color: var(--dourado);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    padding: 15%;
+    box-sizing: border-box;
+    border-radius: 0px 10px 10px 0px;
+}
+
 .sidebar p{
     padding: 2% 10%;
     box-sizing: border-box;
