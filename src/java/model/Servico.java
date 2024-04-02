@@ -1,6 +1,6 @@
 package model;
 public class Servico {
-    private int idServico;
+    private int idservico;
     private int duracao;
     private int status;
     private String nome;
@@ -8,11 +8,11 @@ public class Servico {
     private float valor;
 
     public int getIdServico() {
-        return idServico;
+        return idservico;
     }
 
-    public void setIdServico(int idServico) {
-        this.idServico = idServico;
+    public void setIdServico(int idservico) {
+        this.idservico = idservico;
     }
 
     public int getDuracao() {
@@ -58,8 +58,8 @@ public class Servico {
     public Servico() {
     }
 
-    public Servico(int idServico, int duracao, int status, String nome, String descricao, float valor) {
-        this.idServico = idServico;
+    public Servico(int idservico, int duracao, int status, String nome, String descricao, float valor) {
+        this.idservico = idservico;
         this.duracao = duracao;
         this.status = status;
         this.nome = nome;
@@ -69,7 +69,16 @@ public class Servico {
 
     @Override
     public String toString() {
-        return "Servico{" + "idServico=" + idServico + ", duracao=" + duracao + ", status=" + status + ", nome=" + nome + ", descricao=" + descricao + ", valor=" + valor + '}';
+        return "Servico{" + "idservico=" + idservico + ", duracao=" + duracao + ", status=" + status + ", nome=" + nome + ", descricao=" + descricao + ", valor=" + valor + '}';
+    }
+
+    public void setName(String nome) {
+    }
+
+    public void setPrice(int parseInt) {
+    }
+
+    public void setQuantity(double parseDouble) {
     }
     
 }
