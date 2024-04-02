@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Servico;
+import model.ServicoDAO;
 
 /**
  *
@@ -46,15 +47,44 @@ public class GerenciarServicoo extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
-        String id = request.getParameter("id");
+        String idservico = request.getParameter("idservico");
         String nome = request.getParameter("nome");
         String duracao = request.getParameter("duracao");
         String valor = request.getParameter("valor");
+        String descricao = request.getParameter("descricao");
         String status = request.getParameter("status");
         
         String mensagem = "";
         
         Servico s = new Servico();
+        
+        try{
+            ServicoDAO sDAO = new ServicoDAO();
+            if (nome.equals("")|| nome.isEmpty()){
+                mensagem = "Campos obrigatórios deverão ser preenchidos";
+            }else{
+                s.setName(nome);
+                s.setPrice(Integer.parseInt(duracao));
+                s.setPrice(Integer.parseInt(status));
+                s.setQuantity(Float.parseFloat(valor));
+                if(sDAO.gravar(s)){
+                    mensagem = "Gravado com sucesso";
+                }else{
+                    mensagem = "Erro ao gravar no banco de dados";
+                }
+                
+            }
+        }catch(Exception e){
+            out.print(e);
+            mensagem = "Erro";
+        }
+        
+      
+        
+        out.println("<script type='text/javascript'>");
+        out.println("alert('" + mensagem + "');");
+        out.println("location.href='listar_servico.jsp';");
+        out.println("</script>");
     }
 
     /**
