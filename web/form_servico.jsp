@@ -30,23 +30,27 @@
 
                 <h1>Cadastrar serviço</h1>
                 
-                <input type="hidden" name="id">
+                <input type="hidden" name="idservico"value=""/>
                 
                 <div class="inputContainer">
-                    <input required type="text"name="duracao"><p>Nome:</p><i class="material-symbols-outlined">location_on</i>
+                    <input required type="text"name="nome"><p>Nome:</p><i class="material-symbols-outlined">location_on</i>
                 </div>
 
                 <div class="inputContainer">
-                    <input required type="text"name="valor"><p>Duração</p><i class="material-symbols-outlined">mail</i>
+                    <input required type="text"name="duracao"><p>Duração</p><i class="material-symbols-outlined">mail</i>
                 </div>
 
 
                 <div class="inputContainer">
-                    <input required type="text"name="descricao"><p>Valor:</p><i class="material-symbols-outlined">key</i>
+                    <input required type="text"name="valor"><p>Valor:</p><i class="material-symbols-outlined">key</i>
                 </div>
                 
                 <div class="inputContainer">
-                    <input required type="text"name="status"><p>Descrição</p><i class="material-symbols-outlined">key</i>
+                    <input required type="text"name="descricao"><p>Descrição</p><i class="material-symbols-outlined">key</i>
+                </div>
+                
+                 <div class="inputContainer">
+                    <input required type="text"name="status"><p>Status</p><i class="material-symbols-outlined">key</i>
                 </div>
 
 
