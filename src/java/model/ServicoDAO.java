@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ public class ServicoDAO extends DatabaseDAO{
         ResultSet rs = stm.executeQuery(SQL);
         while(rs.next()){
             Servico a = new Servico();
-            a.setIdservico(rs.getInt("idservico"));
+            a.setIdServico(rs.getInt("idServico"));
             a.setDuracao(rs.getInt("duracao"));
             a.setStatus(rs.getInt("status"));
             a.setNome(rs.getString("nome"));
@@ -27,4 +28,38 @@ public class ServicoDAO extends DatabaseDAO{
         return lista;
         
     }
+    
+    public boolean gravar (Servico s){
+        
+        try{
+            String sql;
+            this.conectar();
+            if(s.getIdServico()==0){
+                sql = "INSERT INTO servico(nome, duracao, valor, descricao, status) VALUES(?, ?, ?, ?, ?)";
+            }else{
+                sql = "UPDATE servico SET nome=?, duracao=?, valor=?, descricao=?, status=? WHERE idServico=?"; 
+            }
+
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setString(1,s.getNome());
+            pstm.setInt(2,s.getDuracao());
+            pstm.setFloat(3,s.getValor());
+            pstm.setString(4,s.getDescricao());
+            pstm.setInt(5,s.getStatus());
+
+            if(s.getIdServico()>0){
+                pstm.setInt(6,s.getIdServico());
+            }
+
+            pstm.execute();
+            this.desconectar();
+            return true;
+        }
+        catch(Exception e){
+            System.out.println(e);
+            return false;
+        }
+        
+    }
+    
 }
