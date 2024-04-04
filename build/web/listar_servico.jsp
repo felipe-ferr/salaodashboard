@@ -47,6 +47,11 @@
             
         
         <div id="principal" class="container-principal">
+            
+            <div class="titulo-botao-container">
+                <h1>Lista de Serviços</h1>
+                <a href="form_servico.jsp">Adicionar Serviço<i class="material-symbols-outlined">add</i></a>
+            </div>
       
 
             <table  class="table is-hoverable is-striped" id="listarServico">    
@@ -70,7 +75,7 @@
             <tr>
                 <td>${a.status}</td>
                 <td>${a.idservico}</td>
-                <td>${a.duracao}</td>
+                <td>${a.duracao} minutos</td>
                 <td>${a.nome}</td>
                 <td>${a.descricao}</td>
                 <td>R$${a.valor}</td>

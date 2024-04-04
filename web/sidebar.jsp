@@ -24,7 +24,7 @@
                 <span class="sidebar-titulo">Salão do Luciano</span>
                 <a href="#"><span class="material-symbols-outlined sidebar-icone">calendar_month</span>Agendamentos</a>
                 <a href="#"><span class="material-symbols-outlined sidebar-icone">person</span>Clientes</a>
-                <a href="#"><span class="material-symbols-outlined sidebar-icone">cut</span>Serviços</a>
+                <a href="listar_servico.jsp"><span class="material-symbols-outlined sidebar-icone">cut</span>Serviços</a>
                 
                 <div class="tema-container bottom">
                     <span>Modo Escuro</span>

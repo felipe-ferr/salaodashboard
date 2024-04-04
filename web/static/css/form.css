@@ -29,7 +29,7 @@ form{
     display: flex;
     flex-direction: column;
     background-color: var(--cor-escura)
-    width:100%:
+    width: 150%:
     height: auto;
     gap: 10px;
 }
