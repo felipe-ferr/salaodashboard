@@ -24,25 +24,25 @@
              <%@include file="sidebar.jsp" %>
              
              <div class="container-principal">
-                 <form method="get"action="GerenciarServicoo">
+                 <form method="POST"action="gerenciar_servico.do">
 
                 <a class="botaoinicio"href="#"><i class="material-symbols-outlined">arrow_back</i>Voltar ao início</a>
 
                 <h1>Cadastrar serviço</h1>
                 
-                <input type="hidden" name="idservico"value=""/>
+                <input type="hidden" name="idservico"/>
                 
                 <div class="inputContainer">
                     <input required type="text"name="nome"><p>Nome:</p><i class="material-symbols-outlined">location_on</i>
                 </div>
 
                 <div class="inputContainer">
-                    <input required type="text"name="duracao"><p>Duração</p><i class="material-symbols-outlined">mail</i>
+                    <input required type="number"name="duracao"><p>Duração</p><i class="material-symbols-outlined">mail</i>
                 </div>
 
 
                 <div class="inputContainer">
-                    <input required type="text"name="valor"><p>Valor:</p><i class="material-symbols-outlined">key</i>
+                    <input required type="number"name="valor"><p>Valor:</p><i class="material-symbols-outlined">key</i>
                 </div>
                 
                 <div class="inputContainer">
@@ -50,11 +50,11 @@
                 </div>
                 
                  <div class="inputContainer">
-                    <input required type="text"name="status"><p>Status</p><i class="material-symbols-outlined">key</i>
+                    <input required type="number"name="status"><p>Status</p><i class="material-symbols-outlined">key</i>
                 </div>
 
 
-                <button type="submit"class="submit">Cadastrar Serviço </button>
+                <button type="submit"class="submit">Cadastrar Serviço</button>
 
             </form>
 
