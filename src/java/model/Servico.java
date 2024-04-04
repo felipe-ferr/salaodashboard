@@ -7,11 +7,11 @@ public class Servico {
     private String descricao;
     private float valor;
 
-    public int getIdServico() {
+    public int getIdservico() {
         return idservico;
     }
 
-    public void setIdServico(int idservico) {
+    public void setIdservico(int idservico) {
         this.idservico = idservico;
     }
 
@@ -72,13 +72,13 @@ public class Servico {
         return "Servico{" + "idservico=" + idservico + ", duracao=" + duracao + ", status=" + status + ", nome=" + nome + ", descricao=" + descricao + ", valor=" + valor + '}';
     }
 
-    public void setName(String nome) {
-    }
 
-    public void setPrice(int parseInt) {
-    }
+    
 
-    public void setQuantity(double parseDouble) {
-    }
+   
+
+   
+
+ 
     
 }
