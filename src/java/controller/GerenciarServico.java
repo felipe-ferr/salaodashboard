@@ -68,6 +68,10 @@ public class GerenciarServico extends HttpServlet {
                 mensagem = "Campos obrigatórios deverão ser preenchidos";
             }else{
                 s.setNome(nome);
+                s.setValor(Float.parseFloat(valor));
+                s.setDuracao(Integer.parseInt(duracao));
+                s.setDescricao(descricao);
+                s.setStatus(Integer.parseInt(status));
                 if(sDAO.gravar(s)){
                     mensagem = "Gravado com sucesso!";
                 }else{
