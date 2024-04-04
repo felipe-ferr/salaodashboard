@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Quicksand:wght@400&display=swap');
+
+:root{
+    --cor-clara: #eaeaea;
+    --cor-escura: #f5f5f5;
+    --dourado: #b68815;
+    --cor-texto: #0F0300;
+}
+body{
+    margin: 0;
+    overflow-x: hidden;
+    height: 100vh;
+    font-family: 'Quicksand', sans-serif;
+}
+a{
+    text-decoration: none;
+}
+
+.inputContainer .material-symbols-outlined {
+    color: goldenrod;;;
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--cor-escura)
+    width:100%:
+    height: auto;
+    gap: 10px;
+}
+form p{
+    color: var(--cor-texto);
+    font-size: 1vw;
+}
+/* checkbox dos termos de uso */
+input[type=checkbox]{
+    width: 2.5vw;
+    height: 2.5vh;
+}
+form h1{
+    color: var(--cor-texto);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2vw;
+    margin: 0;
+}
+/* botao voltar para o inicio */
+.botaoinicio{
+    color: goldenrod;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.1vw;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+/* container campo de texto, ícone e texto */
+.inputContainer{
+    display: flex;
+    width: 100%;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    cursor: text;
+   
+}
+/* container checkbox e texto termos de uso */
+.inputContainerCheckbox{
+    display: flex;
+    width: 100%;
+    position: relative;
+    align-items: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    cursor: pointer;
+    z-index: 2;
+}
+/* pointer no label */
+.inputContainerCheckbox label{
+    cursor: pointer;
+}
+/* container para abrigar dois campos de texto na mesma linha (nome e cpf) */
+.inputContainerRow{
+    display: flex;
+    gap: 10px;
+}
+/* input de texto com width 100% para ocupar a div toda */
+.inputContainer input{
+    color: var(--cor-texto);
+    background-color: var(--cor-escura);
+    border: none;
+    width: 100%;
+    height: 6vh;
+    position: relative;
+    padding: 0px 8vw;
+    font-size: 1vw;
+    border-radius: 10px;
+    transition-duration: 0.4s;
+    font-family: 'Quicksand', sans-serif;
+}
+/* nome no começo do input */
+.inputContainer p{
+    position: absolute;
+    left: 0;
+    padding: 0px 3vh;
+    color: var(--cor-texto);
+    transition-duration: 0.2s;
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    font-family: 'Quicksand', sans-serif;
+    
+}
+/* ícone no fim do input */
+.inputContainer i{
+    position: absolute;
+    right: 0;
+    padding: 0px 2vh;
+    color: white;
+    transition-duration: 0.3s;
+    pointer-events: none;
+}
+/* diminuir padding quando o campo de texto estiver ativo */
+.inputContainer input:focus{
+    background-color: var(--cor-clara);
+    outline: none;
+    padding: 0px 10%;
+    box-shadow: inset 0px 0px 0px 2px goldenrod;
+}
+/* aumentar padding de volta depois de clicar no campo de texto */
+.inputContainer input::after{
+    background-color: var(--cor-clara);
+    outline: none;
+    padding: 0px 20%;
+    box-shadow: inset 0px 0px 0px 2px goldenrod;
+}
+/* diminuir e mover para cima o nome dos campos */
+.inputContainer input:focus ~ p{
+    transform: translateY(-3vh);
+    font-size: 0.7rem;
+    background-color: var(--cor-escura);
+    padding: 0px 1vh;
+    margin-left: 3%;
+    border-radius: 5px;
+    color: var(--cor-texto);
+}
+/* config do botão de select */
+.inputContainer select{
+    appearance: none;
+    color: var(--cor-clara);
+    border: none;
+    width: 100%;
+    height: 6vh;
+    position: relative;
+    color: white;
+    font-size: 1rem;
+    padding: 0px 30%;
+    border-radius: 10px;
+    transition-duration: 0.4s;
+    font-family: 'Quicksand', sans-serif;
+    cursor: text;
+}
+/* botao de select ativo */
+.inputContainer select:focus{
+    background-color: var(--cor-clara);
+    outline: none;
+    box-shadow: inset 0px 0px 0px 2px goldenrod;;;
+}
+/* mudar cor de fundo das opções */
+.inputContainer select > option{
+    background-color: var(--cor-clara);
+}
+/* botão de submit */
+.submit{
+    background-color: goldenrod;;;
+    color: black;
+    font-size: 1rem;
+    font-family: 'Quicksand', sans-serif;
+    border: none;
+    border-radius: 50px;
+    padding: 2vh;
+    transition-duration: 0.2s;
+}
+.submit:hover{
+    background-color: rgb(238, 188, 61);
+    cursor: pointer;
+}
+

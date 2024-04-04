@@ -71,5 +71,14 @@ public class Servico {
     public String toString() {
         return "Servico{" + "idservico=" + idservico + ", duracao=" + duracao + ", status=" + status + ", nome=" + nome + ", descricao=" + descricao + ", valor=" + valor + '}';
     }
+
+
+    
+
+   
+
+   
+
+ 
     
 }
