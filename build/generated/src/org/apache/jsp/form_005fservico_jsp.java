@@ -54,6 +54,7 @@ public final class form_005fservico_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("    <head>\r\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
       out.write("        <link rel=\"stylesheet\" href=\"./static/css/form.css\">\r\n");
+      out.write("        <link rel=\"stylesheet\" href=\"./static/css/menu.css\">\r\n");
       out.write("        \r\n");
       out.write("         <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\r\n");
       out.write("        <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\r\n");
@@ -88,7 +89,7 @@ public final class form_005fservico_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("                <span class=\"sidebar-titulo\">Salão do Luciano</span>\r\n");
       out.write("                <a href=\"#\"><span class=\"material-symbols-outlined sidebar-icone\">calendar_month</span>Agendamentos</a>\r\n");
       out.write("                <a href=\"#\"><span class=\"material-symbols-outlined sidebar-icone\">person</span>Clientes</a>\r\n");
-      out.write("                <a href=\"#\"><span class=\"material-symbols-outlined sidebar-icone\">cut</span>Serviços</a>\r\n");
+      out.write("                <a href=\"listar_servico.jsp\"><span class=\"material-symbols-outlined sidebar-icone\">cut</span>Serviços</a>\r\n");
       out.write("                \r\n");
       out.write("                <div class=\"tema-container bottom\">\r\n");
       out.write("                    <span>Modo Escuro</span>\r\n");
@@ -105,7 +106,7 @@ public final class form_005fservico_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("\r\n");
       out.write("             \r\n");
       out.write("             <div class=\"container-principal\">\r\n");
-      out.write("                 <form method=\"POST\"action=\"gerenciar_servico.do\">\r\n");
+      out.write("                 <form method=\"POST\"action=\"gerenciar_servico.do\"value=\"\">\r\n");
       out.write("\r\n");
       out.write("                <a class=\"botaoinicio\"href=\"#\"><i class=\"material-symbols-outlined\">arrow_back</i>Voltar ao início</a>\r\n");
       out.write("\r\n");
