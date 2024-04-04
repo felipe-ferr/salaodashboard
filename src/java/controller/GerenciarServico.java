@@ -48,7 +48,7 @@ public class GerenciarServico extends HttpServlet {
             throws ServletException, IOException {
         
         PrintWriter out = response.getWriter();
-        String idServico = request.getParameter("idServico");
+        String idservico = request.getParameter("idservico");
         String nome = request.getParameter("nome");
         String duracao = request.getParameter("duracao");
         String valor = request.getParameter("valor");
@@ -60,8 +60,8 @@ public class GerenciarServico extends HttpServlet {
         Servico s = new Servico();
         try{
             ServicoDAO sDAO = new ServicoDAO();
-            if(!idServico.isEmpty()){
-                s.setIdServico(Integer.parseInt(idServico));
+            if(!idservico.isEmpty()){
+                s.setIdservico(Integer.parseInt(idservico));
             }
             
             if(nome.equals("")||nome.isEmpty()){
