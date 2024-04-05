@@ -86,4 +86,20 @@ public class ServicoDAO extends DatabaseDAO{
         
     }
     
+    public boolean deletar (Servico s){
+        
+        try{
+            this.conectar();
+            String sql = "DELETE FROM servico WHERE idservico=?";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setInt(1, s.getIdservico());
+            pstm.execute();
+            this.desconectar();
+            return true;
+        }catch(Exception e){
+            System.out.println(e);
+            return false;
+        }
+    }
+    
 }
