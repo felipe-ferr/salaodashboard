@@ -7,6 +7,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -33,6 +34,40 @@ public class GerenciarServico extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        PrintWriter out = response.getWriter();
+        String mensagem = "";
+        
+        String acao = request.getParameter("acao");
+        String idservico = request.getParameter("idservico");
+        
+        Servico s = new Servico();
+        
+        try{
+            
+            ServicoDAO sDAO = new ServicoDAO();
+            if(acao.equals("alterar")){
+                s = sDAO.getCarregaPorID(Integer.parseInt(idservico));
+                if(s.getIdservico()>0){
+                    RequestDispatcher disp = getServletContext().getRequestDispatcher("/form_servico.jsp");
+                    request.setAttribute("servico", s);
+                    disp.forward(request, response);
+                }else{
+                    mensagem = "Perfil não encontrado";
+                }
+                
+            }
+            
+        }catch(Exception e){
+            out.print(e);
+            mensagem = "Erro ao executar";
+        }
+        
+        out.println("<script type='text/javascript'>");
+        out.println("alert('"+mensagem+"');");
+        out.println("location.href='listar_servico.jsp';");
+        out.println("</script>");
+        
     }
 
     /**

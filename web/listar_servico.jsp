@@ -68,19 +68,24 @@
             </thead>
  
             
-            <jsp:useBean class="model.ServicoDAO" id="a"/>
+            <jsp:useBean class="model.ServicoDAO" id="s"/>
             <tbody>
-            <c:forEach var="a" items="${a.lista}">
+            <c:forEach var="s" items="${s.lista}">
                    
             <tr>
-                <td>${a.status}</td>
-                <td>${a.idservico}</td>
-                <td>${a.duracao} minutos</td>
-                <td>${a.nome}</td>
-                <td>${a.descricao}</td>
-                <td>R$${a.valor}</td>
-                <td class="acoes-td"><button class="botao-acoes"><i class="material-symbols-outlined">delete</i></button>
-                <button class="botao-acoes"><i class="material-symbols-outlined">edit</i></button>
+                <td>${s.status}</td>
+                <td>${s.idservico}</td>
+                <td>${s.duracao} minutos</td>
+                <td>${s.nome}</td>
+                <td>${s.descricao}</td>
+                <td>R$${s.valor}</td>
+                <td class="acoes-td">
+                    <button class="botao-acoes">
+                        <i class="material-symbols-outlined">delete</i>
+                    </button>
+                    <a class="botao-acoes" href="gerenciar_servico.do?acao=alterar&idservico=${s.idservico}">
+                        <i class="material-symbols-outlined">edit</i>
+                    </a>
                 </td>
             </tr>
             </c:forEach>

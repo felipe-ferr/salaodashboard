@@ -122,13 +122,18 @@ public final class listar_005fservico_jsp extends org.apache.jasper.runtime.Http
       out.write("                <span class=\"sidebar-titulo\">Salão do Luciano</span>\r\n");
       out.write("                <a href=\"#\"><span class=\"material-symbols-outlined sidebar-icone\">calendar_month</span>Agendamentos</a>\r\n");
       out.write("                <a href=\"#\"><span class=\"material-symbols-outlined sidebar-icone\">person</span>Clientes</a>\r\n");
-      out.write("                <a href=\"#\"><span class=\"material-symbols-outlined sidebar-icone\">cut</span>Serviços</a>\r\n");
+      out.write("                <a href=\"listar_servico.jsp\"><span class=\"material-symbols-outlined sidebar-icone\">cut</span>Serviços</a>\r\n");
       out.write("                \r\n");
-      out.write("                <a onclick=\"escuro()\" href=\"#\" class=\"bottom\" ><span class=\"material-symbols-outlined sidebar-icone\">dark_mode</span>\r\n");
-      out.write("                <span class=\"material-symbols-outlined sidebar-icone\">light_mode</span>\r\n");
-      out.write("                </a>\r\n");
+      out.write("                <div class=\"tema-container bottom\">\r\n");
+      out.write("                    <span>Modo Escuro</span>\r\n");
+      out.write("                    <div class=\"tema-btn-container\">\r\n");
+      out.write("                        <button onclick=\"escuro()\" id=\"botaodark\" class=\"btn-esquerda\"><span class=\"material-symbols-outlined\">dark_mode</span></button>\r\n");
+      out.write("                        <button onclick=\"light()\" id=\"botaolight\" class=\"btn-active-direita btn-direita\"><span class=\"material-symbols-outlined\">light_mode</span></button>\r\n");
+      out.write("                    </div>\r\n");
+      out.write("                </div>\r\n");
       out.write("            </div>\r\n");
       out.write("   \r\n");
+      out.write("        <script type=\"text/javascript\" src=\"static/js/modoescuro.js\"></script>\r\n");
       out.write("    </body>\r\n");
       out.write("</html>\r\n");
       out.write("\r\n");
@@ -136,13 +141,18 @@ public final class listar_005fservico_jsp extends org.apache.jasper.runtime.Http
       out.write("            \r\n");
       out.write("        \r\n");
       out.write("        <div id=\"principal\" class=\"container-principal\">\r\n");
+      out.write("            \r\n");
+      out.write("            <div class=\"titulo-botao-container\">\r\n");
+      out.write("                <h1>Lista de Serviços</h1>\r\n");
+      out.write("                <a href=\"form_servico.jsp\">Adicionar Serviço<i class=\"material-symbols-outlined\">add</i></a>\r\n");
+      out.write("            </div>\r\n");
       out.write("      \r\n");
       out.write("\r\n");
       out.write("            <table  class=\"table is-hoverable is-striped\" id=\"listarServico\">    \r\n");
       out.write("            <thead>\r\n");
       out.write("               <tr>\r\n");
       out.write("                <th style=\"text-align:left;\">ID</th>\r\n");
-      out.write("                <th style=\"text-align:left;\">Duraçãoaaaaaaaaaaa</th>\r\n");
+      out.write("                <th style=\"text-align:left;\">Duração</th>\r\n");
       out.write("                <th style=\"text-align:left;\">Status</th>\r\n");
       out.write("                <th style=\"text-align:left;\">Nome</th>\r\n");
       out.write("                <th style=\"text-align:left;\">Descrição</th>\r\n");
@@ -153,12 +163,12 @@ public final class listar_005fservico_jsp extends org.apache.jasper.runtime.Http
       out.write(" \r\n");
       out.write("            \r\n");
       out.write("            ");
-      model.ServicoDAO a = null;
+      model.ServicoDAO s = null;
       synchronized (_jspx_page_context) {
-        a = (model.ServicoDAO) _jspx_page_context.getAttribute("a", PageContext.PAGE_SCOPE);
-        if (a == null){
-          a = new model.ServicoDAO();
-          _jspx_page_context.setAttribute("a", a, PageContext.PAGE_SCOPE);
+        s = (model.ServicoDAO) _jspx_page_context.getAttribute("s", PageContext.PAGE_SCOPE);
+        if (s == null){
+          s = new model.ServicoDAO();
+          _jspx_page_context.setAttribute("s", s, PageContext.PAGE_SCOPE);
         }
       }
       out.write("\r\n");
@@ -207,7 +217,7 @@ public final class listar_005fservico_jsp extends org.apache.jasper.runtime.Http
     _jspx_th_c_forEach_0.setPageContext(_jspx_page_context);
     _jspx_th_c_forEach_0.setParent(null);
     _jspx_th_c_forEach_0.setVar("a");
-    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.lista}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${s.lista}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     int[] _jspx_push_body_count_c_forEach_0 = new int[] { 0 };
     try {
       int _jspx_eval_c_forEach_0 = _jspx_th_c_forEach_0.doStartTag();
@@ -217,25 +227,32 @@ public final class listar_005fservico_jsp extends org.apache.jasper.runtime.Http
           out.write("                   \r\n");
           out.write("            <tr>\r\n");
           out.write("                <td>");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.status}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${s.status}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("</td>\r\n");
           out.write("                <td>");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.idservico}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${s.idservico}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("</td>\r\n");
           out.write("                <td>");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.duracao}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${s.duracao}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write(" minutos</td>\r\n");
+          out.write("                <td>");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${s.nome}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("</td>\r\n");
           out.write("                <td>");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.nome}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</td>\r\n");
-          out.write("                <td>");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.descricao}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${s.descricao}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("</td>\r\n");
           out.write("                <td>R$");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.valor}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${s.valor}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("</td>\r\n");
-          out.write("                <td class=\"acoes-td\"><button class=\"botao-acoes\"><i class=\"material-symbols-outlined\">delete</i></button>\r\n");
-          out.write("                <button class=\"botao-acoes\"><i class=\"material-symbols-outlined\">edit</i></button>\r\n");
+          out.write("                <td class=\"acoes-td\">\r\n");
+          out.write("                    <button class=\"botao-acoes\">\r\n");
+          out.write("                        <i class=\"material-symbols-outlined\">delete</i>\r\n");
+          out.write("                    </button>\r\n");
+          out.write("                    <a class=\"botao-acoes\" href=\"gerenciar_servico.do?acao=alterar&idservico=");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${s.idservico}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\">\r\n");
+          out.write("                        <i class=\"material-symbols-outlined\">edit</i>\r\n");
+          out.write("                    </a>\r\n");
           out.write("                </td>\r\n");
           out.write("            </tr>\r\n");
           out.write("            ");

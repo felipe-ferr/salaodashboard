@@ -15,14 +15,14 @@ public class ServicoDAO extends DatabaseDAO{
         Statement stm = conn.createStatement();
         ResultSet rs = stm.executeQuery(SQL);
         while(rs.next()){
-            Servico a = new Servico();
-            a.setIdservico(rs.getInt("idservico"));
-            a.setDuracao(rs.getInt("duracao"));
-            a.setStatus(rs.getInt("status"));
-            a.setNome(rs.getString("nome"));
-            a.setDescricao(rs.getString("descricao"));
-            a.setValor(rs.getFloat("valor"));
-            lista.add(a);
+            Servico s = new Servico();
+            s.setIdservico(rs.getInt("idservico"));
+            s.setDuracao(rs.getInt("duracao"));
+            s.setStatus(rs.getInt("status"));
+            s.setNome(rs.getString("nome"));
+            s.setDescricao(rs.getString("descricao"));
+            s.setValor(rs.getFloat("valor"));
+            lista.add(s);
         }
         this.desconectar();
         return lista;
@@ -59,6 +59,30 @@ public class ServicoDAO extends DatabaseDAO{
             System.out.println(e);
             return false;
         }
+        
+    }
+    
+    public Servico getCarregaPorID(int idservico) throws Exception{
+        
+        Servico s = new Servico();
+        String sql = "SELECT * FROM servico WHERE idservico=?";
+        this.conectar();
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setInt(1, idservico);
+        ResultSet rs = pstm.executeQuery();
+        
+        if(rs.next()){
+            s.setIdservico(rs.getInt("idservico"));
+            s.setNome(rs.getString("nome"));
+            s.setDuracao(rs.getInt("duracao"));
+            s.setValor(rs.getFloat("valor"));
+            s.setDescricao(rs.getString("descricao"));
+            s.setStatus(rs.getInt("status"));
+
+        }
+        
+        this.desconectar();
+        return s;
         
     }
     

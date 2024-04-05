@@ -27,37 +27,49 @@
              <div class="container-principal">
                  <form method="POST"action="gerenciar_servico.do"value="">
 
-                <a class="botaoinicio"href="#"><i class="material-symbols-outlined">arrow_back</i>Voltar ao início</a>
+                    <a class="botaoinicio"href="#">
+                        <i class="material-symbols-outlined">arrow_back</i>Voltar ao início
+                    </a>
 
-                <h1>Cadastrar serviço</h1>
-                
-                <input type="hidden" name="idservico"/>
-                
-                <div class="inputContainer">
-                    <input required type="text"name="nome"><p>Nome:</p><i class="material-symbols-outlined">location_on</i>
-                </div>
+                    <h1>Cadastrar serviço</h1>
 
-                <div class="inputContainer">
-                    <input required type="number"name="duracao"><p>Duração</p><i class="material-symbols-outlined">mail</i>
-                </div>
+                    <input type="hidden" name="idservico" value="${servico.idservico}"/>
 
+                    <div class="inputContainer">
+                        <input required type="text"name="nome" value="${servico.nome}">
+                        <p>Nome:</p>
+                        <i class="material-symbols-outlined">location_on</i>
+                    </div>
 
-                <div class="inputContainer">
-                    <input required type="number"name="valor"><p>Valor:</p><i class="material-symbols-outlined">key</i>
-                </div>
-                
-                <div class="inputContainer">
-                    <input required type="text"name="descricao"><p>Descrição</p><i class="material-symbols-outlined">key</i>
-                </div>
-                
-                 <div class="inputContainer">
-                    <input required type="number"name="status"><p>Status</p><i class="material-symbols-outlined">key</i>
-                </div>
+                    <div class="inputContainer">
+                        <input required type="number"name="duracao" value="${servico.duracao}">
+                        <p>Duração</p>
+                        <i class="material-symbols-outlined">mail</i>
+                    </div>
 
 
-                <button type="submit"class="submit">Cadastrar Serviço</button>
+                    <div class="inputContainer">
+                        <input required type="number"name="valor" value="${servico.valor}">
+                        <p>Valor:</p>
+                        <i class="material-symbols-outlined">key</i>
+                    </div>
 
-            </form>
+                    <div class="inputContainer">
+                        <input required type="text"name="descricao" value="${servico.descricao}">
+                        <p>Descrição</p>
+                        <i class="material-symbols-outlined">key</i>
+                    </div>
+
+                     <div class="inputContainer">
+                        <input required type="number"name="status" value="${servico.status}">
+                        <p>Status</p>
+                        <i class="material-symbols-outlined">key</i>
+                    </div>
+
+
+                    <button type="submit"class="submit">Cadastrar Serviço</button>
+
+                </form>
 
              </div>
         </div>
