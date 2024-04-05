@@ -27,7 +27,7 @@
         
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
      
-        
+        <>
         
         <script src="static/js/bulmadatatable.js"></script>
        
@@ -58,11 +58,11 @@
             <thead>
                <tr>
                 <th style="text-align:left;">ID</th>
-                <th style="text-align:left;">Duração</th>
-                <th style="text-align:left;">Status</th>
                 <th style="text-align:left;">Nome</th>
-                <th style="text-align:left;">Descrição</th>
+                <th style="text-align:left;">Duração</th>
                 <th style="text-align:left;">Valor</th>
+                <th style="text-align:left;">Descrição</th>
+                <th style="text-align:left;">Status</th>
                 <th style="text-align:left;">Ações</th>
             </tr>
             </thead>
