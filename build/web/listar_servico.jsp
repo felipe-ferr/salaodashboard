@@ -73,12 +73,12 @@
             <c:forEach var="s" items="${s.lista}">
                    
             <tr>
-                <td>${s.status}</td>
                 <td>${s.idservico}</td>
-                <td>${s.duracao} minutos</td>
                 <td>${s.nome}</td>
-                <td>${s.descricao}</td>
+                <td>${s.duracao} minutos</td>
                 <td>R$${s.valor}</td>
+                <td>${s.descricao}</td>
+                <td>${s.status}</td>
                 <td class="acoes-td">
                     <button class="botao-acoes">
                         <i class="material-symbols-outlined">delete</i>
