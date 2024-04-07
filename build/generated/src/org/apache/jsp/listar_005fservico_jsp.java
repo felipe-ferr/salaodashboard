@@ -84,7 +84,13 @@ public final class listar_005fservico_jsp extends org.apache.jasper.runtime.Http
       out.write("        \r\n");
       out.write("        <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200\" />\r\n");
       out.write("     \r\n");
-      out.write("        <>\r\n");
+      out.write("        <script type=\"text/javascript\"> // adicionei aqui por conta do método de exclusão \r\n");
+      out.write("            function confirmarExclusão(id,nome){\r\n");
+      out.write("                if(confirm('Deseja excluir o serviço '+nome+'?')){\r\n");
+      out.write("                    location.href='gerenciar_servico.do?acao=deletar&idservico='+id;\r\n");
+      out.write("                }\r\n");
+      out.write("            }\r\n");
+      out.write("        </script>\r\n");
       out.write("        \r\n");
       out.write("        <script src=\"static/js/bulmadatatable.js\"></script>\r\n");
       out.write("       \r\n");
@@ -156,7 +162,7 @@ public final class listar_005fservico_jsp extends org.apache.jasper.runtime.Http
       out.write("                <th style=\"text-align:left;\">Duração</th>\r\n");
       out.write("                <th style=\"text-align:left;\">Valor</th>\r\n");
       out.write("                <th style=\"text-align:left;\">Descrição</th>\r\n");
-      out.write("                <th style=\"text-align:left;\">Valor</th>\r\n");
+      out.write("                <th style=\"text-align:left;\">Status</th>\r\n");
       out.write("                <th style=\"text-align:left;\">Ações</th>\r\n");
       out.write("            </tr>\r\n");
       out.write("            </thead>\r\n");
@@ -184,6 +190,7 @@ public final class listar_005fservico_jsp extends org.apache.jasper.runtime.Http
       out.write("        </div>\r\n");
       out.write("        </div>\r\n");
       out.write("            \r\n");
+      out.write("            \r\n");
       out.write(" \r\n");
       out.write("        <script src=\"./static/bulma/jquery-3.7.1.js\"></script>\r\n");
       out.write("        <script src=\"./static/bulma/dataTables.js\"></script>\r\n");
@@ -191,6 +198,7 @@ public final class listar_005fservico_jsp extends org.apache.jasper.runtime.Http
       out.write("        <script src=\"./static/js/bulmadatatable.js\"></script>\r\n");
       out.write("        <script type=\"text/javascript\" src=\"static/js/traducao.js\"></script>\r\n");
       out.write("        <script type=\"text/javascript\" src=\"static/js/modoescuro.js\"></script>\r\n");
+      out.write("        <script type=\"text/javascript\" src=\"static/js/sumirTextoTextarea.js\"></script>\r\n");
       out.write("     \r\n");
       out.write("        \r\n");
       out.write("    </body>\r\n");
@@ -245,7 +253,12 @@ public final class listar_005fservico_jsp extends org.apache.jasper.runtime.Http
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${s.status}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("</td>\r\n");
           out.write("                <td class=\"acoes-td\">\r\n");
-          out.write("                    <button class=\"botao-acoes\">\r\n");
+          out.write("                    <button class=\"botao-acoes\" onclick=\"confirmarExclusão(");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${s.idservico}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write(',');
+          out.write('\'');
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${s.nome}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("')\">\r\n");
           out.write("                        <i class=\"material-symbols-outlined\">delete</i>\r\n");
           out.write("                    </button>\r\n");
           out.write("                    <a class=\"botao-acoes\" href=\"gerenciar_servico.do?acao=alterar&idservico=");
@@ -255,6 +268,7 @@ public final class listar_005fservico_jsp extends org.apache.jasper.runtime.Http
           out.write("                    </a>\r\n");
           out.write("                </td>\r\n");
           out.write("            </tr>\r\n");
+          out.write("           \r\n");
           out.write("            ");
           int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
