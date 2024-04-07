@@ -11,21 +11,21 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="./static/css/form.css">
         <link rel="stylesheet" href="./static/css/menu.css">
-        
-         <link rel="preconnect" href="https://fonts.googleapis.com">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 
         <title>JSP Page</title>
-        
+
     </head>
     <body>
- 
+
         <div class="grid-container">
-             <%@include file="sidebar.jsp" %>
-             
-             <div class="container-principal">
-                 <form method="POST"action="gerenciar_servico.do"value="">
+            <%@include file="sidebar.jsp" %>
+
+            <div class="container-principal">
+                <form method="POST"action="gerenciar_servico.do" value="">
 
                     <a class="botaoinicio"href="#">
                         <i class="material-symbols-outlined">arrow_back</i>Voltar ao início
@@ -38,41 +38,45 @@
                     <div class="inputContainer">
                         <input required type="text"name="nome" value="${servico.nome}">
                         <p>Nome:</p>
-                        <i class="material-symbols-outlined">location_on</i>
+                        <i class="material-symbols-outlined">cut</i>
                     </div>
 
+                    <div class="inputContainerRow">
+                        <div class="inputContainer">
+                            <input required type="number"name="duracao" value="${servico.duracao}">
+                            <p>Duração</p>
+                            <i class="material-symbols-outlined">mail</i>
+                        </div>
+
+
+                        <div class="inputContainer">
+                            <input required type="number"name="valor" value="${servico.valor}">
+                            <p>Valor:</p>
+                            <i class="material-symbols-outlined">key</i>
+                        </div>
+                    </div>
+
+                    <script type="text/javascript" src="./static/js/sumirTextoTextarea.js"></script>
                     <div class="inputContainer">
-                        <input required type="number"name="duracao" value="${servico.duracao}">
-                        <p>Duração</p>
-                        <i class="material-symbols-outlined">mail</i>
+                        <p class="textareatexto" id="ptextarea">Descrição</p>
+                        <textarea id="area" required onclick="sumirp()" type="text" name="descricao" value="${servico.descricao}"></textarea>
                     </div>
 
-
-                    <div class="inputContainer">
-                        <input required type="number"name="valor" value="${servico.valor}">
-                        <p>Valor:</p>
-                        <i class="material-symbols-outlined">key</i>
-                    </div>
-
-                    <div class="inputContainer">
-                        <input required type="text"name="descricao" value="${servico.descricao}">
-                        <p>Descrição</p>
-                        <i class="material-symbols-outlined">key</i>
-                    </div>
-
-                     <div class="inputContainer">
-                        <input required type="number"name="status" value="${servico.status}">
-                        <p>Status</p>
-                        <i class="material-symbols-outlined">key</i>
-                    </div>
+                 
+                        <select name="status" class="select">
+                            <option value="1">Ativo</option>
+                            <option value="0">Inativo</option>
+                        </select>
+                 
 
 
                     <button type="submit"class="submit">Cadastrar Serviço</button>
 
                 </form>
 
-             </div>
+            </div>
         </div>
-           
+
+
     </body>
 </html>

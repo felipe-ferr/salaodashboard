@@ -13,25 +13,22 @@ html{
 body{
     margin: 0;
     padding: 0;
-    min-height: 100%;
+    box-sizing: border-box;
+    
 }
 .grid-container{
-    display: grid;
-    grid-template-columns: repeat(12, 1 1fr);
-    grid-template-rows: repeat(12, 1 1fr);
+    display: flex;
     height:100%;
 }
 .sidebar{
-    grid-column: 1 / 4;
-    grid-row: 1;
-    height: 100%;
+    height: 100vh;
     display: flex;
-     flex: 1 1 auto;
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
     background-color: var(--cor-escura);
     position: relative;
+    width: 20%;
     
 }
 .sidebar a{
@@ -157,20 +154,21 @@ body{
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
-    grid-column: 4 / 12;
-    height: auto;
-    width: 100%;
+    width: 80%;
+    height: 100vh;
     background-color: var(--cor-clara);
     box-sizing: border-box;
     padding: 2%;
+    overflow-y: scroll;
+    
 }
 .titulo-botao-container{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px;
+    padding: 1%;
     box-sizing: border-box;
-    width: 100%;
+    width: 90%;
 }
 .titulo-botao-container h1{
     font-family: 'Quicksand';
@@ -189,7 +187,6 @@ body{
     border-radius: 10px;
 }
 #listarServico_wrapper{
-    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -197,6 +194,8 @@ body{
     background-color: var(--cor-escura);
     border-radius: 10px;
     padding: 1%;
+    box-sizing: border-box;
+    width: 100%;
     
 }
 #listarServico_wrapper table{
@@ -204,15 +203,20 @@ body{
     color: var(--cor-texto);
     margin: 0;
     padding: 0;
-    table-layout: fixed; 
-    width: auto;
+    width: 90%;
+    table-layout: fixed;
+    height: 100%; 
 }
 
 #listarServico_wrapper td{
     border: none;
     text-align: left;
-    background-color: var(--cor-escura); 
-    padding: 20px;
+    background-color: var(--cor-escura);
+    vertical-align: middle;
+    box-sizing: border-box;
+    padding: 1vw 10px;
+    height: 100%;
+ 
 }
 
 #listarServico_wrapper th{
@@ -222,7 +226,8 @@ body{
     background-color: var(--cor-escura);
     text-align: left;
     color: var(--cor-texto);
-    padding: 10px 3vw;
+    text-align: left;
+    height: 100%;
 }
 .pagination-list .is-current{
     background-color: var(--dourado);
@@ -234,6 +239,8 @@ body{
     color: var(--cor-texto);
     border: none;
 }
+
+
 .botao-acoes{
     display: flex;
     justify-content: center;
@@ -242,7 +249,8 @@ body{
     border: none;
     border-radius: 10px;
     box-sizing: border-box;
-    padding: 7px;
+    height: 100%;
+    padding: 0;
 }
 .botao-acoes .material-symbols-outlined{
     color: var(--dourado);
@@ -252,6 +260,7 @@ body{
     justify-content: center;
     align-items: center;
     gap: 2px;
+    height: 100%;
 }
 
 #dt-search-0{
@@ -263,28 +272,27 @@ body{
     outline: 1px solid var(--dourado);
     border: 1px solid var(--dourado);
 }
-
-@media only screen and (max-width: 1200px) {
-    #listarServico_wrapper th{
-    width: auto;
-    border-bottom: 2px solid var(--dourado);
-    box-sizing: border-box;
-    text-align: left;
+.select select{
+    background-color: var(--cor-clara);
     color: var(--cor-texto);
+    border: none;
 }
+.select select::after{
+    background-color: var(--dourado);
+}
+
+@media only screen and (max-width: 1300px) {   
 .sidebar{
     display: none;
 }
 .container-principal{
-    grid-column: 1 / 12; 
+    width: 100%;
 }
 #listarServico_wrapper table{
     font-family: 'Quicksand';
     color: var(--cor-texto);
     margin: 0;
     padding: 0;
-    table-layout: fixed; 
-    width: auto;
-    margin-left: 3%;
+    width: 80%;
 }
 }
