@@ -27,7 +27,13 @@
         
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
      
-        
+        <script type="text/javascript"> // adicionei aqui por conta do método de exclusão 
+            function confirmarExclusão(id,nome){
+                if(confirm('Deseja excluir o serviço '+nome+'?')){
+                    location.href='gerenciar_servico.do?acao=deletar&idservico='+id;
+                }
+            }
+        </script>
         
         <script src="static/js/bulmadatatable.js"></script>
        
@@ -80,7 +86,7 @@
                 <td>${s.descricao}</td>
                 <td>${s.status}</td>
                 <td class="acoes-td">
-                    <button class="botao-acoes">
+                    <button class="botao-acoes" onclick="confirmarExclusão(${s.idservico},'${s.nome}')">
                         <i class="material-symbols-outlined">delete</i>
                     </button>
                     <a class="botao-acoes" href="gerenciar_servico.do?acao=alterar&idservico=${s.idservico}">

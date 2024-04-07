@@ -84,7 +84,7 @@ public final class listar_005fservico_jsp extends org.apache.jasper.runtime.Http
       out.write("        \r\n");
       out.write("        <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200\" />\r\n");
       out.write("     \r\n");
-      out.write("        \r\n");
+      out.write("        <>\r\n");
       out.write("        \r\n");
       out.write("        <script src=\"static/js/bulmadatatable.js\"></script>\r\n");
       out.write("       \r\n");
@@ -156,7 +156,7 @@ public final class listar_005fservico_jsp extends org.apache.jasper.runtime.Http
       out.write("                <th style=\"text-align:left;\">Duração</th>\r\n");
       out.write("                <th style=\"text-align:left;\">Valor</th>\r\n");
       out.write("                <th style=\"text-align:left;\">Descrição</th>\r\n");
-      out.write("                <th style=\"text-align:left;\">Status</th>\r\n");
+      out.write("                <th style=\"text-align:left;\">Valor</th>\r\n");
       out.write("                <th style=\"text-align:left;\">Ações</th>\r\n");
       out.write("            </tr>\r\n");
       out.write("            </thead>\r\n");
@@ -184,11 +184,6 @@ public final class listar_005fservico_jsp extends org.apache.jasper.runtime.Http
       out.write("        </div>\r\n");
       out.write("        </div>\r\n");
       out.write("            \r\n");
-      out.write("            <div class=\"descricao\">\r\n");
-      out.write("                <span>");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${s.descricao}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("</span>\r\n");
-      out.write("            </div>\r\n");
       out.write(" \r\n");
       out.write("        <script src=\"./static/bulma/jquery-3.7.1.js\"></script>\r\n");
       out.write("        <script src=\"./static/bulma/dataTables.js\"></script>\r\n");
@@ -243,7 +238,9 @@ public final class listar_005fservico_jsp extends org.apache.jasper.runtime.Http
           out.write("                <td>R$");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${s.valor}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("</td>\r\n");
-          out.write("                <td class=\"descicone\"><i class=\"material-symbols-outlined\">message</i></td>\r\n");
+          out.write("                <td>");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${s.descricao}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</td>\r\n");
           out.write("                <td>");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${s.status}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("</td>\r\n");
