@@ -55,7 +55,7 @@
         <div id="principal" class="container-principal">
             
             <div class="titulo-botao-container">
-                <h1>Lista de Serviços</h1>
+                <h1>Lista de Clientes</h1>
                 <a href="form_cliente.jsp">Adicionar Cliente<i class="material-symbols-outlined">add</i></a>
             </div>
       

@@ -44,21 +44,21 @@
 
                     <div class="inputContainerRow">
                         <div class="inputContainer">
-                            <input required type="number" name="cpf" value="${cliente.duracao}">
+                            <input required type="number" name="cpf" value="${cliente.cpf}">
                             <p>CPF: </p>
                             <i class="material-symbols-outlined">description</i>
                         </div>
 
 
                         <div class="inputContainer">
-                            <input required type="number" name="telefone" value="${cliente.valor}">
+                            <input required type="number" name="telefone" value="${cliente.telefone}">
                             <p>Telefone: </p>
                             <i class="material-symbols-outlined">phone</i>
                         </div>
                     </div>
 
                     <div class="inputContainer">
-                        <input required type="text" name="email" value="${cliente.nome}">
+                        <input required type="text" name="email" value="${cliente.email}">
                         <p>Email: </p>
                         <i class="material-symbols-outlined">mail</i>
                     </div>
@@ -70,7 +70,7 @@
 
 
 
-                    <button type="submit"class="submit">Cadastrar Serviço</button>
+                    <button type="submit"class="submit">Cadastrar cliente</button>
 
                 </form>
 
