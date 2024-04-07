@@ -41,20 +41,12 @@
                         <i class="material-symbols-outlined">cut</i>
                     </div>
 
-                    <div class="inputContainerRow">
                         <div class="inputContainer">
-                            <input required type="number"name="duracao" value="${servico.duracao}">
-                            <p>Duração</p>
-                            <i class="material-symbols-outlined">mail</i>
-                        </div>
-
-
-                        <div class="inputContainer">
-                            <input required type="number"name="valor" value="${servico.valor}">
+                            <input required type="number" name="valor" value="${servico.valor}">
                             <p>Valor:</p>
                             <i class="material-symbols-outlined">key</i>
                         </div>
-                    </div>
+        
 
                     <script type="text/javascript" src="./static/js/sumirTextoTextarea.js"></script>
                     <div class="inputContainer">

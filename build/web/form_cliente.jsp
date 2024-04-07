@@ -1,5 +1,6 @@
+@ -0,0 +1,81 @@
 <%-- 
-    Document   : form_servico
+    Document   : form_cliente
     Created on : 02/04/2024, 08:29:35
     Author     : 349550
 --%>
@@ -25,41 +26,48 @@
             <%@include file="sidebar.jsp" %>
 
             <div class="container-principal">
-                <form method="POST"action="gerenciar_servico.do" value="">
+                <form method="POST"action="gerenciar_cliente.do" value="">
 
                     <a class="botaoinicio"href="#">
                         <i class="material-symbols-outlined">arrow_back</i>Voltar ao início
                     </a>
 
-                    <h1>Cadastrar serviço</h1>
+                    <h1>Cadastrar Cliente</h1>
 
-                    <input type="hidden" name="idservico" value="${servico.idservico}"/>
+                    <input type="hidden" name="idcliente" value="${cliente.idcliente}"/>
 
                     <div class="inputContainer">
-                        <input required type="text"name="nome" value="${servico.nome}">
+                        <input required type="text" name="nome" value="${cliente.nome}">
                         <p>Nome:</p>
-                        <i class="material-symbols-outlined">cut</i>
+                        <i class="material-symbols-outlined">person</i>
                     </div>
+
+                    <div class="inputContainerRow">
+                        <div class="inputContainer">
+                            <input required type="number" name="cpf" value="${cliente.duracao}">
+                            <p>CPF: </p>
+                            <i class="material-symbols-outlined">description</i>
+                        </div>
+
 
                         <div class="inputContainer">
-                            <input required type="number" name="valor" value="${servico.valor}">
-                            <p>Valor:</p>
-                            <i class="material-symbols-outlined">key</i>
+                            <input required type="number" name="telefone" value="${cliente.valor}">
+                            <p>Telefone: </p>
+                            <i class="material-symbols-outlined">phone</i>
                         </div>
-        
-
-                    <script type="text/javascript" src="./static/js/sumirTextoTextarea.js"></script>
-                    <div class="inputContainer">
-                        <p class="textareatexto" id="ptextarea">Descrição</p>
-                        <textarea id="area" required onclick="sumirp()" type="text" name="descricao" value="${servico.descricao}"></textarea>
                     </div>
 
-                 
-                        <select name="status" class="select">
-                            <option value="1">Ativo</option>
-                            <option value="0">Inativo</option>
-                        </select>
-                 
+                    <div class="inputContainer">
+                        <input required type="text" name="email" value="${cliente.nome}">
+                        <p>Email: </p>
+                        <i class="material-symbols-outlined">mail</i>
+                    </div>
+
+
+
+
+
+
 
 
                     <button type="submit"class="submit">Cadastrar Serviço</button>

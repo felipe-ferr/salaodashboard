@@ -50,13 +50,12 @@ public class GerenciarPerfil extends HttpServlet {
         PrintWriter out = response.getWriter();
         String idperfil = request.getParameter("idperfil");
         String nome = request.getParameter("nome");
-        String status = request.getParameter("status");
         
         String mensagem="";
         
         Perfil p = new Perfil();
         try{
-            PerfilDAO sDAO = new PerfilDAO();
+            PerfilDAO pDAO = new PerfilDAO();
             if(!idperfil.isEmpty()){
                 p.setIdperfil(Integer.parseInt(idperfil));
             }
@@ -65,8 +64,7 @@ public class GerenciarPerfil extends HttpServlet {
                 mensagem = "Campos obrigatórios deverão ser preenchidos";
             }else{
                 p.setNome(nome);
-                p.setStatus(Integer.parseInt(status));
-                if(sDAO.gravar(p)){
+                if(pDAO.gravar(p)){
                     mensagem = "Gravado com sucesso!";
                 }else{
                     mensagem = "Erro ao gravar no banco de dados!";

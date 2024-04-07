@@ -16,6 +16,15 @@
         <servlet-name>GerenciarCliente</servlet-name>
         <url-pattern>/gerenciar_cliente.do</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>GerenciarPerfil</servlet-name>
+        <servlet-class>controller.GerenciarPerfil</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GerenciarPerfil</servlet-name>
+        <url-pattern>/gerenciar_perfil.do</url-pattern>
+    </servlet-mapping>
+    
     <session-config>
         <session-timeout>
             30

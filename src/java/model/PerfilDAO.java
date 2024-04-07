@@ -18,7 +18,6 @@ public class PerfilDAO extends DatabaseDAO{
             Perfil p = new Perfil();
             p.setIdperfil(rs.getInt("idperfil"));
             p.setNome(rs.getString("nome"));
-            p.setStatus(rs.getInt("status"));
             lista.add(p);
         }
         this.desconectar();
@@ -32,14 +31,13 @@ public class PerfilDAO extends DatabaseDAO{
             String sql;
             this.conectar();
             if(p.getIdperfil()==0){
-                sql = "INSERT INTO perfil(nome, status) VALUES(?, ?)";
+                sql = "INSERT INTO perfil(nome) VALUES(?)";
             }else{
-                sql = "UPDATE perfil SET nome=?, status=? WHERE idperfil=?"; 
+                sql = "UPDATE perfil SET nome=?, WHERE idperfil=?"; 
             }
 
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setString(1,p.getNome());
-            pstm.setInt(2,p.getStatus());
 
             if(p.getIdperfil()>0){
                 pstm.setInt(3,p.getIdperfil());

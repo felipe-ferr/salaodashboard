@@ -85,7 +85,6 @@ public class GerenciarServico extends HttpServlet {
         PrintWriter out = response.getWriter();
         String idservico = request.getParameter("idservico");
         String nome = request.getParameter("nome");
-        String duracao = request.getParameter("duracao");
         String valor = request.getParameter("valor");
         String descricao = request.getParameter("descricao");
         String status = request.getParameter("status");
@@ -104,7 +103,6 @@ public class GerenciarServico extends HttpServlet {
             }else{
                 s.setNome(nome);
                 s.setValor(Float.parseFloat(valor));
-                s.setDuracao(Integer.parseInt(duracao));
                 s.setDescricao(descricao);
                 s.setStatus(Integer.parseInt(status));
                 if(sDAO.gravar(s)){

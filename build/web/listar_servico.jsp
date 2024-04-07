@@ -67,7 +67,6 @@
                 <th style="text-align:left;">Nome</th>
                 <th style="text-align:left;">Duração</th>
                 <th style="text-align:left;">Valor</th>
-                <th style="text-align:left;">Descrição</th>
                 <th style="text-align:left;">Status</th>
                 <th style="text-align:left;">Ações</th>
             </tr>
@@ -81,7 +80,6 @@
             <tr>
                 <td>${s.idservico}</td>
                 <td>${s.nome}</td>
-                <td>${s.duracao} minutos</td>
                 <td>R$${s.valor}</td>
                 <td>${s.descricao}</td>
                 <td>${s.status}</td>

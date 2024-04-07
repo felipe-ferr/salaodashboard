@@ -4,9 +4,9 @@
     Author     : felip
 --%>
 
-<%@page import="model.ServicoDAO"%>
+<%@page import="model.PerfilDAO"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="model.Servico"%>
+<%@page import="model.Perfil"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -30,7 +30,7 @@
         <script type="text/javascript"> // adicionei aqui por conta do método de exclusão 
             function confirmarExclusão(id,nome){
                 if(confirm('Deseja excluir o serviço '+nome+'?')){
-                    location.href='gerenciar_servico.do?acao=deletar&idservico='+id;
+                    location.href='gerenciar_perfil.do?acao=deletar&idperfil='+id;
                 }
             }
         </script>
@@ -56,38 +56,32 @@
             
             <div class="titulo-botao-container">
                 <h1>Lista de Serviços</h1>
-                <a href="form_servico.jsp">Adicionar Serviço<i class="material-symbols-outlined">add</i></a>
+                <a href="form_perfil.jsp">Adicionar Perfil<i class="material-symbols-outlined">add</i></a>
             </div>
       
 
-            <table  class="table is-hoverable is-striped" id="listarServico">    
+            <table  class="table is-hoverable is-striped" id="listarPerfil">    
             <thead>
                <tr>
                 <th style="text-align:left;">ID</th>
                 <th style="text-align:left;">Nome</th>
-                <th style="text-align:left;">Duração</th>
-                <th style="text-align:left;">Valor</th>
-                <th style="text-align:left;">Status</th>
                 <th style="text-align:left;">Ações</th>
             </tr>
             </thead>
  
             
-            <jsp:useBean class="model.ServicoDAO" id="s"/>
+            <jsp:useBean class="model.PerfilDAO" id="p"/>
             <tbody>
-            <c:forEach var="s" items="${s.lista}">
+            <c:forEach var="p" items="${p.lista}">
                    
             <tr>
-                <td>${s.idservico}</td>
-                <td>${s.nome}</td>
-                <td>R$${s.valor}</td>
-                <td>${s.descricao}</td>
-                <td>${s.status}</td>
+                <td>${p.idperfil}</td>
+                <td>${p.nome}</td>
                 <td class="acoes-td">
-                    <button class="botao-acoes" onclick="confirmarExclusão(${s.idservico},'${s.nome}')">
+                    <button class="botao-acoes" onclick="confirmarExclusão(${p.idperfil},'${p.nome}')">
                         <i class="material-symbols-outlined">delete</i>
                     </button>
-                    <a class="botao-acoes" href="gerenciar_servico.do?acao=alterar&idservico=${s.idservico}">
+                    <a class="botao-acoes" href="gerenciar_perfil.do?acao=alterar&idperfil=${p.idperfil}">
                         <i class="material-symbols-outlined">edit</i>
                     </a>
                 </td>
@@ -106,7 +100,7 @@
         <script src="./static/bulma/jquery-3.7.1.js"></script>
         <script src="./static/bulma/dataTables.js"></script>
         <script src="./static/bulma/dataTables.bulma.js"></script>
-        <script src="./static/js/bulmadatatable.js"></script>
+        <script src="./static/js/bulmadatatableperfil.js"></script>
         <script type="text/javascript" src="static/js/traducao.js"></script>
         <script type="text/javascript" src="static/js/modoescuro.js"></script>
         <script type="text/javascript" src="static/js/sumirTextoTextarea.js"></script>

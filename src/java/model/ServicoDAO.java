@@ -17,7 +17,6 @@ public class ServicoDAO extends DatabaseDAO{
         while(rs.next()){
             Servico s = new Servico();
             s.setIdservico(rs.getInt("idservico"));
-            s.setDuracao(rs.getInt("duracao"));
             s.setStatus(rs.getInt("status"));
             s.setNome(rs.getString("nome"));
             s.setDescricao(rs.getString("descricao"));
@@ -35,17 +34,16 @@ public class ServicoDAO extends DatabaseDAO{
             String sql;
             this.conectar();
             if(s.getIdservico()==0){
-                sql = "INSERT INTO servico(nome, duracao, valor, descricao, status) VALUES(?, ?, ?, ?, ?)";
+                sql = "INSERT INTO servico(nome, valor, descricao, status) VALUES(?, ?, ?, ?)";
             }else{
-                sql = "UPDATE servico SET nome=?, duracao=?, valor=?, descricao=?, status=? WHERE idservico=?"; 
+                sql = "UPDATE servico SET nome=?, valor=?, descricao=?, status=? WHERE idservico=?"; 
             }
 
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setString(1,s.getNome());
-            pstm.setInt(2,s.getDuracao());
-            pstm.setFloat(3,s.getValor());
-            pstm.setString(4,s.getDescricao());
-            pstm.setInt(5,s.getStatus());
+            pstm.setFloat(2,s.getValor());
+            pstm.setString(3,s.getDescricao());
+            pstm.setInt(4,s.getStatus());
 
             if(s.getIdservico()>0){
                 pstm.setInt(6,s.getIdservico());
@@ -74,7 +72,6 @@ public class ServicoDAO extends DatabaseDAO{
         if(rs.next()){
             s.setIdservico(rs.getInt("idservico"));
             s.setNome(rs.getString("nome"));
-            s.setDuracao(rs.getInt("duracao"));
             s.setValor(rs.getFloat("valor"));
             s.setDescricao(rs.getString("descricao"));
             s.setStatus(rs.getInt("status"));

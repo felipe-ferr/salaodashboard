@@ -1,0 +1,18 @@
+SMAP
+form_005fperfil_jsp.java
+JSP
+*S JSP
+*F
++ 0 form_perfil.jsp
+form_perfil.jsp
++ 1 sidebar.jsp
+sidebar.jsp
+*L
+5,21:49
+5#1,39:70
+25#0,11:108
+36:119,3
+37,2:122
+39:124,3
+40,15:127
+*E

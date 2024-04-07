@@ -1,7 +1,6 @@
 package model;
 public class Servico {
     private int idservico;
-    private int duracao;
     private int status;
     private String nome;
     private String descricao;
@@ -13,14 +12,6 @@ public class Servico {
 
     public void setIdservico(int idservico) {
         this.idservico = idservico;
-    }
-
-    public int getDuracao() {
-        return duracao;
-    }
-
-    public void setDuracao(int duracao) {
-        this.duracao = duracao;
     }
 
     public int getStatus() {
@@ -58,9 +49,8 @@ public class Servico {
     public Servico() {
     }
 
-    public Servico(int idservico, int duracao, int status, String nome, String descricao, float valor) {
+    public Servico(int idservico, int status, String nome, String descricao, float valor) {
         this.idservico = idservico;
-        this.duracao = duracao;
         this.status = status;
         this.nome = nome;
         this.descricao = descricao;
@@ -69,7 +59,7 @@ public class Servico {
 
     @Override
     public String toString() {
-        return "Servico{" + "idservico=" + idservico + ", duracao=" + duracao + ", status=" + status + ", nome=" + nome + ", descricao=" + descricao + ", valor=" + valor + '}';
+        return "Servico{" + "idservico=" + idservico + ", status=" + status + ", nome=" + nome + ", descricao=" + descricao + ", valor=" + valor + '}';
     }
 
 

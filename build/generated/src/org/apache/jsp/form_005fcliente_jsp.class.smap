@@ -1,0 +1,25 @@
+SMAP
+form_005fcliente_jsp.java
+JSP
+*S JSP
+*F
++ 0 form_cliente.jsp
+form_cliente.jsp
++ 1 sidebar.jsp
+sidebar.jsp
+*L
+1,2:49
+6,21:50
+5#1,37:71
+26#0,11:107
+37:118,3
+38,2:121
+40:123,3
+41,6:126
+47:132,3
+48,6:135
+54:141,3
+55,6:144
+61:150,3
+62,21:153
+*E
