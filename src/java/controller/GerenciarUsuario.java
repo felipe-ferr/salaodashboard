@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Perfil;
 import model.Usuario;
 import model.UsuarioDAO;
 
@@ -57,42 +58,49 @@ public class GerenciarUsuario extends HttpServlet {
         String status = request.getParameter("status");
         String idperfil = request.getParameter("idperfil");
         
-        String mensagem="";
+        String mensagem = "";
         
         Usuario u = new Usuario();
-        try{
-            UsuarioDAO uDAO = new UsuarioDAO();
-            if(!idusuario.isEmpty()){
-                u.setIdusuario(Integer.parseInt(idusuario));
-                u.setStatus(Integer.parseInt(status));
-            }
+        if(!idusuario.isEmpty()){
+            u.setIdusuario(Integer.parseInt(idusuario));
+        }
             
-            if(nome.equals("")||nome.isEmpty()){
-                mensagem = "Campos obrigatórios deverão ser preenchidos";
-            }else{
-                u.setNome(nome);
-                u.setCpf(cpf);
-                u.setTelefone(telefone);
-                u.setLogin(login);
-                u.setSenha(senha);
-                u.setStatus(Integer.parseInt(status));
-                u.setIdperfil(Integer.parseInt(idperfil));
+        if(nome.equals("")||login.equals("")||senha.equals("")||status.equals("")||idperfil.equals("")){
+            mensagem = "Campos obrigatórios deverão ser preenchidos";
+        }else{
+            u.setNome(nome);
+            u.setCpf(cpf);
+            u.setTelefone(telefone);
+            u.setLogin(login);
+            u.setSenha(senha);
+            u.setStatus(Integer.parseInt(status));
+
+            Perfil p = new Perfil();
+            p.setIdperfil(Integer.parseInt(idperfil));
+            u.setPerfil(p);
+
+            try{
+                
+                UsuarioDAO uDAO = new UsuarioDAO();
                 if(uDAO.gravar(u)){
                     mensagem = "Gravado com sucesso!";
                 }else{
                     mensagem = "Erro ao gravar no banco de dados!";
                 }
+                
+            }catch(Exception e){
+                out.print(e);
+                mensagem = "Erro ao executar";
             }
-        }catch(Exception e){
-            out.print(e);
-            mensagem = "Erro ao executar";
+
+            out.println("<script type='text/javascript'>");
+            out.println("alert('"+mensagem+"');");
+            out.println("location.href='listar_usuario.jsp';");
+            out.println("</script>");
         }
         
-        out.println("<script type='text/javascript'>");
-        out.println("alert('"+mensagem+"');");
-        out.println("location.href='listar_usuario.jsp';");
-        out.println("</script>");
-    }
+        }
+       
 
     /**
      * Returns a short description of the servlet.
