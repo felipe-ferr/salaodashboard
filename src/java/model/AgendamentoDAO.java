@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -38,13 +39,13 @@ public class AgendamentoDAO extends DatabaseDAO {
             c.setIdcliente(rs.getInt("a.idcliente"));
             c.setNome(rs.getString("c.nome"));
             
-            /*Usuario u = new Usuario();
+            Usuario u = new Usuario();
             u.setIdusuario(rs.getInt("a.idusuario"));
-            u.setNome(rs.getString("u.nome"));*/
+            u.setNome(rs.getString("u.nome"));
             
             a.setServico(s);
             a.setCliente(c);
-            //a.setUsuario(u);
+            a.setUsuario(u);
                     
             lista.add(a);
         }
@@ -55,25 +56,31 @@ public class AgendamentoDAO extends DatabaseDAO {
     }
     
     public boolean gravar (Agendamento a){
-        /*
+       
         try{
             String sql;
             this.conectar();
             if(a.getIdagendamento()==0){
-                sql = "INSERT INTO agendamento(data, valor, status, descricao, data_cadastro, horario) "
-                        + "VALUES(?, ?, ?, ?, ?, ?)";
+                sql = "INSERT INTO agendamento(data, valor, status, descricao, data_cadastro, horario, idservico, idcliente, idusuario) "
+                        + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
             }else{
-                sql = "UPDATE agendamento SET nome=?, cpf=?, telefone=?, email=? WHERE idcliente=?"; 
+                sql = "UPDATE agendamento SET data=?, valor=?, status=?, descricao=?, data_cadastro=?, horario=?, idservico=?, idcliente=?, idusuario=? "
+                        + "WHERE idagendamento=?"; 
             }
 
             PreparedStatement pstm = conn.prepareStatement(sql);
-            pstm.setString(1,a.getNome());
-            pstm.setString(2,a.getCpf());
-            pstm.setString(3,a.getTelefone());
-            pstm.setString(4,a.getEmail());
+            pstm.setDate(1, (Date) a.getData());
+            pstm.setFloat(2,a.getValor());
+            pstm.setInt(3,a.getStatus());
+            pstm.setString(4,a.getDescricao());
+            pstm.setDate(5, (Date) a.getData_cadastro());
+            pstm.setTime(6,a.getHorario());
+            pstm.setInt(7, a.getServico().getIdservico());
+            pstm.setInt(8, a.getCliente().getIdcliente());
+            pstm.setInt(9, a.getUsuario().getIdusuario());
 
-            if(a.getIdcliente()>0){
-                pstm.setInt(5,a.getIdcliente());
+            if(a.getIdagendamento()>0){
+                pstm.setInt(10,a.getIdagendamento());
             }
 
             pstm.execute();
@@ -84,9 +91,9 @@ public class AgendamentoDAO extends DatabaseDAO {
             System.out.println(e);
             return false;
         }
-        */
     }
     
+    // Falta eu terminar aq embaixo (ignora)
     public Cliente getCarregaPorID(int idcliente) throws Exception{
         
         Cliente c = new Cliente();

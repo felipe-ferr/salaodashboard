@@ -6,6 +6,7 @@ import java.util.Date;
 public class Agendamento {
     
     private int idagendamento;
+    private Date data;
     private float valor;
     private int status;
     private String descricao;
@@ -13,7 +14,7 @@ public class Agendamento {
     private Time horario;
     private Servico servico;
     private Cliente cliente;
-    Usuario usuario;
+    private Usuario usuario;
 
     public Agendamento() {
     }
@@ -24,6 +25,14 @@ public class Agendamento {
 
     public void setIdagendamento(int idagendamento) {
         this.idagendamento = idagendamento;
+    }
+
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
     }
 
     public float getValor() {
@@ -82,8 +91,17 @@ public class Agendamento {
         this.cliente = cliente;
     }
 
-    public Agendamento(int idagendamento, float valor, int status, String descricao, Date data_cadastro, Time horario, Servico servico, Cliente cliente, Usuario usuario) {
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Agendamento(int idagendamento, Date data, float valor, int status, String descricao, Date data_cadastro, Time horario, Servico servico, Cliente cliente, Usuario usuario) {
         this.idagendamento = idagendamento;
+        this.data = data;
         this.valor = valor;
         this.status = status;
         this.descricao = descricao;
@@ -96,9 +114,9 @@ public class Agendamento {
 
     @Override
     public String toString() {
-        return "Agendamento{" + "idagendamento=" + idagendamento + ", valor=" + valor + ", status=" + status + ", descricao=" + descricao + ", data_cadastro=" + data_cadastro + ", horario=" + horario + ", servico=" + servico + ", cliente=" + cliente + ", usuario=" + usuario + '}';
+        return "Agendamento{" + "idagendamento=" + idagendamento + ", data=" + data + ", valor=" + valor + ", status=" + status + ", descricao=" + descricao + ", data_cadastro=" + data_cadastro + ", horario=" + horario + ", servico=" + servico + ", cliente=" + cliente + ", usuario=" + usuario + '}';
     }
+
     
-    
-    
+
 }
