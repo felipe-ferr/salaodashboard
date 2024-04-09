@@ -13,7 +13,7 @@ public class Agendamento {
     private Time horario;
     private Servico servico;
     private Cliente cliente;
-    //Usuario usuario;
+    Usuario usuario;
 
     public Agendamento() {
     }
