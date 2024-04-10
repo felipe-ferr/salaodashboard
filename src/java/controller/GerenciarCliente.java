@@ -54,6 +54,7 @@ public class GerenciarCliente extends HttpServlet {
         String cpf = request.getParameter("cpf");
         String telefone = request.getParameter("telefone");
         String email = request.getParameter("email");
+        String status = request.getParameter("status");
         
         String mensagem="";
         
@@ -71,6 +72,7 @@ public class GerenciarCliente extends HttpServlet {
                 c.setCpf(cpf);
                 c.setTelefone(telefone);
                 c.setEmail(email);
+                c.setStatus(Integer.parseInt(status));
                 if(cDAO.gravar(c)){
                     mensagem = "Gravado com sucesso!";
                 }else{

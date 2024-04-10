@@ -24,6 +24,7 @@ public class ClienteDAO extends DatabaseDAO {
             c.setCpf(rs.getString("cpf"));
             c.setTelefone(rs.getString("telefone"));
             c.setEmail(rs.getString("email"));
+            c.setStatus(rs.getInt("status"));
             lista.add(c);
         }
         this.desconectar();
@@ -37,9 +38,9 @@ public class ClienteDAO extends DatabaseDAO {
             String sql;
             this.conectar();
             if(c.getIdcliente()==0){
-                sql = "INSERT INTO cliente(nome, cpf, telefone, email) VALUES(?, ?, ?, ?)";
+                sql = "INSERT INTO cliente(nome, cpf, telefone, email, status) VALUES(?, ?, ?, ?, ?)";
             }else{
-                sql = "UPDATE cliente SET nome=?, cpf=?, telefone=?, email=? WHERE idcliente=?"; 
+                sql = "UPDATE cliente SET nome=?, cpf=?, telefone=?, email=?, status=? WHERE idcliente=?"; 
             }
 
             PreparedStatement pstm = conn.prepareStatement(sql);
@@ -47,9 +48,10 @@ public class ClienteDAO extends DatabaseDAO {
             pstm.setString(2,c.getCpf());
             pstm.setString(3,c.getTelefone());
             pstm.setString(4,c.getEmail());
+            pstm.setInt(5,c.getStatus());
 
             if(c.getIdcliente()>0){
-                pstm.setInt(5,c.getIdcliente());
+                pstm.setInt(6,c.getIdcliente());
             }
 
             pstm.execute();
@@ -78,6 +80,7 @@ public class ClienteDAO extends DatabaseDAO {
             c.setCpf(rs.getString("cpf"));
             c.setTelefone(rs.getString("telefone"));
             c.setEmail(rs.getString("email"));
+            c.setStatus(rs.getInt("status"));
 
         }
         

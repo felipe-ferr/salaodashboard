@@ -13,10 +13,10 @@ public class AgendamentoDAO extends DatabaseDAO {
     public ArrayList<Agendamento> getLista() throws Exception{
         
         ArrayList<Agendamento> lista = new ArrayList<Agendamento>();
-        String SQL = "Select a.* FROM s.nome, c.nome, u.nome FROM agendamento a "
-                + "INNER JOIN servico s ON s.idservico = a.idservico " 
-                + "INNER JOIN cliente c ON c.idcliente = a.idcliente "
-                + "INNER JOIN usuario u ON u.idusuario = a.idusuario ";
+        String SQL = "Select a.*, s.nome, c.nome, u.nome FROM agendamento a "
+                + "INNER JOIN servico s ON s.idservico = s.idservico " 
+                + "INNER JOIN cliente c ON c.idcliente = c.idcliente "
+                + "INNER JOIN usuario u ON u.idusuario = u.idusuario ";
         this.conectar();
         Statement stm = conn.createStatement();
         ResultSet rs = stm.executeQuery(SQL);

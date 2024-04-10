@@ -63,11 +63,10 @@
                         <i class="material-symbols-outlined">mail</i>
                     </div>
 
-
-
-
-
-
+                    <select name="status" class="select">
+                        <option value="1">Ativo</option>
+                        <option value="0">Inativo</option>
+                    </select>
 
 
                     <button type="submit"class="submit">Cadastrar cliente</button>

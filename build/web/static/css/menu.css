@@ -229,6 +229,188 @@ body{
     text-align: left;
     height: 100%;
 }
+
+#listarCliente_wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--cor-escura);
+    border-radius: 10px;
+    padding: 1%;
+    box-sizing: border-box;
+    width: 100%;
+    
+}
+#listarCliente_wrapper table{
+    font-family: 'Quicksand';
+    color: var(--cor-texto);
+    margin: 0;
+    padding: 0;
+    width: 90%;
+    table-layout: fixed;
+    height: 100%; 
+}
+
+#listarCliente_wrapper td{
+    border: none;
+    text-align: left;
+    background-color: var(--cor-escura);
+    vertical-align: middle;
+    box-sizing: border-box;
+    padding: 1vw 10px;
+    height: 100%;
+ 
+}
+
+#listarCliente_wrapper th{
+    width: auto;
+    border-bottom: 2px solid var(--dourado);
+    box-sizing: border-box;
+    background-color: var(--cor-escura);
+    text-align: left;
+    color: var(--cor-texto);
+    text-align: left;
+    height: 100%;
+}
+
+
+#listarUsuario_wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--cor-escura);
+    border-radius: 10px;
+    padding: 1%;
+    box-sizing: border-box;
+    width: 100%;
+    
+}
+#listarUsuario_wrapper table{
+    font-family: 'Quicksand';
+    color: var(--cor-texto);
+    margin: 0;
+    padding: 0;
+    width: 90%;
+    table-layout: fixed;
+    height: 100%; 
+}
+
+#listarUsuario_wrapper td{
+    border: none;
+    text-align: left;
+    background-color: var(--cor-escura);
+    vertical-align: middle;
+    box-sizing: border-box;
+    padding: 1vw 10px;
+    height: 100%;
+ 
+}
+
+#listarUsuario_wrapper th{
+    width: auto;
+    border-bottom: 2px solid var(--dourado);
+    box-sizing: border-box;
+    background-color: var(--cor-escura);
+    text-align: left;
+    color: var(--cor-texto);
+    text-align: left;
+    height: 100%;
+}
+
+#listarPerfil_wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--cor-escura);
+    border-radius: 10px;
+    padding: 1%;
+    box-sizing: border-box;
+    width: 100%;
+    
+}
+#listarPerfil_wrapper table{
+    font-family: 'Quicksand';
+    color: var(--cor-texto);
+    margin: 0;
+    padding: 0;
+    width: 90%;
+    table-layout: fixed;
+    height: 100%; 
+}
+
+#listarPerfil_wrapper td{
+    border: none;
+    text-align: left;
+    background-color: var(--cor-escura);
+    vertical-align: middle;
+    box-sizing: border-box;
+    padding: 1vw 10px;
+    height: 100%;
+ 
+}
+
+#listarPerfil_wrapper th{
+    width: auto;
+    border-bottom: 2px solid var(--dourado);
+    box-sizing: border-box;
+    background-color: var(--cor-escura);
+    text-align: left;
+    color: var(--cor-texto);
+    text-align: left;
+    height: 100%;
+}
+
+
+
+
+
+#listarAgendamento_wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--cor-escura);
+    border-radius: 10px;
+    padding: 1%;
+    box-sizing: border-box;
+    width: 100%;
+    
+}
+#listarAgendamento_wrapper table{
+    font-family: 'Quicksand';
+    color: var(--cor-texto);
+    margin: 0;
+    padding: 0;
+    width: 90%;
+    table-layout: fixed;
+    height: 100%; 
+}
+
+#listarAgendamento_wrapper td{
+    border: none;
+    text-align: left;
+    background-color: var(--cor-escura);
+    vertical-align: middle;
+    box-sizing: border-box;
+    padding: 1vw 10px;
+    height: 100%;
+ 
+}
+
+#listarAgendamento_wrapper th{
+    width: auto;
+    border-bottom: 2px solid var(--dourado);
+    box-sizing: border-box;
+    background-color: var(--cor-escura);
+    text-align: left;
+    color: var(--cor-texto);
+    text-align: left;
+    height: 100%;
+}
+
 .pagination-list .is-current{
     background-color: var(--dourado);
     color: var(--cor-texto);

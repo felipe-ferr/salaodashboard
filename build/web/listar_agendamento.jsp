@@ -30,7 +30,7 @@
         <script type="text/javascript"> // adicionei aqui por conta do método de exclusão 
             function confirmarExclusão(id, nome) {
                 if (confirm('Deseja excluir o serviço ' + nome + '?')) {
-                    location.href = 'gerenciar_cliente.do?acao=deletar&idcliente=' + id;
+                    location.href = 'gerenciar_agendamento.do?acao=deletar&idagendamento=' + id;
                 }
             }
         </script>
@@ -55,48 +55,57 @@
             <div id="principal" class="container-principal">
 
                 <div class="titulo-botao-container">
-                    <h1>Lista de Clientes</h1>
-                    <a href="form_cliente.jsp">Adicionar Cliente<i class="material-symbols-outlined">add</i></a>
+                    <h1>Lista de Agendamentos</h1>
+                    <a href="form_agendamento.jsp">Adicionar Agendamento<i class="material-symbols-outlined">add</i></a>
                 </div>
 
 
-                <table class="table is-hoverable is-striped" id="listarCliente">    
+                <table class="table is-hoverable is-striped" id="listarAgendamento">    
                     <thead>
                         <tr>
                             <th style="text-align:left;">ID</th>
-                            <th style="text-align:left;">Nome</th>
-                            <th style="text-align:left;">CPF</th>
-                            <th style="text-align:left;">Telefone</th>
-                            <th style="text-align:left;">Email</th>
+                            <th style="text-align:left;">Data</th>
+                            <th style="text-align:left;">Valor</th>
                             <th style="text-align:left;">Status</th>
+                            <th style="text-align:left;">Descrição</th>
+                            <th style="text-align:left;">Data de Cadastro</th>
+                            <th style="text-align:left;">Horario</th>
+                            <th style="text-align:left;">Servico</th>
+                            <th style="text-align:left;">Cliente</th>
+                            <th style="text-align:left;">Usuário</th>
                             <th style="text-align:left;">Ações</th>
                         </tr>
                     </thead>
 
 
-                    <jsp:useBean class="model.ClienteDAO" id="c"/>
+                    <jsp:useBean class="model.AgendamentoDAO" id="a"/>
                     <tbody>
-                        <c:forEach var="c" items="${c.lista}">
+                        <c:forEach var="a" items="${a.lista}">
 
                             <tr>
-                                <td>${c.idcliente}</td>
-                                <td>${c.nome}</td>
-                                <td>${c.cpf}</td>
-                                <td>${c.telefone}</td>
-                                <td>${c.email}</td>
+                                <td>${a.idagendamento}</td>
+                                <td>${a.data}</td>
+                                <td>${a.valor}</td>
                                 <td>
-                                    <c:if test="${c.status==1}">
+                                    <c:if test="${a.status==1}">
                                         Ativo
                                     </c:if>
-                                    <c:if test="${c.status==0}">
+                                    <c:if test="${a.status==0}">
                                         Inativo
                                     </c:if>
                                 </td>
+                                <td>${a.descricao}</td>
+                                <td>${a.data_cadastro}</td>
+                                <td>${a.horario}</td>
+                                <td>${a.servico.nome}</td>
+                                <td>${a.cliente.nome}</td>
+                                <td>${a.usuario.nome}</td>
+                                
                                 <td class="acoes-td">
-                                    <button class="botao-acoes" onclick="confirmarExclusão(${c.idcliente}, '${c.nome}')">
+                                    <button class="botao-acoes" onclick="confirmarExclusão(${a.idagendamento})">
                                         <i class="material-symbols-outlined">delete</i>
                                     </button>
-                                    <a class="botao-acoes" href="gerenciar_cliente.do?acao=alterar&idcliente=${c.idcliente}">
+                                    <a class="botao-acoes" href="gerenciar_agendamento.do?acao=alterar&idagendamento=${a.idagendamento}">
                                         <i class="material-symbols-outlined">edit</i>
                                     </a>
                                 </td>
@@ -115,7 +124,7 @@
         <script src="./static/bulma/jquery-3.7.1.js"></script>
         <script src="./static/bulma/dataTables.js"></script>
         <script src="./static/bulma/dataTables.bulma.js"></script>
-        <script src="./static/js/bulmadatatablecliente.js"></script>
+        <script src="./static/js/bulmadatatableagendamento.js"></script>
         <script type="text/javascript" src="static/js/modoescuro.js"></script>
         <script type="text/javascript" src="static/js/sumirTextoTextarea.js"></script>
 
