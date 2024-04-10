@@ -8,6 +8,10 @@
         <servlet-name>GerenciarCliente</servlet-name>
         <servlet-class>controller.GerenciarCliente</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GerenciarAgendamento</servlet-name>
+        <servlet-class>controller.GerenciarAgendamento</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GerenciarServico</servlet-name>
         <url-pattern>/gerenciar_servico.do</url-pattern>
@@ -32,7 +36,10 @@
         <servlet-name>GerenciarUsuario</servlet-name>
         <url-pattern>/gerenciar_usuario.do</url-pattern>
     </servlet-mapping>
-    
+    <servlet-mapping>
+        <servlet-name>GerenciarAgendamento</servlet-name>
+        <url-pattern>/gerenciar_agendamento.do</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

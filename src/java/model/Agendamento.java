@@ -1,17 +1,14 @@
 package model;
 
-import java.sql.Time;
-import java.util.Date;
-
 public class Agendamento {
     
     private int idagendamento;
-    private Date data;
+    private String data;
     private float valor;
     private int status;
     private String descricao;
-    private Date data_cadastro;
-    private Time horario;
+    private String data_cadastro;
+    private String horario;
     private Servico servico;
     private Cliente cliente;
     private Usuario usuario;
@@ -27,11 +24,11 @@ public class Agendamento {
         this.idagendamento = idagendamento;
     }
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 
@@ -59,19 +56,19 @@ public class Agendamento {
         this.descricao = descricao;
     }
 
-    public Date getData_cadastro() {
+    public String getData_cadastro() {
         return data_cadastro;
     }
 
-    public void setData_cadastro(Date data_cadastro) {
+    public void setData_cadastro(String data_cadastro) {
         this.data_cadastro = data_cadastro;
     }
 
-    public Time getHorario() {
+    public String getHorario() {
         return horario;
     }
 
-    public void setHorario(Time horario) {
+    public void setHorario(String horario) {
         this.horario = horario;
     }
 
@@ -99,7 +96,7 @@ public class Agendamento {
         this.usuario = usuario;
     }
 
-    public Agendamento(int idagendamento, Date data, float valor, int status, String descricao, Date data_cadastro, Time horario, Servico servico, Cliente cliente, Usuario usuario) {
+    public Agendamento(int idagendamento, String data, float valor, int status, String descricao, String data_cadastro, String horario, Servico servico, Cliente cliente, Usuario usuario) {
         this.idagendamento = idagendamento;
         this.data = data;
         this.valor = valor;
@@ -118,5 +115,5 @@ public class Agendamento {
     }
 
     
-
+    
 }

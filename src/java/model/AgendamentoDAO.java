@@ -25,11 +25,12 @@ public class AgendamentoDAO extends DatabaseDAO {
             
             Agendamento a = new Agendamento();
             a.setIdagendamento(rs.getInt("a.idagendamento"));
+            a.setData(rs.getString("a.data"));
             a.setValor(rs.getFloat("a.valor"));
             a.setStatus(rs.getInt("a.status"));
             a.setDescricao(rs.getString("a.descricao"));
-            a.setData_cadastro(rs.getDate("a.data_cadastro"));
-            a.setHorario(rs.getTime("a.horario"));
+            a.setData_cadastro(rs.getString("a.data_cadastro"));
+            a.setHorario(rs.getString("a.horario"));
             
             Servico s = new Servico();
             s.setIdservico(rs.getInt("a.idservico"));
@@ -69,12 +70,12 @@ public class AgendamentoDAO extends DatabaseDAO {
             }
 
             PreparedStatement pstm = conn.prepareStatement(sql);
-            pstm.setDate(1, (Date) a.getData());
+            pstm.setString(1, a.getData());
             pstm.setFloat(2,a.getValor());
             pstm.setInt(3,a.getStatus());
             pstm.setString(4,a.getDescricao());
-            pstm.setDate(5, (Date) a.getData_cadastro());
-            pstm.setTime(6,a.getHorario());
+            pstm.setString(1, a.getData_cadastro());
+            pstm.setString(6,a.getHorario());
             pstm.setInt(7, a.getServico().getIdservico());
             pstm.setInt(8, a.getCliente().getIdcliente());
             pstm.setInt(9, a.getUsuario().getIdusuario());
