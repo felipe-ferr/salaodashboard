@@ -11,14 +11,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Cliente;
-import model.ClienteDAO;
+import model.Perfil;
+import model.Usuario;
+import model.UsuarioDAO;
 
 /**
  *
  * @author Hecar
  */
-public class GerenciarCliente extends HttpServlet {
+public class GerenciarUsuario extends HttpServlet {
 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -33,7 +34,6 @@ public class GerenciarCliente extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
     }
 
     /**
@@ -49,46 +49,58 @@ public class GerenciarCliente extends HttpServlet {
             throws ServletException, IOException {
         
         PrintWriter out = response.getWriter();
-        String idcliente = request.getParameter("idcliente");
+        String idusuario = request.getParameter("idusuario");
         String nome = request.getParameter("nome");
         String cpf = request.getParameter("cpf");
         String telefone = request.getParameter("telefone");
-        String email = request.getParameter("email");
+        String login = request.getParameter("login");
+        String senha = request.getParameter("senha");
         String status = request.getParameter("status");
+        String idperfil = request.getParameter("idperfil");
         
-        String mensagem="";
+        String mensagem = "";
         
-        Cliente c = new Cliente();
-        try{
-            ClienteDAO cDAO = new ClienteDAO();
-            if(!idcliente.isEmpty()){
-                c.setIdcliente(Integer.parseInt(idcliente));
-            }
+        Usuario u = new Usuario();
+        if(!idusuario.isEmpty()){
+            u.setIdusuario(Integer.parseInt(idusuario));
+        }
             
-            if(nome.equals("")||nome.isEmpty()){
-                mensagem = "Campos obrigatórios deverão ser preenchidos";
-            }else{
-                c.setNome(nome);
-                c.setCpf(cpf);
-                c.setTelefone(telefone);
-                c.setEmail(email);
-                c.setStatus(Integer.parseInt(status));
-                if(cDAO.gravar(c)){
+        if(nome.equals("")||login.equals("")||senha.equals("")||status.equals("")||idperfil.equals("")){
+            mensagem = "Campos obrigatórios deverão ser preenchidos";
+        }else{
+            u.setNome(nome);
+            u.setCpf(cpf);
+            u.setTelefone(telefone);
+            u.setLogin(login);
+            u.setSenha(senha);
+            u.setStatus(Integer.parseInt(status));
+
+            Perfil p = new Perfil();
+            p.setIdperfil(Integer.parseInt(idperfil));
+            u.setPerfil(p);
+
+            try{
+                
+                UsuarioDAO uDAO = new UsuarioDAO();
+                if(uDAO.gravar(u)){
                     mensagem = "Gravado com sucesso!";
                 }else{
                     mensagem = "Erro ao gravar no banco de dados!";
                 }
+                
+            }catch(Exception e){
+                out.print(e);
+                mensagem = "Erro ao executar";
             }
-        }catch(Exception e){
-            out.print(e);
-            mensagem = "Erro ao executar";
+
+            out.println("<script type='text/javascript'>");
+            out.println("alert('"+mensagem+"');");
+            out.println("location.href='listar_usuario.jsp';");
+            out.println("</script>");
         }
         
-        out.println("<script type='text/javascript'>");
-        out.println("alert('"+mensagem+"');");
-        out.println("location.href='listar_cliente.jsp';");
-        out.println("</script>");
-    }
+        }
+       
 
     /**
      * Returns a short description of the servlet.
@@ -100,4 +112,6 @@ public class GerenciarCliente extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    
+    
 }

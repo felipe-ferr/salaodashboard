@@ -51,7 +51,7 @@
                     <script type="text/javascript" src="./static/js/sumirTextoTextarea.js"></script>
                     <div class="inputContainer">
                         <p class="textareatexto" id="ptextarea">Descrição</p>
-                        <textarea id="area" required onclick="sumirp()" type="text" name="descricao" value="${servico.descricao}"></textarea>
+                        <textarea id="area" onclick="sumirp()" type="text" name="descricao" value="${servico.descricao}"></textarea>
                     </div>
 
                  

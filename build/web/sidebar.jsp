@@ -22,11 +22,11 @@
     
             <div id="side" class="sidebar">
                 <span class="sidebar-titulo">Salão do Luciano</span>
-                <a href="#"><span class="material-symbols-outlined sidebar-icone">calendar_month</span>Agendamentos</a>
+                <a href="listar_agendamento.jsp"><span class="material-symbols-outlined sidebar-icone">calendar_month</span>Agendamentos</a>
                 <a href="listar_cliente.jsp"><span class="material-symbols-outlined sidebar-icone">person</span>Clientes</a>
                 <a href="listar_servico.jsp"><span class="material-symbols-outlined sidebar-icone">cut</span>Serviços</a>
                 <a href="listar_perfil.jsp"><span class="material-symbols-outlined sidebar-icone">account_circle</span>Perfis</a>
-                <a href="#"><span class="material-symbols-outlined sidebar-icone">engineering</span>Usuários</a>
+                <a href="listar_usuario.jsp"><span class="material-symbols-outlined sidebar-icone">engineering</span>Usuários</a>
                 
                 <div class="tema-container bottom">
                     <span>Modo Escuro</span>

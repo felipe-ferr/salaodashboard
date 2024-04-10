@@ -30,7 +30,7 @@
         <script type="text/javascript"> // adicionei aqui por conta do método de exclusão 
             function confirmarExclusão(id, nome) {
                 if (confirm('Deseja excluir o serviço ' + nome + '?')) {
-                    location.href = 'gerenciar_cliente.do?acao=deletar&idcliente=' + id;
+                    location.href = 'gerenciar_usuario.do?acao=deletar&idusuario=' + id;
                 }
             }
         </script>
@@ -55,48 +55,51 @@
             <div id="principal" class="container-principal">
 
                 <div class="titulo-botao-container">
-                    <h1>Lista de Clientes</h1>
-                    <a href="form_cliente.jsp">Adicionar Cliente<i class="material-symbols-outlined">add</i></a>
+                    <h1>Lista de Usuários</h1>
+                    <a href="form_usuario.jsp">Adicionar Usuário<i class="material-symbols-outlined">add</i></a>
                 </div>
 
 
-                <table class="table is-hoverable is-striped" id="listarCliente">    
+                <table class="table is-hoverable is-striped" id="listarUsuario">    
                     <thead>
                         <tr>
                             <th style="text-align:left;">ID</th>
                             <th style="text-align:left;">Nome</th>
                             <th style="text-align:left;">CPF</th>
                             <th style="text-align:left;">Telefone</th>
-                            <th style="text-align:left;">Email</th>
+                            <th style="text-align:left;">Login</th>
                             <th style="text-align:left;">Status</th>
+                            <th style="text-align:left;">Perfil</th>
                             <th style="text-align:left;">Ações</th>
                         </tr>
                     </thead>
 
 
-                    <jsp:useBean class="model.ClienteDAO" id="c"/>
+                    <jsp:useBean class="model.UsuarioDAO" id="u"/>
                     <tbody>
-                        <c:forEach var="c" items="${c.lista}">
+                        <c:forEach var="u" items="${u.lista}">
 
                             <tr>
-                                <td>${c.idcliente}</td>
-                                <td>${c.nome}</td>
-                                <td>${c.cpf}</td>
-                                <td>${c.telefone}</td>
-                                <td>${c.email}</td>
+                                <td>${u.idusuario}</td>
+                                <td>${u.nome}</td>
+                                <td>${u.cpf}</td>
+                                <td>${u.telefone}</td>
+                                <td>${u.login}</td>
                                 <td>
-                                    <c:if test="${c.status==1}">
+                                    <c:if test="${u.status==1}">
                                         Ativo
                                     </c:if>
-                                    <c:if test="${c.status==0}">
+                                    <c:if test="${u.status==0}">
                                         Inativo
                                     </c:if>
                                 </td>
+                                <td>${u.perfil.nome}</td>
+                                
                                 <td class="acoes-td">
-                                    <button class="botao-acoes" onclick="confirmarExclusão(${c.idcliente}, '${c.nome}')">
+                                    <button class="botao-acoes" onclick="confirmarExclusão(${u.idusuario}, '${u.nome}')">
                                         <i class="material-symbols-outlined">delete</i>
                                     </button>
-                                    <a class="botao-acoes" href="gerenciar_cliente.do?acao=alterar&idcliente=${c.idcliente}">
+                                    <a class="botao-acoes" href="gerenciar_usuario.do?acao=alterar&idusuario=${u.idusuario}">
                                         <i class="material-symbols-outlined">edit</i>
                                     </a>
                                 </td>
@@ -115,7 +118,7 @@
         <script src="./static/bulma/jquery-3.7.1.js"></script>
         <script src="./static/bulma/dataTables.js"></script>
         <script src="./static/bulma/dataTables.bulma.js"></script>
-        <script src="./static/js/bulmadatatablecliente.js"></script>
+        <script src="./static/js/bulmadatatableusuario.js"></script>
         <script type="text/javascript" src="static/js/modoescuro.js"></script>
         <script type="text/javascript" src="static/js/sumirTextoTextarea.js"></script>
 

@@ -1,19 +1,17 @@
 package model;
 
-import java.sql.Time;
-import java.util.Date;
-
 public class Agendamento {
     
     private int idagendamento;
+    private String data;
     private float valor;
     private int status;
     private String descricao;
-    private Date data_cadastro;
-    private Time horario;
+    private String data_cadastro;
+    private String horario;
     private Servico servico;
     private Cliente cliente;
-    //Usuario usuario;
+    private Usuario usuario;
 
     public Agendamento() {
     }
@@ -24,6 +22,14 @@ public class Agendamento {
 
     public void setIdagendamento(int idagendamento) {
         this.idagendamento = idagendamento;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
     }
 
     public float getValor() {
@@ -50,19 +56,19 @@ public class Agendamento {
         this.descricao = descricao;
     }
 
-    public Date getData_cadastro() {
+    public String getData_cadastro() {
         return data_cadastro;
     }
 
-    public void setData_cadastro(Date data_cadastro) {
+    public void setData_cadastro(String data_cadastro) {
         this.data_cadastro = data_cadastro;
     }
 
-    public Time getHorario() {
+    public String getHorario() {
         return horario;
     }
 
-    public void setHorario(Time horario) {
+    public void setHorario(String horario) {
         this.horario = horario;
     }
 
@@ -82,8 +88,17 @@ public class Agendamento {
         this.cliente = cliente;
     }
 
-    public Agendamento(int idagendamento, float valor, int status, String descricao, Date data_cadastro, Time horario, Servico servico, Cliente cliente, Usuario usuario) {
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Agendamento(int idagendamento, String data, float valor, int status, String descricao, String data_cadastro, String horario, Servico servico, Cliente cliente, Usuario usuario) {
         this.idagendamento = idagendamento;
+        this.data = data;
         this.valor = valor;
         this.status = status;
         this.descricao = descricao;
@@ -96,9 +111,9 @@ public class Agendamento {
 
     @Override
     public String toString() {
-        return "Agendamento{" + "idagendamento=" + idagendamento + ", valor=" + valor + ", status=" + status + ", descricao=" + descricao + ", data_cadastro=" + data_cadastro + ", horario=" + horario + ", servico=" + servico + ", cliente=" + cliente + ", usuario=" + usuario + '}';
+        return "Agendamento{" + "idagendamento=" + idagendamento + ", data=" + data + ", valor=" + valor + ", status=" + status + ", descricao=" + descricao + ", data_cadastro=" + data_cadastro + ", horario=" + horario + ", servico=" + servico + ", cliente=" + cliente + ", usuario=" + usuario + '}';
     }
-    
+
     
     
 }

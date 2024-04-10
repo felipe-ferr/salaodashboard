@@ -6,16 +6,18 @@ public class Cliente {
     private String cpf;
     private String telefone;
     private String email;
+    private int status;
 
     public Cliente() {
     }
 
-    public Cliente(int idcliente, String nome, String cpf, String telefone, String email) {
+    public Cliente(int idcliente, String nome, String cpf, String telefone, String email, int status) {
         this.idcliente = idcliente;
         this.nome = nome;
         this.cpf = cpf;
         this.telefone = telefone;
         this.email = email;
+        this.status = status;
     }
 
     public int getIdcliente() {
@@ -58,10 +60,21 @@ public class Cliente {
         this.email = email;
     }
 
+   
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
-        return "Cliente{" + "idcliente=" + idcliente + ", nome=" + nome + ", cpf=" + cpf + ", telefone=" + telefone + ", email=" + email + '}';
+        return "Cliente{" + "idcliente=" + idcliente + ", nome=" + nome + ", cpf=" + cpf + ", telefone=" + telefone + ", email=" + email + ", status=" + status + '}';
     }
+    
+    
     
     
 }
