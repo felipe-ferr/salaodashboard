@@ -40,8 +40,8 @@
                         <p>Nome:</p>
                         <i class="material-symbols-outlined">cut</i>
                     </div>
-                        
-                <button type="submit"class="submit">Cadastrar Perfil</button>
+
+                    <button type="submit"class="submit">Cadastrar Perfil</button>
 
                 </form>
 

@@ -54,4 +54,24 @@ public class PerfilDAO extends DatabaseDAO{
         
     }
     
+    public Perfil getCarregaPorID(int idperfil) throws Exception{
+        
+        Perfil p = new Perfil();
+        String sql = "SELECT * FROM perfil WHERE idperfil=?";
+        this.conectar();
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setInt(1, idperfil);
+        ResultSet rs = pstm.executeQuery();
+        
+        if(rs.next()){
+            p.setIdperfil(rs.getInt("idperfil"));
+            p.setNome(rs.getString("nome"));
+
+        }
+        
+        this.desconectar();
+        return p;
+        
+    }
+    
 }

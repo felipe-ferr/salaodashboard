@@ -53,7 +53,7 @@ public class GerenciarServico extends HttpServlet {
                     request.setAttribute("servico", s);
                     disp.forward(request, response);
                 }else{
-                    mensagem = "Perfil não encontrado";
+                    mensagem = "Serviço não encontrado";
                 }
                 
             }

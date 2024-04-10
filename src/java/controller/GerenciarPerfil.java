@@ -7,6 +7,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -33,6 +34,40 @@ public class GerenciarPerfil extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        PrintWriter out = response.getWriter();
+        String mensagem = "";
+        
+        String acao = request.getParameter("acao");
+        String idperfil = request.getParameter("idperfil");
+        
+        Perfil p = new Perfil();
+        
+        try{
+            
+            PerfilDAO pDAO = new PerfilDAO();
+            if(acao.equals("alterar")){
+                p = pDAO.getCarregaPorID(Integer.parseInt(idperfil));
+                if(p.getIdperfil()>0){
+                    RequestDispatcher disp = getServletContext().getRequestDispatcher("/form_perfil.jsp");
+                    request.setAttribute("perfil", p);
+                    disp.forward(request, response);
+                }else{
+                    mensagem = "Perfil não encontrado";
+                }
+                
+            }
+            
+        }catch(Exception e){
+            out.print(e);
+            mensagem = "Erro ao executar";
+        }
+        
+        out.println("<script type='text/javascript'>");
+        out.println("alert('"+mensagem+"');");
+        out.println("location.href='listar_perfil.jsp';");
+        out.println("</script>");
+        
     }
 
     /**

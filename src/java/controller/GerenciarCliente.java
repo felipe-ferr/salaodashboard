@@ -7,6 +7,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -33,6 +34,39 @@ public class GerenciarCliente extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        PrintWriter out = response.getWriter();
+        String mensagem = "";
+        
+        String acao = request.getParameter("acao");
+        String idcliente = request.getParameter("idcliente");
+        
+        Cliente c = new Cliente();
+        
+        try{
+            
+            ClienteDAO cDAO = new ClienteDAO();
+            if(acao.equals("alterar")){
+                c = cDAO.getCarregaPorID(Integer.parseInt(idcliente));
+                if(c.getIdcliente()>0){
+                    RequestDispatcher disp = getServletContext().getRequestDispatcher("/form_cliente.jsp");
+                    request.setAttribute("cliente", c);
+                    disp.forward(request, response);
+                }else{
+                    mensagem = "Cliente não encontrado";
+                }
+                
+            }
+            
+        }catch(Exception e){
+            out.print(e);
+            mensagem = "Erro ao executar";
+        }
+        
+        out.println("<script type='text/javascript'>");
+        out.println("alert('"+mensagem+"');");
+        out.println("location.href='listar_cliente.jsp';");
+        out.println("</script>");
         
     }
 
