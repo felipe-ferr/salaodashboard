@@ -13,9 +13,9 @@ public class AgendamentoDAO extends DatabaseDAO {
         
         ArrayList<Agendamento> lista = new ArrayList<Agendamento>();
         String SQL = "Select a.*, s.nome, c.nome, u.nome FROM agendamento a "
-                + "INNER JOIN servico s ON s.idservico = s.idservico " 
-                + "INNER JOIN cliente c ON c.idcliente = c.idcliente "
-                + "INNER JOIN usuario u ON u.idusuario = u.idusuario ";
+                + "INNER JOIN servico s ON s.idservico = a.idservico " 
+                + "INNER JOIN cliente c ON c.idcliente = a.idcliente "
+                + "INNER JOIN usuario u ON u.idusuario = a.idusuario ";
         this.conectar();
         Statement stm = conn.createStatement();
         ResultSet rs = stm.executeQuery(SQL);
@@ -61,26 +61,24 @@ public class AgendamentoDAO extends DatabaseDAO {
             String sql;
             this.conectar();
             if(a.getIdagendamento()==0){
-                sql = "INSERT INTO agendamento(data, valor, status, descricao, data_cadastro, horario, idservico, idcliente, idusuario) "
-                        + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                sql = "INSERT INTO agendamento(data, valor, status, descricao, data_cadastro, horario, idservico, idcliente, idusuario) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
             }else{
-                sql = "UPDATE agendamento SET data=?, valor=?, status=?, descricao=?, data_cadastro=?, horario=?, idservico=?, idcliente=?, idusuario=? "
-                        + "WHERE idagendamento=?"; 
+                sql = "UPDATE agendamento SET data=?, valor=?, status=?, descricao=?, data_cadastro=?, horario=?, idservico=?, idcliente=?, idusuario=? WHERE idagendamento=?"; 
             }
 
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setString(1, a.getData());
-            pstm.setFloat(2,a.getValor());
-            pstm.setInt(3,a.getStatus());
-            pstm.setString(4,a.getDescricao());
-            pstm.setString(1, a.getData_cadastro());
-            pstm.setString(6,a.getHorario());
+            pstm.setFloat(2, a.getValor());
+            pstm.setInt(3, a.getStatus());
+            pstm.setString(4, a.getDescricao());
+            pstm.setString(5, a.getData_cadastro());
+            pstm.setString(6, a.getHorario());
             pstm.setInt(7, a.getServico().getIdservico());
             pstm.setInt(8, a.getCliente().getIdcliente());
             pstm.setInt(9, a.getUsuario().getIdusuario());
 
             if(a.getIdagendamento()>0){
-                pstm.setInt(10,a.getIdagendamento());
+                pstm.setInt(10, a.getIdagendamento());
             }
 
             pstm.execute();

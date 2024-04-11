@@ -74,7 +74,7 @@ public class GerenciarAgendamento extends HttpServlet {
         }else{
             
             a.setData(data);
-            a.setValor(Integer.parseInt(valor));
+            a.setValor(Float.parseFloat(valor));
             a.setStatus(Integer.parseInt(status));
             a.setDescricao(descricao);
             a.setData_cadastro(data_cadastro);
@@ -82,12 +82,15 @@ public class GerenciarAgendamento extends HttpServlet {
             
             Servico s = new Servico();
             s.setIdservico(Integer.parseInt(idservico));
+            a.setServico(s);
             
             Cliente c = new Cliente();
             c.setIdcliente(Integer.parseInt(idcliente));
+            a.setCliente(c);
             
             Usuario u = new Usuario();
             u.setIdusuario(Integer.parseInt(idusuario));
+            a.setUsuario(u);
 
             try{
                 
@@ -105,7 +108,7 @@ public class GerenciarAgendamento extends HttpServlet {
 
             out.println("<script type='text/javascript'>");
             out.println("alert('"+mensagem+"');");
-            out.println("location.href='listar_usuario.jsp';");
+            out.println("location.href='listar_agendamento.jsp';");
             out.println("</script>");
         }
         

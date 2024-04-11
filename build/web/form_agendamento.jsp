@@ -1,5 +1,5 @@
 <%-- 
-    Document   : form_usuario
+    Document   : form_agendamento
     Created on : 02/04/2024, 08:29:35
     Author     : 349550
 --%>
@@ -26,7 +26,7 @@
             <%@include file="sidebar.jsp" %>
 
             <div class="container-principal">
-                <form method="POST"action="gerenciar_usuario.do" value="">
+                <form method="POST"action="gerenciar_agendamento.do" value="">
 
                     <a class="botaoinicio"href="#">
                         <i class="material-symbols-outlined">arrow_back</i>Voltar ao início
@@ -34,35 +34,18 @@
 
                     <h1>Cadastrar Agendamento</h1>
 
-                    <input type="hidden" name="idusuario" value="${usuario.idusuario}"/>
+                    <input type="hidden" name="idagendamento" value="${agendamento.idagendamento}"/>
 
                     <div class="inputContainer">
-                        <input required type="text"name="nome" value="${usuario.nome}">
-                        <p>Nome:</p>
+                        <input required type="text"name="data" value="${agendamento.data}">
+                        <p>Data:</p>
                         <i class="material-symbols-outlined">cut</i>
                     </div>
 
                     <div class="inputContainer">
-                        <input required type="text" name="cpf" value="${usuario.cpf}">
-                        <p>CPF</p>
+                        <input required type="text" name="valor" value="${agendamento.valor}">
+                        <p>Valor:</p>
                         <i class="material-symbols-outlined">description</i>
-                    </div>
-
-                    <div class="inputContainer">
-                        <input required type="text" name="telefone" value="${usuario.telefone}">
-                        <p>Telefone</p>
-                        <i class="material-symbols-outlined">phone</i>
-                    </div>
-
-                    <div class="inputContainer">
-                        <input required type="text" name="login" value="${usuario.login}">
-                        <p>Login</p>
-                        <i class="material-symbols-outlined">account_circle</i>
-                    </div>
-                    <div class="inputContainer">
-                        <input required type="password" name="senha" value="${usuario.senha}">
-                        <p>Senha</p>
-                        <i class="material-symbols-outlined">key</i>
                     </div>
 
                     <select name="status" class="select">
@@ -70,14 +53,57 @@
                         <option value="0">Inativo</option>
                     </select>
 
-                    <select name="idperfil" class="select">
-                        <option value="">Selecionar Perfil</option>
-                        <jsp:useBean class="model.PerfilDAO" id="perfil"/>
-                        <c:forEach var="p" items="${perfil.lista}">
-                            <option value="${p.idperfil}">${p.nome}</option>
-                            
+                    <div class="inputContainer">
+                        <input required type="text" name="descricao" value="${agendamento.descricao}">
+                        <p>Descrição:</p>
+                        <i class="material-symbols-outlined">account_circle</i>
+                    </div>
+                    <div class="inputContainer">
+                        <input required type="text" name="data_cadastro" value="${agendamento.data_cadastro}">
+                        <p>Data de Agendamento</p>
+                        <i class="material-symbols-outlined">key</i>
+                    </div>
+                    <div class="inputContainer">
+                        <input required type="text" name="horario" value="${agendamento.horario}">
+                        <p>Horário</p>
+                        <i class="material-symbols-outlined">key</i>
+                    </div>
+
+
+
+
+
+
+
+
+                    <select name="idservico" class="select">
+                        <option value="">Selecionar Serviço</option>
+                        <jsp:useBean class="model.ServicoDAO" id="servico"/>
+                        <c:forEach var="s" items="${servico.lista}">
+                            <option value="${s.idservico}">${s.nome}</option>
+
                         </c:forEach>
-                        
+
+                    </select>
+
+                    <select name="idcliente" class="select">
+                        <option value="">Selecionar Cliente</option>
+                        <jsp:useBean class="model.ClienteDAO" id="cliente"/>
+                        <c:forEach var="c" items="${cliente.lista}">
+                            <option value="${c.idcliente}">${c.nome}</option>
+
+                        </c:forEach>
+
+                    </select>
+
+                    <select name="idusuario" class="select">
+                        <option value="">Selecionar Usuário</option>
+                        <jsp:useBean class="model.UsuarioDAO" id="usuario"/>
+                        <c:forEach var="u" items="${usuario.lista}">
+                            <option value="${u.idusuario}">${u.nome}</option>
+
+                        </c:forEach>
+
                     </select>
 
 
@@ -85,7 +111,7 @@
 
 
 
-                    <button type="submit"class="submit">Cadastrar Usuário</button>
+                    <button type="submit"class="submit">Cadastrar Agendamento</button>
 
                 </form>
 
