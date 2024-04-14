@@ -7,8 +7,8 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
 import java.text.SimpleDateFormat;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -37,7 +37,36 @@ public class GerenciarAgendamento extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
+        PrintWriter out = response.getWriter();
+        String acao = request.getParameter("acao");
+        String idagendamento = request.getParameter("idagendamento");
+        
+        String mensagem = "";
+        
+        try{
+            Agendamento a = new Agendamento();
+            AgendamentoDAO aDAO = new AgendamentoDAO();
+            if(acao.equals("alterar")){
+                a = aDAO.getCarregaPorID(Integer.parseInt(idagendamento));
+                if(a.getIdagendamento()>0){
+                    RequestDispatcher disp = getServletContext().getRequestDispatcher("/form_agendamento.jsp");
+                    request.setAttribute("agendamento", a);
+                    disp.forward(request, response);
+                }else{
+                    mensagem = "Agendamento não encontrado";
+                }
+            }
+            
+        }catch(Exception e){
+            out.print(e);
+            mensagem = "Erro ao executar";
+        }
+        
+        out.println("<script type='text/javascript'>");
+        out.println("alert('" + mensagem + "');");
+        out.println("location.href='listar_agendamento.jsp';");
+        out.println("</script>");
     }
 
     /**

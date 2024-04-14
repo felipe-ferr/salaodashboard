@@ -37,16 +37,9 @@
 
                     <input type="hidden" name="idagendamento" value="${agendamento.idagendamento}"/>
 
-                   
-
-                    <div class="inputContainer">
-                        <input required type="text" name="valor" value="${agendamento.valor}">
-                        <p>Valor:</p>
-                        <i class="material-symbols-outlined">description</i>
-                    </div>
                         
-                         <div class="inputContainer">
-                             <input required type="text"name="data" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${agendamento.data}"/>">
+                    <div class="inputContainer">
+                        <input required type="text"name="data" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${agendamento.data}"/>">
                         <p>Data:</p>
                         <i class="material-symbols-outlined">cut</i>
                     </div>

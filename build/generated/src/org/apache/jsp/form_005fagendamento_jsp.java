@@ -16,6 +16,7 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
     _jspx_dependants.add("/sidebar.jsp");
   }
 
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_fmt_formatDate_value_pattern_nobody;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_forEach_var_items;
 
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
@@ -25,10 +26,12 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
   }
 
   public void _jspInit() {
+    _jspx_tagPool_fmt_formatDate_value_pattern_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_c_forEach_var_items = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
   }
 
   public void _jspDestroy() {
+    _jspx_tagPool_fmt_formatDate_value_pattern_nobody.release();
     _jspx_tagPool_c_forEach_var_items.release();
   }
 
@@ -56,6 +59,7 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
+      out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
@@ -131,19 +135,11 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${agendamento.idagendamento}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("\"/>\r\n");
       out.write("\r\n");
-      out.write("                   \r\n");
-      out.write("\r\n");
-      out.write("                    <div class=\"inputContainer\">\r\n");
-      out.write("                        <input required type=\"text\" name=\"valor\" value=\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${agendamento.valor}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("\">\r\n");
-      out.write("                        <p>Valor:</p>\r\n");
-      out.write("                        <i class=\"material-symbols-outlined\">description</i>\r\n");
-      out.write("                    </div>\r\n");
       out.write("                        \r\n");
-      out.write("                         <div class=\"inputContainer\">\r\n");
+      out.write("                    <div class=\"inputContainer\">\r\n");
       out.write("                        <input required type=\"text\"name=\"data\" value=\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${agendamento.data}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      if (_jspx_meth_fmt_formatDate_0(_jspx_page_context))
+        return;
       out.write("\">\r\n");
       out.write("                        <p>Data:</p>\r\n");
       out.write("                        <i class=\"material-symbols-outlined\">cut</i>\r\n");
@@ -158,7 +154,8 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       out.write("                    </div>\r\n");
       out.write("                    <div class=\"inputContainer\">\r\n");
       out.write("                        <input required type=\"text\" name=\"data_cadastro\" value=\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${agendamento.data_cadastro}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      if (_jspx_meth_fmt_formatDate_1(_jspx_page_context))
+        return;
       out.write("\">\r\n");
       out.write("                        <p>Data de Agendamento</p>\r\n");
       out.write("                        <i class=\"material-symbols-outlined\">key</i>\r\n");
@@ -266,6 +263,44 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
     }
+  }
+
+  private boolean _jspx_meth_fmt_formatDate_0(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  fmt:formatDate
+    org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag _jspx_th_fmt_formatDate_0 = (org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag) _jspx_tagPool_fmt_formatDate_value_pattern_nobody.get(org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag.class);
+    _jspx_th_fmt_formatDate_0.setPageContext(_jspx_page_context);
+    _jspx_th_fmt_formatDate_0.setParent(null);
+    _jspx_th_fmt_formatDate_0.setPattern("dd/MM/yyyy");
+    _jspx_th_fmt_formatDate_0.setValue((java.util.Date) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${agendamento.data}", java.util.Date.class, (PageContext)_jspx_page_context, null));
+    int _jspx_eval_fmt_formatDate_0 = _jspx_th_fmt_formatDate_0.doStartTag();
+    if (_jspx_th_fmt_formatDate_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_fmt_formatDate_value_pattern_nobody.reuse(_jspx_th_fmt_formatDate_0);
+      return true;
+    }
+    _jspx_tagPool_fmt_formatDate_value_pattern_nobody.reuse(_jspx_th_fmt_formatDate_0);
+    return false;
+  }
+
+  private boolean _jspx_meth_fmt_formatDate_1(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  fmt:formatDate
+    org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag _jspx_th_fmt_formatDate_1 = (org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag) _jspx_tagPool_fmt_formatDate_value_pattern_nobody.get(org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag.class);
+    _jspx_th_fmt_formatDate_1.setPageContext(_jspx_page_context);
+    _jspx_th_fmt_formatDate_1.setParent(null);
+    _jspx_th_fmt_formatDate_1.setPattern("dd/MM/yyyy");
+    _jspx_th_fmt_formatDate_1.setValue((java.util.Date) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${agendamento.data_cadastro}", java.util.Date.class, (PageContext)_jspx_page_context, null));
+    int _jspx_eval_fmt_formatDate_1 = _jspx_th_fmt_formatDate_1.doStartTag();
+    if (_jspx_th_fmt_formatDate_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_fmt_formatDate_value_pattern_nobody.reuse(_jspx_th_fmt_formatDate_1);
+      return true;
+    }
+    _jspx_tagPool_fmt_formatDate_value_pattern_nobody.reuse(_jspx_th_fmt_formatDate_1);
+    return false;
   }
 
   private boolean _jspx_meth_c_forEach_0(PageContext _jspx_page_context)

@@ -91,6 +91,13 @@ public final class listar_005fservico_jsp extends org.apache.jasper.runtime.Http
       out.write("        \r\n");
       out.write("        <script src=\"static/js/bulmadatatable.js\"></script>\r\n");
       out.write("\r\n");
+      out.write("        <script type=\"text/javascript\"> // adicionei aqui por conta do método de exclusão \r\n");
+      out.write("            function confirmarExclusão(id, nome) {\r\n");
+      out.write("                if (confirm('Deseja excluir o serviço ' + nome + '?')) {\r\n");
+      out.write("                    location.href = 'gerenciar_servico.do?acao=deletar&idservico=' + id;\r\n");
+      out.write("                }\r\n");
+      out.write("            }\r\n");
+      out.write("        </script>\r\n");
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
