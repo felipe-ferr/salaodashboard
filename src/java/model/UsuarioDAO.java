@@ -101,4 +101,23 @@ public class UsuarioDAO extends DatabaseDAO{
         
     }
     
+    public boolean deletar(Usuario u){
+        
+        try{
+            String sql = "UPDATE usuario SET status=0 WHERE idusuario=? ";
+            this.conectar();
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setInt(1, u.getIdusuario());
+            pstm.execute();
+            this.desconectar();
+            return true;
+            
+        }catch(Exception e){
+            System.out.println(e);
+            return false;
+        }
+        
+        
+    }
+    
 }

@@ -58,6 +58,15 @@ public class GerenciarCliente extends HttpServlet {
                 
             }
             
+            if(acao.equals("deletar")){
+                c.setIdcliente(Integer.parseInt(idcliente));
+                if(cDAO.deletar(c)){
+                    mensagem = "Desativado com sucesso!";
+                }else{
+                    mensagem = "Erro ao desativar o usuário!";
+                }
+            }
+            
         }catch(Exception e){
             out.print(e);
             mensagem = "Erro ao executar";

@@ -251,7 +251,7 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       out.write("\r\n");
       out.write("\r\n");
       out.write("    </body>\r\n");
-      out.write("</html>\r\n");
+      out.write("</html>");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;

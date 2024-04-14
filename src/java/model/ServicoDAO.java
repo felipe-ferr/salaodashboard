@@ -87,7 +87,7 @@ public class ServicoDAO extends DatabaseDAO{
         
         try{
             this.conectar();
-            String sql = "DELETE FROM servico WHERE idservico=?";
+            String sql = "UPDATE servico SET status=0 WHERE idservico=? ";
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setInt(1, s.getIdservico());
             pstm.execute();

@@ -58,6 +58,15 @@ public class GerenciarAgendamento extends HttpServlet {
                 }
             }
             
+            if(acao.equals("deletar")){
+                a.setIdagendamento(Integer.parseInt(idagendamento));
+                if(aDAO.deletar(a)){
+                    mensagem = "Desativado com sucesso!";
+                }else{
+                    mensagem = "Erro ao desativar o agendamento!";
+                }
+            }
+            
         }catch(Exception e){
             out.print(e);
             mensagem = "Erro ao executar";

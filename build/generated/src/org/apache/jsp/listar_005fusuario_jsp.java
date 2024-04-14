@@ -89,7 +89,7 @@ public final class listar_005fusuario_jsp extends org.apache.jasper.runtime.Http
       out.write("\r\n");
       out.write("        <script type=\"text/javascript\"> // adicionei aqui por conta do método de exclusão \r\n");
       out.write("            function confirmarExclusão(id, nome) {\r\n");
-      out.write("                if (confirm('Deseja excluir o serviço ' + nome + '?')) {\r\n");
+      out.write("                if (confirm('Deseja desativar o usuario ' + nome + '?')) {\r\n");
       out.write("                    location.href = 'gerenciar_usuario.do?acao=deletar&idusuario=' + id;\r\n");
       out.write("                }\r\n");
       out.write("            }\r\n");

@@ -74,4 +74,21 @@ public class PerfilDAO extends DatabaseDAO{
         
     }
     
+    public boolean deletar(Perfil p){
+
+        try{
+            String sql = "DELETE FROM perfil WHERE idperfil=? ";
+            this.conectar();
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setInt(1, p.getIdperfil());
+            pstm.execute();
+            this.desconectar();
+            return true;
+
+        }catch(Exception e){
+            System.out.println(e);
+            return false;
+        }
+    }
+    
 }

@@ -134,13 +134,13 @@ public class AgendamentoDAO extends DatabaseDAO {
         
     }
     
-    public boolean deletar (Cliente c){
+    public boolean deletar (Agendamento a){
         
         try{
             this.conectar();
-            String sql = "DELETE FROM cliente WHERE idcliente=?";
+            String sql = "UPDATE agendamento SET status=0 WHERE idagendamento=? ";
             PreparedStatement pstm = conn.prepareStatement(sql);
-            pstm.setInt(1, c.getIdcliente());
+            pstm.setInt(1, a.getIdagendamento());
             pstm.execute();
             this.desconectar();
             return true;

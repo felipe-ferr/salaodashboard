@@ -58,6 +58,15 @@ public class GerenciarPerfil extends HttpServlet {
                 
             }
             
+            if(acao.equals("deletar")){
+                p.setIdperfil(Integer.parseInt(idperfil));
+                if(pDAO.deletar(p)){
+                    mensagem = "Excluído com sucesso!";
+                }else{
+                    mensagem = "Erro ao excluir o perfil!";
+                }
+            }
+            
         }catch(Exception e){
             out.print(e);
             mensagem = "Erro ao executar";

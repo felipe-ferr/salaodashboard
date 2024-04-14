@@ -59,6 +59,16 @@ public class GerenciarUsuario extends HttpServlet {
                 
             }
             
+            if(acao.equals("deletar")){
+                u.setIdusuario(Integer.parseInt(idusuario));
+                if(uDAO.deletar(u)){
+                    mensagem = "Desativado com sucesso!";
+                }else{
+                    mensagem = "Erro ao desativar o usuário!";
+                }
+                
+            }
+            
         }catch(Exception e){
             out.print(e);
             mensagem = "Erro ao executar";

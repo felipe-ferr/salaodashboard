@@ -58,6 +58,15 @@ public class GerenciarServico extends HttpServlet {
                 
             }
             
+            if(acao.equals("deletar")){
+                s.setIdservico(Integer.parseInt(idservico));
+                if(sDAO.deletar(s)){
+                    mensagem = "Desativado com sucesso!";
+                }else{
+                    mensagem = "Erro ao desativar o serviço!";
+                }
+            }
+            
         }catch(Exception e){
             out.print(e);
             mensagem = "Erro ao executar";
