@@ -40,13 +40,7 @@
                         <p>Nome:</p>
                         <i class="material-symbols-outlined">cut</i>
                     </div>
-
-                        <div class="inputContainer">
-                            <input required type="number" name="valor" value="${servico.valor}">
-                            <p>Valor:</p>
-                            <i class="material-symbols-outlined">key</i>
-                        </div>
-        
+ 
 
                     <script type="text/javascript" src="./static/js/sumirTextoTextarea.js"></script>
                     <div class="inputContainer">

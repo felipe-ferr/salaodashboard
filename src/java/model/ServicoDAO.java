@@ -20,7 +20,6 @@ public class ServicoDAO extends DatabaseDAO{
             s.setStatus(rs.getInt("status"));
             s.setNome(rs.getString("nome"));
             s.setDescricao(rs.getString("descricao"));
-            s.setValor(rs.getFloat("valor"));
             lista.add(s);
         }
         this.desconectar();
@@ -34,19 +33,18 @@ public class ServicoDAO extends DatabaseDAO{
             String sql;
             this.conectar();
             if(s.getIdservico()==0){
-                sql = "INSERT INTO servico(nome, valor, descricao, status) VALUES(?, ?, ?, ?)";
+                sql = "INSERT INTO servico(nome, descricao, status) VALUES(?, ?, ?)";
             }else{
-                sql = "UPDATE servico SET nome=?, valor=?, descricao=?, status=? WHERE idservico=?"; 
+                sql = "UPDATE servico SET nome=?, descricao=?, status=? WHERE idservico=?"; 
             }
 
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setString(1,s.getNome());
-            pstm.setFloat(2,s.getValor());
-            pstm.setString(3,s.getDescricao());
-            pstm.setInt(4,s.getStatus());
+            pstm.setString(2,s.getDescricao());
+            pstm.setInt(3,s.getStatus());
 
             if(s.getIdservico()>0){
-                pstm.setInt(5,s.getIdservico());
+                pstm.setInt(4,s.getIdservico());
             }
 
             pstm.execute();
@@ -72,7 +70,6 @@ public class ServicoDAO extends DatabaseDAO{
         if(rs.next()){
             s.setIdservico(rs.getInt("idservico"));
             s.setNome(rs.getString("nome"));
-            s.setValor(rs.getFloat("valor"));
             s.setDescricao(rs.getString("descricao"));
             s.setStatus(rs.getInt("status"));
 

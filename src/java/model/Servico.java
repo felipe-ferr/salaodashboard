@@ -4,7 +4,6 @@ public class Servico {
     private int status;
     private String nome;
     private String descricao;
-    private float valor;
 
     public int getIdservico() {
         return idservico;
@@ -38,30 +37,22 @@ public class Servico {
         this.descricao = descricao;
     }
 
-    public float getValor() {
-        return valor;
-    }
-
-    public void setValor(float valor) {
-        this.valor = valor;
-    }
-
     public Servico() {
     }
 
-    public Servico(int idservico, int status, String nome, String descricao, float valor) {
+    public Servico(int idservico, int status, String nome, String descricao) {
         this.idservico = idservico;
         this.status = status;
         this.nome = nome;
         this.descricao = descricao;
-        this.valor = valor;
     }
 
     @Override
     public String toString() {
-        return "Servico{" + "idservico=" + idservico + ", status=" + status + ", nome=" + nome + ", descricao=" + descricao + ", valor=" + valor + '}';
+        return "Servico{" + "idservico=" + idservico + ", status=" + status + ", nome=" + nome + ", descricao=" + descricao + '}';
     }
 
+ 
 
     
 

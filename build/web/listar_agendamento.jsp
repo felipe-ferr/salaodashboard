@@ -65,6 +65,7 @@
                     <thead>
                         <tr>
                             <th style="text-align:left;">ID</th>
+                            <th style="text-align:left;">Valor</th>
                             <th style="text-align:left;">Data</th>
                             <th style="text-align:left;">Status</th>
                             <th style="text-align:left;">Descrição</th>
@@ -84,6 +85,7 @@
 
                             <tr>
                                 <td>${a.idagendamento}</td>
+                                <td>${a.valor}</td>
                                 <td><fmt:formatDate pattern="dd/MM/yyyy" value="${a.data}"/></td>
                                 <td>
                                     <c:if test="${a.status==1}">

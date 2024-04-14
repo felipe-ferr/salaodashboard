@@ -37,6 +37,11 @@
 
                     <input type="hidden" name="idagendamento" value="${agendamento.idagendamento}"/>
 
+                    <div class="inputContainer">
+                        <input required type="number" name="valor" value="${agendamento.valor}">
+                        <p>Valor</p>
+                        <i class="material-symbols-outlined">account_circle</i>
+                    </div>
                         
                     <div class="inputContainer">
                         <input required type="text"name="data" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${agendamento.data}"/>">
@@ -72,15 +77,17 @@
                     </select>
 
 
+
                     <select name="idservico" class="select">
                         <option value="">Selecionar Serviço</option>
-                        <jsp:useBean class="model.ServicoDAO" id="servico"/>
+                        <jsp:useBean class="model.ServicoDAO" id="servico"/>                   
                         <c:forEach var="s" items="${servico.lista}">
                             <option value="${s.idservico}">${s.nome}</option>
-
+                            
                         </c:forEach>
 
                     </select>
+          
 
                     <select name="idcliente" class="select">
                         <option value="">Selecionar Cliente</option>

@@ -66,7 +66,6 @@
                         <tr>
                             <th style="text-align:left;">ID</th>
                             <th style="text-align:left;">Nome</th>
-                            <th style="text-align:left;">Valor</th>
                             <th style="text-align:left;">Descrição</th>
                             <th style="text-align:left;">Status</th>
                             <th style="text-align:left;">Ações</th>
@@ -81,7 +80,6 @@
                             <tr>
                                 <td>${s.idservico}</td>
                                 <td>${s.nome}</td>
-                                <td>R$${s.valor}</td>
                                 <td>${s.descricao}</td>
                                 <td>
                                     <c:if test="${s.status==1}">

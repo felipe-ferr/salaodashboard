@@ -6,6 +6,7 @@ import java.util.Date;
 public class Agendamento {
     
     private int idagendamento;
+    private Float valor;
     private Date data;
     private int status;
     private String descricao;
@@ -36,6 +37,14 @@ public class Agendamento {
 
     public int getStatus() {
         return status;
+    }
+
+    public Float getValor() {
+        return valor;
+    }
+
+    public void setValor(Float valor) {
+        this.valor = valor;
     }
 
     public void setStatus(int status) {
@@ -90,8 +99,9 @@ public class Agendamento {
         this.usuario = usuario;
     }
 
-    public Agendamento(int idagendamento, Date data, int status, String descricao, Date data_cadastro, String horario, Servico servico, Cliente cliente, Usuario usuario) {
+    public Agendamento(int idagendamento, Float valor, Date data, int status, String descricao, Date data_cadastro, String horario, Servico servico, Cliente cliente, Usuario usuario) {
         this.idagendamento = idagendamento;
+        this.valor = valor;
         this.data = data;
         this.status = status;
         this.descricao = descricao;
@@ -104,8 +114,10 @@ public class Agendamento {
 
     @Override
     public String toString() {
-        return "Agendamento{" + "idagendamento=" + idagendamento + ", data=" + data + ", status=" + status + ", descricao=" + descricao + ", data_cadastro=" + data_cadastro + ", horario=" + horario + ", servico=" + servico + ", cliente=" + cliente + ", usuario=" + usuario + '}';
+        return "Agendamento{" + "idagendamento=" + idagendamento + ", valor=" + valor + ", data=" + data + ", status=" + status + ", descricao=" + descricao + ", data_cadastro=" + data_cadastro + ", horario=" + horario + ", servico=" + servico + ", cliente=" + cliente + ", usuario=" + usuario + '}';
     }
+
+   
 
     
 }
