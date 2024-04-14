@@ -87,11 +87,11 @@ public final class form_005fservico_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("    \r\n");
       out.write("            <div id=\"side\" class=\"sidebar\">\r\n");
       out.write("                <span class=\"sidebar-titulo\">Salão do Luciano</span>\r\n");
-      out.write("                <a href=\"#\"><span class=\"material-symbols-outlined sidebar-icone\">calendar_month</span>Agendamentos</a>\r\n");
+      out.write("                <a href=\"listar_agendamento.jsp\"><span class=\"material-symbols-outlined sidebar-icone\">calendar_month</span>Agendamentos</a>\r\n");
       out.write("                <a href=\"listar_cliente.jsp\"><span class=\"material-symbols-outlined sidebar-icone\">person</span>Clientes</a>\r\n");
       out.write("                <a href=\"listar_servico.jsp\"><span class=\"material-symbols-outlined sidebar-icone\">cut</span>Serviços</a>\r\n");
       out.write("                <a href=\"listar_perfil.jsp\"><span class=\"material-symbols-outlined sidebar-icone\">account_circle</span>Perfis</a>\r\n");
-      out.write("                <a href=\"#\"><span class=\"material-symbols-outlined sidebar-icone\">engineering</span>Usuários</a>\r\n");
+      out.write("                <a href=\"listar_usuario.jsp\"><span class=\"material-symbols-outlined sidebar-icone\">engineering</span>Usuários</a>\r\n");
       out.write("                \r\n");
       out.write("                <div class=\"tema-container bottom\">\r\n");
       out.write("                    <span>Modo Escuro</span>\r\n");
@@ -140,7 +140,7 @@ public final class form_005fservico_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("                    <script type=\"text/javascript\" src=\"./static/js/sumirTextoTextarea.js\"></script>\r\n");
       out.write("                    <div class=\"inputContainer\">\r\n");
       out.write("                        <p class=\"textareatexto\" id=\"ptextarea\">Descrição</p>\r\n");
-      out.write("                        <textarea id=\"area\" required onclick=\"sumirp()\" type=\"text\" name=\"descricao\" value=\"");
+      out.write("                        <textarea id=\"area\" onclick=\"sumirp()\" type=\"text\" name=\"descricao\" value=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${servico.descricao}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("\"></textarea>\r\n");
       out.write("                    </div>\r\n");

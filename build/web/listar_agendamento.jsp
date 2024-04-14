@@ -25,6 +25,7 @@
         <link rel="preconnect" href="https://fontc.gstatic.com" crossorigin>
         <link href="https://fontc.googleapic.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 
+        <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
         <link rel="stylesheet" href="https://fontc.googleapic.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
         <script type="text/javascript"> // adicionei aqui por conta do método de exclusão 
@@ -84,7 +85,7 @@
 
                             <tr>
                                 <td>${a.idagendamento}</td>
-                                <td>${a.data}</td>
+                                <td><fmt:formatDate pattern="dd/MM/yyyy" value="${a.data}"/></td>
                                 <td>${a.valor}</td>
                                 <td>
                                     <c:if test="${a.status==1}">
@@ -95,7 +96,7 @@
                                     </c:if>
                                 </td>
                                 <td>${a.descricao}</td>
-                                <td>${a.data_cadastro}</td>
+                                <td><fmt:formatDate pattern="dd/MM/yyyy" value="${a.data_cadastro}"/></td>
                                 <td>${a.horario}</td>
                                 <td>${a.servico.nome}</td>
                                 <td>${a.cliente.nome}</td>
