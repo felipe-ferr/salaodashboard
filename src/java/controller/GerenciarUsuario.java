@@ -7,6 +7,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -34,6 +35,40 @@ public class GerenciarUsuario extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        PrintWriter out = response.getWriter();
+        String mensagem = "";
+        
+        String acao = request.getParameter("acao");
+        String idusuario = request.getParameter("idusuario");
+        
+        Usuario u = new Usuario();
+        
+        try{
+            
+            UsuarioDAO uDAO = new UsuarioDAO();
+            if(acao.equals("alterar")){
+                u = uDAO.getCarregaPorID(Integer.parseInt(idusuario));
+                if(u.getIdusuario()>0){
+                    RequestDispatcher disp = getServletContext().getRequestDispatcher("/form_usuario.jsp");
+                    request.setAttribute("usuario", u);
+                    disp.forward(request, response);
+                }else{
+                    mensagem = "Serviço não encontrado";
+                }
+                
+            }
+            
+        }catch(Exception e){
+            out.print(e);
+            mensagem = "Erro ao executar";
+        }
+        
+        out.println("<script type='text/javascript'>");
+        out.println("alert('"+mensagem+"');");
+        out.println("location.href='listar_servico.jsp';");
+        out.println("</script>");
+        
     }
 
     /**

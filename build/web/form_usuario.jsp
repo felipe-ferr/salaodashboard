@@ -70,7 +70,7 @@
                         <option value="0">Inativo</option>
                     </select>
 
-                    <select name="idperfil" class="select">
+                    <select name="idperfil" class="select" required>
                         <option value="">Selecionar Perfil</option>
                         <jsp:useBean class="model.PerfilDAO" id="perfil"/>
                         <c:forEach var="p" items="${perfil.lista}">

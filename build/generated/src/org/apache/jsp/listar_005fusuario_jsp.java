@@ -20,6 +20,7 @@ public final class listar_005fusuario_jsp extends org.apache.jasper.runtime.Http
   }
 
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_forEach_var_items;
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_if_test;
 
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
 
@@ -29,10 +30,12 @@ public final class listar_005fusuario_jsp extends org.apache.jasper.runtime.Http
 
   public void _jspInit() {
     _jspx_tagPool_c_forEach_var_items = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _jspx_tagPool_c_if_test = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
   }
 
   public void _jspDestroy() {
     _jspx_tagPool_c_forEach_var_items.release();
+    _jspx_tagPool_c_if_test.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -59,52 +62,52 @@ public final class listar_005fusuario_jsp extends org.apache.jasper.runtime.Http
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("<!DOCTYPE html>\n");
-      out.write("<html>\n");
-      out.write("    <head>\n");
-      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <meta content=\"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no\" name=\"viewport\">\n");
-      out.write("       <link rel=\"stylesheet\" href=\"./static/bulma/bulma.min.css\">\n");
-      out.write("        <link rel=\"stylesheet\" href=\"./static/bulma/dataTables.bulma.css\">\n");
-      out.write("        <link rel=\"stylesheet\" href=\"./static/bulma/font-awesome.min.css\">\n");
-      out.write("        <link rel=\"stylesheet\" href=\"./static/bulma/css/bulma.css\">\n");
-      out.write("        <link rel=\"stylesheet\" href=\"./static/css/menu.css\">\n");
-      out.write("        \n");
-      out.write("        <link rel=\"preconnect\" href=\"https://fontc.googleapic.com\">\n");
-      out.write("        <link rel=\"preconnect\" href=\"https://fontc.gstatic.com\" crossorigin>\n");
-      out.write("        <link href=\"https://fontc.googleapic.com/css2?family=Quicksand:wght@300..700&display=swap\" rel=\"stylesheet\">\n");
-      out.write("        \n");
-      out.write("        <link rel=\"stylesheet\" href=\"https://fontc.googleapic.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200\" />\n");
-      out.write("     \n");
-      out.write("        <script type=\"text/javascript\"> // adicionei aqui por conta do método de exclusão \n");
-      out.write("            function confirmarExclusão(id,nome){\n");
-      out.write("                if(confirm('Deseja excluir o serviço '+nome+'?')){\n");
-      out.write("                    location.href='gerenciar_usuario.do?acao=deletar&idusuario='+id;\n");
-      out.write("                }\n");
-      out.write("            }\n");
-      out.write("        </script>\n");
-      out.write("        \n");
-      out.write("      \n");
-      out.write("       \n");
-      out.write("      \n");
-      out.write("        \n");
-      out.write("    \n");
-      out.write("        <title>JSP Page</title>\n");
-      out.write("    </head>\n");
-      out.write("    \n");
-      out.write("    \n");
-      out.write(" \n");
-      out.write("    <body>\n");
-      out.write("       \n");
-      out.write("        <div class=\"grid-container\">\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("<!DOCTYPE html>\r\n");
+      out.write("<html>\r\n");
+      out.write("    <head>\r\n");
+      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
+      out.write("        <meta content=\"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no\" name=\"viewport\">\r\n");
+      out.write("        <link rel=\"stylesheet\" href=\"./static/bulma/bulma.min.css\">\r\n");
+      out.write("        <link rel=\"stylesheet\" href=\"./static/bulma/dataTables.bulma.css\">\r\n");
+      out.write("        <link rel=\"stylesheet\" href=\"./static/bulma/font-awesome.min.css\">\r\n");
+      out.write("        <link rel=\"stylesheet\" href=\"./static/bulma/css/bulma.css\">\r\n");
+      out.write("        <link rel=\"stylesheet\" href=\"./static/css/menu.css\">\r\n");
+      out.write("\r\n");
+      out.write("        <link rel=\"preconnect\" href=\"https://fontc.googleapic.com\">\r\n");
+      out.write("        <link rel=\"preconnect\" href=\"https://fontc.gstatic.com\" crossorigin>\r\n");
+      out.write("        <link href=\"https://fontc.googleapic.com/css2?family=Quicksand:wght@300..700&display=swap\" rel=\"stylesheet\">\r\n");
+      out.write("\r\n");
+      out.write("        <link rel=\"stylesheet\" href=\"https://fontc.googleapic.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200\" />\r\n");
+      out.write("\r\n");
+      out.write("        <script type=\"text/javascript\"> // adicionei aqui por conta do método de exclusão \r\n");
+      out.write("            function confirmarExclusão(id, nome) {\r\n");
+      out.write("                if (confirm('Deseja excluir o serviço ' + nome + '?')) {\r\n");
+      out.write("                    location.href = 'gerenciar_usuario.do?acao=deletar&idusuario=' + id;\r\n");
+      out.write("                }\r\n");
+      out.write("            }\r\n");
+      out.write("        </script>\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("        <title>JSP Page</title>\r\n");
+      out.write("    </head>\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("    <body>\r\n");
+      out.write("\r\n");
+      out.write("        <div class=\"grid-container\">\r\n");
       out.write("            ");
       out.write("\r\n");
       out.write("\r\n");
@@ -126,7 +129,7 @@ public final class listar_005fusuario_jsp extends org.apache.jasper.runtime.Http
       out.write("    \r\n");
       out.write("            <div id=\"side\" class=\"sidebar\">\r\n");
       out.write("                <span class=\"sidebar-titulo\">Salão do Luciano</span>\r\n");
-      out.write("                <a href=\"#\"><span class=\"material-symbols-outlined sidebar-icone\">calendar_month</span>Agendamentos</a>\r\n");
+      out.write("                <a href=\"listar_agendamento.jsp\"><span class=\"material-symbols-outlined sidebar-icone\">calendar_month</span>Agendamentos</a>\r\n");
       out.write("                <a href=\"listar_cliente.jsp\"><span class=\"material-symbols-outlined sidebar-icone\">person</span>Clientes</a>\r\n");
       out.write("                <a href=\"listar_servico.jsp\"><span class=\"material-symbols-outlined sidebar-icone\">cut</span>Serviços</a>\r\n");
       out.write("                <a href=\"listar_perfil.jsp\"><span class=\"material-symbols-outlined sidebar-icone\">account_circle</span>Perfis</a>\r\n");
@@ -144,34 +147,34 @@ public final class listar_005fusuario_jsp extends org.apache.jasper.runtime.Http
       out.write("        <script type=\"text/javascript\" src=\"static/js/modoescuro.js\"></script>\r\n");
       out.write("    </body>\r\n");
       out.write("</html>\r\n");
-      out.write("\n");
-      out.write("        \n");
-      out.write("            \n");
-      out.write("        \n");
-      out.write("        <div id=\"principal\" class=\"container-principal\">\n");
-      out.write("            \n");
-      out.write("            <div class=\"titulo-botao-container\">\n");
-      out.write("                <h1>Lista de Usuários</h1>\n");
-      out.write("                <a href=\"form_usuario.jsp\">Adicionar Usuário<i class=\"material-symbols-outlined\">add</i></a>\n");
-      out.write("            </div>\n");
-      out.write("      \n");
-      out.write("\n");
-      out.write("            <table class=\"table is-hoverable is-striped\" id=\"listarCliente\">    \n");
-      out.write("            <thead>\n");
-      out.write("               <tr>\n");
-      out.write("                <th style=\"text-align:left;\">ID</th>\n");
-      out.write("                <th style=\"text-align:left;\">Nome</th>\n");
-      out.write("                <th style=\"text-align:left;\">CPF</th>\n");
-      out.write("                <th style=\"text-align:left;\">Telefone</th>\n");
-      out.write("                <th style=\"text-align:left;\">Login</th>\n");
-      out.write("                <th style=\"text-align:left;\">Senha</th>\n");
-      out.write("                <th style=\"text-align:left;\">Status</th>\n");
-      out.write("                <th style=\"text-align:left;\">Ações</th>\n");
-      out.write("            </tr>\n");
-      out.write("            </thead>\n");
-      out.write(" \n");
-      out.write("            \n");
-      out.write("            ");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("            <div id=\"principal\" class=\"container-principal\">\r\n");
+      out.write("\r\n");
+      out.write("                <div class=\"titulo-botao-container\">\r\n");
+      out.write("                    <h1>Lista de Usuários</h1>\r\n");
+      out.write("                    <a href=\"form_usuario.jsp\">Adicionar Usuário<i class=\"material-symbols-outlined\">add</i></a>\r\n");
+      out.write("                </div>\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("                <table class=\"table is-hoverable is-striped\" id=\"listarUsuario\">    \r\n");
+      out.write("                    <thead>\r\n");
+      out.write("                        <tr>\r\n");
+      out.write("                            <th style=\"text-align:left;\">ID</th>\r\n");
+      out.write("                            <th style=\"text-align:left;\">Nome</th>\r\n");
+      out.write("                            <th style=\"text-align:left;\">CPF</th>\r\n");
+      out.write("                            <th style=\"text-align:left;\">Telefone</th>\r\n");
+      out.write("                            <th style=\"text-align:left;\">Login</th>\r\n");
+      out.write("                            <th style=\"text-align:left;\">Status</th>\r\n");
+      out.write("                            <th style=\"text-align:left;\">Perfil</th>\r\n");
+      out.write("                            <th style=\"text-align:left;\">Ações</th>\r\n");
+      out.write("                        </tr>\r\n");
+      out.write("                    </thead>\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("                    ");
       model.UsuarioDAO u = null;
       synchronized (_jspx_page_context) {
         u = (model.UsuarioDAO) _jspx_page_context.getAttribute("u", PageContext.PAGE_SCOPE);
@@ -180,31 +183,31 @@ public final class listar_005fusuario_jsp extends org.apache.jasper.runtime.Http
           _jspx_page_context.setAttribute("u", u, PageContext.PAGE_SCOPE);
         }
       }
-      out.write("\n");
-      out.write("            <tbody>\n");
-      out.write("            ");
+      out.write("\r\n");
+      out.write("                    <tbody>\r\n");
+      out.write("                        ");
       if (_jspx_meth_c_forEach_0(_jspx_page_context))
         return;
-      out.write("\n");
-      out.write("            </tbody>\n");
-      out.write("        </table> \n");
-      out.write("            \n");
-      out.write("           \n");
-      out.write("        </div>\n");
-      out.write("        </div>\n");
-      out.write("            \n");
-      out.write("            \n");
-      out.write(" \n");
-      out.write("        <script src=\"./static/bulma/jquery-3.7.1.js\"></script>\n");
-      out.write("        <script src=\"./static/bulma/dataTables.js\"></script>\n");
-      out.write("        <script src=\"./static/bulma/dataTables.bulma.js\"></script>\n");
-      out.write("        <script src=\"./static/js/bulmadatatableusuario.js\"></script>\n");
-      out.write("        <script type=\"text/javascript\" src=\"static/js/modoescuro.js\"></script>\n");
-      out.write("        <script type=\"text/javascript\" src=\"static/js/sumirTextoTextarea.js\"></script>\n");
-      out.write("     \n");
-      out.write("        \n");
-      out.write("    </body>\n");
-      out.write("</html>\n");
+      out.write("\r\n");
+      out.write("                    </tbody>\r\n");
+      out.write("                </table> \r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("            </div>\r\n");
+      out.write("        </div>\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("        <script src=\"./static/bulma/jquery-3.7.1.js\"></script>\r\n");
+      out.write("        <script src=\"./static/bulma/dataTables.js\"></script>\r\n");
+      out.write("        <script src=\"./static/bulma/dataTables.bulma.js\"></script>\r\n");
+      out.write("        <script src=\"./static/js/bulmadatatableusuario.js\"></script>\r\n");
+      out.write("        <script type=\"text/javascript\" src=\"static/js/modoescuro.js\"></script>\r\n");
+      out.write("        <script type=\"text/javascript\" src=\"static/js/sumirTextoTextarea.js\"></script>\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("    </body>\r\n");
+      out.write("</html>\r\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
@@ -233,48 +236,55 @@ public final class listar_005fusuario_jsp extends org.apache.jasper.runtime.Http
       int _jspx_eval_c_forEach_0 = _jspx_th_c_forEach_0.doStartTag();
       if (_jspx_eval_c_forEach_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
-          out.write("\n");
-          out.write("                   \n");
-          out.write("            <tr>\n");
-          out.write("                <td>");
+          out.write("\r\n");
+          out.write("\r\n");
+          out.write("                            <tr>\r\n");
+          out.write("                                <td>");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${u.idusuario}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</td>\n");
-          out.write("                <td>");
+          out.write("</td>\r\n");
+          out.write("                                <td>");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${u.nome}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</td>\n");
-          out.write("                <td>");
+          out.write("</td>\r\n");
+          out.write("                                <td>");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${u.cpf}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</td>\n");
-          out.write("                <td>");
+          out.write("</td>\r\n");
+          out.write("                                <td>");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${u.telefone}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</td>\n");
-          out.write("                <td>");
+          out.write("</td>\r\n");
+          out.write("                                <td>");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${u.login}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</td>\n");
-          out.write("                <td>");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${u.senha}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</td>\n");
-          out.write("                <td>");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${u.status}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</td>\n");
-          out.write("                <td class=\"acoes-td\">\n");
-          out.write("                    <button class=\"botao-acoes\" onclick=\"confirmarExclusão(");
+          out.write("</td>\r\n");
+          out.write("                                <td>\r\n");
+          out.write("                                    ");
+          if (_jspx_meth_c_if_0((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
+            return true;
+          out.write("\r\n");
+          out.write("                                    ");
+          if (_jspx_meth_c_if_1((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
+            return true;
+          out.write("\r\n");
+          out.write("                                </td>\r\n");
+          out.write("                                <td>");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${u.perfil.nome}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</td>\r\n");
+          out.write("                                \r\n");
+          out.write("                                <td class=\"acoes-td\">\r\n");
+          out.write("                                    <button class=\"botao-acoes\" onclick=\"confirmarExclusão(");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${u.idusuario}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write(',');
-          out.write('\'');
+          out.write(", '");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${u.nome}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("')\">\n");
-          out.write("                        <i class=\"material-symbols-outlined\">delete</i>\n");
-          out.write("                    </button>\n");
-          out.write("                    <a class=\"botao-acoes\" href=\"gerenciar_usuario.do?acao=alterar&idusuario=");
+          out.write("')\">\r\n");
+          out.write("                                        <i class=\"material-symbols-outlined\">delete</i>\r\n");
+          out.write("                                    </button>\r\n");
+          out.write("                                    <a class=\"botao-acoes\" href=\"gerenciar_usuario.do?acao=alterar&idusuario=");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${u.idusuario}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("\">\n");
-          out.write("                        <i class=\"material-symbols-outlined\">edit</i>\n");
-          out.write("                    </a>\n");
-          out.write("                </td>\n");
-          out.write("            </tr>\n");
-          out.write("           \n");
-          out.write("            ");
+          out.write("\">\r\n");
+          out.write("                                        <i class=\"material-symbols-outlined\">edit</i>\r\n");
+          out.write("                                    </a>\r\n");
+          out.write("                                </td>\r\n");
+          out.write("                            </tr>\r\n");
+          out.write("\r\n");
+          out.write("                        ");
           int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
             break;
@@ -291,6 +301,62 @@ public final class listar_005fusuario_jsp extends org.apache.jasper.runtime.Http
       _jspx_th_c_forEach_0.doFinally();
       _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_0);
     }
+    return false;
+  }
+
+  private boolean _jspx_meth_c_if_0(javax.servlet.jsp.tagext.JspTag _jspx_th_c_forEach_0, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_forEach_0)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:if
+    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_if_0 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _jspx_tagPool_c_if_test.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+    _jspx_th_c_if_0.setPageContext(_jspx_page_context);
+    _jspx_th_c_if_0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_0);
+    _jspx_th_c_if_0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${u.status==1}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null)).booleanValue());
+    int _jspx_eval_c_if_0 = _jspx_th_c_if_0.doStartTag();
+    if (_jspx_eval_c_if_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("                                        Ativo\r\n");
+        out.write("                                    ");
+        int evalDoAfterBody = _jspx_th_c_if_0.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_if_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_c_if_test.reuse(_jspx_th_c_if_0);
+      return true;
+    }
+    _jspx_tagPool_c_if_test.reuse(_jspx_th_c_if_0);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_if_1(javax.servlet.jsp.tagext.JspTag _jspx_th_c_forEach_0, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_forEach_0)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:if
+    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_if_1 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _jspx_tagPool_c_if_test.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+    _jspx_th_c_if_1.setPageContext(_jspx_page_context);
+    _jspx_th_c_if_1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_0);
+    _jspx_th_c_if_1.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${u.status==0}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null)).booleanValue());
+    int _jspx_eval_c_if_1 = _jspx_th_c_if_1.doStartTag();
+    if (_jspx_eval_c_if_1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("                                        Inativo\r\n");
+        out.write("                                    ");
+        int evalDoAfterBody = _jspx_th_c_if_1.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_if_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_c_if_test.reuse(_jspx_th_c_if_1);
+      return true;
+    }
+    _jspx_tagPool_c_if_test.reuse(_jspx_th_c_if_1);
     return false;
   }
 }

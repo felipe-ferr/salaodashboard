@@ -73,4 +73,32 @@ public class UsuarioDAO extends DatabaseDAO{
         
     }
     
+    public Usuario getCarregaPorID(int idusuario) throws Exception{
+        
+        Usuario u = new Usuario();
+        String SQL = "SELECT u.*, p.nome  FROM usuario u "
+                + "INNER JOIN perfil p ON p.idperfil = u.idperfil ";
+        this.conectar();
+        Statement stm = conn.createStatement();
+        ResultSet rs = stm.executeQuery(SQL);
+        while(rs.next()){
+            u.setIdusuario(rs.getInt("u.idusuario"));
+            u.setNome(rs.getString("u.nome"));
+            u.setCpf(rs.getString("u.cpf"));
+            u.setTelefone(rs.getString("u.telefone"));
+            u.setLogin(rs.getString("u.login"));
+            u.setSenha(rs.getString("u.senha"));
+            u.setStatus(rs.getInt("u.status"));
+            
+            Perfil p = new Perfil();
+            p.setIdperfil(rs.getInt("u.idperfil"));
+            p.setNome(rs.getString("p.nome"));
+            u.setPerfil(p);
+        }
+        
+        this.desconectar();
+        return u;
+        
+    }
+    
 }
