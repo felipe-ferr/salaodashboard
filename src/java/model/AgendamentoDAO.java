@@ -26,7 +26,6 @@ public class AgendamentoDAO extends DatabaseDAO {
             Agendamento a = new Agendamento();
             a.setIdagendamento(rs.getInt("a.idagendamento"));
             a.setData(rs.getDate("a.data"));
-            a.setValor(rs.getFloat("a.valor"));
             a.setStatus(rs.getInt("a.status"));
             a.setDescricao(rs.getString("a.descricao"));
             a.setData_cadastro(rs.getDate("a.data_cadastro"));
@@ -62,24 +61,23 @@ public class AgendamentoDAO extends DatabaseDAO {
             String sql;
             this.conectar();
             if(a.getIdagendamento()==0){
-                sql = "INSERT INTO agendamento(data, valor, status, descricao, data_cadastro, horario, idservico, idcliente, idusuario) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                sql = "INSERT INTO agendamento(data, status, descricao, data_cadastro, horario, idservico, idcliente, idusuario) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
             }else{
-                sql = "UPDATE agendamento SET data=?, valor=?, status=?, descricao=?, data_cadastro=?, horario=?, idservico=?, idcliente=?, idusuario=? WHERE idagendamento=?"; 
+                sql = "UPDATE agendamento SET data=?, status=?, descricao=?, data_cadastro=?, horario=?, idservico=?, idcliente=?, idusuario=? WHERE idagendamento=?"; 
             }
 
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setDate(1, new Date(a.getData().getTime()) );
-            pstm.setFloat(2, a.getValor());
-            pstm.setInt(3, a.getStatus());
-            pstm.setString(4, a.getDescricao());
-            pstm.setDate(5, new Date(a.getData_cadastro().getTime()) );
-            pstm.setString(6, a.getHorario());
-            pstm.setInt(7, a.getServico().getIdservico());
-            pstm.setInt(8, a.getCliente().getIdcliente());
-            pstm.setInt(9, a.getUsuario().getIdusuario());
+            pstm.setInt(2, a.getStatus());
+            pstm.setString(3, a.getDescricao());
+            pstm.setDate(4, new Date(a.getData_cadastro().getTime()) );
+            pstm.setString(5, a.getHorario());
+            pstm.setInt(6, a.getServico().getIdservico());
+            pstm.setInt(7, a.getCliente().getIdcliente());
+            pstm.setInt(8, a.getUsuario().getIdusuario());
 
             if(a.getIdagendamento()>0){
-                pstm.setInt(10, a.getIdagendamento());
+                pstm.setInt(9, a.getIdagendamento());
             }
 
             pstm.execute();

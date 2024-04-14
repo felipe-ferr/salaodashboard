@@ -55,7 +55,6 @@ public class GerenciarAgendamento extends HttpServlet {
         PrintWriter out = response.getWriter();
         String idagendamento = request.getParameter("idagendamento");
         String data = request.getParameter("data");
-        String valor = request.getParameter("valor");
         String status = request.getParameter("status");
         String descricao = request.getParameter("descricao");
         String data_cadastro = request.getParameter("data_cadastro");
@@ -73,14 +72,13 @@ public class GerenciarAgendamento extends HttpServlet {
                 a.setIdagendamento(Integer.parseInt(idagendamento));
             }
 
-            if (data.equals("") || valor.equals("") || status.equals("") || data_cadastro.equals("") || horario.equals("") || idservico.equals("") || idcliente.equals("") || idusuario.equals("")) {
+            if (data.equals("") || status.equals("") || data_cadastro.equals("") || horario.equals("") || idservico.equals("") || idcliente.equals("") || idusuario.equals("")) {
                 mensagem = "Campos obrigatórios deverão ser preenchidos";
             } else {
 
                 if (!data.isEmpty()) {
                     a.setData(df.parse(data));
                 }
-                a.setValor(Float.parseFloat(valor));
                 a.setStatus(Integer.parseInt(status));
                 a.setDescricao(descricao);
                 if (!data_cadastro.isEmpty()) {

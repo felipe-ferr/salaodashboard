@@ -65,8 +65,8 @@
                         <tr>
                             <th style="text-align:left;">ID</th>
                             <th style="text-align:left;">Nome</th>
-                            <th style="text-align:left;">Duração</th>
                             <th style="text-align:left;">Valor</th>
+                            <th style="text-align:left;">Descrição</th>
                             <th style="text-align:left;">Status</th>
                             <th style="text-align:left;">Ações</th>
                         </tr>

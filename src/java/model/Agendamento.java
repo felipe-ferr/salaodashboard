@@ -7,7 +7,6 @@ public class Agendamento {
     
     private int idagendamento;
     private Date data;
-    private float valor;
     private int status;
     private String descricao;
     private Date data_cadastro;
@@ -33,14 +32,6 @@ public class Agendamento {
 
     public void setData(Date data) {
         this.data = data;
-    }
-
-    public float getValor() {
-        return valor;
-    }
-
-    public void setValor(float valor) {
-        this.valor = valor;
     }
 
     public int getStatus() {
@@ -99,10 +90,9 @@ public class Agendamento {
         this.usuario = usuario;
     }
 
-    public Agendamento(int idagendamento, Date data, float valor, int status, String descricao, Date data_cadastro, String horario, Servico servico, Cliente cliente, Usuario usuario) {
+    public Agendamento(int idagendamento, Date data, int status, String descricao, Date data_cadastro, String horario, Servico servico, Cliente cliente, Usuario usuario) {
         this.idagendamento = idagendamento;
         this.data = data;
-        this.valor = valor;
         this.status = status;
         this.descricao = descricao;
         this.data_cadastro = data_cadastro;
@@ -114,10 +104,8 @@ public class Agendamento {
 
     @Override
     public String toString() {
-        return "Agendamento{" + "idagendamento=" + idagendamento + ", data=" + data + ", valor=" + valor + ", status=" + status + ", descricao=" + descricao + ", data_cadastro=" + data_cadastro + ", horario=" + horario + ", servico=" + servico + ", cliente=" + cliente + ", usuario=" + usuario + '}';
+        return "Agendamento{" + "idagendamento=" + idagendamento + ", data=" + data + ", status=" + status + ", descricao=" + descricao + ", data_cadastro=" + data_cadastro + ", horario=" + horario + ", servico=" + servico + ", cliente=" + cliente + ", usuario=" + usuario + '}';
     }
 
-  
-    
     
 }
