@@ -33,14 +33,14 @@ public class PerfilDAO extends DatabaseDAO{
             if(p.getIdperfil()==0){
                 sql = "INSERT INTO perfil(nome) VALUES(?)";
             }else{
-                sql = "UPDATE perfil SET nome=?, WHERE idperfil=?"; 
+                sql = "UPDATE perfil SET nome=? WHERE idperfil=?"; 
             }
 
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setString(1,p.getNome());
 
             if(p.getIdperfil()>0){
-                pstm.setInt(3,p.getIdperfil());
+                pstm.setInt(2,p.getIdperfil());
             }
 
             pstm.execute();

@@ -46,7 +46,7 @@ public class ServicoDAO extends DatabaseDAO{
             pstm.setInt(4,s.getStatus());
 
             if(s.getIdservico()>0){
-                pstm.setInt(6,s.getIdservico());
+                pstm.setInt(5,s.getIdservico());
             }
 
             pstm.execute();

@@ -26,6 +26,10 @@
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        
+        
+        
+        <script src="static/js/bulmadatatable.js"></script>
 
         <script type="text/javascript"> // adicionei aqui por conta do método de exclusão 
             function confirmarExclusão(id, nome) {
@@ -34,9 +38,6 @@
                 }
             }
         </script>
-
-        <script src="static/js/bulmadatatable.js"></script>
-
 
 
 
