@@ -36,16 +36,10 @@
                     <h1>Cadastrar Agendamento</h1>
 
                     <input type="hidden" name="idagendamento" value="${agendamento.idagendamento}"/>
-<<<<<<< Updated upstream
 
                         
                     <div class="inputContainer">
                         <input required type="text"name="data" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${agendamento.data}"/>">
-=======
-              
-                         <div class="inputContainer">
-                             <input required type="text"name="data" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${agendamento.data}"/>">
->>>>>>> Stashed changes
                         <p>Data:</p>
                         <i class="material-symbols-outlined">cut</i>
                     </div>
