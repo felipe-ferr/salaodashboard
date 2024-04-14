@@ -48,11 +48,6 @@
                         <i class="material-symbols-outlined">description</i>
                     </div>
 
-                    <select name="status" class="select">
-                        <option value="1">Ativo</option>
-                        <option value="0">Inativo</option>
-                    </select>
-
                     <div class="inputContainer">
                         <input required type="text" name="descricao" value="${agendamento.descricao}">
                         <p>Descrição:</p>
@@ -73,7 +68,12 @@
 
 
 
+                    
 
+                    <select name="status" class="select">
+                        <option value="1">Ativo</option>
+                        <option value="0">Inativo</option>
+                    </select>
 
 
                     <select name="idservico" class="select">

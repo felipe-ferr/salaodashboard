@@ -147,11 +147,6 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       out.write("                        <i class=\"material-symbols-outlined\">description</i>\r\n");
       out.write("                    </div>\r\n");
       out.write("\r\n");
-      out.write("                    <select name=\"status\" class=\"select\">\r\n");
-      out.write("                        <option value=\"1\">Ativo</option>\r\n");
-      out.write("                        <option value=\"0\">Inativo</option>\r\n");
-      out.write("                    </select>\r\n");
-      out.write("\r\n");
       out.write("                    <div class=\"inputContainer\">\r\n");
       out.write("                        <input required type=\"text\" name=\"descricao\" value=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${agendamento.descricao}", java.lang.String.class, (PageContext)_jspx_page_context, null));
@@ -178,7 +173,12 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
+      out.write("                    \r\n");
       out.write("\r\n");
+      out.write("                    <select name=\"status\" class=\"select\">\r\n");
+      out.write("                        <option value=\"1\">Ativo</option>\r\n");
+      out.write("                        <option value=\"0\">Inativo</option>\r\n");
+      out.write("                    </select>\r\n");
       out.write("\r\n");
       out.write("\r\n");
       out.write("                    <select name=\"idservico\" class=\"select\">\r\n");
