@@ -1,9 +1,4 @@
-@ -0,0 +1,81 @@
-<%-- 
-    Document   : form_cliente
-    Created on : 02/04/2024, 08:29:35
-    Author     : 349550
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,13 +12,34 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 
+        <script type="text/javascript" src="static/js/mascaras.js"></script>
         <title>JSP Page</title>
+
+        <script>
+            function mTel(tel) {
+                tel = tel.replace(/\D/g, "");
+                tel = tel.replace(/^(\d)/, "($1");
+                tel = tel.replace(/(.{3})(\d)/, "$1)$2")
+                if (tel.length == 9) {
+                    tel = tel.replace(/(.{1})$/, "-$1")
+                } else if (tel.length == 10) {
+                    tel = tel.replace(/(.{2})$/, "-$1")
+                } else if (tel.length == 11) {
+                    tel = tel.replace(/(.{3})$/, "-$1")
+                } else if (tel.length == 12) {
+                    tel = tel.replace(/(.{4})$/, "-$1")
+                } else if (tel.length > 12) {
+                    tel = tel.replace(/(.{4})$/, "-$1")
+                }
+                return tel;
+            }
+        </script>
 
     </head>
     <body>
 
         <div class="grid-container">
-            <%@include file="sidebar.jsp" %>
+            <%@include file="sidebar.jsp"%>
 
             <div class="container-principal">
                 <form method="POST"action="gerenciar_cliente.do" value="">
@@ -44,14 +60,14 @@
 
                     <div class="inputContainerRow">
                         <div class="inputContainer">
-                            <input required type="number" name="cpf" value="${cliente.cpf}">
+                            <input required oninput="mascara(this)" type="text" name="cpf" value="${cliente.cpf}">
                             <p>CPF: </p>
                             <i class="material-symbols-outlined">description</i>
                         </div>
 
 
                         <div class="inputContainer">
-                            <input required type="number" name="telefone" value="${cliente.telefone}">
+                            <input required type="text" name="telefone" value="${cliente.telefone}">
                             <p>Telefone: </p>
                             <i class="material-symbols-outlined">phone</i>
                         </div>

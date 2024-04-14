@@ -5,6 +5,7 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -36,16 +37,18 @@
 
                     <input type="hidden" name="idagendamento" value="${agendamento.idagendamento}"/>
 
-                    <div class="inputContainer">
-                        <input required type="text"name="data" value="${agendamento.data}">
-                        <p>Data:</p>
-                        <i class="material-symbols-outlined">cut</i>
-                    </div>
+                   
 
                     <div class="inputContainer">
                         <input required type="text" name="valor" value="${agendamento.valor}">
                         <p>Valor:</p>
                         <i class="material-symbols-outlined">description</i>
+                    </div>
+                        
+                         <div class="inputContainer">
+                             <input required type="text"name="data" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${agendamento.data}"/>">
+                        <p>Data:</p>
+                        <i class="material-symbols-outlined">cut</i>
                     </div>
 
                     <select name="status" class="select">
@@ -59,7 +62,7 @@
                         <i class="material-symbols-outlined">account_circle</i>
                     </div>
                     <div class="inputContainer">
-                        <input required type="text" name="data_cadastro" value="${agendamento.data_cadastro}">
+                        <input required type="text" name="data_cadastro" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${agendamento.data_cadastro}"/>">
                         <p>Data de Agendamento</p>
                         <i class="material-symbols-outlined">key</i>
                     </div>

@@ -7,6 +7,8 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,7 +37,7 @@ public class GerenciarAgendamento extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
 
     /**
@@ -49,7 +51,7 @@ public class GerenciarAgendamento extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         PrintWriter out = response.getWriter();
         String idagendamento = request.getParameter("idagendamento");
         String data = request.getParameter("data");
@@ -61,57 +63,59 @@ public class GerenciarAgendamento extends HttpServlet {
         String idservico = request.getParameter("idservico");
         String idcliente = request.getParameter("idcliente");
         String idusuario = request.getParameter("idusuario");
-        
-        String mensagem = "";
-        
-        Agendamento a = new Agendamento();
-        if(!idagendamento.isEmpty()){
-            a.setIdagendamento(Integer.parseInt(idagendamento));
-        }
-            
-        if(data.equals("")||valor.equals("")||status.equals("")||data_cadastro.equals("")||horario.equals("")||idservico.equals("")||idcliente.equals("")||idusuario.equals("")){
-            mensagem = "Campos obrigatórios deverão ser preenchidos";
-        }else{
-            
-            a.setData(data);
-            a.setValor(Float.parseFloat(valor));
-            a.setStatus(Integer.parseInt(status));
-            a.setDescricao(descricao);
-            a.setData_cadastro(data_cadastro);
-            a.setHorario(horario);
-            
-            Servico s = new Servico();
-            s.setIdservico(Integer.parseInt(idservico));
-            a.setServico(s);
-            
-            Cliente c = new Cliente();
-            c.setIdcliente(Integer.parseInt(idcliente));
-            a.setCliente(c);
-            
-            Usuario u = new Usuario();
-            u.setIdusuario(Integer.parseInt(idusuario));
-            a.setUsuario(u);
 
-            try{
-                
-                AgendamentoDAO aDAO = new AgendamentoDAO();
-                if(aDAO.gravar(a)){
-                    mensagem = "Gravado com sucesso!";
-                }else{
-                    mensagem = "Erro ao gravar no banco de dados!";
-                }
-                
-            }catch(Exception e){
-                out.print(e);
-                mensagem = "Erro ao executar";
+        String mensagem = "";
+        try {
+            SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+            Agendamento a = new Agendamento();
+            AgendamentoDAO aDAO = new AgendamentoDAO();
+            if (!idagendamento.isEmpty()) {
+                a.setIdagendamento(Integer.parseInt(idagendamento));
             }
 
-            out.println("<script type='text/javascript'>");
-            out.println("alert('"+mensagem+"');");
-            out.println("location.href='listar_agendamento.jsp';");
-            out.println("</script>");
+            if (data.equals("") || valor.equals("") || status.equals("") || data_cadastro.equals("") || horario.equals("") || idservico.equals("") || idcliente.equals("") || idusuario.equals("")) {
+                mensagem = "Campos obrigatórios deverão ser preenchidos";
+            } else {
+
+                if (!data.isEmpty()) {
+                    a.setData(df.parse(data));
+                }
+                a.setValor(Float.parseFloat(valor));
+                a.setStatus(Integer.parseInt(status));
+                a.setDescricao(descricao);
+                if (!data_cadastro.isEmpty()) {
+                    a.setData_cadastro(df.parse(data_cadastro));
+                }
+                a.setHorario(horario);
+
+                Servico s = new Servico();
+                s.setIdservico(Integer.parseInt(idservico));
+                a.setServico(s);
+
+                Cliente c = new Cliente();
+                c.setIdcliente(Integer.parseInt(idcliente));
+                a.setCliente(c);
+
+                Usuario u = new Usuario();
+                u.setIdusuario(Integer.parseInt(idusuario));
+                a.setUsuario(u);
+
+                if (aDAO.gravar(a)) {
+                    mensagem = "Gravado com sucesso!";
+                } else {
+                    mensagem = "Erro ao gravar no banco de dados!";
+                }
+            }
+
+        } catch (Exception e) {
+            out.print(e);
+            mensagem = "Erro ao executar";
         }
-        
+
+        out.println("<script type='text/javascript'>");
+        out.println("alert('" + mensagem + "');");
+        out.println("location.href='listar_agendamento.jsp';");
+        out.println("</script>");
     }
 
     /**
