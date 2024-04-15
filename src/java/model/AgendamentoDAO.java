@@ -77,6 +77,7 @@ public class AgendamentoDAO extends DatabaseDAO {
             pstm.setInt(7, a.getServico().getIdservico());
             pstm.setInt(8, a.getCliente().getIdcliente());
             pstm.setInt(9, a.getUsuario().getIdusuario());
+            
 
             if(a.getIdagendamento()>0){
                 pstm.setInt(10, a.getIdagendamento());
@@ -95,39 +96,45 @@ public class AgendamentoDAO extends DatabaseDAO {
     public Agendamento getCarregaPorID(int idagendamento) throws Exception{
         
         Agendamento a = new Agendamento();
-        String sql = "SELECT a.*, s.servico, c.cliente, u.usuario FROM agendamento a "
-                + "INNER JOIN servico s ON s.idservico = a.idservico "
-                + "INNER JOIN cliente c ON c.idcliente = a.idcliente "
-                + "INNER JOIN usuario u ON u.idusuario = a.idusuario "
-                + "WHERE a.idagendamento=? ";
+        String sql = "SELECT * FROM agendamento WHERE idagendamento=?";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setInt(1, idagendamento);
         ResultSet rs = pstm.executeQuery();
         
         if(rs.next()){
-            a.setIdagendamento(rs.getInt("a.idagendamento"));
-            a.setValor(rs.getFloat("a.valor"));
-            a.setData(rs.getDate("a.data"));
-            a.setStatus(rs.getInt("a.status"));
-            a.setDescricao(rs.getString("a.descricao"));
-            a.setData_cadastro(rs.getDate("a.data_cadastro"));
-            a.setHorario(rs.getString("a.horario"));
+            a.setIdagendamento(rs.getInt("idagendamento"));
+            a.setValor(rs.getFloat("valor"));
+            a.setData(rs.getDate("data"));
+            a.setStatus(rs.getInt("status"));
+            a.setDescricao(rs.getString("descricao"));
+            a.setData_cadastro(rs.getDate("data_cadastro"));
+            a.setHorario(rs.getString("horario"));
             
             Servico s = new Servico();
-            s.setIdservico(rs.getInt("a.idservico"));
+            s.setIdservico(rs.getInt("s.idservico"));
             s.setNome(rs.getString("s.nome"));
+            s.setDescricao(rs.getString("s.descricao"));
+            s.setStatus(rs.getInt("s.status"));
+            a.setServico(s);
             
             Cliente c = new Cliente();
-            c.setIdcliente(rs.getInt("a.idcliente"));
+            c.setIdcliente(rs.getInt("c.idcliente"));
             c.setNome(rs.getString("c.nome"));
+            c.setCpf(rs.getString("c.cpf"));
+            c.setTelefone(rs.getString("c.telefone"));
+            c.setEmail(rs.getString("c.email"));
+            c.setStatus(rs.getInt("c.status"));
+            a.setCliente(c);
             
             Usuario u = new Usuario();
-            u.setIdusuario(rs.getInt("a.idusuario"));
+            u.setIdusuario(rs.getInt("u.idusuario"));
             u.setNome(rs.getString("u.nome"));
-            
-            a.setServico(s);
-            a.setCliente(c);
+            u.setCpf(rs.getString("u.cpf"));
+            u.setTelefone(rs.getString("u.telefone"));
+            u.setLogin(rs.getString("u.login"));
+            u.setSenha(rs.getString("u.senha"));
+            u.setStatus(rs.getInt("u.status"));
             a.setUsuario(u);
 
         }
