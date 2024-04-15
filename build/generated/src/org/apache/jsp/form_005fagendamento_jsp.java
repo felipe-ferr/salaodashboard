@@ -135,6 +135,13 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${agendamento.idagendamento}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("\"/>\r\n");
       out.write("\r\n");
+      out.write("                    <div class=\"inputContainer\">\r\n");
+      out.write("                        <input required type=\"number\" name=\"valor\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${agendamento.valor}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("\">\r\n");
+      out.write("                        <p>Valor</p>\r\n");
+      out.write("                        <i class=\"material-symbols-outlined\">account_circle</i>\r\n");
+      out.write("                    </div>\r\n");
       out.write("                        \r\n");
       out.write("                    <div class=\"inputContainer\">\r\n");
       out.write("                        <input required type=\"text\"name=\"data\" value=\"");
@@ -180,6 +187,7 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       out.write("                    </select>\r\n");
       out.write("\r\n");
       out.write("\r\n");
+      out.write("\r\n");
       out.write("                    <select name=\"idservico\" class=\"select\">\r\n");
       out.write("                        <option value=\"\">Selecionar Serviço</option>\r\n");
       out.write("                        ");
@@ -191,13 +199,14 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
           _jspx_page_context.setAttribute("servico", servico, PageContext.PAGE_SCOPE);
         }
       }
-      out.write("\r\n");
+      out.write("                   \r\n");
       out.write("                        ");
       if (_jspx_meth_c_forEach_0(_jspx_page_context))
         return;
       out.write("\r\n");
       out.write("\r\n");
       out.write("                    </select>\r\n");
+      out.write("          \r\n");
       out.write("\r\n");
       out.write("                    <select name=\"idcliente\" class=\"select\">\r\n");
       out.write("                        <option value=\"\">Selecionar Cliente</option>\r\n");
@@ -325,7 +334,7 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
           out.write('>');
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${s.nome}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("</option>\r\n");
-          out.write("\r\n");
+          out.write("                            \r\n");
           out.write("                        ");
           int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)

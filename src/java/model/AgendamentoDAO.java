@@ -96,13 +96,15 @@ public class AgendamentoDAO extends DatabaseDAO {
     public Agendamento getCarregaPorID(int idagendamento) throws Exception{
         
         Agendamento a = new Agendamento();
-        String sql = "SELECT * FROM agendamento WHERE idagendamento=?";
+        String sql = "Select a.*, s.nome, c.nome, u.nome FROM agendamento a "
+                + "INNER JOIN servico s ON s.idservico = a.idservico " 
+                + "INNER JOIN cliente c ON c.idcliente = a.idcliente "
+                + "INNER JOIN usuario u ON u.idusuario = a.idusuario ";
         this.conectar();
-        PreparedStatement pstm = conn.prepareStatement(sql);
-        pstm.setInt(1, idagendamento);
-        ResultSet rs = pstm.executeQuery();
+        Statement stm = conn.createStatement();
+        ResultSet rs = stm.executeQuery(sql);
         
-        if(rs.next()){
+        while(rs.next()){
             a.setIdagendamento(rs.getInt("idagendamento"));
             a.setValor(rs.getFloat("valor"));
             a.setData(rs.getDate("data"));
@@ -112,29 +114,18 @@ public class AgendamentoDAO extends DatabaseDAO {
             a.setHorario(rs.getString("horario"));
             
             Servico s = new Servico();
-            s.setIdservico(rs.getInt("s.idservico"));
+            s.setIdservico(rs.getInt("a.idservico"));
             s.setNome(rs.getString("s.nome"));
-            s.setDescricao(rs.getString("s.descricao"));
-            s.setStatus(rs.getInt("s.status"));
             a.setServico(s);
             
             Cliente c = new Cliente();
-            c.setIdcliente(rs.getInt("c.idcliente"));
+            c.setIdcliente(rs.getInt("a.idcliente"));
             c.setNome(rs.getString("c.nome"));
-            c.setCpf(rs.getString("c.cpf"));
-            c.setTelefone(rs.getString("c.telefone"));
-            c.setEmail(rs.getString("c.email"));
-            c.setStatus(rs.getInt("c.status"));
             a.setCliente(c);
             
             Usuario u = new Usuario();
-            u.setIdusuario(rs.getInt("u.idusuario"));
+            u.setIdusuario(rs.getInt("a.idusuario"));
             u.setNome(rs.getString("u.nome"));
-            u.setCpf(rs.getString("u.cpf"));
-            u.setTelefone(rs.getString("u.telefone"));
-            u.setLogin(rs.getString("u.login"));
-            u.setSenha(rs.getString("u.senha"));
-            u.setStatus(rs.getInt("u.status"));
             a.setUsuario(u);
 
         }
