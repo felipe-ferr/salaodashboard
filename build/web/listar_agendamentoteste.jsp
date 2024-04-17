@@ -22,6 +22,8 @@
         <link rel="stylesheet" href="./static/css/menu.css">
         <link rel="stylesheet" href="./static/css/testetabelas.css">
 
+
+
         <link rel="preconnect" href="https://fontc.googleapic.com">
         <link rel="preconnect" href="https://fontc.gstatic.com" crossorigin>
         <link href="https://fontc.googleapic.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
@@ -38,7 +40,8 @@
         </script>
 
 
-
+        <script src="./static/js/jquery.easyPaginate.js"></script>
+        <script src="./static/js/pagination.js"></script>
 
 
 
@@ -67,16 +70,8 @@
 
 
 
-                <mat-paginator 
-                    (page)="onPageChange($event)"
-                    [length]="100"
-                    [pageSize]="5"
-                    [pageSizeOptions]="[5, 10, 25, 100]">
-                </mat-paginator>
-                <div *ngFor="let item of currentItemsToShow, let i=index;"></div>
 
-
-                <div  class="tabela-container">
+                <div class="tabela-container">
                     <div class="thead">
                         <div>ID</div>
                         <div>Valor</div>
@@ -96,11 +91,11 @@
                     <c:forEach var="a" items="${a.lista}">
 
 
-                        <div id="table" class="tabela td">
+                        <div class="tabela td content">
 
-                            <div>${a.idagendamento}</span></div>
-                            <div>${a.valor}</span></div>
-                            <div><fmt:formatDate pattern="dd/MM/yyyy" value="${a.data}"/></span></div>
+                            <div>${a.idagendamento}</div>
+                            <div>${a.valor}</div>
+                            <div><fmt:formatDate pattern="dd/MM/yyyy" value="${a.data}"/></div>
                             <div>
 
                                 <c:if test="${a.status==1}">
@@ -109,14 +104,14 @@
                                 <c:if test="${a.status==0}">
                                     Inativo
                                 </c:if>
-                                </span>
+
                             </div>
-                            <div>${a.descricao}</span></div>
-                            <div><fmt:formatDate pattern="dd/MM/yyyy" value="${a.data_cadastro}"/></span></div>
-                            <div>${a.horario}</span></div>
-                            <div>${a.servico.nome}</span></div>
-                            <div>${a.cliente.nome}</span></div>
-                            <div>${a.usuario.nome}</span></div>
+                            <div>${a.descricao}</div>
+                            <div><fmt:formatDate pattern="dd/MM/yyyy" value="${a.data_cadastro}"/></div>
+                            <div>${a.horario}</div>
+                            <div>${a.servico.nome}</div>
+                            <div>${a.cliente.nome}</div>
+                            <div>${a.usuario.nome}</div>
 
                             <div class="acoes-div">
                                 <button class="botao-acoes" onclick="confirmarExclusão(${a.idagendamento})">
@@ -130,6 +125,9 @@
 
                     </c:forEach>
                 </div>
+                <ul id="pagin">
+
+                </ul>
 
 
 
@@ -146,6 +144,9 @@
         <script type="text/javascript" src="static/js/modoescuro.js"></script>
         <script type="text/javascript" src="static/js/sumirTextoTextarea.js"></script>
         <script type="text/javascript" src="static/js/PesquisaTabela.js"></script>
+        <script src="./static/js/jquery.easyPaginate.js"></script>
+        <script src="./static/js/pagination.js"></script>
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
 
 
     </body>
