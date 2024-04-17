@@ -62,12 +62,21 @@
                 </div>
 
                 <div class="titulo-botao-container">
-                    <input type="text" placeholder="Procurar.." onkeyup="pesquisar()" id="pesquisainput">
+                    <input type="search" placeholder="Procurar.." oninput="liveSearch()" id="pesquisainput">
                 </div>
 
 
 
-                <div class="tabela-container">
+                <mat-paginator 
+                    (page)="onPageChange($event)"
+                    [length]="100"
+                    [pageSize]="5"
+                    [pageSizeOptions]="[5, 10, 25, 100]">
+                </mat-paginator>
+                <div *ngFor="let item of currentItemsToShow, let i=index;"></div>
+
+
+                <div  class="tabela-container">
                     <div class="thead">
                         <div>ID</div>
                         <div>Valor</div>
@@ -87,13 +96,13 @@
                     <c:forEach var="a" items="${a.lista}">
 
 
-                        <div id="table" class="tabela">
+                        <div id="table" class="tabela td">
 
-                            <div><span>${a.idagendamento}</span></div>
-                            <div><span>${a.valor}</span></div>
-                            <div><span><fmt:formatDate pattern="dd/MM/yyyy" value="${a.data}"/></span></div>
+                            <div>${a.idagendamento}</span></div>
+                            <div>${a.valor}</span></div>
+                            <div><fmt:formatDate pattern="dd/MM/yyyy" value="${a.data}"/></span></div>
                             <div>
-                                <span>
+
                                 <c:if test="${a.status==1}">
                                     Ativo
                                 </c:if>
@@ -102,12 +111,12 @@
                                 </c:if>
                                 </span>
                             </div>
-                            <div><span>${a.descricao}</span></div>
-                            <div><span><fmt:formatDate pattern="dd/MM/yyyy" value="${a.data_cadastro}"/></span></div>
-                            <div><span>${a.horario}</span></div>
-                            <div><span>${a.servico.nome}</span></div>
-                            <div><span>${a.cliente.nome}</span></div>
-                            <div><span>${a.usuario.nome}</span></div>
+                            <div>${a.descricao}</span></div>
+                            <div><fmt:formatDate pattern="dd/MM/yyyy" value="${a.data_cadastro}"/></span></div>
+                            <div>${a.horario}</span></div>
+                            <div>${a.servico.nome}</span></div>
+                            <div>${a.cliente.nome}</span></div>
+                            <div>${a.usuario.nome}</span></div>
 
                             <div class="acoes-div">
                                 <button class="botao-acoes" onclick="confirmarExclusão(${a.idagendamento})">

@@ -83,6 +83,7 @@ public final class listar_005fagendamentoteste_jsp extends org.apache.jasper.run
       out.write("        <link rel=\"stylesheet\" href=\"./static/bulma/font-awesome.min.css\">\n");
       out.write("        <link rel=\"stylesheet\" href=\"./static/bulma/css/bulma.css\">\n");
       out.write("        <link rel=\"stylesheet\" href=\"./static/css/menu.css\">\n");
+      out.write("        <link rel=\"stylesheet\" href=\"./static/css/testetabelas.css\">\n");
       out.write("\n");
       out.write("        <link rel=\"preconnect\" href=\"https://fontc.googleapic.com\">\n");
       out.write("        <link rel=\"preconnect\" href=\"https://fontc.gstatic.com\" crossorigin>\n");
@@ -162,24 +163,26 @@ public final class listar_005fagendamentoteste_jsp extends org.apache.jasper.run
       out.write("                    <a href=\"form_agendamento.jsp\">Adicionar Agendamento<i class=\"material-symbols-outlined\">add</i></a>\n");
       out.write("                </div>\n");
       out.write("\n");
+      out.write("                <div class=\"titulo-botao-container\">\n");
+      out.write("                    <input type=\"text\" placeholder=\"Procurar..\" onkeyup=\"pesquisar()\" id=\"pesquisainput\">\n");
+      out.write("                </div>\n");
       out.write("\n");
-      out.write("                <table class=\"table is-hoverable is-striped\" id=\"listarAgendamento\">    \n");
-      out.write("                    <thead>\n");
-      out.write("                        <tr>\n");
-      out.write("                            <th style=\"text-align:left;\">ID</th>\n");
-      out.write("                            <th style=\"text-align:left;\">Valor</th>\n");
-      out.write("                            <th style=\"text-align:left;\">Data</th>\n");
-      out.write("                            <th style=\"text-align:left;\">Status</th>\n");
-      out.write("                            <th style=\"text-align:left;\">Descrição</th>\n");
-      out.write("                            <th style=\"text-align:left;\">Data de Cadastro</th>\n");
-      out.write("                            <th style=\"text-align:left;\">Horario</th>\n");
-      out.write("                            <th style=\"text-align:left;\">Servico</th>\n");
-      out.write("                            <th style=\"text-align:left;\">Cliente</th>\n");
-      out.write("                            <th style=\"text-align:left;\">Usuário</th>\n");
-      out.write("                            <th style=\"text-align:left;\">Ações</th>\n");
-      out.write("                        </tr>\n");
-      out.write("                    </thead>\n");
       out.write("\n");
+      out.write("\n");
+      out.write("                <div class=\"tabela-container\">\n");
+      out.write("                    <div class=\"thead\">\n");
+      out.write("                        <div>ID</div>\n");
+      out.write("                        <div>Valor</div>\n");
+      out.write("                        <div>Data</div>\n");
+      out.write("                        <div>Status</div>\n");
+      out.write("                        <div>Descrição</div>\n");
+      out.write("                        <div>Data de Agendamento</div>\n");
+      out.write("                        <div>Horário</div>\n");
+      out.write("                        <div>Serviço</div>\n");
+      out.write("                        <div>Cliente</div>\n");
+      out.write("                        <div>Usuário</div>\n");
+      out.write("                        <div>Ações</div>\n");
+      out.write("                    </div>\n");
       out.write("\n");
       out.write("                    ");
       model.AgendamentoDAO a = null;
@@ -191,13 +194,14 @@ public final class listar_005fagendamentoteste_jsp extends org.apache.jasper.run
         }
       }
       out.write("\n");
-      out.write("                    <tbody>\n");
-      out.write("                        ");
+      out.write("\n");
+      out.write("                    ");
       if (_jspx_meth_c_forEach_0(_jspx_page_context))
         return;
       out.write("\n");
-      out.write("                    </tbody>\n");
-      out.write("                </table> \n");
+      out.write("                </div>\n");
+      out.write("\n");
+      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("            </div>\n");
@@ -211,6 +215,7 @@ public final class listar_005fagendamentoteste_jsp extends org.apache.jasper.run
       out.write("        <script src=\"./static/js/bulmadatatableagendamento.js\"></script>\n");
       out.write("        <script type=\"text/javascript\" src=\"static/js/modoescuro.js\"></script>\n");
       out.write("        <script type=\"text/javascript\" src=\"static/js/sumirTextoTextarea.js\"></script>\n");
+      out.write("        <script type=\"text/javascript\" src=\"static/js/PesquisaTabela.js\"></script>\n");
       out.write("\n");
       out.write("\n");
       out.write("    </body>\n");
@@ -245,62 +250,66 @@ public final class listar_005fagendamentoteste_jsp extends org.apache.jasper.run
         do {
           out.write("\n");
           out.write("\n");
-          out.write("                            <tr>\n");
-          out.write("                                <td>");
+          out.write("\n");
+          out.write("                        <div id=\"table\" class=\"tabela\">\n");
+          out.write("\n");
+          out.write("                            <div><span class=\"td\">");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.idagendamento}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</td>\n");
-          out.write("                                <td>");
+          out.write("</span></div>\n");
+          out.write("                            <div><span class=\"td\">");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.valor}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</td>\n");
-          out.write("                                <td>");
+          out.write("</span></div>\n");
+          out.write("                            <div><span class=\"td\">");
           if (_jspx_meth_fmt_formatDate_0((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
             return true;
-          out.write("</td>\n");
-          out.write("                                <td>\n");
-          out.write("                                    ");
+          out.write("</span></div>\n");
+          out.write("                            <div>\n");
+          out.write("                                <span class=\"td\">\n");
+          out.write("                                ");
           if (_jspx_meth_c_if_0((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
             return true;
           out.write("\n");
-          out.write("                                    ");
+          out.write("                                ");
           if (_jspx_meth_c_if_1((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
             return true;
           out.write("\n");
-          out.write("                                </td>\n");
-          out.write("                                <td>");
+          out.write("                                </span>\n");
+          out.write("                            </div>\n");
+          out.write("                            <div><span class=\"td\">");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.descricao}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</td>\n");
-          out.write("                                <td>");
+          out.write("</span></div>\n");
+          out.write("                            <div><span class=\"td\">");
           if (_jspx_meth_fmt_formatDate_1((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
             return true;
-          out.write("</td>\n");
-          out.write("                                <td>");
+          out.write("</span></div>\n");
+          out.write("                            <div><span class=\"td\">");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.horario}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</td>\n");
-          out.write("                                <td>");
+          out.write("</span></div>\n");
+          out.write("                            <div><span class=\"td\">");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.servico.nome}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</td>\n");
-          out.write("                                <td>");
+          out.write("</span></div>\n");
+          out.write("                            <div><span class=\"td\">");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.cliente.nome}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</td>\n");
-          out.write("                                <td>");
+          out.write("</span></div>\n");
+          out.write("                            <div><span class=\"td\">");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.usuario.nome}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</td>\n");
-          out.write("                                \n");
-          out.write("                                <td class=\"acoes-td\">\n");
-          out.write("                                    <button class=\"botao-acoes\" onclick=\"confirmarExclusão(");
+          out.write("</span></div>\n");
+          out.write("\n");
+          out.write("                            <div class=\"acoes-div\">\n");
+          out.write("                                <button class=\"botao-acoes\" onclick=\"confirmarExclusão(");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.idagendamento}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write(")\">\n");
-          out.write("                                        <i class=\"material-symbols-outlined\">delete</i>\n");
-          out.write("                                    </button>\n");
-          out.write("                                    <a class=\"botao-acoes\" href=\"gerenciar_agendamento.do?acao=alterar&idagendamento=");
+          out.write("                                    <i class=\"material-symbols-outlined\">delete</i>\n");
+          out.write("                                </button>\n");
+          out.write("                                <a class=\"botao-acoes\" href=\"gerenciar_agendamento.do?acao=alterar&idagendamento=");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.idagendamento}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("\">\n");
-          out.write("                                        <i class=\"material-symbols-outlined\">edit</i>\n");
-          out.write("                                    </a>\n");
-          out.write("                                </td>\n");
-          out.write("                            </tr>\n");
+          out.write("                                    <i class=\"material-symbols-outlined\">edit</i>\n");
+          out.write("                                </a>\n");
+          out.write("                            </div>\n");
+          out.write("                        </div>\n");
           out.write("\n");
-          out.write("                        ");
+          out.write("                    ");
           int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
             break;
@@ -352,8 +361,8 @@ public final class listar_005fagendamentoteste_jsp extends org.apache.jasper.run
     if (_jspx_eval_c_if_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\n");
-        out.write("                                        Ativo\n");
-        out.write("                                    ");
+        out.write("                                    Ativo\n");
+        out.write("                                ");
         int evalDoAfterBody = _jspx_th_c_if_0.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
           break;
@@ -380,8 +389,8 @@ public final class listar_005fagendamentoteste_jsp extends org.apache.jasper.run
     if (_jspx_eval_c_if_1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\n");
-        out.write("                                        Inativo\n");
-        out.write("                                    ");
+        out.write("                                    Inativo\n");
+        out.write("                                ");
         int evalDoAfterBody = _jspx_th_c_if_1.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
           break;

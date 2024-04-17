@@ -1,19 +1,19 @@
-function pesquisar() {
-    // Declare variables
-    var input, filter, table, div, a, i, txtValue;
-    input = document.getElementById('pesquisainput');
-    filter = input.value.toUpperCase();
-    table = document.getElementById("table");
-    div = table.getElementsByTagName('div');
-
-    // Loop through all divst items, and hide those who don't match the search query
-    for (i = 0; i < div.length; i++) {
-        a = div[i].getElementsByTagName("span")[0];
-        txtValue = a.textContent || a.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            div[i].style.display = "";
-        } else {
-            div[i].style.display = "none";
-        }
+function liveSearch() {
+  // Locate the card elements
+  let cards = document.querySelectorAll('.td')
+  // Locate the search input
+  let search_query = document.getElementById("pesquisainput").value;
+  // Loop through the cards
+  for (var i = 0; i < cards.length; i++) {
+    // If the text is within the card...
+    if(cards[i].innerText.toLowerCase()
+      // ...and the text matches the search query...
+      .includes(search_query.toLowerCase())) {
+        // ...remove the `.is-hidden` class.
+        cards[i].classList.remove("is-hidden");
+    } else {
+      // Otherwise, add the class.
+      cards[i].classList.add("is-hidden");
     }
+  }
 }

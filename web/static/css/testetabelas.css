@@ -10,6 +10,10 @@
 
 }
 
+.is-hidden { 
+    display: none; 
+}
+
 .tabela{
     display: flex;
     align-items: center;
