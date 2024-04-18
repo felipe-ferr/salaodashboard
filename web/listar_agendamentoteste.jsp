@@ -15,14 +15,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <link rel="stylesheet" href="./static/bulma/bulma.min.css">
-        <link rel="stylesheet" href="./static/bulma/dataTables.bulma.css">
-        <link rel="stylesheet" href="./static/bulma/font-awesome.min.css">
-        <link rel="stylesheet" href="./static/bulma/css/bulma.css">
         <link rel="stylesheet" href="./static/css/menu.css">
         <link rel="stylesheet" href="./static/css/testetabelas.css">
 
-
+        <script src="./static/bulma/jquery-3.7.1.js"></script>
+        <script type="text/javascript" src="static/js/PesquisaTabela.js"></script>
 
         <link rel="preconnect" href="https://fontc.googleapic.com">
         <link rel="preconnect" href="https://fontc.gstatic.com" crossorigin>
@@ -40,8 +37,8 @@
         </script>
 
 
-        <script src="./static/js/jquery.easyPaginate.js"></script>
         <script src="./static/js/pagination.js"></script>
+        <script src="./static/js/PesquisaTabela.js"></script>
 
 
 
@@ -71,7 +68,7 @@
 
 
 
-                <div class="tabela-container">
+                <div class="tabela-container container">
                     <div class="thead">
                         <div>ID</div>
                         <div>Valor</div>
@@ -91,7 +88,7 @@
                     <c:forEach var="a" items="${a.lista}">
 
 
-                        <div class="tabela td content">
+                        <div class="tabela td single-item">
 
                             <div>${a.idagendamento}</div>
                             <div>${a.valor}</div>
@@ -125,9 +122,7 @@
 
                     </c:forEach>
                 </div>
-                <ul id="pagin">
 
-                </ul>
 
 
 
@@ -138,15 +133,15 @@
 
 
         <script src="./static/bulma/jquery-3.7.1.js"></script>
-        <script src="./static/bulma/dataTables.js"></script>
-        <script src="./static/bulma/dataTables.bulma.js"></script>
-        <script src="./static/js/bulmadatatableagendamento.js"></script>
         <script type="text/javascript" src="static/js/modoescuro.js"></script>
         <script type="text/javascript" src="static/js/sumirTextoTextarea.js"></script>
         <script type="text/javascript" src="static/js/PesquisaTabela.js"></script>
-        <script src="./static/js/jquery.easyPaginate.js"></script>
         <script src="./static/js/pagination.js"></script>
         <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script src="./static/bulma/jquery-3.7.1.js"></script>
+
+
+
 
 
     </body>

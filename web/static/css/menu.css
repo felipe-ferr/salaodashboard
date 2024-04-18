@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Montserrat:wght@300..700&display=swap');
 :root{
     --cor-clara: #eaeaea;
     --cor-tabela-stripe: #F0F0F0;
@@ -44,7 +45,7 @@ body{
     color: var(--cor-texto);
     text-decoration: none;
     transition-duration: 0.4s;
-    font-family: 'Quicksand';
+    font-family: 'Montserrat';
 }
 .sidebar .material-symbols-outlined{
     color: var(--cor-texto-preto);
@@ -65,7 +66,7 @@ body{
     color: var(--cor-texto);
     text-decoration: none;
     transition-duration: 0.4s;
-    font-family: 'Quicksand';
+    font-family: 'Montserrat';
 }
 .tema-btn-container{
     display: flex;
@@ -144,7 +145,7 @@ body{
     align-items: center;
     color: var(--cor-texto);
     justify-content: space-around;
-    font-family: 'Quicksand';
+    font-family: 'Montserrat';
     font-size: 150%;
     box-sizing: border-box;
     padding: 5%;
@@ -172,10 +173,14 @@ body{
     width: 90%;
 }
 .titulo-botao-container h1{
-    font-family: 'Quicksand';
+    font-family: 'Montserrat';
     font-size: 150%;
     color: var(--cor-texto-preto);
 }
+.is-hidden { 
+    display: none; 
+}
+
 .titulo-botao-container a{
     display: flex;
     align-items: center;
@@ -186,6 +191,7 @@ body{
     color: var(--cor-texto-preto);
     text-decoration: none;
     border-radius: 10px;
+    font-family: 'Montserrat';
 }
 #listarServico_wrapper{
     display: flex;
@@ -200,7 +206,7 @@ body{
     
 }
 #listarServico_wrapper table{
-    font-family: 'Quicksand';
+    font-family: 'Montserrat';
     color: var(--cor-texto);
     margin: 0;
     padding: 0;
@@ -244,7 +250,7 @@ body{
     
 }
 #listarCliente_wrapper table{
-    font-family: 'Quicksand';
+    font-family: 'Montserrat';
     color: var(--cor-texto);
     margin: 0;
     padding: 0;
@@ -289,7 +295,7 @@ body{
     
 }
 #listarUsuario_wrapper table{
-    font-family: 'Quicksand';
+    font-family: 'Montserrat';
     color: var(--cor-texto);
     margin: 0;
     padding: 0;
@@ -333,7 +339,7 @@ body{
     
 }
 #listarPerfil_wrapper table{
-    font-family: 'Quicksand';
+    font-family: 'Montserrat';
     color: var(--cor-texto);
     margin: 0;
     padding: 0;
@@ -381,7 +387,7 @@ body{
     
 }
 #listarAgendamento_wrapper table{
-    font-family: 'Quicksand';
+    font-family: 'Montserrat';
     color: var(--cor-texto);
     margin: 0;
     padding: 0;
@@ -438,6 +444,9 @@ body{
 .botao-acoes .material-symbols-outlined{
     color: var(--dourado);
 }
+.botao-acoes a{
+    text-decoration: none;
+}
 .acoes-td{
     display: flex;
     justify-content: center;
@@ -472,7 +481,7 @@ body{
     width: 100%;
 }
 #listarServico_wrapper table{
-    font-family: 'Quicksand';
+    font-family: 'Montserrat';
     color: var(--cor-texto);
     margin: 0;
     padding: 0;
