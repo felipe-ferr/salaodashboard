@@ -62,13 +62,13 @@
                 </div>
 
                 <div class="titulo-botao-container">
-                    <input type="search" placeholder="Procurar.." oninput="liveSearch()" id="pesquisainput">
+                    <input type="search" placeholder="Procurar.." id="searchInput">
                 </div>
 
 
 
 
-                <div class="tabela-container container">
+                <div id="table" class="tabela-container container">
                     <div class="thead">
                         <div>ID</div>
                         <div>Valor</div>
@@ -88,7 +88,7 @@
                     <c:forEach var="a" items="${a.lista}">
 
 
-                        <div class="tabela td single-item">
+                        <div id="item" class="tabela td">
 
                             <div>${a.idagendamento}</div>
                             <div>${a.valor}</div>
@@ -125,7 +125,8 @@
 
 
 
-
+    
+</div>
 
             </div>
         </div>
@@ -139,6 +140,7 @@
         <script src="./static/js/pagination.js"></script>
         <script src="http://code.jquery.com/jquery-latest.js"></script>
         <script src="./static/bulma/jquery-3.7.1.js"></script>
+         <script src="./static/js/PesquisaTabela.js"></script>
 
 
 
@@ -146,3 +148,5 @@
 
     </body>
 </html>
+
+

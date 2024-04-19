@@ -1,119 +1,118 @@
-(function($) {
-	var pagify = {
-		items: {},
-		container: null,
-		totalPages: 1,
-		perPage: 1,
-		currentPage: 0,
-		createNavigation: function() {
-			this.totalPages = Math.ceil(this.items.length / this.perPage);
+// Function to paginate the table
+function paginateTable(itemsPerPage) {
+    let table = document.getElementById('table');
+    let items = document.querySelectorAll('#item');
+    let searchInput = document.getElementById('searchInput');
+    let paginationDiv = document.createElement('div');
 
-			$('.pagination', this.container.parent()).remove();
-			var pagination = $('<div class="pagination"></div>').append('<a class="nav prev disabled" data-next="false"><</a>');
+    let currentPage = 1;
+    let numPages = Math.ceil(items.length / itemsPerPage);
 
-			for (var i = 0; i < this.totalPages; i++) {
-				var pageElClass = "page";
-				if (!i)
-					pageElClass = "page current";
-				var pageEl = '<a class="' + pageElClass + '" data-page="' + (
-				i + 1) + '">' + (
-				i + 1) + "</a>";
-				pagination.append(pageEl);
-			}
-			pagination.append('<a class="nav next" data-next="true">></a>');
+    // Function to show items for the current page
+    function showPage(page) {
+        items.forEach((item, index) => {
+            if (index >= (page - 1) * itemsPerPage && index < page * itemsPerPage) {
+                item.style.display = 'flex';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
 
-			this.container.after(pagination);
+    // Show the first page initially
+    showPage(currentPage);
 
-			var that = this;
-			$("body").off("click", ".nav");
-			this.navigator = $("body").on("click", ".nav", function() {
-				var el = $(this);
-				that.navigate(el.data("next"));
-			});
+    // Function to handle pagination buttons
+    function handlePagination(action) {
+        if (action === 'prev' && currentPage > 1) {
+            currentPage--;
+        } else if (action === 'next' && currentPage < numPages) {
+            currentPage++;
+        } else if (action === 'first') {
+            currentPage = 1;
+        } else if (action === 'last') {
+            currentPage = numPages;
+        } else {
+            currentPage = action;
+        }
 
-			$("body").off("click", ".page");
-			this.pageNavigator = $("body").on("click", ".page", function() {
-				var el = $(this);
-				that.goToPage(el.data("page"));
-			});
-		},
-		navigate: function(next) {
-			// default perPage to 5
-			if (isNaN(next) || next === undefined) {
-				next = true;
-			}
-			$(".pagination .nav").removeClass("disabled");
-			if (next) {
-				this.currentPage++;
-				if (this.currentPage > (this.totalPages - 1))
-					this.currentPage = (this.totalPages - 1);
-				if (this.currentPage == (this.totalPages - 1))
-					$(".pagination .nav.next").addClass("disabled");
-				}
-			else {
-				this.currentPage--;
-				if (this.currentPage < 0)
-					this.currentPage = 0;
-				if (this.currentPage == 0)
-					$(".pagination .nav.prev").addClass("disabled");
-				}
+        showPage(currentPage);
+        updatePaginationButtons();
+    }
 
-			this.showItems();
-		},
-		updateNavigation: function() {
+    // Create pagination buttons
+    paginationDiv.classList.add('pagination');
 
-			var pages = $(".pagination .page");
-			pages.removeClass("current");
-			$('.pagination .page[data-page="' + (
-			this.currentPage + 1) + '"]').addClass("current");
-		},
-		goToPage: function(page) {
+    let firstPageBtn = document.createElement('button');
+    firstPageBtn.textContent = 'First Page';
+    firstPageBtn.addEventListener('click', () => handlePagination('first'));
+    paginationDiv.appendChild(firstPageBtn);
 
-			this.currentPage = page - 1;
+    let prevPageBtn = document.createElement('button');
+    prevPageBtn.textContent = 'Previous';
+    prevPageBtn.addEventListener('click', () => handlePagination('prev'));
+    paginationDiv.appendChild(prevPageBtn);
 
-			$(".pagination .nav").removeClass("disabled");
-			if (this.currentPage == (this.totalPages - 1))
-				$(".pagination .nav.next").addClass("disabled");
+    for (let i = 1; i <= numPages; i++) {
+        let pageBtn = document.createElement('button');
+        pageBtn.textContent = i;
+        pageBtn.addEventListener('click', () => handlePagination(i));
+        paginationDiv.appendChild(pageBtn);
+    }
 
-			if (this.currentPage == 0)
-				$(".pagination .nav.prev").addClass("disabled");
-			this.showItems();
-		},
-		showItems: function() {
-			this.items.hide();
-			var base = this.perPage * this.currentPage;
-			this.items.slice(base, base + this.perPage).show();
+    let nextPageBtn = document.createElement('button');
+    nextPageBtn.textContent = 'Next';
+    nextPageBtn.addEventListener('click', () => handlePagination('next'));
+    paginationDiv.appendChild(nextPageBtn);
 
-			this.updateNavigation();
-		},
-		init: function(container, items, perPage) {
-			this.container = container;
-			this.currentPage = 0;
-			this.totalPages = 1;
-			this.perPage = perPage;
-			this.items = items;
-			this.createNavigation();
-			this.showItems();
-		}
-	};
+    let lastPageBtn = document.createElement('button');
+    lastPageBtn.textContent = 'Last Page';
+    lastPageBtn.addEventListener('click', () => handlePagination('last'));
+    paginationDiv.appendChild(lastPageBtn);
 
-	// stuff it all into a jQuery method!
-	$.fn.pagify = function(perPage, itemSelector) {
-		var el = $(this);
-		var items = $(itemSelector, el);
+    table.appendChild(paginationDiv);
 
-		// default perPage to 5
-		if (isNaN(perPage) || perPage === undefined) {
-			perPage = 3;
-		}
+    // Function to update active page button style
+    function updatePaginationButtons() {
+        let pageButtons = paginationDiv.querySelectorAll('button');
+        pageButtons.forEach((button) => {
+            button.classList.remove('active');
+            if (button.textContent == currentPage) {
+                button.classList.add('active');
+            }
+        });
+    }
 
-		// don't fire if fewer items than perPage
-		if (items.length <= perPage) {
-			return true;
-		}
+    updatePaginationButtons();
 
-		pagify.init(el, items, perPage);
-	};
-})(jQuery);
+    // Live search functionality
+    searchInput.addEventListener('keyup', function() {
+        let searchTerm = searchInput.value.toLowerCase();
+        
+        if (searchTerm.trim() === '') {
+            paginateTable(itemsPerPage);
+        } else {
+            paginationDiv.style.display = 'none';
+            items.forEach((item) => {
+                let text = item.innerText.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    });
 
-$(".container").pagify(5, ".single-item");
+  
+}
+
+// Function to change the items per page value to 10
+function changeItemsPerPageToTen() {
+    let table = document.getElementById('table');
+    table.innerHTML = ''; // Clear the table
+    paginateTable(10); // Call paginateTable with 10 items per page
+}
+
+// Call the paginateTable function with 5 items per page initially
+paginateTable(5);
