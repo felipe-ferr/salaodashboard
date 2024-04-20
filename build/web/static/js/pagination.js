@@ -3,15 +3,27 @@ function paginateTable(itemsPerPage) {
     let table = document.getElementById('table');
     let items = document.querySelectorAll('#item');
     let searchInput = document.getElementById('searchInput');
+    let searchAll = document.getElementById('searchAll');
     let paginationDiv = document.createElement('div');
+    let pageInfoDiv = document.getElementById('pageInfoDiv');
 
     let currentPage = 1;
     let numPages = Math.ceil(items.length / itemsPerPage);
 
+    // Function to update page information
+    // Function to update page information in HTML
+    function updatePageInfo() {
+        let totalItems = items.length;
+        let itemsOnPage = document.querySelectorAll('#item[style="display: flex;"]').length;
+        let pageInfoDiv = document.getElementById('pageInfo');
+        pageInfoDiv.innerHTML = `Total Items: ${totalItems} | Items on Page: ${itemsOnPage}`;
+    }
+
     // Function to show items for the current page
-    function showPage(page) {
+    function showPage(page, searchTerm = '') {
         items.forEach((item, index) => {
-            if (index >= (page - 1) * itemsPerPage && index < page * itemsPerPage) {
+            let text = item.innerText.toLowerCase();
+            if ((index >= (page - 1) * itemsPerPage && index < page * itemsPerPage) && (text.includes(searchTerm) || searchTerm === '')) {
                 item.style.display = 'flex';
             } else {
                 item.style.display = 'none';
@@ -36,20 +48,20 @@ function paginateTable(itemsPerPage) {
             currentPage = action;
         }
 
-        showPage(currentPage);
-        updatePaginationButtons();
+        showPage(currentPage, searchAll.value.toLowerCase());
+
     }
 
     // Create pagination buttons
     paginationDiv.classList.add('pagination');
 
     let firstPageBtn = document.createElement('button');
-    firstPageBtn.textContent = 'First Page';
+    firstPageBtn.textContent = 'Primeira Página';
     firstPageBtn.addEventListener('click', () => handlePagination('first'));
     paginationDiv.appendChild(firstPageBtn);
 
     let prevPageBtn = document.createElement('button');
-    prevPageBtn.textContent = 'Previous';
+    prevPageBtn.textContent = 'Anterior';
     prevPageBtn.addEventListener('click', () => handlePagination('prev'));
     paginationDiv.appendChild(prevPageBtn);
 
@@ -61,12 +73,12 @@ function paginateTable(itemsPerPage) {
     }
 
     let nextPageBtn = document.createElement('button');
-    nextPageBtn.textContent = 'Next';
+    nextPageBtn.textContent = 'Próximo';
     nextPageBtn.addEventListener('click', () => handlePagination('next'));
     paginationDiv.appendChild(nextPageBtn);
 
     let lastPageBtn = document.createElement('button');
-    lastPageBtn.textContent = 'Last Page';
+    lastPageBtn.textContent = 'Última Página';
     lastPageBtn.addEventListener('click', () => handlePagination('last'));
     paginationDiv.appendChild(lastPageBtn);
 
@@ -85,14 +97,12 @@ function paginateTable(itemsPerPage) {
 
     updatePaginationButtons();
 
-    // Live search functionality
-    searchInput.addEventListener('keyup', function() {
-        let searchTerm = searchInput.value.toLowerCase();
-        
+    searchAll.addEventListener('keyup', function () {
+        let searchTerm = searchAll.value.toLowerCase();
+
         if (searchTerm.trim() === '') {
-            paginateTable(itemsPerPage);
+            showPage(currentPage);
         } else {
-            paginationDiv.style.display = 'none';
             items.forEach((item) => {
                 let text = item.innerText.toLowerCase();
                 if (text.includes(searchTerm)) {
@@ -104,8 +114,29 @@ function paginateTable(itemsPerPage) {
         }
     });
 
-  
+
+    // Live search functionality - search without altering page size and ignore hidden items
+    searchInput.addEventListener('keyup', function () {
+        let searchTerm = searchInput.value.toLowerCase();
+
+        if (searchTerm.trim() === '') {
+            showPage(currentPage);
+        } else {
+            items.forEach((item) => {
+                if (item.style.display !== 'none') {
+                    let text = item.innerText.toLowerCase();
+                    if (text.includes(searchTerm)) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                }
+            });
+        }
+    });
 }
+
+
 
 // Function to change the items per page value to 10
 function changeItemsPerPageToTen() {

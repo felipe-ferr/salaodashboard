@@ -63,6 +63,7 @@
 
                 <div class="titulo-botao-container">
                     <input type="search" placeholder="Procurar.." id="searchInput">
+                    <input type="search" placeholder="Procurar Tabela Inteira.." id="searchAll">
                 </div>
 
 
@@ -119,9 +120,13 @@
                                 </a>
                             </div>
                         </div>
+                                    
+                                     
 
                     </c:forEach>
+                    <div id="pageInfo" onload="updatePageInfo()"></div>
                 </div>
+                   
 
 
 
