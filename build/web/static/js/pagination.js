@@ -166,32 +166,6 @@ function paginateTable(itemsPerPage) {
 }
 
 
-
-// Function to change the items per page value to 10
-function mostrarDezItems() {
-    paginateTable(10); // Call paginateTable with 10 items per page
-    updatePageInfo();
-    updatePaginationButtons();
-}
-// Function to change the items per page value to 25
-function mostrarVinteCincoItems() {
-    paginateTable(25); // Call paginateTable with 10 items per page
-    updatePageInfo();
-    updatePaginationButtons();
-}
-// Function to change the items per page value to 50
-function mostrarCinquentaItems() {
-    paginateTable(50); // Call paginateTable with 10 items per page
-    updatePageInfo();
-    updatePaginationButtons();
-}
-// Function to change the items per page value to 100
-function mostrarCemItems() {
-    paginateTable(100); // Call paginateTable with 10 items per page
-    updatePageInfo();
-    updatePaginationButtons();
-}
-
 // Call the paginateTable function with 5 items per page initially
 paginateTable(10);
 updatePageInfo();

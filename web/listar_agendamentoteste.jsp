@@ -57,9 +57,9 @@
 
             <div id="principal" class="container-principal">
 
-                <div class="titulo-botao-container">
+                <div class="row-container">
                     <h1>Lista de Agendamentos</h1>
-                    <a href="form_agendamento.jsp">Adicionar Agendamento</a>
+                    <a href="form_agendamento.jsp">Adicionar Agendamento <i class="material-symbols-outlined">add</i></a>
                 </div>
 
                 <div class="row-container">
@@ -155,7 +155,6 @@
                     <div id="pagination" class="pagination">
                         <button id="firstPageBtn">Primeira</button>
                         <button class="prevnextbtn" id="prevPageBtn"><i class="material-symbols-outlined">navigate_before</i></button>
-
                         <button class="prevnextbtn" id="nextPageBtn"><i class="material-symbols-outlined">navigate_next</i></button>
                         <button id="lastPageBtn">Última</button>
                     </div>

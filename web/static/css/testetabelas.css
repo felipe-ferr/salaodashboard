@@ -7,6 +7,24 @@ a{
     justify-content: space-between;
     padding: 1vh 0;
     width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--cor-texto);
+    
+}
+.row-container h1{
+    font-weight: 300;
+    font-size: 2vw;
+}
+.row-container a{
+    background-color: var(--dourado);
+    padding: 1vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    transition-duration: 0.2s;
+    text-decoration: none;
+    color: var(--cor-texto);
+    border-radius: 10px;
 }
 .tabela-container{
     display: flex; 
@@ -51,10 +69,11 @@ a{
     align-items: center;
     justify-content: space-around;
     width: 100%;
-    border-bottom: 1px solid var(--dourado);
     color: var(--cor-texto);
     font-family: 'Montserrat', sans-serif;
-    background-color: var(--cor-escura);
+    background-color: var(--cor-tabela-stripe);
+    border-radius: 10px;
+    font-size: 1vw;
 }
 .thead div{
     display: flex;
@@ -113,6 +132,11 @@ a{
 .pagination .active{
     color: var(--dourado);
     background-color: var(--cor-escura);
+}
+.numberedPages{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .disabled{
