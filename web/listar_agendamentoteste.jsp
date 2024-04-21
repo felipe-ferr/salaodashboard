@@ -18,6 +18,7 @@
         <link rel="stylesheet" href="./static/css/menu.css">
         <link rel="stylesheet" href="./static/css/testetabelas.css">
 
+
         <script src="./static/bulma/jquery-3.7.1.js"></script>
         <script type="text/javascript" src="static/js/PesquisaTabela.js"></script>
 
@@ -38,7 +39,7 @@
 
 
         <script src="./static/js/pagination.js"></script>
-        <script src="./static/js/PesquisaTabela.js"></script>
+        <script src="./static/js/dropdownRegistros.js"></script>
 
 
 
@@ -58,20 +59,43 @@
 
                 <div class="titulo-botao-container">
                     <h1>Lista de Agendamentos</h1>
-                    <a href="form_agendamento.jsp">Adicionar Agendamento<i class="material-symbols-outlined">add</i></a>
+                    <a href="form_agendamento.jsp">Adicionar Agendamento</a>
                 </div>
 
-                <div class="titulo-botao-container">
-                    <input type="search" placeholder="Procurar.." id="searchInput">
-                    <input type="search" placeholder="Procurar Tabela Inteira.." id="searchAll">
+                <div class="row-container">
+
+                    <div class="searchContainer">
+                        <input type="text" id="searchInput" placeholder="Pesquisar">
+                        <i class="material-symbols-outlined">search</i>
+                    </div>
+
+                    <div class="dropdown-texto-container">
+                        <p>Registros por página:</p>
+                        <div id="dropdownBtnContainer" onmouseover="toggleDropdownMenu()" class="dropdownContainer">
+                            <div class="dropdownBtnContainer">
+                                <div class="dropdownBtn" id="selectedOption">10</div>
+                                <i class="material-symbols-outlined">keyboard_arrow_down</i>
+                            </div>
+                            <div onclick="updateSelectedOption(event)" id="drop" class="dropdownMenu hidden">
+                                <span onclick="mostrarDezItems()">10</span>
+                                <span onclick="mostrarVinteCincoItems()">25</span>
+                                <span onclick="mostrarCinquentaItems()">50</span>
+                                <span onclick="mostrarCemItems()">100</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="searchContainer">
+                        <input type="text" placeholder="Procurar Tabela Inteira.." id="searchAll">
+                        <i class="material-symbols-outlined">search</i>
+                    </div>
                 </div>
 
 
 
-
-                <div id="table" class="tabela-container container">
+                <div class="row-container">
                     <div class="thead">
-                        <div>ID</div>
+                        <div class="id-row">ID</div>
                         <div>Valor</div>
                         <div>Data</div>
                         <div>Status</div>
@@ -83,6 +107,9 @@
                         <div>Usuário</div>
                         <div>Ações</div>
                     </div>
+                </div>
+                <div id="table" class="tabela-container container">
+
 
                     <jsp:useBean class="model.AgendamentoDAO" id="a"/>
 
@@ -91,9 +118,9 @@
 
                         <div id="item" class="tabela td">
 
-                            <div>${a.idagendamento}</div>
-                            <div>${a.valor}</div>
-                            <div><fmt:formatDate pattern="dd/MM/yyyy" value="${a.data}"/></div>
+                            <div class="id-row">${a.idagendamento}</div>
+                            <div>R$${a.valor}</div>
+                            <div class="data"><fmt:formatDate pattern="dd/MM/yyyy" value="${a.data}"/></div>
                             <div>
 
                                 <c:if test="${a.status==1}">
@@ -120,23 +147,35 @@
                                 </a>
                             </div>
                         </div>
-                                    
-                                     
+
+
 
                     </c:forEach>
-                    <div id="pageInfo" onload="updatePageInfo()"></div>
+
+                    <div id="pagination" class="pagination">
+                        <button id="firstPageBtn">Primeira</button>
+                        <button class="prevnextbtn" id="prevPageBtn"><i class="material-symbols-outlined">navigate_before</i></button>
+
+                        <button class="prevnextbtn" id="nextPageBtn"><i class="material-symbols-outlined">navigate_next</i></button>
+                        <button id="lastPageBtn">Última</button>
+                    </div>
                 </div>
-                   
 
 
 
-    
-</div>
+
+                <div id="pageInfo" onload="updatePageInfo()"></div>
+
+             
+
+
+
+
+
 
             </div>
+
         </div>
-
-
 
         <script src="./static/bulma/jquery-3.7.1.js"></script>
         <script type="text/javascript" src="static/js/modoescuro.js"></script>
@@ -145,13 +184,16 @@
         <script src="./static/js/pagination.js"></script>
         <script src="http://code.jquery.com/jquery-latest.js"></script>
         <script src="./static/bulma/jquery-3.7.1.js"></script>
-         <script src="./static/js/PesquisaTabela.js"></script>
+        <script src="./static/js/PesquisaTabela.js"></script>
+        <script src="./static/js/dropdownRegistros.js"></script>
+        <script src="./static/js/filtrosTabela.js"></script>
 
 
 
 
 
     </body>
+
 </html>
 
 

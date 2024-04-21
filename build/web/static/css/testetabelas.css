@@ -1,7 +1,13 @@
 a{
     text-decoration: none;
 }
-
+.row-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1vh 0;
+    width: 100%;
+}
 .tabela-container{
     display: flex; 
     align-items: center;
@@ -12,6 +18,10 @@ a{
     border-radius: 15px;
     height: auto;
     font-family: 'Montserrat', sans-serif;
+    padding: 1vh;
+    box-sizing: border-box;
+    position: relative;
+   
 
 }
 
@@ -25,7 +35,6 @@ a{
     justify-content: space-around;
     width: 100%;
     font-size: 0.9vw;
-    
 }
 .tabela div{
     display: flex;
@@ -34,6 +43,7 @@ a{
     width: 100%;
     padding: 2% 0%;
     color: var(--cor-texto);
+    background-color: 
 }
 
 .thead{
@@ -43,6 +53,8 @@ a{
     width: 100%;
     border-bottom: 1px solid var(--dourado);
     color: var(--cor-texto);
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--cor-escura);
 }
 .thead div{
     display: flex;
@@ -52,4 +64,197 @@ a{
     padding: 1% 0%;
     font-size: 1vw;
     text-align: center;
+}
+.thead .id-row{
+    width: 30%;
+}
+.tabela .id-row{
+    width: 30%;
+}
+.tabela-container .pagination{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1vh;
+    gap: 0.5vw;
+    position: absolute;
+    top: 100%;
+    
+}
+.pagination .material-symbols-outlined{
+    color: var(--cor-texto);
+}
+
+.pagination .prevnextbtn{
+    background-color: var(--cor-clara);
+}
+.pagination .prevnextbtn:hover{
+    background-color: var(--cor-clara);
+}
+.pagination button{
+    border: none;
+    display: flex;
+    padding: 1vh 1vw;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--cor-texto);
+    background-color: inherit;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    transition-duration: 0.2s;
+    font-family: 'Montserrat', sans-serif;
+}
+.pagination button:hover{
+    color: var(--dourado);
+    background-color: var(--cor-escura);
+}
+.pagination .active{
+    color: var(--dourado);
+    background-color: var(--cor-escura);
+}
+
+.disabled{
+    opacity: 50%;
+    pointer-events: none;
+}
+#pageInfo{
+    font-family: 'Montserrat', sans-serif;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    padding: 2vh 0;
+    font-size: 0.8vw;
+    color: var(--cor-texto);
+}
+
+/* container campo de texto, ícone e texto */
+.searchContainer{
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    cursor: text;
+    width: 20%;
+}
+::placeholder{
+    font-size: 0.9vw;
+    font-family: 'Montserrat', sans-serif;
+}
+/* input de texto com width 100% para ocupar a div toda */
+.searchContainer input{
+    color: var(--cor-texto);
+    background-color: var(--cor-escura);
+    border: none;
+    width: 100%;
+    padding: 0 2vw;
+    height: 6vh;
+    position: relative;
+    font-size: 1vw;
+    border-radius: 10px;
+    transition-duration: 0.4s;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* ícone no fim do input */
+.searchContainer i{
+    position: absolute;
+    right: 0;
+    padding: 0px 2vh;
+    color: var(--cor-texto);
+    transition-duration: 0.3s;
+    pointer-events: none;
+}
+/* diminuir padding quando o campo de texto estiver ativo */
+.searchContainer input:focus{
+    background-color: var(--cor-clara);
+    outline: none;
+    padding: 0px 1vw;
+    box-shadow: inset 0px 0px 0px 2px var(--dourado); 
+    background-color: var(--cor-escura);
+}
+/* aumentar padding de volta depois de clicar no campo de texto */
+.searchContainer input::after{
+    background-color: var(--cor-clara);
+    outline: none;
+    box-shadow: inset 0px 0px 0px 2px var(--dourado);
+}
+/* diminuir e mover para cima o nome dos campos */
+.searchContainer input:focus ~ p{
+    transform: translateY(-3vh);
+    font-size: 0.7rem;
+    background-color: var(--cor-clara);
+    padding: 0px 1vh;
+    margin-left: 3%;
+    border-radius: 5px;
+    color: var(--cor-texto);
+}
+.searchContainer input:focus ~ i{
+    color: var(--dourado);
+}
+.dropdown-texto-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--cor-texto);
+    font-size: 0.8vw;
+    gap: 5px;
+}
+.dropdownBtnContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: var(--cor-escura);
+    padding: 1vh;
+    width: 100%;
+    cursor: pointer;
+}
+.dropdownBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8vw;
+}
+.dropdownContainer{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.dropdownMenu{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--cor-escura);
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    z-index: 2;
+    width: 100%;
+    padding: 1vh;
+    box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.55);
+    -webkit-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.55);
+    -moz-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.55);
+}
+.dropdownMenu span{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2vh;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+.dropdownMenu span:hover{
+    background-color: var(--cor-clara);
+}
+.hidden{
+    display: none;
+}
+.visible{
+    display: flex;
+
 }

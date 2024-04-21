@@ -31,6 +31,7 @@ body{
     background-color: var(--cor-escura);
     position: relative;
     width: 15%;
+    font-size: 0.8vw;
     
 }
 .sidebar a{
@@ -126,13 +127,14 @@ body{
     justify-content: flex-start;
     width: 100%;
     color: var(--cor-texto);
+    
 }
 .sidebar a:hover {
     box-shadow: inset -2px 0px 0px 0px var(--dourado);
     color: var(--dourado);
     background-color: var(--cor-escura);
-    font-weight: bold;
 }
+
 .sidebar .sidebar-icone{
     display: flex;
     align-items: center;
@@ -418,16 +420,7 @@ body{
     height: 100%;
 }
 
-.pagination-list .is-current{
-    background-color: var(--dourado);
-    color: var(--cor-texto);
-    border: none;
-}
-.pagination-list .last .next .previous .first:enabled{
-    background-color: var(--dourado);
-    color: var(--cor-texto);
-    border: none;
-}
+
 
 
 .botao-acoes{
@@ -452,7 +445,6 @@ body{
     justify-content: center;
     align-items: center;
     gap: 2px;
-    height: 100%;
 }
 
 #dt-search-0{
@@ -471,20 +463,4 @@ body{
 }
 .select select::after{
     background-color: var(--dourado);
-}
-
-@media only screen and (max-width: 1300px) {   
-.sidebar{
-    display: none;
-}
-.container-principal{
-    width: 100%;
-}
-#listarServico_wrapper table{
-    font-family: 'Montserrat';
-    color: var(--cor-texto);
-    margin: 0;
-    padding: 0;
-    width: 80%;
-}
 }

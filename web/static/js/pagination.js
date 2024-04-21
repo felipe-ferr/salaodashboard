@@ -4,19 +4,19 @@ function paginateTable(itemsPerPage) {
     let items = document.querySelectorAll('#item');
     let searchInput = document.getElementById('searchInput');
     let searchAll = document.getElementById('searchAll');
-    let paginationDiv = document.createElement('div');
+    let paginationDiv = document.getElementById('pagination');
     let pageInfoDiv = document.getElementById('pageInfoDiv');
 
     let currentPage = 1;
     let numPages = Math.ceil(items.length / itemsPerPage);
 
-    // Function to update page information
+
     // Function to update page information in HTML
     function updatePageInfo() {
         let totalItems = items.length;
         let itemsOnPage = document.querySelectorAll('#item[style="display: flex;"]').length;
         let pageInfoDiv = document.getElementById('pageInfo');
-        pageInfoDiv.innerHTML = `Total Items: ${totalItems} | Items on Page: ${itemsOnPage}`;
+        pageInfoDiv.innerHTML = `Mostrando ${itemsOnPage} de ${totalItems} registros totais`;
     }
 
     // Function to show items for the current page
@@ -33,6 +33,8 @@ function paginateTable(itemsPerPage) {
 
     // Show the first page initially
     showPage(currentPage);
+    updatePageInfo();
+
 
     // Function to handle pagination buttons
     function handlePagination(action) {
@@ -49,53 +51,80 @@ function paginateTable(itemsPerPage) {
         }
 
         showPage(currentPage, searchAll.value.toLowerCase());
+        updatePaginationButtons();
+        updatePageInfo();
 
     }
 
-    // Create pagination buttons
-    paginationDiv.classList.add('pagination');
 
-    let firstPageBtn = document.createElement('button');
-    firstPageBtn.textContent = 'Primeira Página';
+
+
+    // Create pagination buttons
+
+
+    let firstPageBtn = document.getElementById('firstPageBtn');
     firstPageBtn.addEventListener('click', () => handlePagination('first'));
     paginationDiv.appendChild(firstPageBtn);
 
-    let prevPageBtn = document.createElement('button');
-    prevPageBtn.textContent = 'Anterior';
+    let prevPageBtn = document.getElementById('prevPageBtn');
     prevPageBtn.addEventListener('click', () => handlePagination('prev'));
     paginationDiv.appendChild(prevPageBtn);
 
+    document.querySelectorAll('.active').forEach(button => button.remove());
+
+// Loop to create pagination buttons
     for (let i = 1; i <= numPages; i++) {
         let pageBtn = document.createElement('button');
         pageBtn.textContent = i;
         pageBtn.addEventListener('click', () => handlePagination(i));
         paginationDiv.appendChild(pageBtn);
     }
-
-    let nextPageBtn = document.createElement('button');
-    nextPageBtn.textContent = 'Próximo';
+  
+    let nextPageBtn = document.getElementById('nextPageBtn');
     nextPageBtn.addEventListener('click', () => handlePagination('next'));
     paginationDiv.appendChild(nextPageBtn);
 
-    let lastPageBtn = document.createElement('button');
-    lastPageBtn.textContent = 'Última Página';
+    let lastPageBtn = document.getElementById('lastPageBtn');
     lastPageBtn.addEventListener('click', () => handlePagination('last'));
     paginationDiv.appendChild(lastPageBtn);
 
     table.appendChild(paginationDiv);
+      updatePaginationButtons();
+
 
     // Function to update active page button style
     function updatePaginationButtons() {
         let pageButtons = paginationDiv.querySelectorAll('button');
-        pageButtons.forEach((button) => {
-            button.classList.remove('active');
-            if (button.textContent == currentPage) {
+        pageButtons.forEach((button, index) => {
+            if (parseInt(button.textContent) === currentPage) {
                 button.classList.add('active');
+            } else {
+                button.classList.remove('active');
             }
         });
+
+        // Disable next button if on the last page
+        nextPageBtn.disabled = currentPage === numPages;
+        // Disable previous button if on the first page
+        prevPageBtn.disabled = currentPage === 1;
+
+        // Add 'disabled' class to previous button if on the first page
+        if (currentPage === 1) {
+            prevPageBtn.classList.add('disabled');
+        } else {
+            prevPageBtn.classList.remove('disabled');
+        }
+
+        // Add 'disabled' class to next button if on the last page
+        if (currentPage === numPages) {
+            nextPageBtn.classList.add('disabled');
+        } else {
+            nextPageBtn.classList.remove('disabled');
+        }
     }
 
-    updatePaginationButtons();
+    updatePageInfo();
+
 
     searchAll.addEventListener('keyup', function () {
         let searchTerm = searchAll.value.toLowerCase();
@@ -139,11 +168,33 @@ function paginateTable(itemsPerPage) {
 
 
 // Function to change the items per page value to 10
-function changeItemsPerPageToTen() {
-    let table = document.getElementById('table');
-    table.innerHTML = ''; // Clear the table
+function mostrarDezItems() {
     paginateTable(10); // Call paginateTable with 10 items per page
+    updatePageInfo();
+    updatePaginationButtons();
+}
+// Function to change the items per page value to 25
+function mostrarVinteCincoItems() {
+    paginateTable(25); // Call paginateTable with 10 items per page
+    updatePageInfo();
+    updatePaginationButtons();
+}
+// Function to change the items per page value to 50
+function mostrarCinquentaItems() {
+    paginateTable(50); // Call paginateTable with 10 items per page
+    updatePageInfo();
+    updatePaginationButtons();
+}
+// Function to change the items per page value to 100
+function mostrarCemItems() {
+    paginateTable(100); // Call paginateTable with 10 items per page
+    updatePageInfo();
+    updatePaginationButtons();
 }
 
 // Call the paginateTable function with 5 items per page initially
-paginateTable(5);
+paginateTable(10);
+updatePageInfo();
+
+
+
