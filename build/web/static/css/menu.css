@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Montserrat:wght@300..700&display=swap');
 :root{
     --cor-clara: #eaeaea;
-    --cor-tabela-stripe: #F0F0F0;
+    --cor-tabela-stripe: #DDDDDD;
     --cor-escura: #f5f5f5;
     --dourado: #b68815;
     --cor-texto: #0F0300;
@@ -423,44 +423,4 @@ body{
 
 
 
-.botao-acoes{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--cor-clara);
-    border: none;
-    border-radius: 10px;
-    box-sizing: border-box;
-    height: 100%;
-    padding: 0;
-}
-.botao-acoes .material-symbols-outlined{
-    color: var(--dourado);
-}
-.botao-acoes a{
-    text-decoration: none;
-}
-.acoes-td{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2px;
-}
 
-#dt-search-0{
-    background-color: var(--cor-clara);
-    border: none;
-    transition-duration: 0.3s;
-}
-#dt-search-0:focus{
-    outline: 1px solid var(--dourado);
-    border: 1px solid var(--dourado);
-}
-.select select{
-    background-color: var(--cor-clara);
-    color: var(--cor-texto);
-    border: none;
-}
-.select select::after{
-    background-color: var(--dourado);
-}

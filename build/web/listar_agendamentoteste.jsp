@@ -131,7 +131,12 @@
                                 </c:if>
 
                             </div>
-                            <div>${a.descricao}</div>
+                            <div>
+                                <i onclick="showDescDiv(this)" style="cursor: pointer;" class="material-symbols-outlined">comment</i>
+                                <span class="desc" style="display:none">
+                                    ${a.descricao}
+                                </span>
+                            </div>
                             <div><fmt:formatDate pattern="dd/MM/yyyy" value="${a.data_cadastro}"/></div>
                             <div>${a.horario}</div>
                             <div>${a.servico.nome}</div>
@@ -183,7 +188,7 @@
         <script src="./static/js/pagination.js"></script>
         <script src="http://code.jquery.com/jquery-latest.js"></script>
         <script src="./static/bulma/jquery-3.7.1.js"></script>
-        <script src="./static/js/PesquisaTabela.js"></script>
+        <script src="./static/js/showDesc.js"></script>
         <script src="./static/js/dropdownRegistros.js"></script>
         <script src="./static/js/filtrosTabela.js"></script>
 

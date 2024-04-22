@@ -9,7 +9,7 @@ a{
     width: 100%;
     font-family: 'Montserrat', sans-serif;
     color: var(--cor-texto);
-    
+
 }
 .row-container h1{
     font-weight: 300;
@@ -23,23 +23,24 @@ a{
     justify-content: space-around;
     transition-duration: 0.2s;
     text-decoration: none;
-    color: var(--cor-texto);
+    color: var(--cor-texto-preto);
     border-radius: 10px;
 }
 .tabela-container{
     display: flex; 
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     flex-direction: column;
     background-color: var(--cor-escura);
     width: 100%;
     border-radius: 15px;
     height: auto;
     font-family: 'Montserrat', sans-serif;
-    padding: 1vh;
+    padding: 2vh;
     box-sizing: border-box;
     position: relative;
-   
+    gap: 2px;
+
 
 }
 
@@ -53,16 +54,19 @@ a{
     justify-content: space-around;
     width: 100%;
     font-size: 0.9vw;
+    padding: 1vh;
 }
 .tabela div{
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    padding: 2% 0%;
+    padding: 1vh 0%;
     color: var(--cor-texto);
-    background-color: 
+    background-color: var(--cor-escura);
+    height: 100%;
 }
+
 
 .thead{
     display: flex;
@@ -71,9 +75,12 @@ a{
     width: 100%;
     color: var(--cor-texto);
     font-family: 'Montserrat', sans-serif;
-    background-color: var(--cor-tabela-stripe);
-    border-radius: 10px;
+    background-color: var(--cor-clara);
     font-size: 1vw;
+    padding: 1vh;
+    border-bottom: 2px solid var(--dourado);
+    position: sticky;
+    top: 0;
 }
 .thead div{
     display: flex;
@@ -81,7 +88,7 @@ a{
     justify-content: center;
     width: 100%;
     padding: 1% 0%;
-    font-size: 1vw;
+    font-size: 0.8vw;
     text-align: center;
 }
 .thead .id-row{
@@ -89,6 +96,36 @@ a{
 }
 .tabela .id-row{
     width: 30%;
+}
+
+.acoes-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.botao-acoes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--cor-escura);
+    border: none;
+    border-radius: 10px;
+    box-sizing: border-box;
+    width: 100%;
+}
+.botao-acoes .material-symbols-outlined{
+    color: var(--dourado);
+}
+.botao-acoes a{
+    text-decoration: none;
+    box-sizing: border-box;
+    margin: 0;
+}
+.acoes-td{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
 }
 .tabela-container .pagination{
     display: flex;
@@ -98,7 +135,7 @@ a{
     gap: 0.5vw;
     position: absolute;
     top: 100%;
-    
+
 }
 .pagination .material-symbols-outlined{
     color: var(--cor-texto);
@@ -281,4 +318,19 @@ a{
 .visible{
     display: flex;
 
+}
+
+.desc{
+    align-items: center;
+    justify-content: center;
+    padding: 3vh;
+    box-sizing: border-box;
+    background-color: var(--cor-clara);
+    position: absolute;
+    z-index: 2;
+    box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.55);
+    -webkit-box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.55);
+    -moz-box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.55);
+    width: auto;
+    text-wrap: wrap;
 }

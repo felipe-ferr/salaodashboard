@@ -5,8 +5,8 @@ let dark = document.getElementById("botaodark");
 function escuro(){
     cor.style.setProperty("--cor-clara",'#252525');
     cor.style.setProperty("--cor-escura",'#181818');
-    cor.style.setProperty("--cor-texto",'#7D7D7D');
-    cor.style.setProperty("--cor-texto-preto",'white');
+    cor.style.setProperty("--cor-texto",'#AFAFAF');
+    cor.style.setProperty("--cor-texto-preto",'#DFDFDF');
     cor.style.setProperty("--cor-tabela-stripe",'#161616');
     
     
