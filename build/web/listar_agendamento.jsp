@@ -24,6 +24,7 @@
         <link rel="preconnect" href="https://fontc.googleapic.com">
         <link rel="preconnect" href="https://fontc.gstatic.com" crossorigin>
         <link href="https://fontc.googleapic.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+        
 
         <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
         <link rel="stylesheet" href="https://fontc.googleapic.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
