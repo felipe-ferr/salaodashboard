@@ -50,12 +50,17 @@
 
     <body>
 
+
+
         <div class="grid-container">
             <%@include file="sidebar.jsp" %>
 
 
 
             <div id="principal" class="container-principal">
+
+                           
+
 
                 <div class="row-container">
                     <h1>Lista de Agendamentos</h1>
@@ -69,21 +74,43 @@
                         <i class="material-symbols-outlined">search</i>
                     </div>
 
-                    <div class="dropdown-texto-container">
-                        <p>Registros por página:</p>
+                     <div class="dropdown-texto-container">
+                        <p>Ordenar Por:</p>
                         <div id="dropdownBtnContainer" onmouseover="toggleDropdownMenu()" class="dropdownContainer">
                             <div class="dropdownBtnContainer">
-                                <div class="dropdownBtn" id="selectedOption">10</div>
+                                <div class="dropdownBtn" id="selectedOption">Ordem Crescente</div>
                                 <i class="material-symbols-outlined">keyboard_arrow_down</i>
                             </div>
                             <div onclick="updateSelectedOption(event)" id="drop" class="dropdownMenu hidden">
-                                <span onclick="mostrarDezItems()">10</span>
-                                <span onclick="mostrarVinteCincoItems()">25</span>
-                                <span onclick="mostrarCinquentaItems()">50</span>
-                                <span onclick="mostrarCemItems()">100</span>
+                                <span onclick="sortIdRowDescending()">Ordem Crescente</span>
+                                <span onclick="sortIdRowAscending()">Ordem Decrescente</span>
+                                <span onclick="sortValorRowAscending()">Valor mais alto</span>
+                                <span onclick="sortValorRowDescending()">Valor mais baixo</span>
+                                <span onclick="sortDataDescending()">Mais Próximos</span>
+                                <span onclick="sortDataAscending()">Mais Distantes</span>
+                                <span onclick="sortDataCadastroDescending()">Mais Recentes</span>
+                                <span onclick="sortDataCadastroAscending()">Mais Antigos</span>
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="dropdown-texto-container">
+                        <p>Mostrar: </p>
+                        <div id="dropdownBtnContainerMostrar" onmouseover="hoverDropdownMenuMostrar()" class="dropdownContainer">
+                            <div class="dropdownBtnContainer">
+                                <div class="dropdownBtn" id="selectedOption">Todas</div>
+                                <i class="material-symbols-outlined">keyboard_arrow_down</i>
+                            </div>
+                            <div onclick="updateSelectedOption(event)" id="dropmostrar" class="dropdownMenu hidden">
+                                <span onclick="displayAll()">Todas</span>
+                                <span onclick="filterItemsByStatusCancelado()">Canceladas</span>
+                                <span onclick="filterItemsByStatusPendente()">Pendentes</span>
+                              
+                            </div>
+                        </div>
+                    </div>
+
+
 
                     <div class="searchContainer">
                         <input type="text" placeholder="Procurar Tabela Inteira.." id="searchAll">
@@ -119,15 +146,15 @@
                         <div id="item" class="tabela td">
 
                             <div class="id-row">${a.idagendamento}</div>
-                            <div>R$${a.valor}</div>
+                            <div class="valor-row">${a.valor}</div>
                             <div class="data"><fmt:formatDate pattern="dd/MM/yyyy" value="${a.data}"/></div>
-                            <div>
+                            <div class="status">
 
                                 <c:if test="${a.status==1}">
-                                    Ativo
+                                    Pendente
                                 </c:if>
                                 <c:if test="${a.status==0}">
-                                    Inativo
+                                    Cancelado
                                 </c:if>
 
                             </div>
@@ -137,7 +164,7 @@
                                     ${a.descricao}
                                 </span>
                             </div>
-                            <div><fmt:formatDate pattern="dd/MM/yyyy" value="${a.data_cadastro}"/></div>
+                            <div class="datacadastro"><fmt:formatDate pattern="dd/MM/yyyy" value="${a.data_cadastro}"/></div>
                             <div>${a.horario}</div>
                             <div>${a.servico.nome}</div>
                             <div>${a.cliente.nome}</div>
@@ -170,7 +197,7 @@
 
                 <div id="pageInfo" onload="updatePageInfo()"></div>
 
-             
+
 
 
 

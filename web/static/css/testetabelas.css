@@ -26,6 +26,19 @@ a{
     color: var(--cor-texto-preto);
     border-radius: 10px;
 }
+.filters{
+    position: fixed;
+    height: 100vh;
+    right: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--cor-escura);
+    z-index: 3;
+    padding: 5vh;
+    box-sizing: border-box;
+}
 .tabela-container{
     display: flex; 
     align-items: center;
@@ -270,7 +283,7 @@ a{
     justify-content: space-around;
     background-color: var(--cor-escura);
     padding: 1vh;
-    width: 100%;
+    width: 12vw;
     cursor: pointer;
 }
 .dropdownBtn{
@@ -334,3 +347,5 @@ a{
     width: auto;
     text-wrap: wrap;
 }
+
+

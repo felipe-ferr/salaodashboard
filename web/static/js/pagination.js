@@ -167,7 +167,7 @@ function paginateTable(itemsPerPage) {
 
 
 // Call the paginateTable function with 5 items per page initially
-paginateTable(10);
+paginateTable(20);
 updatePageInfo();
 
 
