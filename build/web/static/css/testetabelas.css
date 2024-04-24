@@ -124,7 +124,6 @@ a{
     border: none;
     border-radius: 10px;
     box-sizing: border-box;
-    width: 100%;
 }
 .botao-acoes .material-symbols-outlined{
     color: var(--dourado);

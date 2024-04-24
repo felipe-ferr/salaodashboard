@@ -65,9 +65,9 @@ document.addEventListener('DOMContentLoaded', function() {
     hoverDropdownMenu();
 });
 
-function updateSelectedOption(event) {
+function updateSelectedOptionMostrar(event) {
         if (event.target.tagName === 'SPAN') {
-            var selectedOption = document.getElementById('selectedOption');
+            var selectedOption = document.getElementById('selectedOptionMostrar');
             selectedOption.textContent = event.target.textContent;
         }
     }
