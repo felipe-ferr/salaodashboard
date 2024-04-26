@@ -245,3 +245,59 @@ form h1{
     background-color: var(--cor-escura);
     width: 100%;
 }
+
+.dropdownBtnContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: var(--cor-escura);
+    padding: 1vh;
+    width: 12vw;
+    cursor: pointer;
+}
+.dropdownBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8vw;
+}
+.dropdownContainer{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.dropdownMenu{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--cor-escura);
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    z-index: 2;
+    width: 100%;
+    padding: 1vh;
+    box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.55);
+    -webkit-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.55);
+    -moz-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.55);
+}
+.dropdownMenu span{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2vh;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+.dropdownMenu span:hover{
+    background-color: var(--cor-clara);
+}
+.hidden{
+    display: none;
+}
+.visible{
+    display: flex;
+
+}

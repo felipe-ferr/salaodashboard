@@ -60,7 +60,7 @@ function updateSelectedOption(event) {
     });
 }
 
-// Call the function when the page loads
+// Chama a função assim que o documento for carregado
 document.addEventListener('DOMContentLoaded', function() {
     hoverDropdownMenu();
 });
