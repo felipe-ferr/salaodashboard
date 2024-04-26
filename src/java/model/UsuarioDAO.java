@@ -119,5 +119,34 @@ public class UsuarioDAO extends DatabaseDAO{
         
         
     }
+
+    public Usuario getRecuperarUsuario(String login){
+            
+            Usuario u = new Usuario();
+            String sql = "SELECT  u.* FROM usuario u "
+                    + "WHERE u.login=?";
+            try{
+                this.conectar();
+                PreparedStatement pstm = conn.prepareStatement(sql);
+                pstm.setString(1, login);
+                ResultSet rs = pstm.executeQuery();
+                if(rs.next()) {
+                    u.setIdUsuario(rs.getInt("u.idUsuario"));
+                    u.setNome(rs.getString("u.nome"));
+                    u.setLogin(rs.getString("u.login"));
+                    u.setSenha(rs.getString("senha"));
+                    u.setStatus(rs.getInt("status"));
+                    PerfilDAO pDAO = new PerfilDAO();
+                    u.setPerfil(pDAO.getCarregaPorID(rs.getInt("u.idPerfil")));
+                }
+                this.desconectar();
+                return u;
+                
+            }catch (Exception e) {
+                System.out.println(e);
+                return null;
+            }
+    }
     
-}
+    }
+

@@ -92,6 +92,10 @@ public class Usuario {
         return "Usuario{" + "idusuario=" + idusuario + ", nome=" + nome + '}';
     }
 
+    void setIdUsuario(int aInt) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
    
 
 
