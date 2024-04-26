@@ -131,7 +131,7 @@ public class UsuarioDAO extends DatabaseDAO{
                 pstm.setString(1, login);
                 ResultSet rs = pstm.executeQuery();
                 if(rs.next()) {
-                    u.setIdUsuario(rs.getInt("u.idUsuario"));
+                    u.setIdusuario(rs.getInt("u.idusuario"));
                     u.setNome(rs.getString("u.nome"));
                     u.setLogin(rs.getString("u.login"));
                     u.setSenha(rs.getString("senha"));
