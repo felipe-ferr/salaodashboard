@@ -1,4 +1,4 @@
-// Function to paginate the table
+// Função para paginar as tabelas
 function paginateTable(itemsPerPage) {
     let table = document.getElementById('table');
     let items = document.querySelectorAll('#item');
@@ -11,7 +11,7 @@ function paginateTable(itemsPerPage) {
     let numPages = Math.ceil(items.length / itemsPerPage);
 
 
-    // Function to update page information in HTML
+    // Atualizar as informações no final da tabela
     function updatePageInfo() {
         let totalItems = items.length;
         let itemsOnPage = document.querySelectorAll('#item[style="display: flex;"]').length;
@@ -19,7 +19,7 @@ function paginateTable(itemsPerPage) {
         pageInfoDiv.innerHTML = `Mostrando ${itemsOnPage} de ${totalItems} registros totais`;
     }
 
-    // Function to show items for the current page
+    // mostra as páginas na página atual
     function showPage(page, searchTerm = '') {
         items.forEach((item, index) => {
             let text = item.innerText.toLowerCase();
@@ -31,12 +31,12 @@ function paginateTable(itemsPerPage) {
         });
     }
 
-    // Show the first page initially
+    // Mostrar a primeira página inicialmente
     showPage(currentPage);
     updatePageInfo();
 
 
-    // Function to handle pagination buttons
+    // Gerenciar os botôes de paginação
     function handlePagination(action) {
         if (action === 'prev' && currentPage > 1) {
             currentPage--;
@@ -59,7 +59,7 @@ function paginateTable(itemsPerPage) {
 
 
 
-    // Create pagination buttons
+    // Botões de paginação
 
 
     let firstPageBtn = document.getElementById('firstPageBtn');
@@ -72,14 +72,14 @@ function paginateTable(itemsPerPage) {
 
     document.querySelectorAll('.active').forEach(button => button.remove());
 
-// Loop to create pagination buttons
+// Loop para criar os botões se o número de itens for maior que o permitido por página
     for (let i = 1; i <= numPages; i++) {
         let pageBtn = document.createElement('button');
         pageBtn.textContent = i;
         pageBtn.addEventListener('click', () => handlePagination(i));
         paginationDiv.appendChild(pageBtn);
     }
-  
+
     let nextPageBtn = document.getElementById('nextPageBtn');
     nextPageBtn.addEventListener('click', () => handlePagination('next'));
     paginationDiv.appendChild(nextPageBtn);
@@ -89,10 +89,10 @@ function paginateTable(itemsPerPage) {
     paginationDiv.appendChild(lastPageBtn);
 
     table.appendChild(paginationDiv);
-      updatePaginationButtons();
+    updatePaginationButtons();
 
 
-    // Function to update active page button style
+    // Função que atualiza o número de botôes de paginação se necessário
     function updatePaginationButtons() {
         let pageButtons = paginationDiv.querySelectorAll('button');
         pageButtons.forEach((button, index) => {
@@ -103,19 +103,18 @@ function paginateTable(itemsPerPage) {
             }
         });
 
-        // Disable next button if on the last page
+        // Desativa o botão de próxima página caso estiver na última página
         nextPageBtn.disabled = currentPage === numPages;
-        // Disable previous button if on the first page
+        // Desativa o botão de página anterior caso estiver na primeira página
         prevPageBtn.disabled = currentPage === 1;
 
-        // Add 'disabled' class to previous button if on the first page
+        // Desativa o botão de página anterior caso estiver na primeira página
         if (currentPage === 1) {
             prevPageBtn.classList.add('disabled');
         } else {
             prevPageBtn.classList.remove('disabled');
         }
 
-        // Add 'disabled' class to next button if on the last page
         if (currentPage === numPages) {
             nextPageBtn.classList.add('disabled');
         } else {
@@ -125,7 +124,7 @@ function paginateTable(itemsPerPage) {
 
     updatePageInfo();
 
-
+// função que pesquisa por itens em todas as páginas
     searchAll.addEventListener('keyup', function () {
         let searchTerm = searchAll.value.toLowerCase();
 
@@ -144,7 +143,7 @@ function paginateTable(itemsPerPage) {
     });
 
 
-    // Live search functionality - search without altering page size and ignore hidden items
+    // função que pesquisa por itens na página atual
     searchInput.addEventListener('keyup', function () {
         let searchTerm = searchInput.value.toLowerCase();
 
@@ -166,7 +165,7 @@ function paginateTable(itemsPerPage) {
 }
 
 
-// Call the paginateTable function with 5 items per page initially
+// Chamar a função com 20 itens por página
 paginateTable(20);
 updatePageInfo();
 

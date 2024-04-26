@@ -93,15 +93,7 @@
 
 
 
-                        <select name="idservico" class="select">
-                            <option value="">Selecionar Serviço</option>
-                            <jsp:useBean class="model.ServicoDAO" id="servico"/>                   
-                            <c:forEach var="s" items="${servico.lista}">
-                                <option value="${s.idservico}">${s.nome}</option>
-
-                            </c:forEach>
-
-                        </select>
+                       
                     </div>
 
                     <div id="dropdownBtnContainer" onclick="toggleDropdownMenu()" class="dropdownContainer">
@@ -110,9 +102,10 @@
                             <i class="material-symbols-outlined">keyboard_arrow_down</i>
                         </div>
                         <div onclick="updateSelectedOptionMostrar(event)" id="drop" class="dropdownMenu hidden">
-                            <label><input type="radio" name="statusOption" value="Todas" checked>Todas</label>
-                            <label><input type="radio" name="statusOption" value="Inativos">Inativos</label>
-                            <label><input type="radio" name="statusOption" value="Ativos">Ativos</label>
+                            <jsp:useBean class="model.ServicoDAO" id="servico"/>                   
+                            <c:forEach var="s" items="${servico.lista}">
+                            <label><input type="radio" name="idservico" value="${s.idservico}">${s.nome}</label>
+                             </c:forEach>
                         </div>
                     </div>
 

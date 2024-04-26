@@ -1,29 +1,27 @@
 function showDescDiv(clickedIcon) {
-    // First, close any currently open descriptions
     document.querySelectorAll('.desc').forEach(function(desc) {
-        desc.style.display = 'none'; // Hide all descriptions
+        desc.style.display = 'none'; // esconde todas as descrições inicialmente
     });
 
-    // Then, show the clicked description
+    // mostrar as descrições que são clicadas
     var descSpan = clickedIcon.nextElementSibling;
     if (descSpan && descSpan.classList.contains('desc')) {
-        descSpan.style.display = 'flex'; // Show only the clicked one
+        descSpan.style.display = 'flex'; 
     }
 
-    // Stop the propagation to prevent the document click listener from hiding the description
     event.stopPropagation();
 }
 
-// Close the description when clicking anywhere else on the page
+// fecha a descrição quando clicar em qualquer lugar do documento
 document.addEventListener('click', function(event) {
     document.querySelectorAll('.desc').forEach(function(desc) {
         desc.style.display = 'none'; // Hide descriptions
     });
 });
 
-// Prevent closing when clicking inside the description
+// para não fechar quando clicar dentro da descrição
 document.querySelectorAll('.desc').forEach(function(desc) {
     desc.addEventListener('click', function(event) {
-        event.stopPropagation(); // Stop propagation to keep the description open
+        event.stopPropagation();
     });
 });
