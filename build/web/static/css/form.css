@@ -16,6 +16,9 @@ body{
 a{
     text-decoration: none;
 }
+span{
+    color: var(--cor-texto);
+}
 /* esconder as setas do input number */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -179,6 +182,7 @@ form h1{
     border-radius: 5px;
     color: var(--cor-texto);
 }
+
 /* config do botão de select */
 .inputContainer select{
     appearance: none;
@@ -256,6 +260,7 @@ form h1{
     padding: 1vh;
     cursor: pointer;
     color: var(--cor-texto);
+    border-radius: 10px;
 }
 .dropdownBtn{
     display: flex;
@@ -320,18 +325,6 @@ form h1{
 .label:hover{
     background-color: var(--cor-clara);
 }
-.label input[type="radio"]:hover{
-    color: var(--dourado);;
-}
-/* mudar a cor do icone quando ativar o botão*/
-.label input[type="radio"]:checked~.material-symbols-outlined {
-    color: var(--dourado);
-}
-/* mudar a cor do texto quando ativar o botão*/
-.label input[type="radio"]:checked+p {
-    color: var(--dourado);
-    color: var(--cor-texto);
-}
 
 /* esconder o botao de radio original */
 .label input[type="radio"] {
@@ -355,7 +348,86 @@ form h1{
 }
 
 hr {
-  width: 100%;
-  border: 1px solid var(--dourado);
-  border-radius: 20px;
+    width: 100%;
+    border: 1px solid var(--dourado);
+    border-radius: 20px;
+}
+
+.horarios-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border-radius: 10px;
+    background-color: var(--cor-escura);
+}
+
+.horario {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1vh;
+    transition-duration: 0.3s;
+    box-sizing: border-box;
+    cursor: pointer;
+    width: 100%;
+    gap: 1vh;
+
+}
+
+.horario p {
+    color: var(--cor-texto);
+    transition-duration: 0.3s;
+    margin: 0;
+}
+
+.horario .material-symbols-outlined {
+    color: var(--cor-texto);
+    transition-duration: 0.3s;
+}
+
+.horario input[type="radio"]:hover~span {
+    color: var(--dourado);;
+
+}
+
+.horario input[type="radio"]:hover~p {
+    color: var(--dourado);;
+}
+
+.horario input[type="radio"]:checked~.material-symbols-outlined {
+    color: var(--dourado);
+
+}
+
+.horario input[type="radio"]:hover~.material-symbols-outlined {
+    color: var(--dourado);
+
+}
+
+.horario input[type="radio"]:checked+p {
+    color: var(--dourado);
+
+}
+
+
+.horario input[type="radio"] {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+
+}
+
+.horario-container span {
+    background-color: var(--cor-clara);
+    padding: 1vh 1vh;
+    color: var(--cor-texto);
+    transition-duration: 0.3s;
+}
+
+.horario-container input[type="radio"]:checked~span {
+    color: var(--dourado);
+
 }

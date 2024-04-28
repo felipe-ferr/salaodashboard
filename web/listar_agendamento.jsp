@@ -152,10 +152,10 @@
                             <div class="status">
 
                                 <c:if test="${a.status==1}">
-                                    Pendente
+                                    <span class="pendente">Pendente</span>
                                 </c:if>
                                 <c:if test="${a.status==0}">
-                                    Cancelado
+                                    <span class="cancelado">Cancelado</span>
                                 </c:if>
 
                             </div>

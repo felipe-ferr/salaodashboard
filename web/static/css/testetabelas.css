@@ -284,6 +284,7 @@ a{
     padding: 1vh;
     width: 12vw;
     cursor: pointer;
+    border-radius: 10px;
 }
 .dropdownBtn{
     display: flex;

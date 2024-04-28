@@ -41,7 +41,7 @@
                     </a>
 
                     <h1>Cadastrar Agendamento</h1>
-                    
+
                     <hr>
 
                     <input type="hidden" name="idagendamento" value="${agendamento.idagendamento}"/>
@@ -50,14 +50,14 @@
                         <div class="inputContainer">
                             <input id="money" oninput="maskMoneyValue()" required type="number" name="valor" value="${agendamento.valor}">
                             <p>Valor</p>
-                            <i class="material-symbols-outlined">account_circle</i>
+                            <i class="material-symbols-outlined">payments</i>
                         </div>
 
 
                         <div class="inputContainer">
                             <input id="dateInput" required type="text" name="data" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${agendamento.data}"/>">
                             <p>Data:</p>
-                            <i class="material-symbols-outlined">cut</i>
+                            <i class="material-symbols-outlined">calendar_month</i>
                         </div>
                     </div>
 
@@ -69,16 +69,13 @@
 
                     <div class="inputContainerRow">
                         <div class="inputContainer">
-                            <input id="date" required type="text" name="data_cadastro" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${agendamento.data_cadastro}"/>">
-                            <p>Data de Agendamento</p>
-                            <i class="material-symbols-outlined">key</i>
-                        </div>
-                        <div class="inputContainer">
-                            <input required type="text" name="horario" value="${agendamento.horario}">
-                            <p>Horário</p>
-                            <i class="material-symbols-outlined">key</i>
-                        </div>
+                            <input  id="date" required type="text" name="data_cadastro" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${agendamento.data_cadastro}"/>">
+                            <p style="font-size:0.7vw">Data de Cadastro</p>
+                            <i class="material-symbols-outlined">calendar_month</i>
+                        </div>    
                     </div>
+
+
 
 
                     <hr>
@@ -126,7 +123,7 @@
                                 <div id="dropcliente" class="dropdownMenu hidden">
                                     <jsp:useBean class="model.ClienteDAO" id="cliente"/>
                                     <c:forEach var="c" items="${cliente.lista}">
-                                        <label class="label"><input type="radio" value="${c.idcliente}">${c.nome}</label>
+                                        <label class="label"><input type="radio" name="idcliente" value="${c.idcliente}">${c.nome}</label>
                                         </c:forEach>
                                 </div>
                             </div>
@@ -142,12 +139,67 @@
                                 <div id="dropusuario" class="dropdownMenu hidden">
                                     <jsp:useBean class="model.UsuarioDAO" id="usuario"/>
                                     <c:forEach var="u" items="${usuario.lista}">
-                                        <label class="label"><input type="radio" value="${u.idusuario}">${u.nome}</label>
+                                        <label class="label"><input type="radio" name="idusuario" value="${u.idusuario}">${u.nome}</label>
                                         </c:forEach>
                                 </div>
 
                             </div>
                         </div>
+
+                    </div>
+
+                    <span>Horário</span>
+                    <div class="horarios-container">
+                        <label id="inputElement" id="inputElement" class="horario">
+                            <input  type="radio" name="horario" value="9:00" />
+                            <p>9h00</p>
+                            <i class="material-symbols-outlined">schedule</i>
+                        </label>
+                        <label id="inputElement" class="horario">
+                            <input type="radio" name="horario" value="10:00" />
+                            <p>10:00</p>
+                            <i class="material-symbols-outlined">schedule</i>
+                        </label>
+                        <label id="inputElement" class="horario">
+                            <input type="radio" name="horario" value="11:00" />
+                            <p>11:00</p>
+                            <i class="material-symbols-outlined">schedule</i>
+                        </label>
+                        <label id="inputElement" class="horario">
+                            <input type="radio" name="horario" value="13:00" />
+                            <p>13:00</p>
+                            <i class="material-symbols-outlined">schedule</i>
+                        </label>
+                        <label id="inputElement" class="horario">
+                            <input type="radio" name="horario" value="14:00" />
+                            <p>14:00</p>
+                            <i class="material-symbols-outlined">schedule</i>
+                        </label>
+                        <label id="inputElement" class="horario">
+                            <input type="radio" name="horario" value="15:00" />
+                            <p>15:00</p>
+                            <i class="material-symbols-outlined">schedule</i>
+                        </label>
+                        <label id="inputElement" class="horario">
+                            <input type="radio" name="horario" value="16:00" />
+                            <p>16:00</p>
+                            <i class="material-symbols-outlined">schedule</i>
+                        </label>
+                        <label id="inputElement" class="horario">
+                            <input type="radio" name="horario" value="17:00" />
+                            <p>17:00</p>
+                            <i class="material-symbols-outlined">schedule</i>
+                        </label>
+                        <label id="inputElement" class="horario">
+                            <input type="radio" name="horario" value="18:00" />
+                            <p>18:00</p>
+                            <i class="material-symbols-outlined">schedule</i>
+                        </label>
+                        <label id="inputElement" class="horario">
+                            <input type="radio" name="horario" value="19:00" />
+                            <p>19:00</p>
+                            <i class="material-symbols-outlined">schedule</i>
+                        </label>
 
                     </div>
 

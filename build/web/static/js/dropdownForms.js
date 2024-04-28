@@ -72,10 +72,28 @@ function toggleDropdownUsuario(event) {
     selectedOptionUsuario.textContent = event.target.parentElement.textContent.trim();
   }
 }
+function toggleDropdownHorario(event) {
+  var dropdownHorario = document.getElementById('drophorario');
+  var selectedOptionHorario = document.getElementById('selectedOptionHorario');
+
+  if (event.target.closest('#dropdownBtnHorario')) {
+    dropdownHorario.classList.toggle('hidden');
+    dropdownHorario.classList.toggle('visible');
+  } else {
+    dropdownHorario.classList.add('hidden');
+    dropdownHorario.classList.remove('visible');
+  }
+
+  // Atualizar o texto do div com o valor do input selecionado no dropdown de serviço
+  if (event.target.type === 'radio' && event.target.closest('#drophorario')) {
+    selectedOptionHorario.textContent = event.target.parentElement.textContent.trim();
+  }
+}
 
 document.addEventListener('click', function(event) {
   toggleDropdownMenu(event);
   toggleDropdownServico(event);
   toggleDropdownCliente(event);
   toggleDropdownUsuario(event);
+  toggleDropdownHorario(event);
 });
