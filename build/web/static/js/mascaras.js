@@ -32,5 +32,14 @@ document.getElementById('dateInput').addEventListener('input', function(e) {
     }
 });
 
+function maskMoneyValue(inputValue) {
+  const moneyValue = Number(inputValue).toLocaleString('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+  });
+
+  return moneyValue;
+}
+
 
 

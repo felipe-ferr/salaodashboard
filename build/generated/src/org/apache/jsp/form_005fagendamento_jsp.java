@@ -71,6 +71,9 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       out.write("        <link rel=\"stylesheet\" href=\"./static/css/form.css\">\r\n");
       out.write("        <link rel=\"stylesheet\" href=\"./static/css/menu.css\">\r\n");
       out.write("\r\n");
+      out.write("        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\r\n");
+      out.write("        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.js\"></script>\r\n");
+      out.write("\r\n");
       out.write("        <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\r\n");
       out.write("        <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\r\n");
       out.write("        <link href=\"https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap\" rel=\"stylesheet\">\r\n");
@@ -78,8 +81,9 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       out.write("        <link rel=\"stylesheet\" href=\"./static/css/testetabelas.css\">\r\n");
       out.write("        <title>JSP Page</title>\r\n");
       out.write("\r\n");
-      out.write("        <script src=\"./static/js/dropdownRegistros.js\"></script>\r\n");
       out.write("        <script src=\"./static/js/mascaras.js\"></script>\r\n");
+      out.write("        <script src=\"./static/jquerymask/src/jquery.mask.js\"></script>\r\n");
+      out.write("\r\n");
       out.write("\r\n");
       out.write("    </head>\r\n");
       out.write("    <body>\r\n");
@@ -141,12 +145,13 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       out.write("\r\n");
       out.write("                    <div class=\"inputContainerRow\">\r\n");
       out.write("                        <div class=\"inputContainer\">\r\n");
-      out.write("                            <input required type=\"number\" name=\"valor\" value=\"");
+      out.write("                            <input id=\"money\" oninput=\"maskMoneyValue()\" required type=\"number\" name=\"valor\" value=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${agendamento.valor}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("\">\r\n");
       out.write("                            <p>Valor</p>\r\n");
       out.write("                            <i class=\"material-symbols-outlined\">account_circle</i>\r\n");
       out.write("                        </div>\r\n");
+      out.write("\r\n");
       out.write("\r\n");
       out.write("                        <div class=\"inputContainer\">\r\n");
       out.write("                            <input id=\"dateInput\" required type=\"text\" name=\"data\" value=\"");
@@ -159,7 +164,7 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       out.write("                    </div>\r\n");
       out.write("\r\n");
       out.write("                    <script type=\"text/javascript\" src=\"./static/js/sumirTextoTextarea.js\"></script>\r\n");
-      out.write("                    <div class=\"inputContainer\">\r\n");
+      out.write("                    <div style=\"margin-top: 5vh\" class=\"inputContainer\">\r\n");
       out.write("                        <p class=\"textareatexto\" id=\"ptextarea\">Descrição</p>\r\n");
       out.write("                        <textarea id=\"area\" onclick=\"sumirp()\" type=\"text\" name=\"descricao\" value=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${agendamento.descricao}", java.lang.String.class, (PageContext)_jspx_page_context, null));
@@ -168,7 +173,7 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       out.write("\r\n");
       out.write("                    <div class=\"inputContainerRow\">\r\n");
       out.write("                        <div class=\"inputContainer\">\r\n");
-      out.write("                            <input required type=\"text\" name=\"data_cadastro\" value=\"");
+      out.write("                            <input id=\"date\" required type=\"text\" name=\"data_cadastro\" value=\"");
       if (_jspx_meth_fmt_formatDate_1(_jspx_page_context))
         return;
       out.write("\">\r\n");
@@ -198,8 +203,15 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
-      out.write("                        <select name=\"idservico\" class=\"select\">\r\n");
-      out.write("                            <option value=\"\">Selecionar Serviço</option>\r\n");
+      out.write("                       \r\n");
+      out.write("                    </div>\r\n");
+      out.write("\r\n");
+      out.write("                    <div id=\"dropdownBtnContainer\" onclick=\"toggleDropdownMenu()\" class=\"dropdownContainer\">\r\n");
+      out.write("                        <div class=\"dropdownBtnContainer\">\r\n");
+      out.write("                            <div class=\"dropdownBtn\" id=\"selectedOptionMostrar\">Todas</div>\r\n");
+      out.write("                            <i class=\"material-symbols-outlined\">keyboard_arrow_down</i>\r\n");
+      out.write("                        </div>\r\n");
+      out.write("                        <div onclick=\"updateSelectedOptionMostrar(event)\" id=\"drop\" class=\"dropdownMenu hidden\">\r\n");
       out.write("                            ");
       model.ServicoDAO servico = null;
       synchronized (_jspx_page_context) {
@@ -213,19 +225,6 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       out.write("                            ");
       if (_jspx_meth_c_forEach_0(_jspx_page_context))
         return;
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("                        </select>\r\n");
-      out.write("                    </div>\r\n");
-      out.write("                    <div id=\"dropdownBtnContainerMostrar\" onmouseover=\"hoverDropdownMenuMostrar()\" class=\"dropdownContainer\">\r\n");
-      out.write("                        <div class=\"dropdownBtnContainer\">\r\n");
-      out.write("                            <div class=\"dropdownBtn\" id=\"selectedOptionMostrar\">Todas</div>\r\n");
-      out.write("                            <i class=\"material-symbols-outlined\">keyboard_arrow_down</i>\r\n");
-      out.write("                        </div>\r\n");
-      out.write("                        <div onclick=\"updateSelectedOptionMostrar(event)\" id=\"dropmostrar\" class=\"dropdownMenu hidden\">\r\n");
-      out.write("                            <span onclick=\"displayAll()\">Todas</span>\r\n");
-      out.write("                            <span onclick=\"filterItemsByStatusInativo()\">Inativos</span>\r\n");
-      out.write("                            <span onclick=\"filterItemsByStatusAtivo()\">Ativos</span>\r\n");
       out.write("\r\n");
       out.write("                        </div>\r\n");
       out.write("                    </div>\r\n");
@@ -282,7 +281,19 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       out.write("            </div>\r\n");
       out.write("        </div>\r\n");
       out.write("\r\n");
+      out.write("\r\n");
+      out.write("        <script src=\"./static/js/dropdownForms.js\"></script>\r\n");
       out.write("        <script src=\"./static/js/mascaras.js\"></script>\r\n");
+      out.write("        <script>\r\n");
+      out.write("                            $(document).ready(function () {\r\n");
+      out.write("                                $('#date').mask('00/00/0000');\r\n");
+      out.write("                                $('.time').mask('00:00:00');\r\n");
+      out.write("                                $('.cep').mask('00000-000');\r\n");
+      out.write("                                $('.phone').mask('(00) 00000-0000');\r\n");
+      out.write("                                $('.cpf').mask('000.000.000-00');\r\n");
+      out.write("                            });\r\n");
+      out.write("        </script>\r\n");
+      out.write("\r\n");
       out.write("    </body>\r\n");
       out.write("</html>");
     } catch (Throwable t) {
@@ -352,14 +363,13 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       if (_jspx_eval_c_forEach_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
           out.write("\r\n");
-          out.write("                                <option value=\"");
+          out.write("                            <label><input type=\"radio\" name=\"idservico\" value=\"");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${s.idservico}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write('"');
           out.write('>');
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${s.nome}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</option>\r\n");
-          out.write("\r\n");
-          out.write("                            ");
+          out.write("</label>\r\n");
+          out.write("                             ");
           int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
             break;

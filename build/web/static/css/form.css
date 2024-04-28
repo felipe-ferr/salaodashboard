@@ -19,21 +19,21 @@ a{
 /* esconder as setas do input number */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 /* esconder as setas do input number */
 input[type=number] {
-  -moz-appearance: textfield;
+    -moz-appearance: textfield;
 }
 .inputContainer .material-symbols-outlined {
     color: var(--dourado);;;
     font-variation-settings:
-    'FILL' 0,
-    'wght' 400,
-    'GRAD' 0,
-    'opsz' 24
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
 }
 
 form{
@@ -115,6 +115,7 @@ form h1{
     display: flex;
     width: 100%;;
     gap: 10px;
+    justify-content: space-around;
 }
 /* input de texto com width 100% para ocupar a div toda */
 .inputContainer input{
@@ -143,7 +144,7 @@ form h1{
     align-items: center;
     pointer-events: none;
     font-family: 'Quicksand', sans-serif;
-    
+
 }
 /* ícone no fim do input */
 .inputContainer i{
@@ -169,7 +170,7 @@ form h1{
     box-shadow: inset 0px 0px 0px 2px var(--dourado);
 }
 /* diminuir e mover para cima o nome dos campos */
-.inputContainer input:focus ~ p{
+.inputContainer input:focus~ p{
     transform: translateY(-3vh);
     font-size: 0.7rem;
     background-color: var(--cor-clara);
@@ -253,8 +254,8 @@ form h1{
     justify-content: space-around;
     background-color: var(--cor-escura);
     padding: 1vh;
-    width: 12vw;
     cursor: pointer;
+    color: var(--cor-texto);
 }
 .dropdownBtn{
     display: flex;
@@ -262,17 +263,22 @@ form h1{
     justify-content: center;
     font-family: 'Montserrat', sans-serif;
     font-size: 0.8vw;
+    color: var(--cor-texto);
 }
 .dropdownContainer{
     display: flex;
     flex-direction: column;
     position: relative;
+    width: 100%;
+    color: var(--cor-texto);
+
 }
 .dropdownMenu{
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: var(--cor-escura);
+    color: var(--cor-texto);
     width: 100%;
     position: absolute;
     top: 100%;
@@ -301,4 +307,55 @@ form h1{
 .visible{
     display: flex;
 
+}
+.label{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7vh;
+    font-size: 0.8vw;
+    color: var(--cor-texto);
+}
+.label:hover{
+    background-color: var(--cor-clara);
+}
+.label input[type="radio"]:hover{
+    color: var(--dourado);;
+}
+/* mudar a cor do icone quando ativar o botão*/
+.label input[type="radio"]:checked~.material-symbols-outlined {
+    color: var(--dourado);
+}
+/* mudar a cor do texto quando ativar o botão*/
+.label input[type="radio"]:checked+p {
+    color: var(--dourado);
+    color: var(--cor-texto);
+}
+
+/* esconder o botao de radio original */
+.label input[type="radio"] {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+
+}
+.containerColumn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 1vh;
+}
+.containerColumn span{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 0.9vw;
+    color: var(--cor-texto);
+}
+
+hr {
+  width: 100%;
+  border: 1px solid var(--dourado);
+  border-radius: 20px;
 }
