@@ -40,7 +40,7 @@
                         <p>Nome:</p>
                         <i class="material-symbols-outlined">cut</i>
                     </div>
- 
+
 
                     <script type="text/javascript" src="./static/js/sumirTextoTextarea.js"></script>
                     <div class="inputContainer">
@@ -48,12 +48,23 @@
                         <textarea id="area" onclick="sumirp()" type="text" name="descricao" value="${servico.descricao}"></textarea>
                     </div>
 
-                 
-                        <select name="status" class="select">
-                            <option value="1">Ativo</option>
-                            <option value="0">Inativo</option>
-                        </select>
-                 
+
+                    <div class="inputContainerRow">
+                        <div class="containerColumn">
+                            <span>Status</span>
+                            <div style="width: 30%" onclick="setupDropdown()" id="dropdownBtnContainer" class="dropdownContainer">
+                                <div class="dropdownBtnContainer">
+                                    <div class="dropdownBtn" id="selectedOptionMostrar">Selecionar</div>
+                                    <i class="material-symbols-outlined">keyboard_arrow_down</i>
+                                </div>
+                                <div id="dropstatus" class="dropdownMenu hidden">
+                                    <label class="label"><input type="radio" name="status" value="1">Ativo</label>
+                                    <label class="label"><input type="radio" name="status" value="0">Inativo</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
 
 
                     <button type="submit"class="submit">Cadastrar Serviço</button>
@@ -63,6 +74,8 @@
             </div>
         </div>
 
-
+        <script src="./static/js/dropdownForms.js"></script>
+        <script src="./static/js/mascaras.js"></script>
+        <script src="./static/js/fillDate.js"></script>
     </body>
 </html>

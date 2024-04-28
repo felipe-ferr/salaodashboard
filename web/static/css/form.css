@@ -112,6 +112,7 @@ form h1{
     font-family: 'Quicksand', sans-serif;
     margin: 0;
     border-radius: 5px;
+    margin-top: -6vh
 }
 /* container para abrigar dois campos de texto na mesma linha (nome e cpf) */
 .inputContainerRow{
@@ -429,5 +430,25 @@ hr {
 
 .horario-container input[type="radio"]:checked~span {
     color: var(--dourado);
-
 }
+
+.erroMensagem{
+    display: none;
+    position: absolute;
+    margin-top: 10vh;
+    color: crimson;
+}
+.preencherHoje{
+    display: flex;
+    text-wrap nowrap;
+    width: 30%;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hide the browser's default checkbox */
+input[type="checkbox"] {
+    background-color: red;
+}
+
+

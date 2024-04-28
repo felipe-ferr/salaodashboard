@@ -16,7 +16,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <link rel="stylesheet" href="./static/css/menu.css">
-        <link rel="stylesheet" href="./static/css/testetabelas.css">
+        <link rel="stylesheet" href="./static/css/tabelas.css">
 
 
         <script src="./static/bulma/jquery-3.7.1.js"></script>

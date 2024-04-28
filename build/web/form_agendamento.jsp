@@ -24,7 +24,6 @@
         <title>JSP Page</title>
 
         <script src="./static/js/mascaras.js"></script>
-        <script src="./static/jquerymask/src/jquery.mask.js"></script>
 
 
     </head>
@@ -49,28 +48,33 @@
                     <div class="inputContainerRow">
                         <div class="inputContainer">
                             <input id="money" oninput="maskMoneyValue()" required type="number" name="valor" value="${agendamento.valor}">
-                            <p>Valor</p>
+                            <p>Valor:</p>
                             <i class="material-symbols-outlined">payments</i>
                         </div>
 
-
-                        <div class="inputContainer">
+                        <div class="inputContainer">                      
                             <input id="dateInput" required type="text" name="data" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${agendamento.data}"/>">
                             <p>Data:</p>
+                            <span class="erroMensagem">A data não pode ser menor que hoje!</span>
                             <i class="material-symbols-outlined">calendar_month</i>
                         </div>
+
                     </div>
 
                     <script type="text/javascript" src="./static/js/sumirTextoTextarea.js"></script>
                     <div style="margin-top: 5vh" class="inputContainer">
-                        <p class="textareatexto" id="ptextarea">Descrição</p>
+                        <p class="textareatexto" id="ptextarea">Descrição:</p>
                         <textarea id="area" onclick="sumirp()" type="text" name="descricao" value="${agendamento.descricao}"></textarea>
                     </div>
 
                     <div class="inputContainerRow">
+                        <div class="preencherHoje">
+                            <label for="fillDateCheckbox">Preencher a data de hoje:</label>
+                            <input onclick="fillDate()" id="fillDateCheckbox" type="checkbox">
+                        </div>
                         <div class="inputContainer">
                             <input  id="date" required type="text" name="data_cadastro" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${agendamento.data_cadastro}"/>">
-                            <p style="font-size:0.7vw">Data de Cadastro</p>
+                            <p style="font-size:0.7vw">Data de Cadastro:</p>
                             <i class="material-symbols-outlined">calendar_month</i>
                         </div>    
                     </div>
@@ -217,6 +221,7 @@
 
         <script src="./static/js/dropdownForms.js"></script>
         <script src="./static/js/mascaras.js"></script>
+        <script src="./static/js/fillDate.js"></script>
         <script>
                                 $(document).ready(function () {
                                     $('#date').mask('00/00/0000');

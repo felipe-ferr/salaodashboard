@@ -16,7 +16,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <link rel="stylesheet" href="./static/css/menu.css">
-        <link rel="stylesheet" href="./static/css/testetabelas.css">
+        <link rel="stylesheet" href="./static/css/tabelas.css">
 
 
         <script src="./static/bulma/jquery-3.7.1.js"></script>
@@ -122,8 +122,8 @@
                         <div>CPF</div>
                         <div>Telefone</div>
                         <div>Email</div>
-                        <div>Status</div>
-                        <div>Ações</div>
+                        <div class="id-row">Status</div>
+                        <div class="id-row">Ações</div>
                     </div>
                 </div>
                 <div id="table" class="tabela-container container">
@@ -141,17 +141,17 @@
                             <div>${c.cpf}</div>
                             <div>${c.telefone}</div>
                             <div>${c.email}</div>
-                            <div class="status">
+                            <div class="status id-row">
 
                                 <c:if test="${c.status==1}">
-                                    Ativo
+                                    <span class="ativo">Ativo</span>
                                 </c:if>
                                 <c:if test="${c.status==0}">
-                                    Inativo
+                                    <span class="inativo">Inativo</span>
                                 </c:if>
                             </div>
 
-                            <div class="acoes-div">
+                            <div class="acoes-div id-row">
                                 <button class="botao-acoes" onclick="confirmarExclusão(${c.idcliente})">
                                     <i class="material-symbols-outlined">delete</i>
                                 </button>

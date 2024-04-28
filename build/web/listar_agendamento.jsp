@@ -16,7 +16,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <link rel="stylesheet" href="./static/css/menu.css">
-        <link rel="stylesheet" href="./static/css/testetabelas.css">
+        <link rel="stylesheet" href="./static/css/tabelas.css">
 
 
         <script src="./static/bulma/jquery-3.7.1.js"></script>
@@ -125,14 +125,14 @@
                     <div class="thead">
                         <div class="id-row">ID</div>
                         <div>Valor</div>
-                        <div>Data</div>
-                        <div>Status</div>
+                        <div>Data</div>          
                         <div>Descrição</div>
                         <div>Data de Agendamento</div>
                         <div>Horário</div>
                         <div>Serviço</div>
                         <div>Cliente</div>
                         <div>Usuário</div>
+                        <div>Status</div>
                         <div>Ações</div>
                     </div>
                 </div>
@@ -144,21 +144,11 @@
                     <c:forEach var="a" items="${a.lista}">
 
 
-                        <div id="item" class="tabela td">
+                        <div id="item" class="tabela td" style="font-size: 0.9vw">
 
                             <div class="id-row">${a.idagendamento}</div>
                             <div class="valor-row">${a.valor}</div>
-                            <div class="data"><fmt:formatDate pattern="dd/MM/yyyy" value="${a.data}"/></div>
-                            <div class="status">
-
-                                <c:if test="${a.status==1}">
-                                    <span class="pendente">Pendente</span>
-                                </c:if>
-                                <c:if test="${a.status==0}">
-                                    <span class="cancelado">Cancelado</span>
-                                </c:if>
-
-                            </div>
+                            <div class="data"><fmt:formatDate pattern="dd/MM/yyyy" value="${a.data}"/></div>                           
                             <div>
                                 <i onclick="showDescDiv(this)" style="cursor: pointer;" class="material-symbols-outlined">comment</i>
                                 <span class="desc" style="display:none">
@@ -170,7 +160,16 @@
                             <div>${a.servico.nome}</div>
                             <div class="nome-row">${a.cliente.nome}</div>
                             <div>${a.usuario.nome}</div>
+                            <div class="status">
 
+                                <c:if test="${a.status==1}">
+                                    <span class="ativo">Pendente</span>
+                                </c:if>
+                                <c:if test="${a.status==0}">
+                                    <span class="inativo">Cancelado</span>
+                                </c:if>
+
+                            </div>
                             <div class="acoes-div">
                                 <button class="botao-acoes" onclick="confirmarExclusão(${a.idagendamento})">
                                     <i class="material-symbols-outlined">delete</i>
