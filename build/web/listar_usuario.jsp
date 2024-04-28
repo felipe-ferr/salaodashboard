@@ -144,10 +144,10 @@
                             <div class="status">
 
                                 <c:if test="${u.status==1}">
-                                    Ativo
+                                    <span class="ativo">Ativo</span>
                                 </c:if>
                                 <c:if test="${u.status==0}">
-                                    Inativo
+                                    <span class="inativo">Inativo</span>
                                 </c:if>
                             </div>
 

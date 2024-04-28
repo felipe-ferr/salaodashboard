@@ -78,29 +78,31 @@ public final class listar_005fagendamento_jsp extends org.apache.jasper.runtime.
       out.write("    <head>\r\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
       out.write("        <meta content=\"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no\" name=\"viewport\">\r\n");
-      out.write("        <link rel=\"stylesheet\" href=\"./static/bulma/bulma.min.css\">\r\n");
-      out.write("        <link rel=\"stylesheet\" href=\"./static/bulma/dataTables.bulma.css\">\r\n");
-      out.write("        <link rel=\"stylesheet\" href=\"./static/bulma/font-awesome.min.css\">\r\n");
-      out.write("        <link rel=\"stylesheet\" href=\"./static/bulma/css/bulma.css\">\r\n");
       out.write("        <link rel=\"stylesheet\" href=\"./static/css/menu.css\">\r\n");
+      out.write("        <link rel=\"stylesheet\" href=\"./static/css/tabelas.css\">\r\n");
       out.write("\r\n");
-      out.write("        <link rel=\"preconnect\" href=\"https://fontc.googleapic.com\">\r\n");
-      out.write("        <link rel=\"preconnect\" href=\"https://fontc.gstatic.com\" crossorigin>\r\n");
-      out.write("        <link href=\"https://fontc.googleapic.com/css2?family=Quicksand:wght@300..700&display=swap\" rel=\"stylesheet\">\r\n");
+      out.write("\r\n");
+      out.write("        <script src=\"./static/bulma/jquery-3.7.1.js\"></script>\r\n");
+      out.write("        <script type=\"text/javascript\" src=\"static/js/PesquisaTabela.js\"></script>\r\n");
+      out.write("\r\n");
+      out.write("        <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\r\n");
+      out.write("        <link rel=\"preconnect\" href=\"https://fonts.gstatis.com\" crossorigin>\r\n");
+      out.write("        <link href=\"https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap\" rel=\"stylesheet\">\r\n");
       out.write("\r\n");
       out.write("        \r\n");
-      out.write("        <link rel=\"stylesheet\" href=\"https://fontc.googleapic.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200\" />\r\n");
+      out.write("        <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200\" />\r\n");
       out.write("\r\n");
       out.write("        <script type=\"text/javascript\"> // adicionei aqui por conta do método de exclusão \r\n");
       out.write("            function confirmarExclusão(id, nome) {\r\n");
-      out.write("                if (confirm('Deseja excluir o serviço ' + nome + '?')) {\r\n");
+      out.write("                if (confirm('Deseja desativar o agendamento ' + nome + '?')) {\r\n");
       out.write("                    location.href = 'gerenciar_agendamento.do?acao=deletar&idagendamento=' + id;\r\n");
       out.write("                }\r\n");
       out.write("            }\r\n");
       out.write("        </script>\r\n");
       out.write("\r\n");
       out.write("\r\n");
-      out.write("\r\n");
+      out.write("        <script src=\"./static/js/pagination.js\"></script>\r\n");
+      out.write("        <script src=\"./static/js/dropdownRegistros.js\"></script>\r\n");
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
@@ -110,6 +112,8 @@ public final class listar_005fagendamento_jsp extends org.apache.jasper.runtime.
       out.write("\r\n");
       out.write("\r\n");
       out.write("    <body>\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
       out.write("\r\n");
       out.write("        <div class=\"grid-container\">\r\n");
       out.write("            ");
@@ -157,27 +161,84 @@ public final class listar_005fagendamento_jsp extends org.apache.jasper.runtime.
       out.write("\r\n");
       out.write("            <div id=\"principal\" class=\"container-principal\">\r\n");
       out.write("\r\n");
-      out.write("                <div class=\"titulo-botao-container\">\r\n");
+      out.write("                           \r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("                <div class=\"row-container\">\r\n");
       out.write("                    <h1>Lista de Agendamentos</h1>\r\n");
-      out.write("                    <a href=\"form_agendamento.jsp\">Adicionar Agendamento<i class=\"material-symbols-outlined\">add</i></a>\r\n");
+      out.write("                    <a href=\"form_agendamento.jsp\">Adicionar Agendamento <i class=\"material-symbols-outlined\">add</i></a>\r\n");
+      out.write("                </div>\r\n");
+      out.write("\r\n");
+      out.write("                <div class=\"row-container\">\r\n");
+      out.write("\r\n");
+      out.write("                    <div class=\"searchContainer\">\r\n");
+      out.write("                        <input type=\"text\" id=\"searchInput\" placeholder=\"Pesquisar\">\r\n");
+      out.write("                        <i class=\"material-symbols-outlined\">search</i>\r\n");
+      out.write("                    </div>\r\n");
+      out.write("\r\n");
+      out.write("                     <div class=\"dropdown-texto-container\">\r\n");
+      out.write("                        <p>Ordenar Por:</p>\r\n");
+      out.write("                        <div id=\"dropdownBtnContainer\" onmouseover=\"toggleDropdownMenu()\" class=\"dropdownContainer\">\r\n");
+      out.write("                            <div class=\"dropdownBtnContainer\">\r\n");
+      out.write("                                <div class=\"dropdownBtn\" id=\"selectedOption\">Padrão</div>\r\n");
+      out.write("                                <i class=\"material-symbols-outlined\">keyboard_arrow_down</i>\r\n");
+      out.write("                            </div>\r\n");
+      out.write("                            <div onclick=\"updateSelectedOption(event)\" id=\"drop\" class=\"dropdownMenu hidden\">\r\n");
+      out.write("                                <span onclick=\"sortNomeAlfabetica()\">Ordem Alfabética</span>\r\n");
+      out.write("                                <span onclick=\"sortIdRowDescending()\">Ordem Crescente</span>\r\n");
+      out.write("                                <span onclick=\"sortIdRowAscending()\">Ordem Decrescente</span>\r\n");
+      out.write("                                <span onclick=\"sortValorRowAscending()\">Valor mais alto</span>\r\n");
+      out.write("                                <span onclick=\"sortValorRowDescending()\">Valor mais baixo</span>\r\n");
+      out.write("                                <span onclick=\"sortDataDescending()\">Mais Próximos</span>\r\n");
+      out.write("                                <span onclick=\"sortDataAscending()\">Mais Distantes</span>\r\n");
+      out.write("                                <span onclick=\"sortDataCadastroDescending()\">Mais Recentes</span>\r\n");
+      out.write("                                <span onclick=\"sortDataCadastroAscending()\">Mais Antigos</span>\r\n");
+      out.write("                            </div>\r\n");
+      out.write("                        </div>\r\n");
+      out.write("                    </div>\r\n");
+      out.write("                    \r\n");
+      out.write("                    <div class=\"dropdown-texto-container\">\r\n");
+      out.write("                        <p>Mostrar: </p>\r\n");
+      out.write("                        <div id=\"dropdownBtnContainerMostrar\" onmouseover=\"hoverDropdownMenuMostrar()\" class=\"dropdownContainer\">\r\n");
+      out.write("                            <div class=\"dropdownBtnContainer\">\r\n");
+      out.write("                                <div class=\"dropdownBtn\" id=\"selectedOptionMostrar\">Todas</div>\r\n");
+      out.write("                                <i class=\"material-symbols-outlined\">keyboard_arrow_down</i>\r\n");
+      out.write("                            </div>\r\n");
+      out.write("                            <div onclick=\"updateSelectedOptionMostrar(event)\" id=\"dropmostrar\" class=\"dropdownMenu hidden\">\r\n");
+      out.write("                                <span onclick=\"displayAll()\">Todas</span>\r\n");
+      out.write("                                <span onclick=\"filterItemsByStatusCancelado()\">Canceladas</span>\r\n");
+      out.write("                                <span onclick=\"filterItemsByStatusPendente()\">Pendentes</span>\r\n");
+      out.write("                              \r\n");
+      out.write("                            </div>\r\n");
+      out.write("                        </div>\r\n");
+      out.write("                    </div>\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("                    <div class=\"searchContainer\">\r\n");
+      out.write("                        <input type=\"text\" placeholder=\"Procurar Tabela Inteira..\" id=\"searchAll\">\r\n");
+      out.write("                        <i class=\"material-symbols-outlined\">search</i>\r\n");
+      out.write("                    </div>\r\n");
       out.write("                </div>\r\n");
       out.write("\r\n");
       out.write("\r\n");
-      out.write("                <table class=\"table is-hoverable is-striped\" id=\"listarAgendamento\">    \r\n");
-      out.write("                    <thead>\r\n");
-      out.write("                        <tr>\r\n");
-      out.write("                            <th style=\"text-align:left;\">ID</th>\r\n");
-      out.write("                            <th style=\"text-align:left;\">Data</th>\r\n");
-      out.write("                            <th style=\"text-align:left;\">Status</th>\r\n");
-      out.write("                            <th style=\"text-align:left;\">Descrição</th>\r\n");
-      out.write("                            <th style=\"text-align:left;\">Data de Cadastro</th>\r\n");
-      out.write("                            <th style=\"text-align:left;\">Horario</th>\r\n");
-      out.write("                            <th style=\"text-align:left;\">Servico</th>\r\n");
-      out.write("                            <th style=\"text-align:left;\">Cliente</th>\r\n");
-      out.write("                            <th style=\"text-align:left;\">Usuário</th>\r\n");
-      out.write("                            <th style=\"text-align:left;\">Ações</th>\r\n");
-      out.write("                        </tr>\r\n");
-      out.write("                    </thead>\r\n");
+      out.write("\r\n");
+      out.write("                <div class=\"row-container\">\r\n");
+      out.write("                    <div class=\"thead\">\r\n");
+      out.write("                        <div class=\"id-row\">ID</div>\r\n");
+      out.write("                        <div>Valor</div>\r\n");
+      out.write("                        <div>Data</div>          \r\n");
+      out.write("                        <div>Descrição</div>\r\n");
+      out.write("                        <div>Data de Agendamento</div>\r\n");
+      out.write("                        <div>Horário</div>\r\n");
+      out.write("                        <div>Serviço</div>\r\n");
+      out.write("                        <div>Cliente</div>\r\n");
+      out.write("                        <div>Usuário</div>\r\n");
+      out.write("                        <div>Status</div>\r\n");
+      out.write("                        <div>Ações</div>\r\n");
+      out.write("                    </div>\r\n");
+      out.write("                </div>\r\n");
+      out.write("                <div id=\"table\" class=\"tabela-container container\">\r\n");
       out.write("\r\n");
       out.write("\r\n");
       out.write("                    ");
@@ -190,30 +251,56 @@ public final class listar_005fagendamento_jsp extends org.apache.jasper.runtime.
         }
       }
       out.write("\r\n");
-      out.write("                    <tbody>\r\n");
-      out.write("                        ");
+      out.write("\r\n");
+      out.write("                    ");
       if (_jspx_meth_c_forEach_0(_jspx_page_context))
         return;
       out.write("\r\n");
-      out.write("                    </tbody>\r\n");
-      out.write("                </table> \r\n");
+      out.write("\r\n");
+      out.write("                    <div id=\"pagination\" class=\"pagination\">\r\n");
+      out.write("                        <button id=\"firstPageBtn\">Primeira</button>\r\n");
+      out.write("                        <button class=\"prevnextbtn\" id=\"prevPageBtn\"><i class=\"material-symbols-outlined\">navigate_before</i></button>\r\n");
+      out.write("                        <button class=\"prevnextbtn\" id=\"nextPageBtn\"><i class=\"material-symbols-outlined\">navigate_next</i></button>\r\n");
+      out.write("                        <button id=\"lastPageBtn\">Última</button>\r\n");
+      out.write("                    </div>\r\n");
+      out.write("                </div>\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("                <div id=\"pageInfo\" onload=\"updatePageInfo()\"></div>\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
       out.write("            </div>\r\n");
+      out.write("\r\n");
       out.write("        </div>\r\n");
       out.write("\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
       out.write("        <script src=\"./static/bulma/jquery-3.7.1.js\"></script>\r\n");
-      out.write("        <script src=\"./static/bulma/dataTables.js\"></script>\r\n");
-      out.write("        <script src=\"./static/bulma/dataTables.bulma.js\"></script>\r\n");
-      out.write("        <script src=\"./static/js/bulmadatatableagendamento.js\"></script>\r\n");
       out.write("        <script type=\"text/javascript\" src=\"static/js/modoescuro.js\"></script>\r\n");
       out.write("        <script type=\"text/javascript\" src=\"static/js/sumirTextoTextarea.js\"></script>\r\n");
+      out.write("        <script type=\"text/javascript\" src=\"static/js/PesquisaTabela.js\"></script>\r\n");
+      out.write("        <script src=\"./static/js/pagination.js\"></script>\r\n");
+      out.write("        <script src=\"http://code.jquery.com/jquery-latest.js\"></script>\r\n");
+      out.write("        <script src=\"./static/bulma/jquery-3.7.1.js\"></script>\r\n");
+      out.write("        <script src=\"./static/js/showDesc.js\"></script>\r\n");
+      out.write("        <script src=\"./static/js/dropdownRegistros.js\"></script>\r\n");
+      out.write("        <script src=\"./static/js/filtrosTabela.js\"></script>\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
       out.write("    </body>\r\n");
+      out.write("\r\n");
       out.write("</html>\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
@@ -244,59 +331,72 @@ public final class listar_005fagendamento_jsp extends org.apache.jasper.runtime.
         do {
           out.write("\r\n");
           out.write("\r\n");
-          out.write("                            <tr>\r\n");
-          out.write("                                <td>");
+          out.write("\r\n");
+          out.write("                        <div id=\"item\" class=\"tabela td\" style=\"font-size: 0.9vw\">\r\n");
+          out.write("\r\n");
+          out.write("                            <div class=\"id-row\">");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.idagendamento}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</td>\r\n");
-          out.write("                                <td>");
+          out.write("</div>\r\n");
+          out.write("                            <div class=\"valor-row\">");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.valor}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</div>\r\n");
+          out.write("                            <div class=\"data\">");
           if (_jspx_meth_fmt_formatDate_0((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
             return true;
-          out.write("</td>\r\n");
-          out.write("                                <td>\r\n");
+          out.write("</div>                           \r\n");
+          out.write("                            <div>\r\n");
+          out.write("                                <i onclick=\"showDescDiv(this)\" style=\"cursor: pointer;\" class=\"material-symbols-outlined\">comment</i>\r\n");
+          out.write("                                <span class=\"desc\" style=\"display:none\">\r\n");
           out.write("                                    ");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.descricao}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\r\n");
+          out.write("                                </span>\r\n");
+          out.write("                            </div>\r\n");
+          out.write("                            <div class=\"datacadastro\">");
+          if (_jspx_meth_fmt_formatDate_1((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
+            return true;
+          out.write("</div>\r\n");
+          out.write("                            <div>");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.horario}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</div>\r\n");
+          out.write("                            <div>");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.servico.nome}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</div>\r\n");
+          out.write("                            <div class=\"nome-row\">");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.cliente.nome}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</div>\r\n");
+          out.write("                            <div>");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.usuario.nome}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</div>\r\n");
+          out.write("                            <div class=\"status\">\r\n");
+          out.write("\r\n");
+          out.write("                                ");
           if (_jspx_meth_c_if_0((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
             return true;
           out.write("\r\n");
-          out.write("                                    ");
+          out.write("                                ");
           if (_jspx_meth_c_if_1((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
             return true;
           out.write("\r\n");
-          out.write("                                </td>\r\n");
-          out.write("                                <td>");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.descricao}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</td>\r\n");
-          out.write("                                <td>");
-          if (_jspx_meth_fmt_formatDate_1((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
-            return true;
-          out.write("</td>\r\n");
-          out.write("                                <td>");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.horario}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</td>\r\n");
-          out.write("                                <td>");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.servico.nome}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</td>\r\n");
-          out.write("                                <td>");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.cliente.nome}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</td>\r\n");
-          out.write("                                <td>");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.usuario.nome}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</td>\r\n");
-          out.write("                                \r\n");
-          out.write("                                <td class=\"acoes-td\">\r\n");
-          out.write("                                    <button class=\"botao-acoes\" onclick=\"confirmarExclusão(");
+          out.write("\r\n");
+          out.write("                            </div>\r\n");
+          out.write("                            <div class=\"acoes-div\">\r\n");
+          out.write("                                <button class=\"botao-acoes\" onclick=\"confirmarExclusão(");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.idagendamento}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write(")\">\r\n");
-          out.write("                                        <i class=\"material-symbols-outlined\">delete</i>\r\n");
-          out.write("                                    </button>\r\n");
-          out.write("                                    <a class=\"botao-acoes\" href=\"gerenciar_agendamento.do?acao=alterar&idagendamento=");
+          out.write("                                    <i class=\"material-symbols-outlined\">delete</i>\r\n");
+          out.write("                                </button>\r\n");
+          out.write("                                <a class=\"botao-acoes\" href=\"gerenciar_agendamento.do?acao=alterar&idagendamento=");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.idagendamento}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("\">\r\n");
-          out.write("                                        <i class=\"material-symbols-outlined\">edit</i>\r\n");
-          out.write("                                    </a>\r\n");
-          out.write("                                </td>\r\n");
-          out.write("                            </tr>\r\n");
+          out.write("                                    <i class=\"material-symbols-outlined\">edit</i>\r\n");
+          out.write("                                </a>\r\n");
+          out.write("                            </div>\r\n");
+          out.write("                        </div>\r\n");
           out.write("\r\n");
-          out.write("                        ");
+          out.write("\r\n");
+          out.write("\r\n");
+          out.write("                    ");
           int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
             break;
@@ -335,6 +435,25 @@ public final class listar_005fagendamento_jsp extends org.apache.jasper.runtime.
     return false;
   }
 
+  private boolean _jspx_meth_fmt_formatDate_1(javax.servlet.jsp.tagext.JspTag _jspx_th_c_forEach_0, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_forEach_0)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  fmt:formatDate
+    org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag _jspx_th_fmt_formatDate_1 = (org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag) _jspx_tagPool_fmt_formatDate_value_pattern_nobody.get(org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag.class);
+    _jspx_th_fmt_formatDate_1.setPageContext(_jspx_page_context);
+    _jspx_th_fmt_formatDate_1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_0);
+    _jspx_th_fmt_formatDate_1.setPattern("dd/MM/yyyy");
+    _jspx_th_fmt_formatDate_1.setValue((java.util.Date) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.data_cadastro}", java.util.Date.class, (PageContext)_jspx_page_context, null));
+    int _jspx_eval_fmt_formatDate_1 = _jspx_th_fmt_formatDate_1.doStartTag();
+    if (_jspx_th_fmt_formatDate_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_fmt_formatDate_value_pattern_nobody.reuse(_jspx_th_fmt_formatDate_1);
+      return true;
+    }
+    _jspx_tagPool_fmt_formatDate_value_pattern_nobody.reuse(_jspx_th_fmt_formatDate_1);
+    return false;
+  }
+
   private boolean _jspx_meth_c_if_0(javax.servlet.jsp.tagext.JspTag _jspx_th_c_forEach_0, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_forEach_0)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
@@ -348,8 +467,8 @@ public final class listar_005fagendamento_jsp extends org.apache.jasper.runtime.
     if (_jspx_eval_c_if_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("                                        Ativo\r\n");
-        out.write("                                    ");
+        out.write("                                    <span class=\"ativo\">Pendente</span>\r\n");
+        out.write("                                ");
         int evalDoAfterBody = _jspx_th_c_if_0.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
           break;
@@ -376,8 +495,8 @@ public final class listar_005fagendamento_jsp extends org.apache.jasper.runtime.
     if (_jspx_eval_c_if_1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("                                        Inativo\r\n");
-        out.write("                                    ");
+        out.write("                                    <span class=\"inativo\">Cancelado</span>\r\n");
+        out.write("                                ");
         int evalDoAfterBody = _jspx_th_c_if_1.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
           break;
@@ -388,25 +507,6 @@ public final class listar_005fagendamento_jsp extends org.apache.jasper.runtime.
       return true;
     }
     _jspx_tagPool_c_if_test.reuse(_jspx_th_c_if_1);
-    return false;
-  }
-
-  private boolean _jspx_meth_fmt_formatDate_1(javax.servlet.jsp.tagext.JspTag _jspx_th_c_forEach_0, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_forEach_0)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  fmt:formatDate
-    org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag _jspx_th_fmt_formatDate_1 = (org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag) _jspx_tagPool_fmt_formatDate_value_pattern_nobody.get(org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag.class);
-    _jspx_th_fmt_formatDate_1.setPageContext(_jspx_page_context);
-    _jspx_th_fmt_formatDate_1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_0);
-    _jspx_th_fmt_formatDate_1.setPattern("dd/MM/yyyy");
-    _jspx_th_fmt_formatDate_1.setValue((java.util.Date) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.data_cadastro}", java.util.Date.class, (PageContext)_jspx_page_context, null));
-    int _jspx_eval_fmt_formatDate_1 = _jspx_th_fmt_formatDate_1.doStartTag();
-    if (_jspx_th_fmt_formatDate_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _jspx_tagPool_fmt_formatDate_value_pattern_nobody.reuse(_jspx_th_fmt_formatDate_1);
-      return true;
-    }
-    _jspx_tagPool_fmt_formatDate_value_pattern_nobody.reuse(_jspx_th_fmt_formatDate_1);
     return false;
   }
 }
