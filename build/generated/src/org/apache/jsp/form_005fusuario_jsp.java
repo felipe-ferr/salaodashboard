@@ -98,7 +98,7 @@ public final class form_005fusuario_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("    \r\n");
       out.write("            <div id=\"side\" class=\"sidebar\">\r\n");
       out.write("                <span class=\"sidebar-titulo\">Salão do Luciano</span>\r\n");
-      out.write("                <a href=\"#\"><span class=\"material-symbols-outlined sidebar-icone\">calendar_month</span>Agendamentos</a>\r\n");
+      out.write("                <a href=\"listar_agendamento.jsp\"><span class=\"material-symbols-outlined sidebar-icone\">calendar_month</span>Agendamentos</a>\r\n");
       out.write("                <a href=\"listar_cliente.jsp\"><span class=\"material-symbols-outlined sidebar-icone\">person</span>Clientes</a>\r\n");
       out.write("                <a href=\"listar_servico.jsp\"><span class=\"material-symbols-outlined sidebar-icone\">cut</span>Serviços</a>\r\n");
       out.write("                <a href=\"listar_perfil.jsp\"><span class=\"material-symbols-outlined sidebar-icone\">account_circle</span>Perfis</a>\r\n");
@@ -175,7 +175,7 @@ public final class form_005fusuario_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("                        <option value=\"0\">Inativo</option>\r\n");
       out.write("                    </select>\r\n");
       out.write("\r\n");
-      out.write("                    <select name=\"idperfil\" class=\"select\">\r\n");
+      out.write("                    <select name=\"idperfil\" class=\"select\" required>\r\n");
       out.write("                        <option value=\"\">Selecionar Perfil</option>\r\n");
       out.write("                        ");
       model.PerfilDAO perfil = null;

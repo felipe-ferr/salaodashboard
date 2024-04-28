@@ -11,11 +11,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="./static/css/form.css">
-        <link rel="stylesheet" href="./static/css/menu.css">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.js"></script>
 
         <title>JSP Page</title>
 
@@ -42,43 +44,65 @@
                         <i class="material-symbols-outlined">cut</i>
                     </div>
 
-                    <div class="inputContainer">
-                        <input required type="text" name="cpf" value="${usuario.cpf}">
-                        <p>CPF</p>
-                        <i class="material-symbols-outlined">description</i>
+                    <div class="inputContainerRow">
+                        <div class="inputContainer">
+                            <input class="cpf" required type="text" name="cpf" value="${usuario.cpf}">
+                            <p>CPF</p>
+                            <i class="material-symbols-outlined">description</i>
+                        </div>
+
+                        <div class="inputContainer">
+                            <input class="phone" required type="text" name="telefone" value="${usuario.telefone}">
+                            <p>Telefone</p>
+                            <i class="material-symbols-outlined">phone</i>
+                        </div>
                     </div>
 
-                    <div class="inputContainer">
-                        <input required type="text" name="telefone" value="${usuario.telefone}">
-                        <p>Telefone</p>
-                        <i class="material-symbols-outlined">phone</i>
+                    <div class="inputContainerRow">
+                        <div class="inputContainer">
+                            <input required type="text" name="login" value="${usuario.login}">
+                            <p>Login</p>
+                            <i class="material-symbols-outlined">account_circle</i>
+                        </div>
+                        <div class="inputContainer">
+                            <input required type="password" name="senha" value="${usuario.senha}">
+                            <p>Senha</p>
+                            <i class="material-symbols-outlined">key</i>
+                        </div>
                     </div>
 
-                    <div class="inputContainer">
-                        <input required type="text" name="login" value="${usuario.login}">
-                        <p>Login</p>
-                        <i class="material-symbols-outlined">account_circle</i>
-                    </div>
-                    <div class="inputContainer">
-                        <input required type="password" name="senha" value="${usuario.senha}">
-                        <p>Senha</p>
-                        <i class="material-symbols-outlined">key</i>
-                    </div>
+                    <div class="inputContainerRow">
+                        <div class="containerColumn">
+                            <span>Status</span>
+                            <div onclick="setupDropdown()" id="dropdownBtnContainer" class="dropdownContainer">
+                                <div class="dropdownBtnContainer">
+                                    <div class="dropdownBtn" id="selectedOptionMostrar">Selecionar</div>
+                                    <i class="material-symbols-outlined">keyboard_arrow_down</i>
+                                </div>
+                                <div id="dropstatus" class="dropdownMenu hidden">
+                                    <label class="label"><input type="radio" name="status" value="1">Ativo</label>
+                                    <label class="label"><input type="radio" name="status" value="0">Inativo</label>
+                                </div>
+                            </div>
+                        </div>
 
-                    <select name="status" class="select">
-                        <option value="1">Ativo</option>
-                        <option value="0">Inativo</option>
-                    </select>
+                        <div class="containerColumn">
+                            <span>Perfil</span>
+                            <div id="dropdownBtnServico" class="dropdownContainer">
+                                <div class="dropdownBtnContainer">
+                                    <div class="dropdownBtn" id="selectedOptionServico">Selecionar</div>
+                                    <i class="material-symbols-outlined">keyboard_arrow_down</i>
+                                </div>
+                                <div id="dropservico" class="dropdownMenu hidden">
+                                    <jsp:useBean class="model.PerfilDAO" id="perfil"/>                   
+                                    <c:forEach var="p" items="${perfil.lista}">
+                                        <label class="label"><input type="radio" name="idperfil" value="${p.idperfil}">${p.nome}</label>
+                                        </c:forEach>
+                                </div>
+                            </div>
+                        </div>
 
-                    <select name="idperfil" class="select" required>
-                        <option value="">Selecionar Perfil</option>
-                        <jsp:useBean class="model.PerfilDAO" id="perfil"/>
-                        <c:forEach var="p" items="${perfil.lista}">
-                            <option value="${p.idperfil}">${p.nome}</option>
-                            
-                        </c:forEach>
-                        
-                    </select>
+                    </div>
 
 
 
@@ -92,6 +116,17 @@
             </div>
         </div>
 
+        <script src="./static/js/dropdownForms.js"></script>
+        <script src="./static/js/mascaras.js"></script>
+        <script>
+                                $(document).ready(function () {
+                                    $('#date').mask('00/00/0000');
+                                    $('.time').mask('00:00:00');
+                                    $('.cep').mask('00000-000');
+                                    $('.phone').mask('(00) 00000-0000');
+                                    $('.cpf').mask('000.000.000-00');
 
+                                });
+        </script>
     </body>
 </html>
