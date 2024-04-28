@@ -26,7 +26,7 @@ document.getElementById('dateInput').addEventListener('input', function(e) {
 
         if (enteredDate < today) {
             // Checa se a data é menor que hoje
-            alert("The date cannot be lower than today.");
+            alert("A data não pode ser menor que a de hoje!");
             e.target.value = ''; 
         }
     }
