@@ -80,7 +80,7 @@
                                     <i class="material-symbols-outlined">keyboard_arrow_down</i>
                                 </div>
                                 <div id="dropstatus" class="dropdownMenu hidden">
-                                    <label class="label"><input type="radio" name="status" value="1">Ativo</label>
+                                    <label class="label"><input type="radio" checked name="status" value="1">Ativo</label>
                                     <label class="label"><input type="radio" name="status" value="0">Inativo</label>
                                 </div>
                             </div>
@@ -96,7 +96,7 @@
                                 <div id="dropservico" class="dropdownMenu hidden">
                                     <jsp:useBean class="model.PerfilDAO" id="perfil"/>                   
                                     <c:forEach var="p" items="${perfil.lista}">
-                                        <label class="label"><input type="radio" name="idperfil" value="${p.idperfil}">${p.nome}</label>
+                                        <label class="label"><input type="radio" required name="idperfil" value="${p.idperfil}">${p.nome}</label>
                                         </c:forEach>
                                 </div>
                             </div>

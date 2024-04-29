@@ -77,7 +77,7 @@ public class PerfilDAO extends DatabaseDAO{
     public boolean deletar(Perfil p){
 
         try{
-            String sql = "DELETE FROM perfil WHERE idperfil=? ";
+            String sql = "UPDATE perfil SET status=0 WHERE idperfil=? ";
             this.conectar();
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setInt(1, p.getIdperfil());
