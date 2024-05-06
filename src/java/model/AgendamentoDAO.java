@@ -56,42 +56,59 @@ public class AgendamentoDAO extends DatabaseDAO {
         
     }
     
-    public boolean gravar (Agendamento a){
-       
-        try{
-            String sql;
-            this.conectar();
-            if(a.getIdagendamento()==0){
-                sql = "INSERT INTO agendamento(valor, data, status, descricao, data_cadastro, horario, idservico, idcliente, idusuario) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            }else{
-                sql = "UPDATE agendamento SET valor=?, data=?, status=?, descricao=?, data_cadastro=?, horario=?, idservico=?, idcliente=?, idusuario=? WHERE idagendamento=?"; 
-            }
+    public boolean gravar(Agendamento a) throws Exception {
+    try {
+        this.conectar();
+        boolean proceed = false;
+        boolean proceedConditionFailed = false; // Variable to track if the proceed condition failed
+        
+        // Verifica se existem registros com a mesma data e o mesmo horario
+        String checkSql = "SELECT 1 FROM agendamento WHERE horario = ? AND data = ?" + (a.getIdagendamento() > 0 ? " AND idagendamento <> ?" : "");
+        PreparedStatement checkStmt = conn.prepareStatement(checkSql);
+        checkStmt.setString(1, a.getHorario());
+        checkStmt.setDate(2, new Date(a.getData().getTime()));
+        if (a.getIdagendamento() > 0) {
+            checkStmt.setInt(3, a.getIdagendamento());
+        }
+        ResultSet rs = checkStmt.executeQuery();
+        proceed = !rs.next(); // prosseguir se não existir registros com a mesma data e horario
+        proceedConditionFailed = !proceed; // Set the variable to true if the proceed condition failed
 
+        if (proceed) {
+            String sql;
+            if (a.getIdagendamento() == 0) {
+                sql = "INSERT INTO agendamento(valor, data, status, descricao, data_cadastro, horario, idservico, idcliente, idusuario) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            } else {
+                sql = "UPDATE agendamento SET valor=?, data=?, status=?, descricao=?, data_cadastro=?, horario=?, idservico=?, idcliente=?, idusuario=? WHERE idagendamento=?";
+            }
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setFloat(1, a.getValor());
-            pstm.setDate(2, new Date(a.getData().getTime()) );
+            pstm.setDate(2, new Date(a.getData().getTime()));
             pstm.setInt(3, a.getStatus());
             pstm.setString(4, a.getDescricao());
-            pstm.setDate(5, new Date(a.getData_cadastro().getTime()) );
+            pstm.setDate(5, new Date(a.getData_cadastro().getTime()));
             pstm.setString(6, a.getHorario());
             pstm.setInt(7, a.getServico().getIdservico());
             pstm.setInt(8, a.getCliente().getIdcliente());
             pstm.setInt(9, a.getUsuario().getIdusuario());
-            
-
-            if(a.getIdagendamento()>0){
+            if (a.getIdagendamento() > 0) {
                 pstm.setInt(10, a.getIdagendamento());
             }
 
-            pstm.execute();
+            int affectedRows = pstm.executeUpdate();
             this.desconectar();
-            return true;
+            return affectedRows > 0; // Returns true if at least one row was affected
+        } else {
+            this.desconectar();
+            return false; // No operation was performed due to existing row
         }
-        catch(Exception e){
-            System.out.println(e);
-            return false;
-        }
+    } catch (Exception e) {
+        System.out.println(e);
+        this.desconectar();
+        return false;
     }
+}
+
     
     public Agendamento getCarregaPorID(int idagendamento) throws Exception{
         

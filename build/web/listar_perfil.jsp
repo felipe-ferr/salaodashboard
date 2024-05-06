@@ -63,8 +63,8 @@
 
 
                 <div class="row-container">
-                    <h1>Lista de Serviços</h1>
-                    <a href="form_perfil.jsp">Adicionar Serviço<i class="material-symbols-outlined">add</i></a>
+                    <h1>Lista de Perfis</h1>
+                    <a href="form_perfil.jsp">Adicionar Perfil<i class="material-symbols-outlined">add</i></a>
                 </div>
 
                 <div class="row-container">

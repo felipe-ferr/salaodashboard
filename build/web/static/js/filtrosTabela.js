@@ -2,31 +2,33 @@ function sortIdRowDescending() {
     const idRows = document.querySelectorAll('.id-row');
 
     const sortedIdRows = Array.from(idRows).filter(row => !row.parentElement.classList.contains('thead')).sort((a, b) => {
-        return parseInt(b.textContent) - parseInt(a.textContent);
+        return parseInt(b.textContent) - parseInt(a.textContent); // Filtar por ordem decrescente
     });
 
     const table = document.querySelector('#table');
 
     sortedIdRows.forEach(row => {
-        if (!row.parentElement.classList.contains('thead')) {
+        if (!row.parentElement.classList.contains('thead')) { // ignora o cabeçalho da tabela
             table.insertBefore(row.parentElement, table.firstChild);
         }
     });
+    updatePageInfo();
 }
 function sortIdRowAscending() {
     const idRows = document.querySelectorAll('.id-row');
 
     const sortedIdRows = Array.from(idRows).filter(row => !row.parentElement.classList.contains('thead')).sort((b, a) => {
-        return parseInt(a.textContent) - parseInt(b.textContent); // Sort in ascending order
+        return parseInt(a.textContent) - parseInt(b.textContent); // Filtar por ordem crescente
     });
 
     const table = document.querySelector('#table');
 
     sortedIdRows.forEach(row => {
         if (!row.parentElement.classList.contains('thead')) {
-            table.appendChild(row.parentElement); // Append rows at the end of the table for ascending order
+            table.appendChild(row.parentElement); 
         }
     });
+    updatePageInfo();
 }
 
 function sortValorRowDescending() {
@@ -43,21 +45,23 @@ function sortValorRowDescending() {
             table.insertBefore(row.parentElement, table.firstChild);
         }
     });
+    updatePageInfo();
 }
 function sortValorRowAscending() {
     const idRows = document.querySelectorAll('.valor-row');
 
     const sortedIdRows = Array.from(idRows).filter(row => !row.parentElement.classList.contains('thead')).sort((b, a) => {
-        return parseInt(a.textContent) - parseInt(b.textContent); // Sort in ascending order
+        return parseInt(a.textContent) - parseInt(b.textContent);
     });
 
     const table = document.querySelector('#table');
 
     sortedIdRows.forEach(row => {
         if (!row.parentElement.classList.contains('thead')) {
-            table.appendChild(row.parentElement); // Append rows at the end of the table for ascending order
+            table.appendChild(row.parentElement); 
         }
     });
+    updatePageInfo();
 }
 
 
@@ -75,21 +79,23 @@ function sortDataDescending() {
             table.insertBefore(row.parentElement, table.firstChild);
         }
     });
+    updatePageInfo();
 }
 function sortDataAscending() {
     const idRows = document.querySelectorAll('.data');
 
     const sortedIdRows = Array.from(idRows).filter(row => !row.parentElement.classList.contains('thead')).sort((b, a) => {
-        return parseInt(a.textContent) - parseInt(b.textContent); // Sort in ascending order
+        return parseInt(a.textContent) - parseInt(b.textContent);
     });
 
     const table = document.querySelector('#table');
 
     sortedIdRows.forEach(row => {
         if (!row.parentElement.classList.contains('thead')) {
-            table.appendChild(row.parentElement); // Append rows at the end of the table for ascending order
+            table.appendChild(row.parentElement); 
         }
     });
+    updatePageInfo();
 }
 
 function sortDataCadastroDescending() {
@@ -106,12 +112,13 @@ function sortDataCadastroDescending() {
             table.insertBefore(row.parentElement, table.firstChild);
         }
     });
+    updatePageInfo();
 }
 function sortDataCadastroAscending() {
     const idRows = document.querySelectorAll('.datacadastro');
 
     const sortedIdRows = Array.from(idRows).filter(row => !row.parentElement.classList.contains('thead')).sort((b, a) => {
-        return parseInt(a.textContent) - parseInt(b.textContent); // Sort in ascending order
+        return parseInt(a.textContent) - parseInt(b.textContent); 
     });
 
     const table = document.querySelector('#table');
@@ -121,9 +128,10 @@ function sortDataCadastroAscending() {
             table.appendChild(row.parentElement); 
         }
     });
+    updatePageInfo();
 }
 
-function sortByAlphabeticalOrder() {
+function sortNomeAlfabetica(){
   const container = document.querySelector('.tabela-container');
   // Ignorar a div dos botões de paginação ao classificar os itens
   const items = Array.from(document.querySelectorAll('.tabela.td:not(#pagination)'));
@@ -147,6 +155,7 @@ function sortByAlphabeticalOrder() {
   sortedItems.forEach(item => {
     container.insertBefore(item, paginationDiv);
   });
+  updatePageInfo();
 }
 
 
@@ -165,6 +174,7 @@ function filterItemsByStatusPendente() {
       item.style.display = '';
     }
   });
+  updatePageInfo();
 }
 
 
@@ -182,6 +192,7 @@ function filterItemsByStatusCancelado() {
       item.style.display = '';
     }
   });
+  updatePageInfo();
 }
 
 function filterItemsByStatusAtivo() {
@@ -197,6 +208,7 @@ function filterItemsByStatusAtivo() {
       item.style.display = '';
     }
   });
+  updatePageInfo();
 }
 function filterItemsByStatusInativo() {
   const items = document.querySelectorAll('.tabela.td');
@@ -211,6 +223,7 @@ function filterItemsByStatusInativo() {
       item.style.display = '';
     }
   });
+  updatePageInfo();
 }
 
 
@@ -221,4 +234,7 @@ function displayAll() {
   items.forEach(item => {
     item.style.display = 'flex'; 
   });
+  updatePageInfo();
 }
+
+

@@ -74,7 +74,7 @@ a{
     align-items: center;
     justify-content: center;
     width: 90%;
-    padding: 1vh 0%;
+    padding: 1vh 1%;
     color: var(--cor-texto);
     background-color: var(--cor-escura);
     height: 100%;
@@ -101,7 +101,7 @@ a{
     align-items: flex-start;
     justify-content: center;
     width: 90%;
-    padding: 1% 0%;
+    padding: 1vh 1%;
     font-size: 0.8vw;
     text-align: center;
 }

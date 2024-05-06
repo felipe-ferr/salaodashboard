@@ -59,7 +59,7 @@
 
             <div id="principal" class="container-principal">
 
-                           
+
 
 
                 <div class="row-container">
@@ -74,7 +74,7 @@
                         <i class="material-symbols-outlined">search</i>
                     </div>
 
-                     <div class="dropdown-texto-container">
+                    <div class="dropdown-texto-container">
                         <p>Ordenar Por:</p>
                         <div id="dropdownBtnContainer" onmouseover="toggleDropdownMenu()" class="dropdownContainer">
                             <div class="dropdownBtnContainer">
@@ -94,7 +94,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="dropdown-texto-container">
                         <p>Mostrar: </p>
                         <div id="dropdownBtnContainerMostrar" onmouseover="hoverDropdownMenuMostrar()" class="dropdownContainer">
@@ -106,7 +106,7 @@
                                 <span onclick="displayAll()">Todas</span>
                                 <span onclick="filterItemsByStatusCancelado()">Canceladas</span>
                                 <span onclick="filterItemsByStatusPendente()">Pendentes</span>
-                              
+
                             </div>
                         </div>
                     </div>
@@ -122,7 +122,7 @@
 
 
                 <div class="row-container">
-                    <div class="thead">
+                    <div id="nav" class="thead">
                         <div class="id-row">ID</div>
                         <div>Valor</div>
                         <div>Data</div>          
@@ -208,16 +208,16 @@
 
         </div>
 
-        <script src="./static/bulma/jquery-3.7.1.js"></script>
         <script type="text/javascript" src="static/js/modoescuro.js"></script>
         <script type="text/javascript" src="static/js/sumirTextoTextarea.js"></script>
         <script type="text/javascript" src="static/js/PesquisaTabela.js"></script>
         <script src="./static/js/pagination.js"></script>
         <script src="http://code.jquery.com/jquery-latest.js"></script>
-        <script src="./static/bulma/jquery-3.7.1.js"></script>
         <script src="./static/js/showDesc.js"></script>
         <script src="./static/js/dropdownRegistros.js"></script>
         <script src="./static/js/filtrosTabela.js"></script>
+        <script src="./static/js/fixedthead.js"></script>
+
 
 
 

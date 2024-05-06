@@ -83,7 +83,7 @@
                             </div>
                             <div onclick="updateSelectedOption(event)" id="drop" class="dropdownMenu hidden">
                                 <span onclick="sortIdRowDescending()">Ordem Crescente</span>
-                                <span onclick="sortIdRowAscending()">Ordem Decrescente</span>
+                                <span onclick="sortIdRowDescending()">Ordem Decrescente</span>
                                 <span onclick="sortNomeAlfabetica()">Ordem Alfabética</span>
                             </div>
                         </div>

@@ -161,7 +161,7 @@ public final class listar_005fagendamento_jsp extends org.apache.jasper.runtime.
       out.write("\r\n");
       out.write("            <div id=\"principal\" class=\"container-principal\">\r\n");
       out.write("\r\n");
-      out.write("                           \r\n");
+      out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
       out.write("                <div class=\"row-container\">\r\n");
@@ -176,7 +176,7 @@ public final class listar_005fagendamento_jsp extends org.apache.jasper.runtime.
       out.write("                        <i class=\"material-symbols-outlined\">search</i>\r\n");
       out.write("                    </div>\r\n");
       out.write("\r\n");
-      out.write("                     <div class=\"dropdown-texto-container\">\r\n");
+      out.write("                    <div class=\"dropdown-texto-container\">\r\n");
       out.write("                        <p>Ordenar Por:</p>\r\n");
       out.write("                        <div id=\"dropdownBtnContainer\" onmouseover=\"toggleDropdownMenu()\" class=\"dropdownContainer\">\r\n");
       out.write("                            <div class=\"dropdownBtnContainer\">\r\n");
@@ -196,7 +196,7 @@ public final class listar_005fagendamento_jsp extends org.apache.jasper.runtime.
       out.write("                            </div>\r\n");
       out.write("                        </div>\r\n");
       out.write("                    </div>\r\n");
-      out.write("                    \r\n");
+      out.write("\r\n");
       out.write("                    <div class=\"dropdown-texto-container\">\r\n");
       out.write("                        <p>Mostrar: </p>\r\n");
       out.write("                        <div id=\"dropdownBtnContainerMostrar\" onmouseover=\"hoverDropdownMenuMostrar()\" class=\"dropdownContainer\">\r\n");
@@ -208,7 +208,7 @@ public final class listar_005fagendamento_jsp extends org.apache.jasper.runtime.
       out.write("                                <span onclick=\"displayAll()\">Todas</span>\r\n");
       out.write("                                <span onclick=\"filterItemsByStatusCancelado()\">Canceladas</span>\r\n");
       out.write("                                <span onclick=\"filterItemsByStatusPendente()\">Pendentes</span>\r\n");
-      out.write("                              \r\n");
+      out.write("\r\n");
       out.write("                            </div>\r\n");
       out.write("                        </div>\r\n");
       out.write("                    </div>\r\n");
@@ -224,7 +224,7 @@ public final class listar_005fagendamento_jsp extends org.apache.jasper.runtime.
       out.write("\r\n");
       out.write("\r\n");
       out.write("                <div class=\"row-container\">\r\n");
-      out.write("                    <div class=\"thead\">\r\n");
+      out.write("                    <div id=\"nav\" class=\"thead\">\r\n");
       out.write("                        <div class=\"id-row\">ID</div>\r\n");
       out.write("                        <div>Valor</div>\r\n");
       out.write("                        <div>Data</div>          \r\n");
@@ -281,16 +281,16 @@ public final class listar_005fagendamento_jsp extends org.apache.jasper.runtime.
       out.write("\r\n");
       out.write("        </div>\r\n");
       out.write("\r\n");
-      out.write("        <script src=\"./static/bulma/jquery-3.7.1.js\"></script>\r\n");
       out.write("        <script type=\"text/javascript\" src=\"static/js/modoescuro.js\"></script>\r\n");
       out.write("        <script type=\"text/javascript\" src=\"static/js/sumirTextoTextarea.js\"></script>\r\n");
       out.write("        <script type=\"text/javascript\" src=\"static/js/PesquisaTabela.js\"></script>\r\n");
       out.write("        <script src=\"./static/js/pagination.js\"></script>\r\n");
       out.write("        <script src=\"http://code.jquery.com/jquery-latest.js\"></script>\r\n");
-      out.write("        <script src=\"./static/bulma/jquery-3.7.1.js\"></script>\r\n");
       out.write("        <script src=\"./static/js/showDesc.js\"></script>\r\n");
       out.write("        <script src=\"./static/js/dropdownRegistros.js\"></script>\r\n");
       out.write("        <script src=\"./static/js/filtrosTabela.js\"></script>\r\n");
+      out.write("        <script src=\"./static/js/fixedthead.js\"></script>\r\n");
+      out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
