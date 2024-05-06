@@ -21,11 +21,13 @@ document.getElementById('dateInput').addEventListener('input', function(e) {
         
         var today = new Date();
         today.setHours(0,0,0,0);
-
+        
+        let dateInput = document.getElementById('dateInput');
         var errorMessageElement = document.querySelector('.erroMensagem');
         if (enteredDate < today) {
             // Checa se a data é menor que hoje e exibe a mensagem de erro
             errorMessageElement.style.display = 'flex';
+            dateInput.value = '';
         } else {
             // Se a data for válida, garante que a mensagem de erro não seja exibida
             errorMessageElement.style.display = 'none';
