@@ -60,7 +60,6 @@ public class AgendamentoDAO extends DatabaseDAO {
     try {
         this.conectar();
         boolean proceed = false;
-        boolean proceedConditionFailed = false; // Variable to track if the proceed condition failed
         
         // Verifica se existem registros com a mesma data e o mesmo horario
         String checkSql = "SELECT 1 FROM agendamento WHERE horario = ? AND data = ?" + (a.getIdagendamento() > 0 ? " AND idagendamento <> ?" : "");
@@ -72,7 +71,6 @@ public class AgendamentoDAO extends DatabaseDAO {
         }
         ResultSet rs = checkStmt.executeQuery();
         proceed = !rs.next(); // prosseguir se não existir registros com a mesma data e horario
-        proceedConditionFailed = !proceed; // Set the variable to true if the proceed condition failed
 
         if (proceed) {
             String sql;
