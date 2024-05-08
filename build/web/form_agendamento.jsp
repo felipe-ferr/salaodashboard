@@ -33,7 +33,7 @@
             <%@include file="sidebar.jsp" %>
 
             <div class="container-principal">
-                <form id="myForm" method="POST"action="gerenciar_agendamento.do" value="">
+                <form method="POST" action="gerenciar_agendamento.do" value="">
 
                     <a class="botaoinicio"href="#">
                         <i class="material-symbols-outlined">arrow_back</i>Voltar ao início

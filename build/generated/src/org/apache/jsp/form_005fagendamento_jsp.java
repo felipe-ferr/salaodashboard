@@ -81,7 +81,6 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       out.write("        <title>JSP Page</title>\r\n");
       out.write("\r\n");
       out.write("        <script src=\"./static/js/mascaras.js\"></script>\r\n");
-      out.write("        <script src=\"./static/jquerymask/src/jquery.mask.js\"></script>\r\n");
       out.write("\r\n");
       out.write("\r\n");
       out.write("    </head>\r\n");
@@ -130,7 +129,7 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       out.write("\r\n");
       out.write("\r\n");
       out.write("            <div class=\"container-principal\">\r\n");
-      out.write("                <form method=\"POST\"action=\"gerenciar_agendamento.do\" value=\"\">\r\n");
+      out.write("                <form method=\"POST\" action=\"gerenciar_agendamento.do\" value=\"\">\r\n");
       out.write("\r\n");
       out.write("                    <a class=\"botaoinicio\"href=\"#\">\r\n");
       out.write("                        <i class=\"material-symbols-outlined\">arrow_back</i>Voltar ao início\r\n");
@@ -149,36 +148,41 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       out.write("                            <input id=\"money\" oninput=\"maskMoneyValue()\" required type=\"number\" name=\"valor\" value=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${agendamento.valor}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("\">\r\n");
-      out.write("                            <p>Valor</p>\r\n");
+      out.write("                            <p>Valor:</p>\r\n");
       out.write("                            <i class=\"material-symbols-outlined\">payments</i>\r\n");
       out.write("                        </div>\r\n");
       out.write("\r\n");
-      out.write("\r\n");
-      out.write("                        <div class=\"inputContainer\">\r\n");
+      out.write("                        <div class=\"inputContainer\">                      \r\n");
       out.write("                            <input id=\"dateInput\" required type=\"text\" name=\"data\" value=\"");
       if (_jspx_meth_fmt_formatDate_0(_jspx_page_context))
         return;
       out.write("\">\r\n");
       out.write("                            <p>Data:</p>\r\n");
+      out.write("                            <span class=\"erroMensagem\">A data não pode ser menor que hoje!</span>\r\n");
       out.write("                            <i class=\"material-symbols-outlined\">calendar_month</i>\r\n");
       out.write("                        </div>\r\n");
+      out.write("\r\n");
       out.write("                    </div>\r\n");
       out.write("\r\n");
       out.write("                    <script type=\"text/javascript\" src=\"./static/js/sumirTextoTextarea.js\"></script>\r\n");
       out.write("                    <div style=\"margin-top: 5vh\" class=\"inputContainer\">\r\n");
-      out.write("                        <p class=\"textareatexto\" id=\"ptextarea\">Descrição</p>\r\n");
+      out.write("                        <p class=\"textareatexto\" id=\"ptextarea\">Descrição:</p>\r\n");
       out.write("                        <textarea id=\"area\" onclick=\"sumirp()\" type=\"text\" name=\"descricao\" value=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${agendamento.descricao}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("\"></textarea>\r\n");
       out.write("                    </div>\r\n");
       out.write("\r\n");
       out.write("                    <div class=\"inputContainerRow\">\r\n");
+      out.write("                        <div class=\"preencherHoje\">\r\n");
+      out.write("                            <label for=\"fillDateCheckbox\">Preencher a data de hoje:</label>\r\n");
+      out.write("                            <input onclick=\"fillDate()\" id=\"fillDateCheckbox\" type=\"checkbox\">\r\n");
+      out.write("                        </div>\r\n");
       out.write("                        <div class=\"inputContainer\">\r\n");
       out.write("                            <input  id=\"date\" required type=\"text\" name=\"data_cadastro\" value=\"");
       if (_jspx_meth_fmt_formatDate_1(_jspx_page_context))
         return;
       out.write("\">\r\n");
-      out.write("                            <p style=\"font-size:0.7vw\">Data de Cadastro</p>\r\n");
+      out.write("                            <p style=\"font-size:0.7vw\">Data de Cadastro:</p>\r\n");
       out.write("                            <i class=\"material-symbols-outlined\">calendar_month</i>\r\n");
       out.write("                        </div>    \r\n");
       out.write("                    </div>\r\n");
@@ -341,7 +345,7 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       out.write("\r\n");
       out.write("                    </div>\r\n");
       out.write("\r\n");
-      out.write("\r\n");
+      out.write("                    \r\n");
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
@@ -355,6 +359,7 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       out.write("\r\n");
       out.write("        <script src=\"./static/js/dropdownForms.js\"></script>\r\n");
       out.write("        <script src=\"./static/js/mascaras.js\"></script>\r\n");
+      out.write("        <script src=\"./static/js/fillDate.js\"></script>\r\n");
       out.write("        <script>\r\n");
       out.write("                                $(document).ready(function () {\r\n");
       out.write("                                    $('#date').mask('00/00/0000');\r\n");
@@ -365,7 +370,7 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       out.write("\r\n");
       out.write("                                });\r\n");
       out.write("        </script>\r\n");
-      out.write("\r\n");
+      out.write("        \r\n");
       out.write("    </body>\r\n");
       out.write("</html>");
     } catch (Throwable t) {

@@ -37,41 +37,41 @@ public class GerenciarAgendamento extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         PrintWriter out = response.getWriter();
         String acao = request.getParameter("acao");
         String idagendamento = request.getParameter("idagendamento");
-        
+
         String mensagem = "";
-        
-        try{
+
+        try {
             Agendamento a = new Agendamento();
             AgendamentoDAO aDAO = new AgendamentoDAO();
-            if(acao.equals("alterar")){
+            if (acao.equals("alterar")) {
                 a = aDAO.getCarregaPorID(Integer.parseInt(idagendamento));
-                if(a.getIdagendamento()>0){
+                if (a.getIdagendamento() > 0) {
                     RequestDispatcher disp = getServletContext().getRequestDispatcher("/form_agendamento.jsp");
                     request.setAttribute("agendamento", a);
                     disp.forward(request, response);
-                }else{
+                } else {
                     mensagem = "Agendamento não encontrado";
                 }
             }
-            
-            if(acao.equals("deletar")){
+
+            if (acao.equals("deletar")) {
                 a.setIdagendamento(Integer.parseInt(idagendamento));
-                if(aDAO.deletar(a)){
+                if (aDAO.deletar(a)) {
                     mensagem = "Desativado com sucesso!";
-                }else{
+                } else {
                     mensagem = "Erro ao desativar o agendamento!";
                 }
             }
-            
-        }catch(Exception e){
+
+        } catch (Exception e) {
             out.print(e);
             mensagem = "Erro ao executar";
         }
-        
+
         out.println("<script type='text/javascript'>");
         out.println("alert('" + mensagem + "');");
         out.println("location.href='listar_agendamento.jsp';");
@@ -149,10 +149,19 @@ public class GerenciarAgendamento extends HttpServlet {
             mensagem = "Erro ao executar";
         }
 
-        out.println("<script type='text/javascript'>");
-        out.println("alert('" + mensagem + "');");
-        out.println("location.href='listar_agendamento.jsp';");
-        out.println("</script>");
+        out.println("<!DOCTYPE html>");
+        out.println("<html lang=\"en\">");
+        out.println("<head>");
+        out.println("    <meta charset=\"UTF-8\">");
+        out.println("    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
+        out.println("<link rel=\"stylesheet\" href=\"./static/css/form.css\">");
+        out.println("    <title>Display Message</title>");
+        out.println("</head>");
+        out.println("<body>");
+        out.println("<h1>" + mensagem + "</h1>");
+        out.println("");
+        out.println("</body>");
+        out.println("</html>");
     }
 
     /**
