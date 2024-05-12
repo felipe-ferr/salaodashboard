@@ -30,3 +30,12 @@ function light(){
     dark.classList.remove("btn-active-esquerda");
     dark.classList.add("btn-esquerda");
 }
+
+function toggleTheme() {
+  const checkbox = document.getElementById("switch"); 
+  if (checkbox.checked) {
+    escuro();
+  } else {
+    light();
+  }
+}
