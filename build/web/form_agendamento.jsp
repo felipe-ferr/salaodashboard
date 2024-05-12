@@ -61,102 +61,11 @@
 
                     </div>
 
-                    <script type="text/javascript" src="./static/js/sumirTextoTextarea.js"></script>
-                    <div style="margin-top: 5vh" class="inputContainer">
-                        <p class="textareatexto" id="ptextarea">Descrição:</p>
-                        <textarea id="area" onclick="sumirp()" type="text" name="descricao" value="${agendamento.descricao}"></textarea>
-                    </div>
-
-                    <div class="inputContainerRow">
-                        <div class="preencherHoje">
-                            <label for="fillDateCheckbox">Preencher a data de hoje:</label>
-                            <input onclick="fillDate()" id="fillDateCheckbox" type="checkbox">
-                        </div>
-                        <div class="inputContainer">
-                            <input  id="date" required type="text" name="data_cadastro" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${agendamento.data_cadastro}"/>">
-                            <p style="font-size:0.7vw">Data de Cadastro:</p>
-                            <i class="material-symbols-outlined">calendar_month</i>
-                        </div>    
-                    </div>
-
-
-
-
-                    <hr>
-
-
-                    <div class="inputContainerRow">
-
-                        <div class="containerColumn">
-                            <span>Status</span>
-                            <div onclick="setupDropdown()" id="dropdownBtnContainer" class="dropdownContainer">
-                                <div class="dropdownBtnContainer">
-                                    <div class="dropdownBtn" id="selectedOptionMostrar">Selecionar</div>
-                                    <i class="material-symbols-outlined">keyboard_arrow_down</i>
-                                </div>
-                                <div id="dropstatus" class="dropdownMenu hidden">
-                                    <label class="label"><input type="radio" name="status" value="1">Ativo</label>
-                                    <label class="label"><input type="radio" name="status" value="0">Inativo</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="containerColumn">
-                            <span>Serviço</span>
-                            <div id="dropdownBtnServico" class="dropdownContainer">
-                                <div class="dropdownBtnContainer">
-                                    <div class="dropdownBtn" id="selectedOptionServico">Selecionar</div>
-                                    <i class="material-symbols-outlined">keyboard_arrow_down</i>
-                                </div>
-                                <div id="dropservico" class="dropdownMenu hidden">
-                                    <jsp:useBean class="model.ServicoDAO" id="servico"/>                   
-                                    <c:forEach var="s" items="${servico.lista}">
-                                        <label class="label"><input type="radio" name="idservico" value="${s.idservico}">${s.nome}</label>
-                                        </c:forEach>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="containerColumn">
-                            <span>Cliente</span>
-                            <div id="dropdownBtnCliente" class="dropdownContainer">
-                                <div class="dropdownBtnContainer">
-                                    <div class="dropdownBtn" id="selectedOptionCliente">Selecionar</div>
-                                    <i class="material-symbols-outlined">keyboard_arrow_down</i>
-                                </div>
-                                <div id="dropcliente" class="dropdownMenu hidden">
-                                    <jsp:useBean class="model.ClienteDAO" id="cliente"/>
-                                    <c:forEach var="c" items="${cliente.lista}">
-                                        <label class="label"><input type="radio" name="idcliente" value="${c.idcliente}">${c.nome}</label>
-                                        </c:forEach>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="containerColumn">
-                            <span>Usuário</span>
-                            <div id="dropdownBtnUsuario" class="dropdownContainer">
-                                <div class="dropdownBtnContainer">
-                                    <div class="dropdownBtn" id="selectedOptionUsuario">Selecionar</div>
-                                    <i class="material-symbols-outlined">keyboard_arrow_down</i>
-                                </div>
-                                <div id="dropusuario" class="dropdownMenu hidden">
-                                    <jsp:useBean class="model.UsuarioDAO" id="usuario"/>
-                                    <c:forEach var="u" items="${usuario.lista}">
-                                        <label class="label"><input type="radio" name="idusuario" value="${u.idusuario}">${u.nome}</label>
-                                        </c:forEach>
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <span>Horário</span>
-                    <div class="horarios-container">
+                    <span style="margin-top: 5%; display: none" id="titlehorario">Horário</span>
+                    <div class="horarios-container fade-in" id="semana" style="display: none">
                         <label id="inputElement" id="inputElement" class="horario">
                             <input  type="radio" name="horario" value="9:00" />
-                            <p>9h00</p>
+                            <p>9:00</p>
                             <i class="material-symbols-outlined">schedule</i>
                         </label>
                         <label id="inputElement" class="horario">
@@ -206,8 +115,120 @@
                         </label>
 
                     </div>
-
                     
+                    <div class="horarios-container fade-in" id="domingo" style="display:none">
+                        <label id="inputElement" id="inputElement" class="horario">
+                            <input  type="radio" name="horario" value="9:00" />
+                            <p>9:00</p>
+                            <i class="material-symbols-outlined">schedule</i>
+                        </label>
+                        <label id="inputElement" class="horario">
+                            <input type="radio" name="horario" value="10:00" />
+                            <p>10:00</p>
+                            <i class="material-symbols-outlined">schedule</i>
+                        </label>
+                        <label id="inputElement" class="horario">
+                            <input type="radio" name="horario" value="11:00" />
+                            <p>11:00</p>
+                            <i class="material-symbols-outlined">schedule</i>
+                        </label>                    
+ 
+                    </div>
+
+                    <script type="text/javascript" src="./static/js/sumirTextoTextarea.js"></script>
+                    <div style="margin-top: 5vh" class="inputContainer">
+                        <p class="textareatexto" id="ptextarea">Descrição:</p>
+                        <textarea id="area" onclick="sumirp()" type="text" name="descricao" value="${agendamento.descricao}"></textarea>
+                    </div>
+
+                    <div class="inputContainerRow">
+                        <div class="preencherHoje">
+                            <label for="fillDateCheckbox">Data de hoje</label>
+                            <input onclick="fillDate()" id="fillDateCheckbox" type="checkbox">
+                        </div>
+                        <div class="inputContainer">
+                            <input  id="date" required type="text" name="data_cadastro" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${agendamento.data_cadastro}"/>">
+                            <p style="font-size:0.7vw">Data de Cadastro:</p>
+                            <i class="material-symbols-outlined">calendar_month</i>
+                        </div>    
+                    </div>
+
+
+
+
+                    <hr>
+
+
+                    <div class="inputContainerRow">
+
+                        <div class="containerColumn">
+                            <span>Status</span>
+                            <div onclick="setupDropdown()" id="dropdownBtnContainer" class="dropdownContainer">
+                                <div class="dropdownBtnContainer">
+                                    <div class="dropdownBtn" id="selectedOptionMostrar">Ativo</div>
+                                    <i class="material-symbols-outlined">keyboard_arrow_down</i>
+                                </div>
+                                <div id="dropstatus" class="dropdownMenu hidden">
+                                    <label class="label"><input checked type="radio" name="status" value="1">Ativo</label>
+                                    <label class="label"><input type="radio" name="status" value="0">Inativo</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="containerColumn">
+                            <span>Serviço</span>
+                            <div id="dropdownBtnServico" class="dropdownContainer">
+                                <div class="dropdownBtnContainer">
+                                    <div class="dropdownBtn" id="selectedOptionServico">Selecionar</div>
+                                    <i class="material-symbols-outlined">keyboard_arrow_down</i>
+                                </div>
+                                <div id="dropservico" class="dropdownMenu hidden">
+                                    <jsp:useBean class="model.ServicoDAO" id="servico"/>                   
+                                    <c:forEach var="s" items="${servico.lista}">
+                                        <label class="label"><input checked type="radio" name="idservico" value="${s.idservico}">${s.nome}</label>
+                                        </c:forEach>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="containerColumn">
+                            <span>Cliente</span>
+                            <div id="dropdownBtnCliente" class="dropdownContainer">
+                                <div class="dropdownBtnContainer">
+                                    <div class="dropdownBtn" id="selectedOptionCliente">Selecionar</div>
+                                    <i class="material-symbols-outlined">keyboard_arrow_down</i>
+                                </div>
+                                <div id="dropcliente" class="dropdownMenu hidden">
+                                    <jsp:useBean class="model.ClienteDAO" id="cliente"/>
+                                    <c:forEach var="c" items="${cliente.lista}">
+                                        <label class="label"><input checked type="radio" name="idcliente" value="${c.idcliente}">${c.nome}</label>
+                                        </c:forEach>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="containerColumn">
+                            <span>Usuário</span>
+                            <div id="dropdownBtnUsuario" class="dropdownContainer">
+                                <div class="dropdownBtnContainer">
+                                    <div class="dropdownBtn" id="selectedOptionUsuario">Selecionar</div>
+                                    <i class="material-symbols-outlined">keyboard_arrow_down</i>
+                                </div>
+                                <div id="dropusuario" class="dropdownMenu hidden">
+                                    <jsp:useBean class="model.UsuarioDAO" id="usuario"/>
+                                    <c:forEach var="u" items="${usuario.lista}">
+                                        <label class="label"><input checked type="radio" name="idusuario" value="${u.idusuario}">${u.nome}</label>
+                                        </c:forEach>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
 
 
 
@@ -232,6 +253,6 @@
 
                                 });
         </script>
-        
+
     </body>
 </html>

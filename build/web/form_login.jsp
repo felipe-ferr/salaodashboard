@@ -10,34 +10,64 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-              <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="./static/css/form.css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="./static/css/login.css">
         <link rel="stylesheet" href="./static/css/menu.css">
+        
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     </head>
     <body>
-        <h1>Formulário de Login</h1>
-        
-        <form action="gerenciar_login.do" method="POST">
-            <%--USUARIO--%>
-            <div class="row">
-                <div class="form-group col-sm-8"
-                     <label for="login" class="control-label">Login</label>
+        <div class="flex-container">  
+
+            <div class="form-container">
+                <form class="form_login" action="gerenciar_login.do" method="POST">
+                <h1>Entrar na sua conta</h1>
+                <div class="inputContainer">
                     <input type="text" name="login" id="login" value="" required="">
+                    <p>Usuário</p>
+                    <i class="material-symbols-outlined">person</i>
+                </div>
+                <div class="inputContainer">
+                    <input type="password" name="senha" id="senha" value="" required="">
+                    <p>Senha</p>
+                    <i class="material-symbols-outlined">key</i>
+                </div>
+
+                <div class="row">
+                    <button class="btn">Entrar</button>
+                </div>
+            </form>
             </div>
-                <%--SENHA--%>
-            <div class="row">
-                   <div class="form-group col-sm-8"
-                      <label for="senha" class="control-label">Senha</label>
-                      <input type="password" name="senha" id="senha" value="" required="">
+            
+            
+            <div class="info">
+                <img src="imagens/logo.png">
             </div>
-                   <%--BOTÃO ENVIAR--%>
-            <div class="row">
-                <button class="btn btn-success">Entrar</button>
-            </div>
-        </form>
+            
+            
+            
+            
+            
+            
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     </body>
 </html>
