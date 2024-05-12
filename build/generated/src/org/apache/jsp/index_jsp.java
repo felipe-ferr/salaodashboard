@@ -96,6 +96,17 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("    <body>\n");
+      out.write("         ");
+
+
+            String username = (String) session.getAttribute("u");
+            if (username == null) {
+                response.sendRedirect("./index.jsp");
+            } else {
+                out.println("Bem vindo, " + username);
+            }
+
+        
       out.write("\n");
       out.write("\n");
       out.write("\n");

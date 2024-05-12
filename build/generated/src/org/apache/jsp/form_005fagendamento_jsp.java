@@ -164,8 +164,8 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       out.write("\r\n");
       out.write("                    </div>\r\n");
       out.write("\r\n");
-      out.write("                    <span style=\"margin-top: 5%;\">Horário</span>\r\n");
-      out.write("                    <div class=\"horarios-container\" id=\"semana\">\r\n");
+      out.write("                    <span style=\"margin-top: 5%; display: none\" id=\"titlehorario\">Horário</span>\r\n");
+      out.write("                    <div class=\"horarios-container fade-in\" id=\"semana\" style=\"display: none\">\r\n");
       out.write("                        <label id=\"inputElement\" id=\"inputElement\" class=\"horario\">\r\n");
       out.write("                            <input  type=\"radio\" name=\"horario\" value=\"9:00\" />\r\n");
       out.write("                            <p>9:00</p>\r\n");
@@ -219,7 +219,7 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       out.write("\r\n");
       out.write("                    </div>\r\n");
       out.write("                    \r\n");
-      out.write("                    <div class=\"horarios-container\" id=\"domingo\" style=\"display:none\">\r\n");
+      out.write("                    <div class=\"horarios-container fade-in\" id=\"domingo\" style=\"display:none\">\r\n");
       out.write("                        <label id=\"inputElement\" id=\"inputElement\" class=\"horario\">\r\n");
       out.write("                            <input  type=\"radio\" name=\"horario\" value=\"9:00\" />\r\n");
       out.write("                            <p>9:00</p>\r\n");
@@ -248,7 +248,7 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       out.write("\r\n");
       out.write("                    <div class=\"inputContainerRow\">\r\n");
       out.write("                        <div class=\"preencherHoje\">\r\n");
-      out.write("                            <label for=\"fillDateCheckbox\">Preencher a data de hoje:</label>\r\n");
+      out.write("                            <label for=\"fillDateCheckbox\">Data de hoje</label>\r\n");
       out.write("                            <input onclick=\"fillDate()\" id=\"fillDateCheckbox\" type=\"checkbox\">\r\n");
       out.write("                        </div>\r\n");
       out.write("                        <div class=\"inputContainer\">\r\n");

@@ -33,7 +33,9 @@ public class GerenciarLogin extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
+        request.getSession().removeAttribute("ulogado");
+        response.sendRedirect("form_login.jsp");
         
     }
 
@@ -105,11 +107,33 @@ public class GerenciarLogin extends HttpServlet {
         }
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
+    public static Usuario verificarAcesso(HttpServletRequest request, HttpServletResponse response){
+        
+        Usuario u = null;
+        GerenciarLogin.response = response;
+        try{
+            HttpSession sessao = request.getSession();
+            if(sessao.getAttribute("ulogado")==null){
+                response.sendRedirect("form_login.jsp");
+            }else{
+                String uri = request.getRequestURI();
+                String queryString = request.getQueryString();
+                if(queryString!=null){
+                    uri += "?" +queryString;
+                }
+                u = (Usuario) request.getSession().getAttribute("ulogado");
+                if(u==null){
+                    sessao.setAttribute("mensagem", "Você não está autenticado");
+                    response.sendRedirect("form_login.jsp");
+                   
+                }
+            }
+                    
+        }catch(Exception e){
+            exibirMensagem("Exceção:"+e.getMessage());
+        }
+        return u;
+    }
                 
                 
     @Override

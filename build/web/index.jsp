@@ -4,11 +4,18 @@
     Author     : felip
 --%>
 
+<%@page import="controller.GerenciarLogin"%>
+<%@page import="model.Usuario"%>
 <%@page import="model.ClienteDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.Cliente"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<%
+    Usuario ulogado = GerenciarLogin.verificarAcesso(request, response);
+    request.setAttribute("ulogado", ulogado);
+%>
 
 <!DOCTYPE html>
 <html>
@@ -49,7 +56,7 @@
 
 
     <body>
-
+      
 
 
         <div class="grid-container">

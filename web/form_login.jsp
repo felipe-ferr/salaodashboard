@@ -22,7 +22,18 @@
     </head>
     <body>
         <div class="flex-container">  
-
+            <%
+                String mensagem = (String)request.getSession().getAttribute("mensagem");
+                if(mensagem !=null){
+                    request.getSession().removeAttribute("mensagem");
+                
+            %>
+            <div class="alert">
+                <%=mensagem%>
+            </div>
+            <%
+                }
+            %>
             <div class="form-container">
                 <form class="form_login" action="gerenciar_login.do" method="POST">
                 <h1>Entrar na sua conta</h1>

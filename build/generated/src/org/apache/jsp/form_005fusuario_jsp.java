@@ -185,7 +185,7 @@ public final class form_005fusuario_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("                                    <i class=\"material-symbols-outlined\">keyboard_arrow_down</i>\r\n");
       out.write("                                </div>\r\n");
       out.write("                                <div id=\"dropstatus\" class=\"dropdownMenu hidden\">\r\n");
-      out.write("                                    <label class=\"label\"><input type=\"radio\" name=\"status\" value=\"1\">Ativo</label>\r\n");
+      out.write("                                    <label class=\"label\"><input type=\"radio\" checked name=\"status\" value=\"1\">Ativo</label>\r\n");
       out.write("                                    <label class=\"label\"><input type=\"radio\" name=\"status\" value=\"0\">Inativo</label>\r\n");
       out.write("                                </div>\r\n");
       out.write("                            </div>\r\n");
@@ -274,7 +274,7 @@ public final class form_005fusuario_jsp extends org.apache.jasper.runtime.HttpJs
       if (_jspx_eval_c_forEach_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
           out.write("\r\n");
-          out.write("                                        <label class=\"label\"><input type=\"radio\" name=\"idperfil\" value=\"");
+          out.write("                                        <label class=\"label\"><input type=\"radio\" required name=\"idperfil\" value=\"");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${p.idperfil}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write('"');
           out.write('>');

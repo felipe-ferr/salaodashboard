@@ -68,6 +68,37 @@ body{
     text-decoration: none;
     transition-duration: 0.4s;
     font-family: 'Montserrat';
+    flex-direction: column;
+}
+.tema-container div{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10%;
+    width: 100%;
+    padding: 5%;
+    box-sizing: border-box;
+    text-align: left;
+    color: var(--cor-texto);
+    text-decoration: none;
+    transition-duration: 0.4s;
+    font-family: 'Montserrat';
+    background-color: var(--cor-clara);
+    border-radius: 20px;
+}
+.tema-container a{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10%;
+    width: 100%;
+    padding: 5%;
+    box-sizing: border-box;
+    text-align: left;
+    color: var(--cor-texto);
+    text-decoration: none;
+    transition-duration: 0.4s;
+    font-family: 'Montserrat';
 }
 .tema-btn-container{
     display: flex;

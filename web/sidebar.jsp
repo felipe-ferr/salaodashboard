@@ -28,12 +28,10 @@
                 <a href="listar_perfil.jsp"><span class="material-symbols-outlined sidebar-icone">account_circle</span>Perfis</a>
                 <a href="listar_usuario.jsp"><span class="material-symbols-outlined sidebar-icone">engineering</span>Usuários</a>
                 
+                
                 <div class="tema-container bottom">
-                    <span>Modo Escuro</span>
-                    <div class="tema-btn-container">
-                        <button onclick="escuro()" id="botaodark" class="btn-esquerda"><span class="material-symbols-outlined">dark_mode</span></button>
-                        <button onclick="light()" id="botaolight" class="btn-active-direita btn-direita"><span class="material-symbols-outlined">light_mode</span></button>
-                    </div>
+                    <div><span class="material-symbols-outlined sidebar-icone">account_circle</span><c:if test="${ulogado!=null}">${ulogado.nome}</c:if></div> 
+                    <a href="gerenciar_login.do" class="sair"><span class="material-symbols-outlined sidebar-icone">logout</span>Sair</a>
                 </div>
             </div>
    
