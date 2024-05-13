@@ -10,7 +10,6 @@
 <%@page import="model.Usuario"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     Usuario ulogado = GerenciarLogin.verificarAcesso(request, response);
     request.setAttribute("ulogado", ulogado);
@@ -85,7 +84,7 @@
                             <span>Status</span>
                             <div onclick="setupDropdown()" id="dropdownBtnContainer" class="dropdownContainer">
                                 <div class="dropdownBtnContainer">
-                                    <div class="dropdownBtn" id="selectedOptionMostrar">Selecionar</div>
+                                    <div class="dropdownBtn" id="selectedOptionMostrar">Ativo</div>
                                     <i class="material-symbols-outlined">keyboard_arrow_down</i>
                                 </div>
                                 <div id="dropstatus" class="dropdownMenu hidden">
@@ -105,7 +104,7 @@
                                 <div id="dropservico" class="dropdownMenu hidden">
                                     <jsp:useBean class="model.PerfilDAO" id="perfil"/>                   
                                     <c:forEach var="p" items="${perfil.lista}">
-                                        <label class="label"><input type="radio" required name="idperfil" value="${p.idperfil}">${p.nome}</label>
+                                        <label class="label"><input type="radio" checked required name="idperfil" value="${p.idperfil}">${p.nome}</label>
                                         </c:forEach>
                                 </div>
                             </div>

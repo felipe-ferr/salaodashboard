@@ -82,11 +82,11 @@
                             <span>Status</span>
                             <div style="width: 30%" onclick="setupDropdown()" id="dropdownBtnContainer" class="dropdownContainer">
                                 <div class="dropdownBtnContainer">
-                                    <div class="dropdownBtn" id="selectedOptionMostrar">Selecionar</div>
+                                    <div class="dropdownBtn" id="selectedOptionMostrar">Ativo</div>
                                     <i class="material-symbols-outlined">keyboard_arrow_down</i>
                                 </div>
                                 <div id="dropstatus" class="dropdownMenu hidden">
-                                    <label class="label"><input type="radio" name="status" value="1">Ativo</label>
+                                    <label class="label"><input type="radio" checked name="status" value="1">Ativo</label>
                                     <label class="label"><input type="radio" name="status" value="0">Inativo</label>
                                 </div>
                             </div>

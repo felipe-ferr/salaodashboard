@@ -9,7 +9,7 @@
 body{
     margin: 0;
     overflow-x: hidden;
-    height: 100vh;
+    height: auto;
     font-family: 'Quicksand', sans-serif;
     transition-duration: 0.8s
 }
@@ -46,10 +46,10 @@ form{
     justify-content: space-around;
     align-items: center;
     gap: 10px;
-    height: 100%;
     width: 80%;
-    padding: 2vh;
+    padding: 5vh;
     border-radius: 10px;
+    box-sizing: border-box;
 }
 form p{
     color: var(--cor-texto);
@@ -94,11 +94,12 @@ form h1{
     transition-duration: 0.3s;
     font-family: 'Quicksand';
     font-size: 1vw;
+    color: var(--cor-texto);
 }
 .inputContainer textarea:focus{
     outline: none;
     box-shadow: inset 0px 0px 0px 2px var(--dourado);
-    background-color: var(--cor-clara);
+    background-color: var(--cor-escura);
 }
 .textareatexto{
     position: absolute;

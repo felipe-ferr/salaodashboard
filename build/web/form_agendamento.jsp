@@ -67,8 +67,8 @@
 
                     </div>
 
-                    <span style="margin-top: 5%; display: none" id="titlehorario">Horário</span>
-                    <div class="horarios-container fade-in" id="semana" style="display: none">
+                    <span style="margin-top: 5%; display: flex" id="titlehorario">Horário</span>
+                    <div class="horarios-container fade-in" id="semana" style="display: flex">
                         <label id="inputElement" id="inputElement" class="horario">
                             <input  type="radio" name="horario" value="9:00" />
                             <p>9:00</p>
@@ -121,7 +121,7 @@
                         </label>
 
                     </div>
-                    
+
                     <div class="horarios-container fade-in" id="domingo" style="display:none">
                         <label id="inputElement" id="inputElement" class="horario">
                             <input  type="radio" name="horario" value="9:00" />
@@ -138,25 +138,22 @@
                             <p>11:00</p>
                             <i class="material-symbols-outlined">schedule</i>
                         </label>                    
- 
+
                     </div>
 
-                    <script type="text/javascript" src="./static/js/sumirTextoTextarea.js"></script>
-                    <div style="margin-top: 5vh" class="inputContainer">
-                        <p class="textareatexto" id="ptextarea">Descrição:</p>
-                        <textarea id="area" onclick="sumirp()" type="text" name="descricao" value="${agendamento.descricao}"></textarea>
-                    </div>
 
-                    <div class="inputContainerRow">
-                        <div class="preencherHoje">
-                            <label for="fillDateCheckbox">Data de hoje</label>
-                            <input onclick="fillDate()" id="fillDateCheckbox" type="checkbox">
-                        </div>
+                    <div class="inputContainerRow">  
                         <div class="inputContainer">
                             <input  id="date" required type="text" name="data_cadastro" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${agendamento.data_cadastro}"/>">
                             <p style="font-size:0.7vw">Data de Cadastro:</p>
                             <i class="material-symbols-outlined">calendar_month</i>
                         </div>    
+                        <div class="preencherHoje">
+                            <label for="fillDateCheckbox">Data de hoje</label>
+                            <input onclick="fillDate()" id="fillDateCheckbox" type="checkbox">
+                        </div>
+
+
                     </div>
 
 
@@ -235,7 +232,11 @@
 
 
 
-
+                    <script type="text/javascript" src="./static/js/sumirTextoTextarea.js"></script>
+                    <div style="margin-top: 5vh" class="inputContainer">
+                        <p class="textareatexto" id="ptextarea">Descrição:</p>
+                        <textarea id="area" onclick="sumirp()" type="text" name="descricao" value="${agendamento.descricao}"></textarea>
+                    </div>
 
 
                     <button type="submit"class="submit">Cadastrar Agendamento</button>

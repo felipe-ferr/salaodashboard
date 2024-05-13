@@ -9,7 +9,6 @@
 <%@page import="model.Usuario"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     Usuario ulogado = GerenciarLogin.verificarAcesso(request, response);
     request.setAttribute("ulogado", ulogado);
@@ -52,7 +51,7 @@
 
 
                     <script type="text/javascript" src="./static/js/sumirTextoTextarea.js"></script>
-                    <div class="inputContainer">
+                    <div style="margin-top: 5vh" class="inputContainer">
                         <p class="textareatexto" id="ptextarea">Descrição</p>
                         <textarea id="area" onclick="sumirp()" type="text" name="descricao" value="${servico.descricao}"></textarea>
                     </div>
@@ -63,11 +62,11 @@
                             <span>Status</span>
                             <div style="width: 30%" onclick="setupDropdown()" id="dropdownBtnContainer" class="dropdownContainer">
                                 <div class="dropdownBtnContainer">
-                                    <div class="dropdownBtn" id="selectedOptionMostrar">Selecionar</div>
+                                    <div class="dropdownBtn" id="selectedOptionMostrar">Ativo</div>
                                     <i class="material-symbols-outlined">keyboard_arrow_down</i>
                                 </div>
                                 <div id="dropstatus" class="dropdownMenu hidden">
-                                    <label class="label"><input type="radio" name="status" value="1">Ativo</label>
+                                    <label class="label"><input type="radio" checked name="status" value="1">Ativo</label>
                                     <label class="label"><input type="radio" name="status" value="0">Inativo</label>
                                 </div>
                             </div>

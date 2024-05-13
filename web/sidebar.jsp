@@ -30,20 +30,23 @@
 
 
             <div class="tema-container bottom">      
-                <div><span class="material-symbols-outlined sidebar-icone">account_circle</span><c:if test="${ulogado!=null}">${ulogado.nome}</c:if></div> 
-                <a href="gerenciar_login.do" class="sair"><span class="material-symbols-outlined sidebar-icone">logout</span>Sair</a>
+                <div class="switch-container">
+                    <div><span class="material-symbols-outlined sidebar-icone">account_circle</span><c:if test="${ulogado!=null}">${ulogado.nome}</c:if></div> 
+                    <a href="gerenciar_login.do" style="width: auto"><span class="material-symbols-outlined logout">logout</span></a>
+                </div>
                 <span class="switch-container">
                     <span class="material-symbols-outlined">dark_mode</span>
                     <label class="switch">
-                        <input type="checkbox" id="switch" onchange="toggleTheme() ">
+                        <input type="checkbox" id="switch" onchange="toggleTheme()">
                         <span class="slider round"></span>
                     </label>
                     <span class="material-symbols-outlined">light_mode</span>
                 </span>
             </div>
-                
+
         </div>
 
         <script type="text/javascript" src="static/js/modoescuro.js"></script>
+        <script type="text/javascript" src="static/js/showBotaoSair.js"></script>
     </body>
 </html>
