@@ -115,7 +115,7 @@ public class GerenciarServico extends HttpServlet {
                 if(sDAO.gravar(s)){
                     mensagem = "Gravado com sucesso!";
                 }else{
-                    mensagem = "Erro ao gravar no banco de dados!";
+                    mensagem = "Falha ao gravar informações no banco de dados. Tente novamente";
                 }
             }
         }catch(Exception e){

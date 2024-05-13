@@ -64,7 +64,7 @@ public class GerenciarUsuario extends HttpServlet {
                 if(uDAO.deletar(u)){
                     mensagem = "Desativado com sucesso!";
                 }else{
-                    mensagem = "Erro ao desativar o usuário!";
+                    mensagem = "Falha ao gravar informações no banco de dados. Tente novamente";
                 }
                 
             }

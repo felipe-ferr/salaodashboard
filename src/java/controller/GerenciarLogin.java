@@ -83,7 +83,7 @@ public class GerenciarLogin extends HttpServlet {
                         sessao.setAttribute("ulogado", u);
                         response.sendRedirect("index.jsp");
                 }else{
-                    exibirMensagem("Login ou Senha inválidos!");
+                    exibirMensagem("Nome de usuário e/ou senha inválidos! Tente novamente");
                 }
                     
         }catch(Exception e) {
