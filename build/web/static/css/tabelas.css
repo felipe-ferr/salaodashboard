@@ -328,7 +328,7 @@ a{
     box-sizing: border-box;
 }
 .dropdownMenu span:hover{
-    background-color: var(--cor-clara);
+    background-color: var(--cor-escura);
 }
 .hidden{
     display: none;

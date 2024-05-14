@@ -308,7 +308,7 @@ form h1{
     box-sizing: border-box;
 }
 .dropdownMenu span:hover{
-    background-color: var(--cor-clara);
+    background-color: var(--cor-escura);
 }
 .hidden{
     display: none;
@@ -327,7 +327,7 @@ form h1{
     color: var(--cor-texto);
 }
 .label:hover{
-    background-color: var(--cor-clara);
+    background-color: var(--cor-escura);
 }
 
 /* esconder o botao de radio original */
