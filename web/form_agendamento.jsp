@@ -61,7 +61,7 @@
                         <div class="inputContainer">                      
                             <input id="dateInput" required type="text" name="data" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${agendamento.data}"/>">
                             <p>Data:</p>
-                            <span class="erroMensagem">A data não pode ser menor que hoje!</span>
+                            <span class="erroMensagem"></span>
                             <i class="material-symbols-outlined">calendar_month</i>
                         </div>
 
