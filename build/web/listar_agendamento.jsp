@@ -265,6 +265,7 @@
         <script src="http://code.jquery.com/jquery-latest.js"></script>
         <script src="./static/js/showDesc.js"></script>
         <script src="./static/js/dropdownRegistros.js"></script>
+        <script src="./static/js/filtrosTabela.js"></script>
 
 
 

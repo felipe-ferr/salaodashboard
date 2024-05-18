@@ -201,10 +201,10 @@
                             <div class="status">
 
                                 <c:if test="${s.status==1}">
-                                    <span class="ativo">Ativo</span>
+                                    <span style="width: 20%" class="ativo">Ativo</span>
                                 </c:if>
                                 <c:if test="${s.status==0}">
-                                    <span class="inativo">Inativo</span>
+                                    <span style="width: 20%" class="inativo">Inativo</span>
                                 </c:if>
                             </div>
 
