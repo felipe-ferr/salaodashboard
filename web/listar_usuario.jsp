@@ -194,10 +194,10 @@
                             <div class="status">
 
                                 <c:if test="${u.status==1}">
-                                    <span class="ativo">Ativo</span>
+                                    <span style="width:25%" class="ativo">Ativo</span>
                                 </c:if>
                                 <c:if test="${u.status==0}">
-                                    <span class="inativo">Inativo</span>
+                                    <span style="width:25%" class="inativo">Inativo</span>
                                 </c:if>
                             </div>
 

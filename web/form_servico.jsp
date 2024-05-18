@@ -82,7 +82,7 @@
             <%@include file="sidebar.jsp" %>
 
             <div class="container-principal">
-                <form method="POST"action="gerenciar_servico.do" value="" accept-charset="utf-8">
+                <form method="POST"action="gerenciar_servico.do" value="" accept-charset="ISO-8859-1 ">
 
                     <a class="botaoinicio"href="#">
                         <i class="material-symbols-outlined">arrow_back</i>Voltar ao início
