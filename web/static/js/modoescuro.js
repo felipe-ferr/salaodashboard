@@ -16,7 +16,7 @@ function escuro() {
 
 // Function to apply the light theme
 function light() {
-    cor.style.setProperty("--cor-clara", '#ECECEC');
+    cor.style.setProperty("--cor-clara", '#E5E5E5');
     cor.style.setProperty("--cor-escura", '#F3F3F3');
     cor.style.setProperty("--cor-texto", '#656565');
     cor.style.setProperty("--cor-texto-preto", 'black');

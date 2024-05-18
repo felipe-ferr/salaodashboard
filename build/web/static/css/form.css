@@ -265,6 +265,9 @@ form h1{
     color: var(--cor-texto);
     border-radius: 10px;
 }
+.dropdownBtnContainer:hover{
+   filter: contrast(120%);
+}
 .dropdownBtn{
     display: flex;
     align-items: center;
