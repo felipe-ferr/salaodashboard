@@ -341,17 +341,24 @@ a{
 
 .desc{
     align-items: center;
-    justify-content: center;
-    padding: 3vh;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 2vh;
     box-sizing: border-box;
+    border-radius: 20px;
     background-color: var(--cor-clara);
     position: absolute;
+    left: 50;
+    top: 50;   
     z-index: 2;
     box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.55);
     -webkit-box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.55);
     -moz-box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.55);
     width: auto;
     text-wrap: wrap;
+}
+.desc p{
+    margin: 0
 }
 
 
