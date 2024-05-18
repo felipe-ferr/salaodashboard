@@ -18,10 +18,56 @@
     request.setAttribute("ulogado", ulogado);
 %>
 
-<!DOCTYPE html>
+
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script>
+// Script para carregar o modo escuro antes do usuário ver a página.
+
+// Pegar o valor do cookie
+            function getCookie(name) {
+                let nameEQ = name + "=";
+                let ca = document.cookie.split(';');
+                for (let i = 0; i < ca.length; i++) {
+                    let c = ca[i];
+                    while (c.charAt(0) == ' ')
+                        c = c.substring(1, c.length);
+                    if (c.indexOf(nameEQ) == 0)
+                        return c.substring(nameEQ.length, c.length);
+                }
+                return null;
+            }
+
+// Funções pra aplicar o modo escuro e claro
+            function escuro() {
+                document.documentElement.style.setProperty('--cor-clara', '#252525');
+                document.documentElement.style.setProperty('--cor-escura', '#181818');
+                document.documentElement.style.setProperty('--cor-texto', '#AFAFAF');
+                document.documentElement.style.setProperty('--cor-texto-preto', '#DFDFDF');
+                document.documentElement.style.setProperty('--cor-tabela-stripe', '#161616');
+
+            }
+
+            function light() {
+                document.documentElement.style.setProperty('--cor-clara', '#eaeaea');
+                document.documentElement.style.setProperty('--cor-escura', '#f5f5f5');
+                document.documentElement.style.setProperty('--cor-texto', '##0F0300');
+                document.documentElement.style.setProperty('--cor-texto-preto', 'black');
+                document.documentElement.style.setProperty('--cor-tabela-stripe', '#F0F0F0');
+
+            }
+
+// Função pra checar o cookie e aplicar o tema antes da página carregar
+            (function checkCookieAndApplyTheme() {
+                let theme = getCookie("theme");
+                if (theme === "dark") {
+                    escuro();
+                } else if (theme === "light") {
+                    light();
+                }
+            })();
+
+        </script>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <link rel="stylesheet" href="./static/css/menu.css">
         <link rel="stylesheet" href="./static/css/tabelas.css">
@@ -48,10 +94,12 @@
 
         <script src="./static/js/pagination.js"></script>
         <script src="./static/js/dropdownRegistros.js"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+        <meta charset="UTF-8">
 
 
 
-        <title>JSP Page</title>
+        <title>Serviços</title>
     </head>
 
 

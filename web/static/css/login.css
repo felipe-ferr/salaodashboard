@@ -6,6 +6,7 @@ body{
     align-items: center;
     justify-content: center;
     height: 100vh;
+    color: var(--cor-texto);
 }
 .info{
     display: flex;

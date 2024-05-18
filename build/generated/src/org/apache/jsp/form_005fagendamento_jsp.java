@@ -79,7 +79,8 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       out.write("<!DOCTYPE html>\r\n");
       out.write("<html>\r\n");
       out.write("    <head>\r\n");
-      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
+      out.write("        <meta http-equiv=\"content-type\" content=\"text/html; charset=UTF-8\">\r\n");
+      out.write("        <meta http-equiv=\"content-type\" content=\"text/html; charset=iso-8859-1\">\r\n");
       out.write("        <link rel=\"stylesheet\" href=\"./static/css/form.css\">\r\n");
       out.write("\r\n");
       out.write("        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\r\n");
@@ -183,7 +184,7 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
         return;
       out.write("\">\r\n");
       out.write("                            <p>Data:</p>\r\n");
-      out.write("                            <span class=\"erroMensagem\">A data não pode ser menor que hoje!</span>\r\n");
+      out.write("                            <span class=\"erroMensagem\"></span>\r\n");
       out.write("                            <i class=\"material-symbols-outlined\">calendar_month</i>\r\n");
       out.write("                        </div>\r\n");
       out.write("\r\n");

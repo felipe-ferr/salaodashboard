@@ -21,7 +21,6 @@ import model.ClienteDAO;
  */
 public class GerenciarCliente extends HttpServlet {
 
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -34,49 +33,63 @@ public class GerenciarCliente extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         PrintWriter out = response.getWriter();
         String mensagem = "";
-        
+
         String acao = request.getParameter("acao");
         String idcliente = request.getParameter("idcliente");
-        
+
         Cliente c = new Cliente();
-        
-        try{
-            
+
+        try {
+
             ClienteDAO cDAO = new ClienteDAO();
-            if(acao.equals("alterar")){
+            if (acao.equals("alterar")) {
                 c = cDAO.getCarregaPorID(Integer.parseInt(idcliente));
-                if(c.getIdcliente()>0){
+                if (c.getIdcliente() > 0) {
                     RequestDispatcher disp = getServletContext().getRequestDispatcher("/form_cliente.jsp");
                     request.setAttribute("cliente", c);
                     disp.forward(request, response);
-                }else{
+                } else {
                     mensagem = "Cliente não encontrado";
                 }
-                
+
             }
-            
-            if(acao.equals("deletar")){
+
+            if (acao.equals("deletar")) {
                 c.setIdcliente(Integer.parseInt(idcliente));
-                if(cDAO.deletar(c)){
+                if (cDAO.deletar(c)) {
                     mensagem = "Desativado com sucesso!";
-                }else{
+                } else {
                     mensagem = "Erro ao desativar o usuário!";
                 }
             }
-            
-        }catch(Exception e){
+
+        } catch (Exception e) {
             out.print(e);
             mensagem = "Erro ao executar";
         }
-        
-        out.println("<script type='text/javascript'>");
-        out.println("alert('"+mensagem+"');");
-        out.println("location.href='listar_cliente.jsp';");
-        out.println("</script>");
-        
+
+        out.println("<html>");
+        out.println("    <head>");
+        out.println("        <meta http-equiv=\"content-type\" content=\"text/html; charset=iso-8859-1\">");
+        out.println("        <link rel=\"stylesheet\" href=\"./static/css/mensagem.css\">");
+        out.println("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
+        out.println("        <meta charset=\"UTF-8\">");
+        out.println("        <title>Salão do Luciano</title>");
+        out.println("    </head>");
+        out.println("    <body>");
+        out.println("        <div class=\"container\">");
+        out.println("            <h1>" + mensagem + "</h1>");
+        out.println("            <div class=\"row\">");
+        out.println("                <a href=\"index.jsp\">Início</a>");
+        out.println("                <a href=\"listar_cliente.jsp\">Clientes</a>");
+        out.println("            </div>");
+        out.println("        </div>");
+        out.println("    </body>");
+        out.println("</html>");
+
     }
 
     /**
@@ -90,7 +103,7 @@ public class GerenciarCliente extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         PrintWriter out = response.getWriter();
         String idcliente = request.getParameter("idcliente");
         String nome = request.getParameter("nome");
@@ -98,39 +111,53 @@ public class GerenciarCliente extends HttpServlet {
         String telefone = request.getParameter("telefone");
         String email = request.getParameter("email");
         String status = request.getParameter("status");
-        
-        String mensagem="";
-        
+
+        String mensagem = "";
+
         Cliente c = new Cliente();
-        try{
+        try {
             ClienteDAO cDAO = new ClienteDAO();
-            if(!idcliente.isEmpty()){
+            if (!idcliente.isEmpty()) {
                 c.setIdcliente(Integer.parseInt(idcliente));
             }
-            
-            if(nome.equals("")||nome.isEmpty()){
+
+            if (nome.equals("") || nome.isEmpty()) {
                 mensagem = "Campos obrigatórios deverão ser preenchidos";
-            }else{
+            } else {
                 c.setNome(nome);
                 c.setCpf(cpf);
                 c.setTelefone(telefone);
                 c.setEmail(email);
                 c.setStatus(Integer.parseInt(status));
-                if(cDAO.gravar(c)){
+                if (cDAO.gravar(c)) {
                     mensagem = "Gravado com sucesso!";
-                }else{
+                } else {
                     mensagem = "Falha ao gravar informações no banco de dados. Tente novamente";
                 }
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             out.print(e);
             mensagem = "Erro ao executar";
         }
-        
-        out.println("<script type='text/javascript'>");
-        out.println("alert('"+mensagem+"');");
-        out.println("location.href='listar_cliente.jsp';");
-        out.println("</script>");
+
+        out.println("<html>");
+        out.println("    <head>");
+        out.println("        <meta http-equiv=\"content-type\" content=\"text/html; charset=iso-8859-1\">");
+        out.println("        <link rel=\"stylesheet\" href=\"./static/css/mensagem.css\">");
+        out.println("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
+        out.println("        <meta charset=\"UTF-8\">");
+        out.println("        <title>Salão do Luciano</title>");
+        out.println("    </head>");
+        out.println("    <body>");
+        out.println("        <div class=\"container\">");
+        out.println("            <h1>" + mensagem + "</h1>");
+        out.println("            <div class=\"row\">");
+        out.println("                <a href=\"index.jsp\">Início</a>");
+        out.println("                <a href=\"listar_cliente.jsp\">Clientes</a>");
+        out.println("            </div>");
+        out.println("        </div>");
+        out.println("    </body>");
+        out.println("</html>");
     }
 
     /**

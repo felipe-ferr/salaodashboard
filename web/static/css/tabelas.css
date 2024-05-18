@@ -232,7 +232,6 @@ a{
     position: relative;
     font-size: 1vw;
     border-radius: 10px;
-    transition-duration: 0.4s;
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -242,7 +241,6 @@ a{
     right: 0;
     padding: 0px 2vh;
     color: var(--cor-texto);
-    transition-duration: 0.3s;
     pointer-events: none;
 }
 /* diminuir padding quando o campo de texto estiver ativo */

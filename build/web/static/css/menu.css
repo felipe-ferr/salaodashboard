@@ -70,7 +70,6 @@ body{
     text-align: left;
     color: var(--cor-texto);
     text-decoration: none;
-    transition-duration: 0.4s;
     font-family: 'Montserrat';
     flex-direction: column;
     gap: 1vh;
@@ -86,7 +85,6 @@ body{
     text-align: left;
     color: var(--cor-texto);
     text-decoration: none;
-    transition-duration: 0.4s;
     font-family: 'Montserrat';
     background-color: var(--cor-clara);
     border-radius: 20px;
@@ -102,51 +100,7 @@ body{
     text-align: left;
     color: var(--cor-texto);
     text-decoration: none;
-    transition-duration: 0.4s;
     font-family: 'Montserrat';
-}
-.btn-esquerda{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    padding: 15%;
-    box-sizing: border-box;
-    border-radius: 10px 0px 0px 10px;
-    background-color: var(--cor-clara);
-    transition-duration: 0.3s;
-}
-
-.btn-active-esquerda{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    padding: 15%;
-    box-sizing: border-box;
-    border-radius: 10px 0px 0px 10px;
-    background-color: var(--dourado);
-    transition-duration: 0.3s;
-}
-.btn-direita{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    padding: 15%;
-    box-sizing: border-box;
-    border-radius: 0px 10px 10px 0px;
-    background-color: var(--cor-clara);
-}
-.btn-active-direita{
-    background-color: var(--dourado);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    padding: 15%;
-    box-sizing: border-box;
-    border-radius: 0px 10px 10px 0px;
 }
 
 .sidebar p{
@@ -322,4 +276,47 @@ input:checked + .slider:before {
 
 .show{
     display: flex;
+}
+.btn-esquerda{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    padding: 5%;
+    box-sizing: border-box;
+    border-radius: 10px 0px 0px 10px;
+    background-color: var(--cor-clara);
+    transition-duration: 0.3s;
+}
+
+.btn-active-esquerda{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    padding: 5%;
+    box-sizing: border-box;
+    border-radius: 10px 0px 0px 10px;
+    background-color: var(--dourado);
+    transition-duration: 0.3s;
+}
+.btn-direita{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    padding: 5%;
+    box-sizing: border-box;
+    border-radius: 0px 10px 10px 0px;
+    background-color: var(--cor-clara);
+}
+.btn-active-direita{
+    background-color: var(--dourado);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    padding: 5%;
+    box-sizing: border-box;
+    border-radius: 0px 10px 10px 0px;
 }

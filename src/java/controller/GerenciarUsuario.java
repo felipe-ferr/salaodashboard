@@ -22,7 +22,6 @@ import model.UsuarioDAO;
  */
 public class GerenciarUsuario extends HttpServlet {
 
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -35,50 +34,64 @@ public class GerenciarUsuario extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         PrintWriter out = response.getWriter();
         String mensagem = "";
-        
+
         String acao = request.getParameter("acao");
         String idusuario = request.getParameter("idusuario");
-        
+
         Usuario u = new Usuario();
-        
-        try{
-            
+
+        try {
+
             UsuarioDAO uDAO = new UsuarioDAO();
-            if(acao.equals("alterar")){
+            if (acao.equals("alterar")) {
                 u = uDAO.getCarregaPorID(Integer.parseInt(idusuario));
-                if(u.getIdusuario()>0){
+                if (u.getIdusuario() > 0) {
                     RequestDispatcher disp = getServletContext().getRequestDispatcher("/form_usuario.jsp");
                     request.setAttribute("usuario", u);
                     disp.forward(request, response);
-                }else{
+                } else {
                     mensagem = "Serviço não encontrado";
                 }
-                
+
             }
-            
-            if(acao.equals("deletar")){
+
+            if (acao.equals("deletar")) {
                 u.setIdusuario(Integer.parseInt(idusuario));
-                if(uDAO.deletar(u)){
+                if (uDAO.deletar(u)) {
                     mensagem = "Desativado com sucesso!";
-                }else{
+                } else {
                     mensagem = "Falha ao gravar informações no banco de dados. Tente novamente";
                 }
-                
+
             }
-            
-        }catch(Exception e){
+
+        } catch (Exception e) {
             out.print(e);
             mensagem = "Erro ao executar";
         }
-        
-        out.println("<script type='text/javascript'>");
-        out.println("alert('"+mensagem+"');");
-        out.println("location.href='listar_servico.jsp';");
-        out.println("</script>");
-        
+
+        out.println("<html>");
+        out.println("    <head>");
+        out.println("        <meta http-equiv=\"content-type\" content=\"text/html; charset=iso-8859-1\">");
+        out.println("        <link rel=\"stylesheet\" href=\"./static/css/mensagem.css\">");
+        out.println("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
+        out.println("        <meta charset=\"UTF-8\">");
+        out.println("        <title>Salão do Luciano</title>");
+        out.println("    </head>");
+        out.println("    <body>");
+        out.println("        <div class=\"container\">");
+        out.println("            <h1>" + mensagem + "</h1>");
+        out.println("            <div class=\"row\">");
+        out.println("                <a href=\"index.jsp\">Início</a>");
+        out.println("                <a href=\"listar_usuario.jsp\">Usuários</a>");
+        out.println("            </div>");
+        out.println("        </div>");
+        out.println("    </body>");
+        out.println("</html>");
+
     }
 
     /**
@@ -92,7 +105,7 @@ public class GerenciarUsuario extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         PrintWriter out = response.getWriter();
         String idusuario = request.getParameter("idusuario");
         String nome = request.getParameter("nome");
@@ -102,17 +115,17 @@ public class GerenciarUsuario extends HttpServlet {
         String senha = request.getParameter("senha");
         String status = request.getParameter("status");
         String idperfil = request.getParameter("idperfil");
-        
+
         String mensagem = "";
-        
+
         Usuario u = new Usuario();
-        if(!idusuario.isEmpty()){
+        if (!idusuario.isEmpty()) {
             u.setIdusuario(Integer.parseInt(idusuario));
         }
-            
-        if(nome.equals("")||login.equals("")||senha.equals("")||status.equals("")||idperfil.equals("")){
+
+        if (nome.equals("") || login.equals("") || senha.equals("") || status.equals("") || idperfil.equals("")) {
             mensagem = "Campos obrigatórios deverão ser preenchidos";
-        }else{
+        } else {
             u.setNome(nome);
             u.setCpf(cpf);
             u.setTelefone(telefone);
@@ -124,28 +137,41 @@ public class GerenciarUsuario extends HttpServlet {
             p.setIdperfil(Integer.parseInt(idperfil));
             u.setPerfil(p);
 
-            try{
-                
+            try {
+
                 UsuarioDAO uDAO = new UsuarioDAO();
-                if(uDAO.gravar(u)){
+                if (uDAO.gravar(u)) {
                     mensagem = "Gravado com sucesso!";
-                }else{
+                } else {
                     mensagem = "Erro ao gravar no banco de dados!";
                 }
-                
-            }catch(Exception e){
+
+            } catch (Exception e) {
                 out.print(e);
                 mensagem = "Erro ao executar";
             }
 
-            out.println("<script type='text/javascript'>");
-            out.println("alert('"+mensagem+"');");
-            out.println("location.href='listar_usuario.jsp';");
-            out.println("</script>");
+            out.println("<html>");
+            out.println("    <head>");
+            out.println("        <meta http-equiv=\"content-type\" content=\"text/html; charset=iso-8859-1\">");
+            out.println("        <link rel=\"stylesheet\" href=\"./static/css/mensagem.css\">");
+            out.println("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
+            out.println("        <meta charset=\"UTF-8\">");
+            out.println("        <title>Salão do Luciano</title>");
+            out.println("    </head>");
+            out.println("    <body>");
+            out.println("        <div class=\"container\">");
+            out.println("            <h1>" + mensagem + "</h1>");
+            out.println("            <div class=\"row\">");
+            out.println("                <a href=\"index.jsp\">Início</a>");
+            out.println("                <a href=\"listar_usuario.jsp\">Usuários</a>");
+            out.println("            </div>");
+            out.println("        </div>");
+            out.println("    </body>");
+            out.println("</html>");
         }
-        
-        }
-       
+
+    }
 
     /**
      * Returns a short description of the servlet.
@@ -157,6 +183,4 @@ public class GerenciarUsuario extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    
-    
 }

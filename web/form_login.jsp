@@ -8,9 +8,56 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script>
+// Script para carregar o modo escuro antes do usuário ver a página.
+
+// Pegar o valor do cookie
+            function getCookie(name) {
+                let nameEQ = name + "=";
+                let ca = document.cookie.split(';');
+                for (let i = 0; i < ca.length; i++) {
+                    let c = ca[i];
+                    while (c.charAt(0) == ' ')
+                        c = c.substring(1, c.length);
+                    if (c.indexOf(nameEQ) == 0)
+                        return c.substring(nameEQ.length, c.length);
+                }
+                return null;
+            }
+
+// Funções pra aplicar o modo escuro e claro
+            function escuro() {
+                document.documentElement.style.setProperty('--cor-clara', '#252525');
+                document.documentElement.style.setProperty('--cor-escura', '#181818');
+                document.documentElement.style.setProperty('--cor-texto', '#AFAFAF');
+                document.documentElement.style.setProperty('--cor-texto-preto', '#DFDFDF');
+                document.documentElement.style.setProperty('--cor-tabela-stripe', '#161616');
+
+            }
+
+            function light() {
+                document.documentElement.style.setProperty('--cor-clara', '#eaeaea');
+                document.documentElement.style.setProperty('--cor-escura', '#f5f5f5');
+                document.documentElement.style.setProperty('--cor-texto', '##0F0300');
+                document.documentElement.style.setProperty('--cor-texto-preto', 'black');
+                document.documentElement.style.setProperty('--cor-tabela-stripe', '#F0F0F0');
+
+            }
+
+// Função pra checar o cookie e aplicar o tema antes da página carregar
+            (function checkCookieAndApplyTheme() {
+                let theme = getCookie("theme");
+                if (theme === "dark") {
+                    escuro();
+                } else if (theme === "light") {
+                    light();
+                }
+            })();
+
+        </script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Salão do Luciano | Login</title>
+        <script src="./static/js/modoescuro.js"></script>
         <link rel="stylesheet" href="./static/css/login.css">
         <link rel="stylesheet" href="./static/css/menu.css">
         

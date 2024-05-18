@@ -72,10 +72,24 @@ public class GerenciarAgendamento extends HttpServlet {
             mensagem = "Erro ao executar";
         }
 
-        out.println("<script type='text/javascript'>");
-        out.println("alert('" + mensagem + "');");
-        out.println("location.href='listar_agendamento.jsp';");
-        out.println("</script>");
+        out.println("<html>");
+        out.println("    <head>");
+        out.println("        <meta http-equiv=\"content-type\" content=\"text/html; charset=iso-8859-1\">");
+        out.println("        <link rel=\"stylesheet\" href=\"./static/css/mensagem.css\">");
+        out.println("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
+        out.println("        <meta charset=\"UTF-8\">");
+        out.println("        <title>Salão do Luciano</title>");
+        out.println("    </head>");
+        out.println("    <body>");
+        out.println("        <div class=\"container\">");
+        out.println("            <h1>" + mensagem + "</h1>");
+        out.println("            <div class=\"row\">");
+        out.println("                <a href=\"index.jsp\">Início</a>");
+        out.println("                <a href=\"listar_agendamento.jsp\">Agendamentos</a>");
+        out.println("            </div>");
+        out.println("        </div>");
+        out.println("    </body>");
+        out.println("</html>");
     }
 
     /**
@@ -149,10 +163,9 @@ public class GerenciarAgendamento extends HttpServlet {
             mensagem = "Erro ao executar";
         }
 
-        out.println("<!DOCTYPE html>");
         out.println("<html>");
         out.println("    <head>");
-        out.println("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">");
+        out.println("        <meta http-equiv=\"content-type\" content=\"text/html; charset=iso-8859-1\">");
         out.println("        <link rel=\"stylesheet\" href=\"./static/css/mensagem.css\">");
         out.println("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
         out.println("        <meta charset=\"UTF-8\">");
@@ -163,7 +176,7 @@ public class GerenciarAgendamento extends HttpServlet {
         out.println("            <h1>" + mensagem + "</h1>");
         out.println("            <div class=\"row\">");
         out.println("                <a href=\"index.jsp\">Início</a>");
-        out.println("                <a href=\"listar_agendamento.jsp.jsp\">Agendamentos</a>");
+        out.println("                <a href=\"listar_agendamento.jsp\">Agendamentos</a>");
         out.println("            </div>");
         out.println("        </div>");
         out.println("    </body>");

@@ -1,4 +1,3 @@
-
 package controller;
 
 import java.io.IOException;
@@ -18,8 +17,7 @@ import model.UsuarioDAO;
  */
 public class GerenciarLogin extends HttpServlet {
 
-        private static HttpServletResponse response;
-   
+    private static HttpServletResponse response;
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -33,10 +31,10 @@ public class GerenciarLogin extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         request.getSession().removeAttribute("ulogado");
         response.sendRedirect("form_login.jsp");
-        
+
     }
 
     /**
@@ -50,95 +48,102 @@ public class GerenciarLogin extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            
+
         GerenciarLogin.response = response;
         String login = request.getParameter("login");
         String senha = request.getParameter("senha");
         ArrayList<String> erros = new ArrayList<String>();
-        if(login==null || login.trim() .isEmpty()){
+        if (login == null || login.trim().isEmpty()) {
             erros.add("Preencha o login");
         }
-        if(senha==null || senha.trim() .isEmpty()) {
+        if (senha == null || senha.trim().isEmpty()) {
             erros.add("Preencha a senha");
         }
-        
-        
-        
-        if(erros.size()>0) {
+
+        if (erros.size() > 0) {
             String campos = "";
-            for(String erro: erros) {
-                campos = campos + "\\n" +erro;
+            for (String erro : erros) {
+                campos = campos + "\\n" + erro;
             }
-                exibirMensagem("Preencha o(s) campo(s):" +campos);
-                
-                }
-        else{
-            
-            try{
+            exibirMensagem("Preencha o(s) campo(s):" + campos);
+
+        } else {
+
+            try {
                 UsuarioDAO uDAO = new UsuarioDAO();
                 Usuario u = new Usuario();
                 u = uDAO.getRecuperarUsuario(login);
-                if(u.getIdusuario()>0 && u.getSenha() .equals(senha)) {
-                        HttpSession sessao = request.getSession();
-                        sessao.setAttribute("ulogado", u);
-                        response.sendRedirect("index.jsp");
-                }else{
+                if (u.getIdusuario() > 0 && u.getSenha().equals(senha)) {
+                    HttpSession sessao = request.getSession();
+                    sessao.setAttribute("ulogado", u);
+                    response.sendRedirect("index.jsp");
+                } else {
                     exibirMensagem("Nome de usuário e/ou senha inválidos! Tente novamente");
                 }
-                    
-        }catch(Exception e) {
-            exibirMensagem("Usuário ou Perfil não encontrado");
-        }
+
+            } catch (Exception e) {
+                exibirMensagem("Usuário ou Perfil não encontrado");
+            }
         }
     }
-    
-    
-    
+
     private static void exibirMensagem(String mensagem) {
-        try{
+        try {
             PrintWriter out = response.getWriter();
-            out.print("<script>");
-            out.print("alert(' "+mensagem+" ') ; ") ;
-            out.print("history.back();");
-            out.print("</script>");
+            out.println("<html>");
+            out.println("    <head>");
+            out.println("        <meta http-equiv=\"content-type\" content=\"text/html; charset=iso-8859-1\">");
+            out.println("        <link rel=\"stylesheet\" href=\"./static/css/mensagem.css\">");
+            out.println("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
+            out.println("        <meta charset=\"UTF-8\">");
+            out.println("        <title>Salão do Luciano</title>");
+            out.println("    </head>");
+            out.println("    <body>");
+            out.println("        <div class=\"container\">");
+            out.println("            <h1>" + mensagem + "</h1>");
+            out.println("            <div class=\"row\">");
+            out.println("                <a href=\"form_login.jsp\">Tentar Novamente</a>");
+            out.println("            </div>");
+            out.println("        </div>");
+            out.println("    </body>");
+            out.println("</html>");
             out.close();
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public static Usuario verificarAcesso(HttpServletRequest request, HttpServletResponse response){
-        
+    public static Usuario verificarAcesso(HttpServletRequest request, HttpServletResponse response) {
+
         Usuario u = null;
         GerenciarLogin.response = response;
-        try{
+        try {
             HttpSession sessao = request.getSession();
-            if(sessao.getAttribute("ulogado")==null){
+            if (sessao.getAttribute("ulogado") == null) {
                 response.sendRedirect("form_login.jsp");
-            }else{
+            } else {
                 String uri = request.getRequestURI();
                 String queryString = request.getQueryString();
-                if(queryString!=null){
-                    uri += "?" +queryString;
+                if (queryString != null) {
+                    uri += "?" + queryString;
                 }
                 u = (Usuario) request.getSession().getAttribute("ulogado");
-                if(u==null){
+                if (u == null) {
                     sessao.setAttribute("mensagem", "Você não está autenticado");
                     response.sendRedirect("form_login.jsp");
-                   
+
                 }
             }
-                    
-        }catch(Exception e){
-            exibirMensagem("Exceção:"+e.getMessage());
+
+        } catch (Exception e) {
+            exibirMensagem("Exceção:" + e.getMessage());
         }
         return u;
     }
-                
-                
+
     @Override
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold> 
 
-         }
+}
