@@ -78,7 +78,7 @@ public class GerenciarLogin extends HttpServlet {
                     sessao.setAttribute("ulogado", u);
                     response.sendRedirect("index.jsp");
                 } else {
-                    exibirMensagem("Nome de usuário e/ou senha inválidos! Tente novamente");
+                    exibirMensagem("Nome de usuário e/ou senha inválidos! Tente novamente.");
                 }
 
             } catch (Exception e) {
@@ -91,22 +91,59 @@ public class GerenciarLogin extends HttpServlet {
         try {
             PrintWriter out = response.getWriter();
             out.println("<html>");
-            out.println("    <head>");
-            out.println("        <meta http-equiv=\"content-type\" content=\"text/html; charset=iso-8859-1\">");
-            out.println("        <link rel=\"stylesheet\" href=\"./static/css/mensagem.css\">");
-            out.println("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
-            out.println("        <meta charset=\"UTF-8\">");
-            out.println("        <title>Salão do Luciano</title>");
-            out.println("    </head>");
-            out.println("    <body>");
-            out.println("        <div class=\"container\">");
-            out.println("            <h1>" + mensagem + "</h1>");
-            out.println("            <div class=\"row\">");
-            out.println("                <a href=\"form_login.jsp\">Tentar Novamente</a>");
-            out.println("            </div>");
-            out.println("        </div>");
-            out.println("    </body>");
-            out.println("</html>");
+        out.println("    <head>");
+        out.println("<script>");
+        out.println("function getCookie(name) {");
+        out.println("    let nameEQ = name + \"=\";");
+        out.println("    let ca = document.cookie.split(';');");
+        out.println("    for (let i = 0; i < ca.length; i++) {");
+        out.println("        let c = ca[i];");
+        out.println("        while (c.charAt(0) == ' ')");
+        out.println("            c = c.substring(1, c.length);");
+        out.println("        if (c.indexOf(nameEQ) == 0)");
+        out.println("            return c.substring(nameEQ.length, c.length);");
+        out.println("    }");
+        out.println("    return null;");
+        out.println("}");
+        out.println("function escuro() {");
+        out.println("    document.documentElement.style.setProperty('--cor-clara', '#252525');");
+        out.println("    document.documentElement.style.setProperty('--cor-escura', '#181818');");
+        out.println("    document.documentElement.style.setProperty('--cor-texto', '#AFAFAF');");
+        out.println("    document.documentElement.style.setProperty('--cor-texto-preto', '#DFDFDF');");
+        out.println("    document.documentElement.style.setProperty('--cor-tabela-stripe', '#161616');");
+        out.println("}");
+        out.println("function light() {");
+        out.println("    document.documentElement.style.setProperty('--cor-clara', '#eaeaea');");
+        out.println("    document.documentElement.style.setProperty('--cor-escura', '#f5f5f5');");
+        out.println("    document.documentElement.style.setProperty('--cor-texto', '##0F0300');");
+        out.println("    document.documentElement.style.setProperty('--cor-texto-preto', 'black');");
+        out.println("    document.documentElement.style.setProperty('--cor-tabela-stripe', '#F0F0F0');");
+        out.println("}");
+        out.println("(function checkCookieAndApplyTheme() {");
+        out.println("    let theme = getCookie(\"theme\");");
+        out.println("    if (theme === \"dark\") {");
+        out.println("        escuro();");
+        out.println("    } else if (theme === \"light\") {");
+        out.println("        light();");
+        out.println("    }");
+        out.println("})();");
+        out.println("</script>");
+        out.println("        <meta http-equiv=\"content-type\" content=\"text/html; charset=iso-8859-1\">");
+        out.println("        <link rel=\"stylesheet\" href=\"./static/css/mensagem.css\">");
+        out.println("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
+        out.println("        <meta charset=\"UTF-8\">");
+        out.println("        <title>Salão do Luciano</title>");
+        out.println("    </head>");
+        out.println("    <body>");
+        out.println("        <div class=\"container\">");
+        out.println("            <h1>" + mensagem + "</h1>");
+        out.println("            <div class=\"row\">");
+        out.println("                <a href=\"form_login.jsp\">Tentar Novamente</a>");
+        out.println("            </div>");
+        out.println("        </div>");
+        out.println("<script type=\"text/javascript\" src=\"static/js/modoescuro.js\"></script>");
+        out.println("    </body>");
+        out.println("</html>");
             out.close();
         } catch (Exception e) {
             e.printStackTrace();
