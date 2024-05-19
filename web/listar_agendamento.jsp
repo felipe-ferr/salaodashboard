@@ -72,8 +72,10 @@
         <link rel="stylesheet" href="./static/css/tabelas.css">
         <script src="./static/js/modoescuro.js"></script>
         <meta charset="UTF-8">
+        
+        <link rel="icon" type="image/x-icon" href="static/favicon/favicon.ico">
 
-
+        
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatis.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">

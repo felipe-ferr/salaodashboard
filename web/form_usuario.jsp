@@ -67,6 +67,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="./static/js/modoescuro.js"></script>
         <link rel="stylesheet" href="./static/css/form.css">
+        
+        <link rel="icon" type="image/x-icon" href="static/favicon/favicon.ico">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -84,9 +86,9 @@
             <%@include file="sidebar.jsp" %>
 
             <div class="container-principal">
-                <form method="POST"action="gerenciar_usuario.do" value="">
+                <form method="POST"action="gerenciar_usuario.do" value="" accept-charset="ISO-8859-1" >
 
-                    <a class="botaoinicio"href="#">
+                    <a class="botaoinicio"href="index.jsp">
                         <i class="material-symbols-outlined">arrow_back</i>Voltar ao início
                     </a>
 

@@ -1,16 +1,20 @@
-function fillDate() {
-    var checkbox = document.getElementById('fillDateCheckbox');
-    var dateInput = document.getElementById('date');
+function definirDataHoje() {
+  // Pega o elemento de data
+  var inputData = document.getElementById("date");  // Substitua "seuIdDeEntradaDeData" pelo ID real do seu elemento
 
-    if (checkbox.checked) {
-        var today = new Date();
-        var dd = String(today.getDate()).padStart(2, '0');
-        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-        var yyyy = today.getFullYear();
+  // Cria um novo objeto Date
+  var hoje = new Date();
 
-        today = dd + '/' + mm + '/' + yyyy;
-        dateInput.value = today;
-    } else {
-        dateInput.value = ''; // Clear the input field if the checkbox is unchecked
-    }
+  // Formata a data no formato DD/MM/YYYY
+  var dia = String(hoje.getDate()).padStart(2, '0');
+  var mes = String(hoje.getMonth() + 1).padStart(2, '0'); // Janeiro é 0!
+  var ano = hoje.getFullYear();
+
+  var dataFormatada = dia + "/" + mes + "/" + ano;
+
+  // Define o valor da entrada de data
+  inputData.value = dataFormatada;
 }
+
+// Chama a função para definir a data no carregamento da página (opcional)
+window.onload = definirDataHoje;

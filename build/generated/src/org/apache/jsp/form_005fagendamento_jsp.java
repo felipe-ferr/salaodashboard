@@ -18,8 +18,8 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
     _jspx_dependants.add("/sidebar.jsp");
   }
 
-  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_fmt_formatDate_value_pattern_nobody;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_forEach_var_items;
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_fmt_formatDate_value_pattern_nobody;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_if_test;
 
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
@@ -29,14 +29,14 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
   }
 
   public void _jspInit() {
-    _jspx_tagPool_fmt_formatDate_value_pattern_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_c_forEach_var_items = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _jspx_tagPool_fmt_formatDate_value_pattern_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_c_if_test = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
   }
 
   public void _jspDestroy() {
-    _jspx_tagPool_fmt_formatDate_value_pattern_nobody.release();
     _jspx_tagPool_c_forEach_var_items.release();
+    _jspx_tagPool_fmt_formatDate_value_pattern_nobody.release();
     _jspx_tagPool_c_if_test.release();
   }
 
@@ -130,7 +130,7 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       out.write("        <meta http-equiv=\"content-type\" content=\"text/html; charset=iso-8859-1\">\r\n");
       out.write("        <link rel=\"stylesheet\" href=\"./static/css/form.css\">\r\n");
       out.write("\r\n");
-      out.write("\r\n");
+      out.write("        <link rel=\"icon\" type=\"image/x-icon\" href=\"static/favicon/favicon.ico\">\r\n");
       out.write("\r\n");
       out.write("        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\r\n");
       out.write("        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.js\"></script>\r\n");
@@ -147,8 +147,37 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       out.write("\r\n");
       out.write("    </head>\r\n");
       out.write("    <body>\r\n");
+      out.write("        <div style=\"display: none\" id=\"consulta\" class=\"consulta-container\">\r\n");
+      out.write("            <div style=\"justify-content: space-between\" class=\"row-container\">\r\n");
+      out.write("                <span>Datas Reservadas:</span>\r\n");
+      out.write("                <i onclick=\"fecharConsulta()\" style=\"cursor: pointer\" class=\"material-symbols-outlined\">close</i>\r\n");
+      out.write("            </div>\r\n");
+      out.write("            <div class=\"row-container\">\r\n");
+      out.write("                <div id=\"nav\" class=\"thead\">\r\n");
+      out.write("                    <div>Data</div>          \r\n");
+      out.write("                    <div>Horário</div>\r\n");
+      out.write("                    <div>Cliente</div>\r\n");
+      out.write("                </div>\r\n");
+      out.write("            </div>\r\n");
+      out.write("            <div id=\"table\" class=\"tabela-container container\">\r\n");
+      out.write("                ");
+      model.AgendamentoDAO a = null;
+      synchronized (_jspx_page_context) {
+        a = (model.AgendamentoDAO) _jspx_page_context.getAttribute("a", PageContext.PAGE_SCOPE);
+        if (a == null){
+          a = new model.AgendamentoDAO();
+          _jspx_page_context.setAttribute("a", a, PageContext.PAGE_SCOPE);
+        }
+      }
       out.write("\r\n");
-      out.write("        <div class=\"grid-container\">\r\n");
+      out.write("\r\n");
+      out.write("                ");
+      if (_jspx_meth_c_forEach_0(_jspx_page_context))
+        return;
+      out.write("\r\n");
+      out.write("            </div>\r\n");
+      out.write("        </div>\r\n");
+      out.write("        <div id=\"containergeral\" class=\"grid-container\">\r\n");
       out.write("            ");
       out.write("\r\n");
       out.write("\r\n");
@@ -206,7 +235,7 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       out.write("            <div class=\"container-principal\">\r\n");
       out.write("                <form method=\"POST\" action=\"gerenciar_agendamento.do\" value=\"\">\r\n");
       out.write("\r\n");
-      out.write("                    <a class=\"botaoinicio\"href=\"#\">\r\n");
+      out.write("                    <a class=\"botaoinicio\" href=\"index.jsp\">\r\n");
       out.write("                        <i class=\"material-symbols-outlined\">arrow_back</i>Voltar ao início\r\n");
       out.write("                    </a>\r\n");
       out.write("\r\n");
@@ -229,92 +258,72 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       out.write("\r\n");
       out.write("                        <div class=\"inputContainer\">                      \r\n");
       out.write("                            <input id=\"dateInput\" required type=\"text\" name=\"data\" value=\"");
-      if (_jspx_meth_fmt_formatDate_0(_jspx_page_context))
+      if (_jspx_meth_fmt_formatDate_1(_jspx_page_context))
         return;
       out.write("\">\r\n");
       out.write("                            <p>Data:</p>\r\n");
-      out.write("                            <span class=\"erroMensagem\"></span>\r\n");
+      out.write("\r\n");
       out.write("                            <i class=\"material-symbols-outlined\">calendar_month</i>\r\n");
       out.write("                        </div>\r\n");
       out.write("\r\n");
       out.write("                    </div>\r\n");
-      out.write("\r\n");
-      out.write("                    <div class=\"consulta-container\">\r\n");
-      out.write("                        <div class=\"row-container\">\r\n");
-      out.write("                            <div id=\"nav\" class=\"thead\">\r\n");
-      out.write("                                <div>Data</div>          \r\n");
-      out.write("                                <div>Horário</div>\r\n");
-      out.write("                                <div>Cliente</div>\r\n");
-      out.write("                            </div>\r\n");
-      out.write("                        </div>\r\n");
-      out.write("                        <div id=\"table\" class=\"tabela-container container\">\r\n");
-      out.write("                            ");
-      model.AgendamentoDAO a = null;
-      synchronized (_jspx_page_context) {
-        a = (model.AgendamentoDAO) _jspx_page_context.getAttribute("a", PageContext.PAGE_SCOPE);
-        if (a == null){
-          a = new model.AgendamentoDAO();
-          _jspx_page_context.setAttribute("a", a, PageContext.PAGE_SCOPE);
-        }
-      }
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("                            ");
-      if (_jspx_meth_c_forEach_0(_jspx_page_context))
-        return;
-      out.write("\r\n");
-      out.write("                        </div>\r\n");
+      out.write("                            \r\n");
+      out.write("                    <div class=\"inputContainerRow\" style=\"justify-content: flex-end\">\r\n");
+      out.write("                        <span class=\"erroMensagem\"></span>\r\n");
+      out.write("                        <div onclick=\"abrirConsulta()\" class=\"botaoConsulta\">Mostrar Datas Reservadas</div>\r\n");
       out.write("                    </div>\r\n");
       out.write("\r\n");
-      out.write("                    <span style=\"margin-top: 5%; display: flex\" id=\"titlehorario\">Horário</span>\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("                    <span style=\"display: flex\" id=\"titlehorario\">Horário</span>\r\n");
       out.write("                    <div class=\"horarios-container fade-in\" id=\"semana\" style=\"display: flex\">\r\n");
       out.write("                        <label id=\"inputElement\" id=\"inputElement\" class=\"horario\">\r\n");
-      out.write("                            <input  type=\"radio\" name=\"horario\" value=\"9:00\" />\r\n");
+      out.write("                            <input onclick=\"checarConflito()\" id=\"hora\" type=\"radio\" name=\"horario\" value=\"9:00\" />\r\n");
       out.write("                            <p>9:00</p>\r\n");
       out.write("                            <i class=\"material-symbols-outlined\">schedule</i>\r\n");
       out.write("                        </label>\r\n");
       out.write("                        <label id=\"inputElement\" class=\"horario\">\r\n");
-      out.write("                            <input type=\"radio\" name=\"horario\" value=\"10:00\" />\r\n");
+      out.write("                            <input onclick=\"checarConflito()\" id=\"hora\"  type=\"radio\" name=\"horario\" value=\"10:00\" />\r\n");
       out.write("                            <p>10:00</p>\r\n");
       out.write("                            <i class=\"material-symbols-outlined\">schedule</i>\r\n");
       out.write("                        </label>\r\n");
       out.write("                        <label id=\"inputElement\" class=\"horario\">\r\n");
-      out.write("                            <input type=\"radio\" name=\"horario\" value=\"11:00\" />\r\n");
+      out.write("                            <input onclick=\"checarConflito()\" id=\"hora\"  type=\"radio\" name=\"horario\" value=\"11:00\" />\r\n");
       out.write("                            <p>11:00</p>\r\n");
       out.write("                            <i class=\"material-symbols-outlined\">schedule</i>\r\n");
       out.write("                        </label>\r\n");
       out.write("                        <label id=\"inputElement\" class=\"horario\">\r\n");
-      out.write("                            <input type=\"radio\" name=\"horario\" value=\"13:00\" />\r\n");
+      out.write("                            <input onclick=\"checarConflito()\" id=\"hora\"  type=\"radio\" name=\"horario\" value=\"13:00\" />\r\n");
       out.write("                            <p>13:00</p>\r\n");
       out.write("                            <i class=\"material-symbols-outlined\">schedule</i>\r\n");
       out.write("                        </label>\r\n");
       out.write("                        <label id=\"inputElement\" class=\"horario\">\r\n");
-      out.write("                            <input type=\"radio\" name=\"horario\" value=\"14:00\" />\r\n");
+      out.write("                            <input onclick=\"checarConflito()\" id=\"hora\"  type=\"radio\" name=\"horario\" value=\"14:00\" />\r\n");
       out.write("                            <p>14:00</p>\r\n");
       out.write("                            <i class=\"material-symbols-outlined\">schedule</i>\r\n");
       out.write("                        </label>\r\n");
       out.write("                        <label id=\"inputElement\" class=\"horario\">\r\n");
-      out.write("                            <input type=\"radio\" name=\"horario\" value=\"15:00\" />\r\n");
+      out.write("                            <input onclick=\"checarConflito()\" id=\"hora\"  type=\"radio\" name=\"horario\" value=\"15:00\" />\r\n");
       out.write("                            <p>15:00</p>\r\n");
       out.write("                            <i class=\"material-symbols-outlined\">schedule</i>\r\n");
       out.write("                        </label>\r\n");
       out.write("                        <label id=\"inputElement\" class=\"horario\">\r\n");
-      out.write("                            <input type=\"radio\" name=\"horario\" value=\"16:00\" />\r\n");
+      out.write("                            <input onclick=\"checarConflito()\" id=\"hora\"  type=\"radio\" name=\"horario\" value=\"16:00\" />\r\n");
       out.write("                            <p>16:00</p>\r\n");
       out.write("                            <i class=\"material-symbols-outlined\">schedule</i>\r\n");
       out.write("                        </label>\r\n");
       out.write("                        <label id=\"inputElement\" class=\"horario\">\r\n");
-      out.write("                            <input type=\"radio\" name=\"horario\" value=\"17:00\" />\r\n");
+      out.write("                            <input onclick=\"checarConflito()\" id=\"hora\"  type=\"radio\" name=\"horario\" value=\"17:00\" />\r\n");
       out.write("                            <p>17:00</p>\r\n");
       out.write("                            <i class=\"material-symbols-outlined\">schedule</i>\r\n");
       out.write("                        </label>\r\n");
       out.write("                        <label id=\"inputElement\" class=\"horario\">\r\n");
-      out.write("                            <input type=\"radio\" name=\"horario\" value=\"18:00\" />\r\n");
+      out.write("                            <input onclick=\"checarConflito()\" id=\"hora\"  type=\"radio\" name=\"horario\" value=\"18:00\" />\r\n");
       out.write("                            <p>18:00</p>\r\n");
       out.write("                            <i class=\"material-symbols-outlined\">schedule</i>\r\n");
       out.write("                        </label>\r\n");
       out.write("                        <label id=\"inputElement\" class=\"horario\">\r\n");
-      out.write("                            <input type=\"radio\" name=\"horario\" value=\"19:00\" />\r\n");
+      out.write("                            <input onclick=\"checarConflito()\" id=\"hora\"  type=\"radio\" name=\"horario\" value=\"19:00\" />\r\n");
       out.write("                            <p>19:00</p>\r\n");
       out.write("                            <i class=\"material-symbols-outlined\">schedule</i>\r\n");
       out.write("                        </label>\r\n");
@@ -323,17 +332,17 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       out.write("\r\n");
       out.write("                    <div class=\"horarios-container fade-in\" id=\"domingo\" style=\"display:none\">\r\n");
       out.write("                        <label id=\"inputElement\" id=\"inputElement\" class=\"horario\">\r\n");
-      out.write("                            <input  type=\"radio\" name=\"horario\" value=\"9:00\" />\r\n");
+      out.write("                            <input onclick=\"checarConflito()\" id=\"hora\" type=\"radio\" name=\"horario\" value=\"9:00\" />\r\n");
       out.write("                            <p>9:00</p>\r\n");
       out.write("                            <i class=\"material-symbols-outlined\">schedule</i>\r\n");
       out.write("                        </label>\r\n");
       out.write("                        <label id=\"inputElement\" class=\"horario\">\r\n");
-      out.write("                            <input type=\"radio\" name=\"horario\" value=\"10:00\" />\r\n");
+      out.write("                            <input onclick=\"checarConflito()\" id=\"hora\" type=\"radio\" name=\"horario\" value=\"10:00\" />\r\n");
       out.write("                            <p>10:00</p>\r\n");
       out.write("                            <i class=\"material-symbols-outlined\">schedule</i>\r\n");
       out.write("                        </label>\r\n");
       out.write("                        <label id=\"inputElement\" class=\"horario\">\r\n");
-      out.write("                            <input type=\"radio\" name=\"horario\" value=\"11:00\" />\r\n");
+      out.write("                            <input onclick=\"checarConflito()\" id=\"hora\" type=\"radio\" name=\"horario\" value=\"11:00\" />\r\n");
       out.write("                            <p>11:00</p>\r\n");
       out.write("                            <i class=\"material-symbols-outlined\">schedule</i>\r\n");
       out.write("                        </label>                    \r\n");
@@ -350,10 +359,6 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       out.write("                            <p style=\"font-size:0.7vw\">Data de Cadastro:</p>\r\n");
       out.write("                            <i class=\"material-symbols-outlined\">calendar_month</i>\r\n");
       out.write("                        </div>    \r\n");
-      out.write("                        <div class=\"preencherHoje\">\r\n");
-      out.write("                            <label for=\"fillDateCheckbox\">Data de hoje</label>\r\n");
-      out.write("                            <input onclick=\"fillDate()\" id=\"fillDateCheckbox\" type=\"checkbox\">\r\n");
-      out.write("                        </div>\r\n");
       out.write("\r\n");
       out.write("\r\n");
       out.write("                    </div>\r\n");
@@ -379,7 +384,9 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       out.write("                                </div>\r\n");
       out.write("                            </div>\r\n");
       out.write("                        </div>\r\n");
+      out.write("                        \r\n");
       out.write("\r\n");
+      out.write("                        \r\n");
       out.write("                        <div class=\"containerColumn\">\r\n");
       out.write("                            <span>Serviço</span>\r\n");
       out.write("                            <div id=\"dropdownBtnServico\" class=\"dropdownContainer\">\r\n");
@@ -485,6 +492,8 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       out.write("        <script src=\"./static/js/modoescuro.js\"></script>\r\n");
       out.write("        <script src=\"./static/js/mascaras.js\"></script>\r\n");
       out.write("        <script src=\"./static/js/fillDate.js\"></script>\r\n");
+      out.write("        <script src=\"./static/js/mostrarDiv.js\"></script>\r\n");
+      out.write("        <script src=\"./static/js/agendamentoExistente.js\"></script>\r\n");
       out.write("        <script>\r\n");
       out.write("                                $(document).ready(function () {\r\n");
       out.write("                                    $('#date').mask('00/00/0000');\r\n");
@@ -509,6 +518,75 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
     }
+  }
+
+  private boolean _jspx_meth_c_forEach_0(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:forEach
+    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+    _jspx_th_c_forEach_0.setPageContext(_jspx_page_context);
+    _jspx_th_c_forEach_0.setParent(null);
+    _jspx_th_c_forEach_0.setVar("a");
+    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.lista}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    int[] _jspx_push_body_count_c_forEach_0 = new int[] { 0 };
+    try {
+      int _jspx_eval_c_forEach_0 = _jspx_th_c_forEach_0.doStartTag();
+      if (_jspx_eval_c_forEach_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write("\r\n");
+          out.write("\r\n");
+          out.write("                    <div id=\"item\" class=\"tabela\" style=\"font-size: 0.9vw\">\r\n");
+          out.write("                        <div class=\"data\">");
+          if (_jspx_meth_fmt_formatDate_0((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
+            return true;
+          out.write("</div>                           \r\n");
+          out.write("                        <div class=\"horario\">");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.horario}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</div>\r\n");
+          out.write("                        <div class=\"nome-row\">");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.cliente.nome}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</div>\r\n");
+          out.write("                    </div>\r\n");
+          out.write("\r\n");
+          out.write("                ");
+          int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_c_forEach_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_c_forEach_0[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_c_forEach_0.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_c_forEach_0.doFinally();
+      _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_0);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_fmt_formatDate_0(javax.servlet.jsp.tagext.JspTag _jspx_th_c_forEach_0, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_forEach_0)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  fmt:formatDate
+    org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag _jspx_th_fmt_formatDate_0 = (org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag) _jspx_tagPool_fmt_formatDate_value_pattern_nobody.get(org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag.class);
+    _jspx_th_fmt_formatDate_0.setPageContext(_jspx_page_context);
+    _jspx_th_fmt_formatDate_0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_0);
+    _jspx_th_fmt_formatDate_0.setPattern("dd/MM/yyyy");
+    _jspx_th_fmt_formatDate_0.setValue((java.util.Date) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.data}", java.util.Date.class, (PageContext)_jspx_page_context, null));
+    int _jspx_eval_fmt_formatDate_0 = _jspx_th_fmt_formatDate_0.doStartTag();
+    if (_jspx_th_fmt_formatDate_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_fmt_formatDate_value_pattern_nobody.reuse(_jspx_th_fmt_formatDate_0);
+      return true;
+    }
+    _jspx_tagPool_fmt_formatDate_value_pattern_nobody.reuse(_jspx_th_fmt_formatDate_0);
+    return false;
   }
 
   private boolean _jspx_meth_c_if_0(PageContext _jspx_page_context)
@@ -537,85 +615,16 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
     return false;
   }
 
-  private boolean _jspx_meth_fmt_formatDate_0(PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  fmt:formatDate
-    org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag _jspx_th_fmt_formatDate_0 = (org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag) _jspx_tagPool_fmt_formatDate_value_pattern_nobody.get(org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag.class);
-    _jspx_th_fmt_formatDate_0.setPageContext(_jspx_page_context);
-    _jspx_th_fmt_formatDate_0.setParent(null);
-    _jspx_th_fmt_formatDate_0.setPattern("dd/MM/yyyy");
-    _jspx_th_fmt_formatDate_0.setValue((java.util.Date) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${agendamento.data}", java.util.Date.class, (PageContext)_jspx_page_context, null));
-    int _jspx_eval_fmt_formatDate_0 = _jspx_th_fmt_formatDate_0.doStartTag();
-    if (_jspx_th_fmt_formatDate_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _jspx_tagPool_fmt_formatDate_value_pattern_nobody.reuse(_jspx_th_fmt_formatDate_0);
-      return true;
-    }
-    _jspx_tagPool_fmt_formatDate_value_pattern_nobody.reuse(_jspx_th_fmt_formatDate_0);
-    return false;
-  }
-
-  private boolean _jspx_meth_c_forEach_0(PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:forEach
-    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
-    _jspx_th_c_forEach_0.setPageContext(_jspx_page_context);
-    _jspx_th_c_forEach_0.setParent(null);
-    _jspx_th_c_forEach_0.setVar("a");
-    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.lista}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
-    int[] _jspx_push_body_count_c_forEach_0 = new int[] { 0 };
-    try {
-      int _jspx_eval_c_forEach_0 = _jspx_th_c_forEach_0.doStartTag();
-      if (_jspx_eval_c_forEach_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
-        do {
-          out.write("\r\n");
-          out.write("\r\n");
-          out.write("                                <div id=\"item\" class=\"tabela td\" style=\"font-size: 0.9vw\">\r\n");
-          out.write("                                    <div class=\"data\">");
-          if (_jspx_meth_fmt_formatDate_1((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
-            return true;
-          out.write("</div>                           \r\n");
-          out.write("                                    <div>");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.horario}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</div>\r\n");
-          out.write("                                    <div class=\"nome-row\">");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.cliente.nome}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</div>\r\n");
-          out.write("                                </div>\r\n");
-          out.write("\r\n");
-          out.write("                            ");
-          int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
-          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
-            break;
-        } while (true);
-      }
-      if (_jspx_th_c_forEach_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-        return true;
-      }
-    } catch (Throwable _jspx_exception) {
-      while (_jspx_push_body_count_c_forEach_0[0]-- > 0)
-        out = _jspx_page_context.popBody();
-      _jspx_th_c_forEach_0.doCatch(_jspx_exception);
-    } finally {
-      _jspx_th_c_forEach_0.doFinally();
-      _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_0);
-    }
-    return false;
-  }
-
-  private boolean _jspx_meth_fmt_formatDate_1(javax.servlet.jsp.tagext.JspTag _jspx_th_c_forEach_0, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_forEach_0)
+  private boolean _jspx_meth_fmt_formatDate_1(PageContext _jspx_page_context)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  fmt:formatDate
     org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag _jspx_th_fmt_formatDate_1 = (org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag) _jspx_tagPool_fmt_formatDate_value_pattern_nobody.get(org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag.class);
     _jspx_th_fmt_formatDate_1.setPageContext(_jspx_page_context);
-    _jspx_th_fmt_formatDate_1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_0);
+    _jspx_th_fmt_formatDate_1.setParent(null);
     _jspx_th_fmt_formatDate_1.setPattern("dd/MM/yyyy");
-    _jspx_th_fmt_formatDate_1.setValue((java.util.Date) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.data}", java.util.Date.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_fmt_formatDate_1.setValue((java.util.Date) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${agendamento.data}", java.util.Date.class, (PageContext)_jspx_page_context, null));
     int _jspx_eval_fmt_formatDate_1 = _jspx_th_fmt_formatDate_1.doStartTag();
     if (_jspx_th_fmt_formatDate_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _jspx_tagPool_fmt_formatDate_value_pattern_nobody.reuse(_jspx_th_fmt_formatDate_1);

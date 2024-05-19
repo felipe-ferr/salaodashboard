@@ -72,9 +72,7 @@
         <link rel="stylesheet" href="./static/css/menu.css">
         <link rel="stylesheet" href="./static/css/tabelas.css">
 
-
-        <script src="./static/bulma/jquery-3.7.1.js"></script>
-        <script type="text/javascript" src="static/js/PesquisaTabela.js"></script>
+        <link rel="icon" type="image/x-icon" href="static/favicon/favicon.ico">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatis.com" crossorigin>

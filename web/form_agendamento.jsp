@@ -67,7 +67,7 @@
         <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
         <link rel="stylesheet" href="./static/css/form.css">
 
-
+        <link rel="icon" type="image/x-icon" href="static/favicon/favicon.ico">
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.js"></script>
@@ -114,9 +114,9 @@
             <%@include file="sidebar.jsp" %>
 
             <div class="container-principal">
-                <form method="POST" action="gerenciar_agendamento.do" value="">
+                <form method="POST" action="gerenciar_agendamento.do" value="" accept-charset="ISO-8859-1" >
 
-                    <a class="botaoinicio"href="#">
+                    <a class="botaoinicio" href="index.jsp">
                         <i class="material-symbols-outlined">arrow_back</i>Voltar ao início
                     </a>
 
@@ -149,7 +149,7 @@
 
 
 
-                    <span style="margin-top: 5%; display: flex" id="titlehorario">Horário</span>
+                    <span style="display: flex" id="titlehorario">Horário</span>
                     <div class="horarios-container fade-in" id="semana" style="display: flex">
                         <label id="inputElement" id="inputElement" class="horario">
                             <input onclick="checarConflito()" id="hora" type="radio" name="horario" value="9:00" />
@@ -230,10 +230,6 @@
                             <p style="font-size:0.7vw">Data de Cadastro:</p>
                             <i class="material-symbols-outlined">calendar_month</i>
                         </div>    
-                        <div class="preencherHoje">
-                            <label for="fillDateCheckbox">Data de hoje</label>
-                            <input onclick="fillDate()" id="fillDateCheckbox" type="checkbox">
-                        </div>
 
 
                     </div>
@@ -259,7 +255,9 @@
                                 </div>
                             </div>
                         </div>
+                        
 
+                        
                         <div class="containerColumn">
                             <span>Serviço</span>
                             <div id="dropdownBtnServico" class="dropdownContainer">

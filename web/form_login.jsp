@@ -61,6 +61,8 @@
         <link rel="stylesheet" href="./static/css/login.css">
         <link rel="stylesheet" href="./static/css/menu.css">
         
+        <link rel="icon" type="image/x-icon" href="static/favicon/favicon.ico">
+        
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -82,7 +84,7 @@
                 }
             %>
             <div class="form-container">
-                <form class="form_login" action="gerenciar_login.do" method="POST">
+                <form class="form_login" action="gerenciar_login.do" method="POST" accept-charset="ISO-8859-1">
                 <h1>Entrar na sua conta</h1>
                 <div class="inputContainer">
                     <input type="text" name="login" id="login" value="" required="">
