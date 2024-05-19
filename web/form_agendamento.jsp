@@ -67,6 +67,8 @@
         <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
         <link rel="stylesheet" href="./static/css/form.css">
 
+
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.js"></script>
 
@@ -82,8 +84,33 @@
 
     </head>
     <body>
+        <div style="display: none" id="consulta" class="consulta-container">
+            <div style="justify-content: space-between" class="row-container">
+                <span>Datas Reservadas:</span>
+                <i onclick="fecharConsulta()" style="cursor: pointer" class="material-symbols-outlined">close</i>
+            </div>
+            <div class="row-container">
+                <div id="nav" class="thead">
+                    <div>Data</div>          
+                    <div>Horário</div>
+                    <div>Cliente</div>
+                </div>
+            </div>
+            <div id="table" class="tabela-container container">
+                <jsp:useBean class="model.AgendamentoDAO" id="a"/>
 
-        <div class="grid-container">
+                <c:forEach var="a" items="${a.lista}">
+
+                    <div id="item" class="tabela" style="font-size: 0.9vw">
+                        <div class="data"><fmt:formatDate pattern="dd/MM/yyyy" value="${a.data}"/></div>                           
+                        <div class="horario">${a.horario}</div>
+                        <div class="nome-row">${a.cliente.nome}</div>
+                    </div>
+
+                </c:forEach>
+            </div>
+        </div>
+        <div id="containergeral" class="grid-container">
             <%@include file="sidebar.jsp" %>
 
             <div class="container-principal">
@@ -109,61 +136,68 @@
                         <div class="inputContainer">                      
                             <input id="dateInput" required type="text" name="data" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${agendamento.data}"/>">
                             <p>Data:</p>
-                            <span class="erroMensagem"></span>
+
                             <i class="material-symbols-outlined">calendar_month</i>
                         </div>
 
                     </div>
+                            
+                    <div class="inputContainerRow" style="justify-content: flex-end">
+                        <span class="erroMensagem"></span>
+                        <div onclick="abrirConsulta()" class="botaoConsulta">Mostrar Datas Reservadas</div>
+                    </div>
+
+
 
                     <span style="margin-top: 5%; display: flex" id="titlehorario">Horário</span>
                     <div class="horarios-container fade-in" id="semana" style="display: flex">
                         <label id="inputElement" id="inputElement" class="horario">
-                            <input  type="radio" name="horario" value="9:00" />
+                            <input onclick="checarConflito()" id="hora" type="radio" name="horario" value="9:00" />
                             <p>9:00</p>
                             <i class="material-symbols-outlined">schedule</i>
                         </label>
                         <label id="inputElement" class="horario">
-                            <input type="radio" name="horario" value="10:00" />
+                            <input onclick="checarConflito()" id="hora"  type="radio" name="horario" value="10:00" />
                             <p>10:00</p>
                             <i class="material-symbols-outlined">schedule</i>
                         </label>
                         <label id="inputElement" class="horario">
-                            <input type="radio" name="horario" value="11:00" />
+                            <input onclick="checarConflito()" id="hora"  type="radio" name="horario" value="11:00" />
                             <p>11:00</p>
                             <i class="material-symbols-outlined">schedule</i>
                         </label>
                         <label id="inputElement" class="horario">
-                            <input type="radio" name="horario" value="13:00" />
+                            <input onclick="checarConflito()" id="hora"  type="radio" name="horario" value="13:00" />
                             <p>13:00</p>
                             <i class="material-symbols-outlined">schedule</i>
                         </label>
                         <label id="inputElement" class="horario">
-                            <input type="radio" name="horario" value="14:00" />
+                            <input onclick="checarConflito()" id="hora"  type="radio" name="horario" value="14:00" />
                             <p>14:00</p>
                             <i class="material-symbols-outlined">schedule</i>
                         </label>
                         <label id="inputElement" class="horario">
-                            <input type="radio" name="horario" value="15:00" />
+                            <input onclick="checarConflito()" id="hora"  type="radio" name="horario" value="15:00" />
                             <p>15:00</p>
                             <i class="material-symbols-outlined">schedule</i>
                         </label>
                         <label id="inputElement" class="horario">
-                            <input type="radio" name="horario" value="16:00" />
+                            <input onclick="checarConflito()" id="hora"  type="radio" name="horario" value="16:00" />
                             <p>16:00</p>
                             <i class="material-symbols-outlined">schedule</i>
                         </label>
                         <label id="inputElement" class="horario">
-                            <input type="radio" name="horario" value="17:00" />
+                            <input onclick="checarConflito()" id="hora"  type="radio" name="horario" value="17:00" />
                             <p>17:00</p>
                             <i class="material-symbols-outlined">schedule</i>
                         </label>
                         <label id="inputElement" class="horario">
-                            <input type="radio" name="horario" value="18:00" />
+                            <input onclick="checarConflito()" id="hora"  type="radio" name="horario" value="18:00" />
                             <p>18:00</p>
                             <i class="material-symbols-outlined">schedule</i>
                         </label>
                         <label id="inputElement" class="horario">
-                            <input type="radio" name="horario" value="19:00" />
+                            <input onclick="checarConflito()" id="hora"  type="radio" name="horario" value="19:00" />
                             <p>19:00</p>
                             <i class="material-symbols-outlined">schedule</i>
                         </label>
@@ -172,17 +206,17 @@
 
                     <div class="horarios-container fade-in" id="domingo" style="display:none">
                         <label id="inputElement" id="inputElement" class="horario">
-                            <input  type="radio" name="horario" value="9:00" />
+                            <input onclick="checarConflito()" id="hora" type="radio" name="horario" value="9:00" />
                             <p>9:00</p>
                             <i class="material-symbols-outlined">schedule</i>
                         </label>
                         <label id="inputElement" class="horario">
-                            <input type="radio" name="horario" value="10:00" />
+                            <input onclick="checarConflito()" id="hora" type="radio" name="horario" value="10:00" />
                             <p>10:00</p>
                             <i class="material-symbols-outlined">schedule</i>
                         </label>
                         <label id="inputElement" class="horario">
-                            <input type="radio" name="horario" value="11:00" />
+                            <input onclick="checarConflito()" id="hora" type="radio" name="horario" value="11:00" />
                             <p>11:00</p>
                             <i class="material-symbols-outlined">schedule</i>
                         </label>                    
@@ -299,6 +333,8 @@
         <script src="./static/js/modoescuro.js"></script>
         <script src="./static/js/mascaras.js"></script>
         <script src="./static/js/fillDate.js"></script>
+        <script src="./static/js/mostrarDiv.js"></script>
+        <script src="./static/js/agendamentoExistente.js"></script>
         <script>
                                 $(document).ready(function () {
                                     $('#date').mask('00/00/0000');

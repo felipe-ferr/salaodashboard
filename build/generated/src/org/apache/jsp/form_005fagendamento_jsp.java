@@ -79,9 +79,58 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       out.write("<!DOCTYPE html>\r\n");
       out.write("<html>\r\n");
       out.write("    <head>\r\n");
+      out.write("        <script>\r\n");
+      out.write("// Script para carregar o modo escuro antes do usuário ver a página.\r\n");
+      out.write("\r\n");
+      out.write("// Pegar o valor do cookie\r\n");
+      out.write("            function getCookie(name) {\r\n");
+      out.write("                let nameEQ = name + \"=\";\r\n");
+      out.write("                let ca = document.cookie.split(';');\r\n");
+      out.write("                for (let i = 0; i < ca.length; i++) {\r\n");
+      out.write("                    let c = ca[i];\r\n");
+      out.write("                    while (c.charAt(0) == ' ')\r\n");
+      out.write("                        c = c.substring(1, c.length);\r\n");
+      out.write("                    if (c.indexOf(nameEQ) == 0)\r\n");
+      out.write("                        return c.substring(nameEQ.length, c.length);\r\n");
+      out.write("                }\r\n");
+      out.write("                return null;\r\n");
+      out.write("            }\r\n");
+      out.write("\r\n");
+      out.write("// Funções pra aplicar o modo escuro e claro\r\n");
+      out.write("            function escuro() {\r\n");
+      out.write("                document.documentElement.style.setProperty('--cor-clara', '#252525');\r\n");
+      out.write("                document.documentElement.style.setProperty('--cor-escura', '#181818');\r\n");
+      out.write("                document.documentElement.style.setProperty('--cor-texto', '#AFAFAF');\r\n");
+      out.write("                document.documentElement.style.setProperty('--cor-texto-preto', '#DFDFDF');\r\n");
+      out.write("                document.documentElement.style.setProperty('--cor-tabela-stripe', '#161616');\r\n");
+      out.write("\r\n");
+      out.write("            }\r\n");
+      out.write("\r\n");
+      out.write("            function light() {\r\n");
+      out.write("                document.documentElement.style.setProperty('--cor-clara', '#eaeaea');\r\n");
+      out.write("                document.documentElement.style.setProperty('--cor-escura', '#f5f5f5');\r\n");
+      out.write("                document.documentElement.style.setProperty('--cor-texto', '##0F0300');\r\n");
+      out.write("                document.documentElement.style.setProperty('--cor-texto-preto', 'black');\r\n");
+      out.write("                document.documentElement.style.setProperty('--cor-tabela-stripe', '#F0F0F0');\r\n");
+      out.write("\r\n");
+      out.write("            }\r\n");
+      out.write("\r\n");
+      out.write("// Função pra checar o cookie e aplicar o tema antes da página carregar\r\n");
+      out.write("            (function checkCookieAndApplyTheme() {\r\n");
+      out.write("                let theme = getCookie(\"theme\");\r\n");
+      out.write("                if (theme === \"dark\") {\r\n");
+      out.write("                    escuro();\r\n");
+      out.write("                } else if (theme === \"light\") {\r\n");
+      out.write("                    light();\r\n");
+      out.write("                }\r\n");
+      out.write("            })();\r\n");
+      out.write("\r\n");
+      out.write("        </script>\r\n");
       out.write("        <meta http-equiv=\"content-type\" content=\"text/html; charset=UTF-8\">\r\n");
       out.write("        <meta http-equiv=\"content-type\" content=\"text/html; charset=iso-8859-1\">\r\n");
       out.write("        <link rel=\"stylesheet\" href=\"./static/css/form.css\">\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
       out.write("\r\n");
       out.write("        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\r\n");
       out.write("        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.js\"></script>\r\n");
@@ -91,7 +140,7 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       out.write("        <link href=\"https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap\" rel=\"stylesheet\">\r\n");
       out.write("\r\n");
       out.write("\r\n");
-      out.write("        <title>JSP Page</title>\r\n");
+      out.write("        <title>Adicionar Agendamento</title>\r\n");
       out.write("\r\n");
       out.write("        <script src=\"./static/js/mascaras.js\"></script>\r\n");
       out.write("\r\n");
@@ -190,6 +239,33 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       out.write("\r\n");
       out.write("                    </div>\r\n");
       out.write("\r\n");
+      out.write("                    <div class=\"consulta-container\">\r\n");
+      out.write("                        <div class=\"row-container\">\r\n");
+      out.write("                            <div id=\"nav\" class=\"thead\">\r\n");
+      out.write("                                <div>Data</div>          \r\n");
+      out.write("                                <div>Horário</div>\r\n");
+      out.write("                                <div>Cliente</div>\r\n");
+      out.write("                            </div>\r\n");
+      out.write("                        </div>\r\n");
+      out.write("                        <div id=\"table\" class=\"tabela-container container\">\r\n");
+      out.write("                            ");
+      model.AgendamentoDAO a = null;
+      synchronized (_jspx_page_context) {
+        a = (model.AgendamentoDAO) _jspx_page_context.getAttribute("a", PageContext.PAGE_SCOPE);
+        if (a == null){
+          a = new model.AgendamentoDAO();
+          _jspx_page_context.setAttribute("a", a, PageContext.PAGE_SCOPE);
+        }
+      }
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("                            ");
+      if (_jspx_meth_c_forEach_0(_jspx_page_context))
+        return;
+      out.write("\r\n");
+      out.write("                        </div>\r\n");
+      out.write("                    </div>\r\n");
+      out.write("\r\n");
       out.write("                    <span style=\"margin-top: 5%; display: flex\" id=\"titlehorario\">Horário</span>\r\n");
       out.write("                    <div class=\"horarios-container fade-in\" id=\"semana\" style=\"display: flex\">\r\n");
       out.write("                        <label id=\"inputElement\" id=\"inputElement\" class=\"horario\">\r\n");
@@ -268,7 +344,7 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       out.write("                    <div class=\"inputContainerRow\">  \r\n");
       out.write("                        <div class=\"inputContainer\">\r\n");
       out.write("                            <input  id=\"date\" required type=\"text\" name=\"data_cadastro\" value=\"");
-      if (_jspx_meth_fmt_formatDate_1(_jspx_page_context))
+      if (_jspx_meth_fmt_formatDate_2(_jspx_page_context))
         return;
       out.write("\">\r\n");
       out.write("                            <p style=\"font-size:0.7vw\">Data de Cadastro:</p>\r\n");
@@ -323,7 +399,7 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       }
       out.write("                   \r\n");
       out.write("                                    ");
-      if (_jspx_meth_c_forEach_0(_jspx_page_context))
+      if (_jspx_meth_c_forEach_1(_jspx_page_context))
         return;
       out.write("\r\n");
       out.write("                                </div>\r\n");
@@ -349,7 +425,7 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       }
       out.write("\r\n");
       out.write("                                    ");
-      if (_jspx_meth_c_forEach_1(_jspx_page_context))
+      if (_jspx_meth_c_forEach_2(_jspx_page_context))
         return;
       out.write("\r\n");
       out.write("                                </div>\r\n");
@@ -375,7 +451,7 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       }
       out.write("\r\n");
       out.write("                                    ");
-      if (_jspx_meth_c_forEach_2(_jspx_page_context))
+      if (_jspx_meth_c_forEach_3(_jspx_page_context))
         return;
       out.write("\r\n");
       out.write("                                </div>\r\n");
@@ -406,6 +482,7 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       out.write("\r\n");
       out.write("\r\n");
       out.write("        <script src=\"./static/js/dropdownForms.js\"></script>\r\n");
+      out.write("        <script src=\"./static/js/modoescuro.js\"></script>\r\n");
       out.write("        <script src=\"./static/js/mascaras.js\"></script>\r\n");
       out.write("        <script src=\"./static/js/fillDate.js\"></script>\r\n");
       out.write("        <script>\r\n");
@@ -479,25 +556,6 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
     return false;
   }
 
-  private boolean _jspx_meth_fmt_formatDate_1(PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  fmt:formatDate
-    org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag _jspx_th_fmt_formatDate_1 = (org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag) _jspx_tagPool_fmt_formatDate_value_pattern_nobody.get(org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag.class);
-    _jspx_th_fmt_formatDate_1.setPageContext(_jspx_page_context);
-    _jspx_th_fmt_formatDate_1.setParent(null);
-    _jspx_th_fmt_formatDate_1.setPattern("dd/MM/yyyy");
-    _jspx_th_fmt_formatDate_1.setValue((java.util.Date) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${agendamento.data_cadastro}", java.util.Date.class, (PageContext)_jspx_page_context, null));
-    int _jspx_eval_fmt_formatDate_1 = _jspx_th_fmt_formatDate_1.doStartTag();
-    if (_jspx_th_fmt_formatDate_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _jspx_tagPool_fmt_formatDate_value_pattern_nobody.reuse(_jspx_th_fmt_formatDate_1);
-      return true;
-    }
-    _jspx_tagPool_fmt_formatDate_value_pattern_nobody.reuse(_jspx_th_fmt_formatDate_1);
-    return false;
-  }
-
   private boolean _jspx_meth_c_forEach_0(PageContext _jspx_page_context)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
@@ -506,21 +564,29 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
     org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
     _jspx_th_c_forEach_0.setPageContext(_jspx_page_context);
     _jspx_th_c_forEach_0.setParent(null);
-    _jspx_th_c_forEach_0.setVar("s");
-    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${servico.lista}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_forEach_0.setVar("a");
+    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.lista}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     int[] _jspx_push_body_count_c_forEach_0 = new int[] { 0 };
     try {
       int _jspx_eval_c_forEach_0 = _jspx_th_c_forEach_0.doStartTag();
       if (_jspx_eval_c_forEach_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
           out.write("\r\n");
-          out.write("                                        <label class=\"label\"><input checked type=\"radio\" name=\"idservico\" value=\"");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${s.idservico}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write('"');
-          out.write('>');
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${s.nome}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</label>\r\n");
-          out.write("                                        ");
+          out.write("\r\n");
+          out.write("                                <div id=\"item\" class=\"tabela td\" style=\"font-size: 0.9vw\">\r\n");
+          out.write("                                    <div class=\"data\">");
+          if (_jspx_meth_fmt_formatDate_1((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
+            return true;
+          out.write("</div>                           \r\n");
+          out.write("                                    <div>");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.horario}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</div>\r\n");
+          out.write("                                    <div class=\"nome-row\">");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.cliente.nome}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</div>\r\n");
+          out.write("                                </div>\r\n");
+          out.write("\r\n");
+          out.write("                            ");
           int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
             break;
@@ -540,6 +606,44 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
     return false;
   }
 
+  private boolean _jspx_meth_fmt_formatDate_1(javax.servlet.jsp.tagext.JspTag _jspx_th_c_forEach_0, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_forEach_0)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  fmt:formatDate
+    org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag _jspx_th_fmt_formatDate_1 = (org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag) _jspx_tagPool_fmt_formatDate_value_pattern_nobody.get(org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag.class);
+    _jspx_th_fmt_formatDate_1.setPageContext(_jspx_page_context);
+    _jspx_th_fmt_formatDate_1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_0);
+    _jspx_th_fmt_formatDate_1.setPattern("dd/MM/yyyy");
+    _jspx_th_fmt_formatDate_1.setValue((java.util.Date) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.data}", java.util.Date.class, (PageContext)_jspx_page_context, null));
+    int _jspx_eval_fmt_formatDate_1 = _jspx_th_fmt_formatDate_1.doStartTag();
+    if (_jspx_th_fmt_formatDate_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_fmt_formatDate_value_pattern_nobody.reuse(_jspx_th_fmt_formatDate_1);
+      return true;
+    }
+    _jspx_tagPool_fmt_formatDate_value_pattern_nobody.reuse(_jspx_th_fmt_formatDate_1);
+    return false;
+  }
+
+  private boolean _jspx_meth_fmt_formatDate_2(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  fmt:formatDate
+    org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag _jspx_th_fmt_formatDate_2 = (org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag) _jspx_tagPool_fmt_formatDate_value_pattern_nobody.get(org.apache.taglibs.standard.tag.rt.fmt.FormatDateTag.class);
+    _jspx_th_fmt_formatDate_2.setPageContext(_jspx_page_context);
+    _jspx_th_fmt_formatDate_2.setParent(null);
+    _jspx_th_fmt_formatDate_2.setPattern("dd/MM/yyyy");
+    _jspx_th_fmt_formatDate_2.setValue((java.util.Date) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${agendamento.data_cadastro}", java.util.Date.class, (PageContext)_jspx_page_context, null));
+    int _jspx_eval_fmt_formatDate_2 = _jspx_th_fmt_formatDate_2.doStartTag();
+    if (_jspx_th_fmt_formatDate_2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_fmt_formatDate_value_pattern_nobody.reuse(_jspx_th_fmt_formatDate_2);
+      return true;
+    }
+    _jspx_tagPool_fmt_formatDate_value_pattern_nobody.reuse(_jspx_th_fmt_formatDate_2);
+    return false;
+  }
+
   private boolean _jspx_meth_c_forEach_1(PageContext _jspx_page_context)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
@@ -548,19 +652,19 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
     org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_1 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
     _jspx_th_c_forEach_1.setPageContext(_jspx_page_context);
     _jspx_th_c_forEach_1.setParent(null);
-    _jspx_th_c_forEach_1.setVar("c");
-    _jspx_th_c_forEach_1.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${cliente.lista}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_forEach_1.setVar("s");
+    _jspx_th_c_forEach_1.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${servico.lista}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     int[] _jspx_push_body_count_c_forEach_1 = new int[] { 0 };
     try {
       int _jspx_eval_c_forEach_1 = _jspx_th_c_forEach_1.doStartTag();
       if (_jspx_eval_c_forEach_1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
           out.write("\r\n");
-          out.write("                                        <label class=\"label\"><input checked type=\"radio\" name=\"idcliente\" value=\"");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${c.idcliente}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("                                        <label class=\"label\"><input checked type=\"radio\" name=\"idservico\" value=\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${s.idservico}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write('"');
           out.write('>');
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${c.nome}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${s.nome}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("</label>\r\n");
           out.write("                                        ");
           int evalDoAfterBody = _jspx_th_c_forEach_1.doAfterBody();
@@ -590,19 +694,19 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
     org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_2 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
     _jspx_th_c_forEach_2.setPageContext(_jspx_page_context);
     _jspx_th_c_forEach_2.setParent(null);
-    _jspx_th_c_forEach_2.setVar("u");
-    _jspx_th_c_forEach_2.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${usuario.lista}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_forEach_2.setVar("c");
+    _jspx_th_c_forEach_2.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${cliente.lista}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     int[] _jspx_push_body_count_c_forEach_2 = new int[] { 0 };
     try {
       int _jspx_eval_c_forEach_2 = _jspx_th_c_forEach_2.doStartTag();
       if (_jspx_eval_c_forEach_2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
           out.write("\r\n");
-          out.write("                                        <label class=\"label\"><input checked type=\"radio\" name=\"idusuario\" value=\"");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${u.idusuario}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("                                        <label class=\"label\"><input checked type=\"radio\" name=\"idcliente\" value=\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${c.idcliente}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write('"');
           out.write('>');
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${u.nome}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${c.nome}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("</label>\r\n");
           out.write("                                        ");
           int evalDoAfterBody = _jspx_th_c_forEach_2.doAfterBody();
@@ -620,6 +724,48 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
     } finally {
       _jspx_th_c_forEach_2.doFinally();
       _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_2);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_c_forEach_3(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:forEach
+    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_3 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+    _jspx_th_c_forEach_3.setPageContext(_jspx_page_context);
+    _jspx_th_c_forEach_3.setParent(null);
+    _jspx_th_c_forEach_3.setVar("u");
+    _jspx_th_c_forEach_3.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${usuario.lista}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    int[] _jspx_push_body_count_c_forEach_3 = new int[] { 0 };
+    try {
+      int _jspx_eval_c_forEach_3 = _jspx_th_c_forEach_3.doStartTag();
+      if (_jspx_eval_c_forEach_3 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write("\r\n");
+          out.write("                                        <label class=\"label\"><input checked type=\"radio\" name=\"idusuario\" value=\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${u.idusuario}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write('"');
+          out.write('>');
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${u.nome}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</label>\r\n");
+          out.write("                                        ");
+          int evalDoAfterBody = _jspx_th_c_forEach_3.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_c_forEach_3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_c_forEach_3[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_c_forEach_3.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_c_forEach_3.doFinally();
+      _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_3);
     }
     return false;
   }
