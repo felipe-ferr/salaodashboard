@@ -1,0 +1,119 @@
+.row-container{
+    display: flex;
+    align-items: first baseline;
+    justify-content: space-around;
+    width: 100%;
+}
+.card{
+    padding: 5vh;
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+    background-color: var(--cor-escura);
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--cor-texto);
+    font-size: 1vw;
+}
+.card-icon{
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border-right: 1px solid var(--dourado);
+    height: 100%;
+    padding: 3vh 1vw;
+}
+.card-text{
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--cor-texto);
+    font-size: 1vw;
+    gap: 2vh;
+    text-wrap: nowrap;
+}
+.card-text span{
+    color: var(--dourado);
+    font-size: 2vw;
+}
+.card .material-symbols-outlined{
+    color: var(--dourado);
+    font-size: 3vw;
+}
+.consulta-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 40%;
+    z-index: 3;
+    background-color: var(--cor-clara);
+    padding: 2vh;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--cor-texto);
+    font-size: 1vw;
+    gap: 1vh;
+}
+.tabela{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    width: 100%;
+    padding: 1vh;
+
+}
+.tabela div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    padding: 1vh 1%;
+    font-size: 0.8v;
+    background-color: var(--cor-escura);
+    height: 100%;
+    text-align: center;
+}
+.thead{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    color: var(--cor-texto);
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--cor-clara);
+    font-size: 1vw;
+    padding: 1vh;
+    background-color: var(--cor-escura);
+    border-radius: 20px;
+    top: 0;
+}
+.thead div{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 90%;
+    padding: 1vh 1%;
+    font-size: 0.8vw;
+    text-align: center;
+    color: var(--dourado);
+}
+.tabela-container{
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--cor-escura);
+    width: 100%;
+    height: auto;
+    font-family: 'Montserrat', sans-serif;
+    padding: 2vh;
+    box-sizing: border-box;
+    position: relative;
+    gap: 2px;
+    border-radius: 20px;
+}
