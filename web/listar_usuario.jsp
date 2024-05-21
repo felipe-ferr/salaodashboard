@@ -173,7 +173,7 @@
                         <div>Nome</div>
                         <div>CPF</div>
                         <div>Telefone</div>
-                        <div>Email</div>
+                        <div>Usuario</div>
                         <div>Status</div>
                         <div>Ações</div>
                     </div>
