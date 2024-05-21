@@ -69,62 +69,53 @@ function countRowsAndDisplay() {
 window.addEventListener("DOMContentLoaded", countRowsAndDisplay);
 
 function countTodayAppointments() {
-    // Get all elements with class "data"
     var dates = document.querySelectorAll(".data");
 
-    // Get today's date
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); 
     var yyyy = today.getFullYear();
     var todayFormatted = dd + '/' + mm + '/' + yyyy;
 
-    // Counter for appointments today
-    var appointmentsToday = 0;
+    // Contador dos agendamentos de hoje
+    var agendamentosHoje = 0;
 
-    // Iterate through each date element
+    // 
     dates.forEach(function(date) {
-        // Check if the date matches today's date
+        // verifica se a data das linhas é igual a hoje e incrementa o contador
         if (date.textContent.trim() === todayFormatted) {
-            appointmentsToday++;
+            agendamentosHoje++;
         }
     });
 
-    // Get the element where you want to display the count
     var agendamentosHojeQtdElement = document.getElementById("agendamentosHojeQtd");
 
-    // Update the content of the element with the count of appointments today
-    agendamentosHojeQtdElement.textContent = appointmentsToday;
+    // Escreve o tanto de agendamentos hoje no card
+    agendamentosHojeQtdElement.textContent = agendamentosHoje;
 }
 
-// Call the function when the page is loaded
+// chama a função
 window.addEventListener("DOMContentLoaded", countTodayAppointments);
 
 function calculateTotalValue() {
-    // Get all elements with class "valor-row"
     var values = document.querySelectorAll(".valor-row");
 
-    // Initialize total value variable
     var totalValue = 0;
-
-    // Iterate through each value element
+    // soma todos os valores da tabela
     values.forEach(function(valueElement) {
-        // Parse the value as a float and add it to the total
         totalValue += parseFloat(valueElement.textContent.trim());
     });
 
-    // Format the total value as a money value
+    // Formatar o valor em reais
     var formatter = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
     var formattedTotal = formatter.format(totalValue);
 
-    // Get the element where you want to display the total value
     var valorQtdElement = document.getElementById("valorQtd");
 
-    // Update the content of the element with the formatted total value
     valorQtdElement.textContent = formattedTotal;
 }
 
-// Call the function when the page is loaded
+// Chama a função
 window.addEventListener("DOMContentLoaded", calculateTotalValue);
 
 
