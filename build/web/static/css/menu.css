@@ -2,7 +2,7 @@
 :root{
     --cor-clara: #eaeaea;
     --cor-tabela-stripe: #DDDDDD;
-    --cor-escura: #f5f5f5;
+    --cor-escura: #FBFBFB;
     --dourado: #b68815;
     --cor-texto: #F0F0F0;
     --cor-texto-preto: black;
@@ -16,7 +16,6 @@ body{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
 }
 .grid-container{
     display: flex;

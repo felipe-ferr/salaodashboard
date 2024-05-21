@@ -70,7 +70,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <link rel="stylesheet" href="./static/css/menu.css">
-        <link rel="stylesheet" href="./static/css/tabelas.css">
+        <link rel="stylesheet" href="./static/css/index.css">
 
         <link rel="icon" type="image/x-icon" href="static/favicon/favicon.ico">
 
@@ -90,8 +90,7 @@
         </script>
 
 
-        <script src="./static/js/pagination.js"></script>
-        <script src="./static/js/dropdownRegistros.js"></script>
+        <script src="./static/js/filtroTabelaIndex.js"></script>
 
 
 
@@ -101,29 +100,132 @@
 
 
     <body>
-      
+
 
 
         <div class="grid-container">
             <%@include file="sidebar.jsp" %>
 
 
-
             <div id="principal" class="container-principal">
-                <p>oi</p>   
+
+                <div class="row-container">
+                    <div class="card">
+                        <div class="card-icon"> 
+                            <i class="material-symbols-outlined">person</i>
+                        </div>
+                        <div class="card-text">
+                            Clientes
+                            <span id="qtdClientes"></span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon"> 
+                            <i class="material-symbols-outlined">calendar_month</i>
+                        </div>
+                        <div class="card-text">
+                            Agendamentos Hoje
+                            <span id="agendamentosHojeQtd"></span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon"> 
+                            <i class="material-symbols-outlined">attach_money</i>
+                        </div>
+                        <div class="card-text">
+                            Receita Total
+                            <span id="valorQtd"></span>
+                        </div>
+                    </div>
+                </div> 
+
+                <div style="margin-top: 5vh" class="row-container">
+                    <div id="consulta" class="consulta-container">
+                        <div style="justify-content: center" class="row-container">
+                            <span>Próximos Agendamentos:</span>
+                        </div>
+                        <div class="row-container">
+                            <div id="nav" class="thead">
+                                <div>Data</div>          
+                                <div>Horário</div>
+                                <div>Cliente</div>
+                            </div>
+                        </div>
+                        <div id="table" class="tabela-container">
+                            <jsp:useBean class="model.AgendamentoDAO" id="a"/>
+
+                            <c:forEach var="a" items="${a.listaIndex}">
+
+                                <div id="item" class="tabela" style="font-size: 0.9vw">
+                                    <div class="data"><fmt:formatDate pattern="dd/MM/yyyy" value="${a.data}"/></div>                           
+                                    <div class="horario">${a.horario}</div>
+                                    <div class="nome-row">${a.cliente.nome}</div>
+                                </div>
+
+                            </c:forEach>
+                        </div>
+                    </div>
+
+                    <div id="consulta" class="consulta-container">
+                        <div style="justify-content: center" class="row-container">
+                            <span>Serviços Concluídos:</span>
+                        </div>
+                        <div class="row-container">
+                            <div id="nav" class="thead">
+                                <div>Data</div>          
+                                <div>Horário</div>
+                                <div>Cliente</div>
+                            </div>
+                        </div>
+                        <div id="table" class="tabela-container">
+                            <jsp:useBean class="model.AgendamentoDAO" id="a2"/>
+
+                            <c:forEach var="a2" items="${a2.listaIndexConcluidos}">
+
+                                <div id="item" class="tabela" style="font-size: 0.9vw">
+                                    <div class="dataconcluido"><fmt:formatDate pattern="dd/MM/yyyy" value="${a2.data}"/></div>                           
+                                    <div class="horario">${a2.horario}</div>
+                                    <div class="nome-row">${a2.cliente.nome}</div>
+                                </div>
+
+                            </c:forEach>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+
+
+                <div id="clientes" style="display: none;">
+                    <jsp:useBean class="model.ClienteDAO" id="c"/>
+                    <c:forEach var="c" items="${c.lista}">
+                        <div id="item" class="tabela td">
+                            <div class="id-row">${c.idcliente}</div>
+                        </div>
+                    </c:forEach>
+                </div>
+
+                <div id="valor" style="display: none">
+                    <jsp:useBean class="model.AgendamentoDAO" id="a3"/>
+                    <c:forEach var="a3" items="${a3.listaIndex}">
+                        <div id="item" class="tabela" style="font-size: 0.9vw">                        
+                            <div class="valor-row">${a3.valor}</div>
+                        </div>
+                    </c:forEach>
+                </div>
+
+
+
             </div>
 
         </div>
 
-        <script type="text/javascript" src="static/js/modoescuro.js"></script>
-        <script type="text/javascript" src="static/js/sumirTextoTextarea.js"></script>
-        <script type="text/javascript" src="static/js/PesquisaTabela.js"></script>
-        <script src="./static/js/pagination.js"></script>
-        <script src="http://code.jquery.com/jquery-latest.js"></script>
-        <script src="./static/js/showDesc.js"></script>
-        <script src="./static/js/dropdownRegistros.js"></script>
-        <script src="./static/js/filtrosTabela.js"></script>
-        <script src="./static/js/fixedthead.js"></script>
+
+        <script src="./static/js/filtroTabelaIndex.js"></script>
 
 
 
