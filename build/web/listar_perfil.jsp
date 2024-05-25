@@ -85,7 +85,7 @@
 
         <script type="text/javascript"> // adicionei aqui por conta do método de exclusão 
             function confirmarExclusão(id, nome) {
-                if (confirm('Deseja desativar o perfil ' + nome + '?')) {
+                if (confirm('Deseja desativar o perfil ' + id + '?')) {
                     location.href = 'gerenciar_perfil.do?acao=deletar&idperfil=' + id;
                 }
             }

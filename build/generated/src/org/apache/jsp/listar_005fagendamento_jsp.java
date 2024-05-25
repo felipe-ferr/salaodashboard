@@ -3,6 +3,8 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import controller.GerenciarLogin;
+import model.Usuario;
 import model.ClienteDAO;
 import java.util.ArrayList;
 import model.Cliente;
@@ -73,18 +75,73 @@ public final class listar_005fagendamento_jsp extends org.apache.jasper.runtime.
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
+      out.write("\r\n");
+
+    Usuario ulogado = GerenciarLogin.verificarAcesso(request, response);
+    request.setAttribute("ulogado", ulogado);
+
+      out.write("\r\n");
+      out.write("\r\n");
       out.write("<!DOCTYPE html>\r\n");
       out.write("<html>\r\n");
       out.write("    <head>\r\n");
+      out.write("        <script>\r\n");
+      out.write("// Script para carregar o modo escuro antes do usuário ver a página.\r\n");
+      out.write("\r\n");
+      out.write("// Pegar o valor do cookie\r\n");
+      out.write("            function getCookie(name) {\r\n");
+      out.write("                let nameEQ = name + \"=\";\r\n");
+      out.write("                let ca = document.cookie.split(';');\r\n");
+      out.write("                for (let i = 0; i < ca.length; i++) {\r\n");
+      out.write("                    let c = ca[i];\r\n");
+      out.write("                    while (c.charAt(0) == ' ')\r\n");
+      out.write("                        c = c.substring(1, c.length);\r\n");
+      out.write("                    if (c.indexOf(nameEQ) == 0)\r\n");
+      out.write("                        return c.substring(nameEQ.length, c.length);\r\n");
+      out.write("                }\r\n");
+      out.write("                return null;\r\n");
+      out.write("            }\r\n");
+      out.write("\r\n");
+      out.write("// Funções pra aplicar o modo escuro e claro\r\n");
+      out.write("            function escuro() {\r\n");
+      out.write("                document.documentElement.style.setProperty('--cor-clara', '#252525');\r\n");
+      out.write("                document.documentElement.style.setProperty('--cor-escura', '#181818');\r\n");
+      out.write("                document.documentElement.style.setProperty('--cor-texto', '#AFAFAF');\r\n");
+      out.write("                document.documentElement.style.setProperty('--cor-texto-preto', '#DFDFDF');\r\n");
+      out.write("                document.documentElement.style.setProperty('--cor-tabela-stripe', '#161616');\r\n");
+      out.write("\r\n");
+      out.write("            }\r\n");
+      out.write("\r\n");
+      out.write("            function light() {\r\n");
+      out.write("                document.documentElement.style.setProperty('--cor-clara', '#eaeaea');\r\n");
+      out.write("                document.documentElement.style.setProperty('--cor-escura', '#f5f5f5');\r\n");
+      out.write("                document.documentElement.style.setProperty('--cor-texto', '##0F0300');\r\n");
+      out.write("                document.documentElement.style.setProperty('--cor-texto-preto', 'black');\r\n");
+      out.write("                document.documentElement.style.setProperty('--cor-tabela-stripe', '#F0F0F0');\r\n");
+      out.write("\r\n");
+      out.write("            }\r\n");
+      out.write("\r\n");
+      out.write("// Função pra checar o cookie e aplicar o tema antes da página carregar\r\n");
+      out.write("            (function checkCookieAndApplyTheme() {\r\n");
+      out.write("                let theme = getCookie(\"theme\");\r\n");
+      out.write("                if (theme === \"dark\") {\r\n");
+      out.write("                    escuro();\r\n");
+      out.write("                } else if (theme === \"light\") {\r\n");
+      out.write("                    light();\r\n");
+      out.write("                }\r\n");
+      out.write("            })();\r\n");
+      out.write("\r\n");
+      out.write("        </script>\r\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
       out.write("        <meta content=\"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no\" name=\"viewport\">\r\n");
       out.write("        <link rel=\"stylesheet\" href=\"./static/css/menu.css\">\r\n");
       out.write("        <link rel=\"stylesheet\" href=\"./static/css/tabelas.css\">\r\n");
+      out.write("        <script src=\"./static/js/modoescuro.js\"></script>\r\n");
+      out.write("        <meta charset=\"UTF-8\">\r\n");
+      out.write("        \r\n");
+      out.write("        <link rel=\"icon\" type=\"image/x-icon\" href=\"static/favicon/favicon.ico\">\r\n");
       out.write("\r\n");
-      out.write("\r\n");
-      out.write("        <script src=\"./static/bulma/jquery-3.7.1.js\"></script>\r\n");
-      out.write("        <script type=\"text/javascript\" src=\"static/js/PesquisaTabela.js\"></script>\r\n");
-      out.write("\r\n");
+      out.write("        \r\n");
       out.write("        <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\r\n");
       out.write("        <link rel=\"preconnect\" href=\"https://fonts.gstatis.com\" crossorigin>\r\n");
       out.write("        <link href=\"https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap\" rel=\"stylesheet\">\r\n");
@@ -106,7 +163,7 @@ public final class listar_005fagendamento_jsp extends org.apache.jasper.runtime.
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
-      out.write("        <title>JSP Page</title>\r\n");
+      out.write("        <title>Agendamentos</title>\r\n");
       out.write("    </head>\r\n");
       out.write("\r\n");
       out.write("\r\n");
@@ -126,33 +183,46 @@ public final class listar_005fagendamento_jsp extends org.apache.jasper.runtime.
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
       out.write("        <title>JSP Page</title>\r\n");
       out.write("        <link rel=\"stylesheet\" href=\"./static/css/menu.css\">\r\n");
-      out.write("         <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\r\n");
+      out.write("        <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\r\n");
       out.write("        <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\r\n");
       out.write("        <link href=\"https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap\" rel=\"stylesheet\">\r\n");
-      out.write("        \r\n");
+      out.write("\r\n");
       out.write("        <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200\" />\r\n");
-      out.write("        \r\n");
+      out.write("\r\n");
       out.write("    </head>\r\n");
       out.write("    <body>\r\n");
-      out.write("    \r\n");
-      out.write("            <div id=\"side\" class=\"sidebar\">\r\n");
-      out.write("                <span class=\"sidebar-titulo\">Salão do Luciano</span>\r\n");
-      out.write("                <a href=\"listar_agendamento.jsp\"><span class=\"material-symbols-outlined sidebar-icone\">calendar_month</span>Agendamentos</a>\r\n");
-      out.write("                <a href=\"listar_cliente.jsp\"><span class=\"material-symbols-outlined sidebar-icone\">person</span>Clientes</a>\r\n");
-      out.write("                <a href=\"listar_servico.jsp\"><span class=\"material-symbols-outlined sidebar-icone\">cut</span>Serviços</a>\r\n");
-      out.write("                <a href=\"listar_perfil.jsp\"><span class=\"material-symbols-outlined sidebar-icone\">account_circle</span>Perfis</a>\r\n");
-      out.write("                <a href=\"listar_usuario.jsp\"><span class=\"material-symbols-outlined sidebar-icone\">engineering</span>Usuários</a>\r\n");
-      out.write("                \r\n");
-      out.write("                <div class=\"tema-container bottom\">\r\n");
-      out.write("                    <span>Modo Escuro</span>\r\n");
-      out.write("                    <div class=\"tema-btn-container\">\r\n");
-      out.write("                        <button onclick=\"escuro()\" id=\"botaodark\" class=\"btn-esquerda\"><span class=\"material-symbols-outlined\">dark_mode</span></button>\r\n");
-      out.write("                        <button onclick=\"light()\" id=\"botaolight\" class=\"btn-active-direita btn-direita\"><span class=\"material-symbols-outlined\">light_mode</span></button>\r\n");
-      out.write("                    </div>\r\n");
+      out.write("\r\n");
+      out.write("        <div id=\"side\" class=\"sidebar\">\r\n");
+      out.write("            <a href=\"index.jsp\" class=\"sidebar-titulo\">Salão do Luciano</a>\r\n");
+      out.write("            <a href=\"listar_agendamento.jsp\"><span class=\"material-symbols-outlined sidebar-icone\">calendar_month</span>Agendamentos</a>\r\n");
+      out.write("            <a href=\"listar_cliente.jsp\"><span class=\"material-symbols-outlined sidebar-icone\">person</span>Clientes</a>\r\n");
+      out.write("            <a href=\"listar_servico.jsp\"><span class=\"material-symbols-outlined sidebar-icone\">cut</span>Serviços</a>\r\n");
+      out.write("            <a href=\"listar_perfil.jsp\"><span class=\"material-symbols-outlined sidebar-icone\">account_circle</span>Perfis</a>\r\n");
+      out.write("            <a href=\"listar_usuario.jsp\"><span class=\"material-symbols-outlined sidebar-icone\">engineering</span>Usuários</a>\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("            <div class=\"tema-container bottom\">      \r\n");
+      out.write("                <div class=\"switch-container\">\r\n");
+      out.write("                    <div><span class=\"material-symbols-outlined sidebar-icone\">account_circle</span>");
+      if (_jspx_meth_c_if_0(_jspx_page_context))
+        return;
+      out.write("</div> \r\n");
+      out.write("                    <a href=\"gerenciar_login.do\" style=\"width: auto\"><span class=\"material-symbols-outlined logout\">logout</span></a>\r\n");
       out.write("                </div>\r\n");
+      out.write("                <span class=\"switch-container\">\r\n");
+      out.write("                    <span class=\"material-symbols-outlined\">dark_mode</span>\r\n");
+      out.write("                    <label class=\"switch\">\r\n");
+      out.write("                        <input type=\"checkbox\" id=\"switch\" onchange=\"toggleTheme()\">\r\n");
+      out.write("                        <span class=\"slider round\"></span>\r\n");
+      out.write("                    </label>\r\n");
+      out.write("                    <span class=\"material-symbols-outlined\">light_mode</span>\r\n");
+      out.write("                </span>\r\n");
       out.write("            </div>\r\n");
-      out.write("   \r\n");
+      out.write("\r\n");
+      out.write("        </div>\r\n");
+      out.write("\r\n");
       out.write("        <script type=\"text/javascript\" src=\"static/js/modoescuro.js\"></script>\r\n");
+      out.write("        <script type=\"text/javascript\" src=\"static/js/showBotaoSair.js\"></script>\r\n");
       out.write("    </body>\r\n");
       out.write("</html>\r\n");
       out.write("\r\n");
@@ -282,14 +352,11 @@ public final class listar_005fagendamento_jsp extends org.apache.jasper.runtime.
       out.write("        </div>\r\n");
       out.write("\r\n");
       out.write("        <script type=\"text/javascript\" src=\"static/js/modoescuro.js\"></script>\r\n");
-      out.write("        <script type=\"text/javascript\" src=\"static/js/sumirTextoTextarea.js\"></script>\r\n");
-      out.write("        <script type=\"text/javascript\" src=\"static/js/PesquisaTabela.js\"></script>\r\n");
       out.write("        <script src=\"./static/js/pagination.js\"></script>\r\n");
       out.write("        <script src=\"http://code.jquery.com/jquery-latest.js\"></script>\r\n");
       out.write("        <script src=\"./static/js/showDesc.js\"></script>\r\n");
       out.write("        <script src=\"./static/js/dropdownRegistros.js\"></script>\r\n");
       out.write("        <script src=\"./static/js/filtrosTabela.js\"></script>\r\n");
-      out.write("        <script src=\"./static/js/fixedthead.js\"></script>\r\n");
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
@@ -312,6 +379,32 @@ public final class listar_005fagendamento_jsp extends org.apache.jasper.runtime.
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
     }
+  }
+
+  private boolean _jspx_meth_c_if_0(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:if
+    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_if_0 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _jspx_tagPool_c_if_test.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+    _jspx_th_c_if_0.setPageContext(_jspx_page_context);
+    _jspx_th_c_if_0.setParent(null);
+    _jspx_th_c_if_0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ulogado!=null}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null)).booleanValue());
+    int _jspx_eval_c_if_0 = _jspx_th_c_if_0.doStartTag();
+    if (_jspx_eval_c_if_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ulogado.nome}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+        int evalDoAfterBody = _jspx_th_c_if_0.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_if_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_c_if_test.reuse(_jspx_th_c_if_0);
+      return true;
+    }
+    _jspx_tagPool_c_if_test.reuse(_jspx_th_c_if_0);
+    return false;
   }
 
   private boolean _jspx_meth_c_forEach_0(PageContext _jspx_page_context)
@@ -371,11 +464,11 @@ public final class listar_005fagendamento_jsp extends org.apache.jasper.runtime.
           out.write("                            <div class=\"status\">\r\n");
           out.write("\r\n");
           out.write("                                ");
-          if (_jspx_meth_c_if_0((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
+          if (_jspx_meth_c_if_1((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
             return true;
           out.write("\r\n");
           out.write("                                ");
-          if (_jspx_meth_c_if_1((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
+          if (_jspx_meth_c_if_2((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
             return true;
           out.write("\r\n");
           out.write("\r\n");
@@ -454,34 +547,6 @@ public final class listar_005fagendamento_jsp extends org.apache.jasper.runtime.
     return false;
   }
 
-  private boolean _jspx_meth_c_if_0(javax.servlet.jsp.tagext.JspTag _jspx_th_c_forEach_0, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_forEach_0)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:if
-    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_if_0 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _jspx_tagPool_c_if_test.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
-    _jspx_th_c_if_0.setPageContext(_jspx_page_context);
-    _jspx_th_c_if_0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_0);
-    _jspx_th_c_if_0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.status==1}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null)).booleanValue());
-    int _jspx_eval_c_if_0 = _jspx_th_c_if_0.doStartTag();
-    if (_jspx_eval_c_if_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
-      do {
-        out.write("\r\n");
-        out.write("                                    <span class=\"ativo\">Pendente</span>\r\n");
-        out.write("                                ");
-        int evalDoAfterBody = _jspx_th_c_if_0.doAfterBody();
-        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
-          break;
-      } while (true);
-    }
-    if (_jspx_th_c_if_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _jspx_tagPool_c_if_test.reuse(_jspx_th_c_if_0);
-      return true;
-    }
-    _jspx_tagPool_c_if_test.reuse(_jspx_th_c_if_0);
-    return false;
-  }
-
   private boolean _jspx_meth_c_if_1(javax.servlet.jsp.tagext.JspTag _jspx_th_c_forEach_0, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_forEach_0)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
@@ -490,12 +555,12 @@ public final class listar_005fagendamento_jsp extends org.apache.jasper.runtime.
     org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_if_1 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _jspx_tagPool_c_if_test.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
     _jspx_th_c_if_1.setPageContext(_jspx_page_context);
     _jspx_th_c_if_1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_0);
-    _jspx_th_c_if_1.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.status==0}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null)).booleanValue());
+    _jspx_th_c_if_1.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.status==1}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null)).booleanValue());
     int _jspx_eval_c_if_1 = _jspx_th_c_if_1.doStartTag();
     if (_jspx_eval_c_if_1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("                                    <span class=\"inativo\">Cancelado</span>\r\n");
+        out.write("                                    <span class=\"ativo\">Pendente</span>\r\n");
         out.write("                                ");
         int evalDoAfterBody = _jspx_th_c_if_1.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -507,6 +572,34 @@ public final class listar_005fagendamento_jsp extends org.apache.jasper.runtime.
       return true;
     }
     _jspx_tagPool_c_if_test.reuse(_jspx_th_c_if_1);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_if_2(javax.servlet.jsp.tagext.JspTag _jspx_th_c_forEach_0, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_forEach_0)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:if
+    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_if_2 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _jspx_tagPool_c_if_test.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+    _jspx_th_c_if_2.setPageContext(_jspx_page_context);
+    _jspx_th_c_if_2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_0);
+    _jspx_th_c_if_2.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.status==0}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null)).booleanValue());
+    int _jspx_eval_c_if_2 = _jspx_th_c_if_2.doStartTag();
+    if (_jspx_eval_c_if_2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\r\n");
+        out.write("                                    <span class=\"inativo\">Cancelado</span>\r\n");
+        out.write("                                ");
+        int evalDoAfterBody = _jspx_th_c_if_2.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_if_2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_c_if_test.reuse(_jspx_th_c_if_2);
+      return true;
+    }
+    _jspx_tagPool_c_if_test.reuse(_jspx_th_c_if_2);
     return false;
   }
 }

@@ -141,7 +141,7 @@
                     </div>
                 </div> 
 
-                <div style="margin-top: 5vh" class="row-container">
+                <div style="margin-top: 5vh; justify-content: space-between" class="row-container">
                     <div id="consulta" class="consulta-container">
                         <div style="justify-content: center" class="row-container">
                             <span>Próximos Agendamentos:</span>

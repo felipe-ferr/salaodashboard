@@ -83,7 +83,7 @@
 
         <script type="text/javascript"> // adicionei aqui por conta do método de exclusão 
             function confirmarExclusão(id, nome) {
-                if (confirm('Deseja desativar o usuario ' + nome + '?')) {
+                if (confirm('Deseja desativar o usuario ' + id + '?')) {
                     location.href = 'gerenciar_usuario.do?acao=deletar&idusuario=' + id;
                 }
             }

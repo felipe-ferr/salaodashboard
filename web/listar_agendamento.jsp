@@ -85,7 +85,7 @@
 
         <script type="text/javascript"> // adicionei aqui por conta do método de exclusão 
             function confirmarExclusão(id, nome) {
-                if (confirm('Deseja desativar o agendamento ' + nome + '?')) {
+                if (confirm('Deseja desativar o agendamento ' + id +'?')) {
                     location.href = 'gerenciar_agendamento.do?acao=deletar&idagendamento=' + id;
                 }
             }
