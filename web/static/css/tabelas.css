@@ -341,19 +341,18 @@ a{
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
-    padding: 2vh;
+    padding: 20vh;
     box-sizing: border-box;
     border-radius: 20px;
     background-color: var(--cor-clara);
-    position: absolute;
-    left: 50;
-    top: 50;   
+    position: fixed;
+    top: 50%;   
     z-index: 2;
     box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.55);
     -webkit-box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.55);
     -moz-box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.55);
-    width: auto;
     text-wrap: wrap;
+    width: 70%;
 }
 .desc p{
     margin: 0

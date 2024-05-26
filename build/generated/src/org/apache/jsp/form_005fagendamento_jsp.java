@@ -198,7 +198,7 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       out.write("    <body>\r\n");
       out.write("\r\n");
       out.write("        <div id=\"side\" class=\"sidebar\">\r\n");
-      out.write("            <span class=\"sidebar-titulo\">Salão do Luciano</span>\r\n");
+      out.write("            <a href=\"index.jsp\" class=\"sidebar-titulo\">Salão do Luciano</a>\r\n");
       out.write("            <a href=\"listar_agendamento.jsp\"><span class=\"material-symbols-outlined sidebar-icone\">calendar_month</span>Agendamentos</a>\r\n");
       out.write("            <a href=\"listar_cliente.jsp\"><span class=\"material-symbols-outlined sidebar-icone\">person</span>Clientes</a>\r\n");
       out.write("            <a href=\"listar_servico.jsp\"><span class=\"material-symbols-outlined sidebar-icone\">cut</span>Serviços</a>\r\n");
@@ -233,7 +233,7 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       out.write("\r\n");
       out.write("\r\n");
       out.write("            <div class=\"container-principal\">\r\n");
-      out.write("                <form method=\"POST\" action=\"gerenciar_agendamento.do\" value=\"\">\r\n");
+      out.write("                <form method=\"POST\" action=\"gerenciar_agendamento.do\" value=\"\" accept-charset=\"ISO-8859-1\" >\r\n");
       out.write("\r\n");
       out.write("                    <a class=\"botaoinicio\" href=\"index.jsp\">\r\n");
       out.write("                        <i class=\"material-symbols-outlined\">arrow_back</i>Voltar ao início\r\n");

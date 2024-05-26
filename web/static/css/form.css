@@ -483,10 +483,12 @@ input[type="checkbox"] {
     width: 40%;
     position: fixed;
     z-index: 3;
-    top: 10%;
+    top: 5%;
     right: 25%;
     background-color: var(--cor-clara);
     padding: 2vh;
+    height: 70vh;
+   
 }
 .row-container{
     display: flex;
@@ -510,6 +512,7 @@ input[type="checkbox"] {
     justify-content: space-around;
     transition-duration: 0.2s;
     text-decoration: none;
+    box-sizing: border-box;
     color: var(--cor-clara);
     border-radius: 20px;
 }
@@ -517,8 +520,11 @@ input[type="checkbox"] {
     display: flex;
     align-items: flex-start;
     justify-content: space-around;
+    box-sizing: border-box;
     width: 100%;
     padding: 1vh;
+    
+
 }
 .tabela div{
     display: flex;
@@ -526,6 +532,7 @@ input[type="checkbox"] {
     justify-content: center;
     width: 90%;
     padding: 1vh 1%;
+    box-sizing: border-box;
     font-size: 0.8vw;
     color: var(--cor-texto);
     background-color: var(--cor-escura);
@@ -544,7 +551,7 @@ input[type="checkbox"] {
     background-color: var(--cor-clara);
     font-size: 1vw;
     padding: 1vh;
-    position: sticky;
+    box-sizing: border-box;
     top: 0;
 }
 .thead div{
@@ -553,22 +560,22 @@ input[type="checkbox"] {
     justify-content: center;
     width: 90%;
     padding: 1vh 1%;
+    box-sizing: border-box;
     font-size: 0.8vw;
     text-align: center;
 }
 .tabela-container{
     display: flex; 
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
     background-color: var(--cor-escura);
     width: 100%;
-    height: auto;
     font-family: 'Montserrat', sans-serif;
-    padding: 2vh;
     box-sizing: border-box;
-    position: relative;
     gap: 2px;
+    overflow-y: scroll;
+    
 }
 
 /* ----------------------------------------------

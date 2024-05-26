@@ -96,7 +96,7 @@
                     <div>Cliente</div>
                 </div>
             </div>
-            <div id="table" class="tabela-container container">
+            <div id="table" class="tabela-container">
                 <jsp:useBean class="model.AgendamentoDAO" id="a"/>
 
                 <c:forEach var="a" items="${a.lista}">
