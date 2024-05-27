@@ -151,7 +151,7 @@ public final class listar_005fagendamento_jsp extends org.apache.jasper.runtime.
       out.write("\r\n");
       out.write("        <script type=\"text/javascript\"> // adicionei aqui por conta do método de exclusão \r\n");
       out.write("            function confirmarExclusão(id, nome) {\r\n");
-      out.write("                if (confirm('Deseja desativar o agendamento ' + nome + '?')) {\r\n");
+      out.write("                if (confirm('Deseja desativar o agendamento ' + id +'?')) {\r\n");
       out.write("                    location.href = 'gerenciar_agendamento.do?acao=deletar&idagendamento=' + id;\r\n");
       out.write("                }\r\n");
       out.write("            }\r\n");

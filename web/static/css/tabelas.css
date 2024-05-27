@@ -346,13 +346,14 @@ a{
     border-radius: 20px;
     background-color: var(--cor-clara);
     position: fixed;
-    top: 50%;   
+    top: 20%;  
+    left: 30%;
     z-index: 2;
     box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.55);
     -webkit-box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.55);
     -moz-box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.55);
     text-wrap: wrap;
-    width: 70%;
+    width: 50%;
 }
 .desc p{
     margin: 0
