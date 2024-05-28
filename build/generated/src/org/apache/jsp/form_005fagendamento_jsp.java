@@ -159,7 +159,7 @@ public final class form_005fagendamento_jsp extends org.apache.jasper.runtime.Ht
       out.write("                    <div>Cliente</div>\r\n");
       out.write("                </div>\r\n");
       out.write("            </div>\r\n");
-      out.write("            <div id=\"table\" class=\"tabela-container container\">\r\n");
+      out.write("            <div id=\"table\" class=\"tabela-container\">\r\n");
       out.write("                ");
       model.AgendamentoDAO a = null;
       synchronized (_jspx_page_context) {
