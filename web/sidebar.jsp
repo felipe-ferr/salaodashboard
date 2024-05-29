@@ -35,12 +35,12 @@
                     <a href="gerenciar_login.do" style="width: auto"><span class="material-symbols-outlined logout">logout</span></a>
                 </div>
                 <span class="switch-container">
-                    <span class="material-symbols-outlined">dark_mode</span>
+                    <span class="material-symbols-outlined">light_mode</span>
                     <label class="switch">
                         <input type="checkbox" id="switch" onchange="toggleTheme()">
                         <span class="slider round"></span>
                     </label>
-                    <span class="material-symbols-outlined">light_mode</span>
+                    <span class="material-symbols-outlined">dark_mode</span>
                 </span>
             </div>
 

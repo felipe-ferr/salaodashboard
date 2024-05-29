@@ -89,6 +89,11 @@
                     location.href = 'gerenciar_cliente.do?acao=deletar&idcliente=' + id;
                 }
             }
+            function confirmarAtivação(id, nome) {
+                if (confirm('Deseja ativar o cliente ' + id + '?')) {
+                    location.href = 'gerenciar_cliente.do?acao=ativar&idcliente=' + id;
+                }
+            }
         </script>
 
 
@@ -113,7 +118,7 @@
 
             <div id="principal" class="container-principal">
 
-                           
+
 
 
                 <div class="row-container">
@@ -128,7 +133,7 @@
                         <i class="material-symbols-outlined">search</i>
                     </div>
 
-                     <div class="dropdown-texto-container">
+                    <div class="dropdown-texto-container">
                         <p>Ordenar Por:</p>
                         <div id="dropdownBtnContainer" onmouseover="toggleDropdownMenu()" class="dropdownContainer">
                             <div class="dropdownBtnContainer">
@@ -142,7 +147,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="dropdown-texto-container">
                         <p>Mostrar: </p>
                         <div id="dropdownBtnContainerMostrar" onmouseover="hoverDropdownMenuMostrar()" class="dropdownContainer">
@@ -154,7 +159,7 @@
                                 <span onclick="displayAll()">Todas</span>
                                 <span onclick="filterItemsByStatusInativo()">Inativos</span>
                                 <span onclick="filterItemsByStatusAtivo()">Ativos</span>
-                              
+
                             </div>
                         </div>
                     </div>
@@ -206,9 +211,19 @@
                             </div>
 
                             <div class="acoes-div id-row">
-                                <button class="botao-acoes" onclick="confirmarExclusão(${c.idcliente})">
-                                    <i class="material-symbols-outlined">delete</i>
-                                </button>
+                                <div>
+                                    <i onclick="showDeletarDiv(this)" style="cursor: pointer;" class="material-symbols-outlined"style="color:var(--dourado)">settings</i>
+                                    <span class="deletar scale-in-center" style="display:none">
+                                            <a onclick="confirmarExclusão(${c.idcliente})">
+                                                <i class="material-symbols-outlined">close</i>
+                                                Desativar
+                                            </a>
+                                                <a onclick="confirmarAtivação(${c.idcliente})">
+                                                <i class="material-symbols-outlined">check_box</i>
+                                                Ativar
+                                            </a>
+                                    </span>
+                                </div>              
                                 <a class="botao-acoes" href="gerenciar_cliente.do?acao=alterar&idcliente=${c.idcliente}">
                                     <i class="material-symbols-outlined">edit</i>
                                 </a>
@@ -243,16 +258,15 @@
 
         </div>
 
-        <script src="./static/bulma/jquery-3.7.1.js"></script>
         <script type="text/javascript" src="static/js/modoescuro.js"></script>
         <script type="text/javascript" src="static/js/sumirTextoTextarea.js"></script>
         <script type="text/javascript" src="static/js/PesquisaTabela.js"></script>
         <script src="./static/js/pagination.js"></script>
         <script src="http://code.jquery.com/jquery-latest.js"></script>
-        <script src="./static/bulma/jquery-3.7.1.js"></script>
         <script src="./static/js/showDesc.js"></script>
         <script src="./static/js/dropdownRegistros.js"></script>
         <script src="./static/js/filtrosTabela.js"></script>
+        <script src="./static/js/mostrarDiv.js"></script>
 
 
 

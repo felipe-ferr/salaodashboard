@@ -165,8 +165,8 @@ function paginateTable(itemsPerPage) {
 }
 
 
-// Chamar a função com 20 itens por página
-paginateTable(20);
+// Chamar a função com 15 itens por página
+paginateTable(15);
 updatePageInfo();
 
 

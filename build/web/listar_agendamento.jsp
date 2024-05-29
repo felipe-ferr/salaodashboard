@@ -72,10 +72,10 @@
         <link rel="stylesheet" href="./static/css/tabelas.css">
         <script src="./static/js/modoescuro.js"></script>
         <meta charset="UTF-8">
-        
+
         <link rel="icon" type="image/x-icon" href="static/favicon/favicon.ico">
 
-        
+
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatis.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
@@ -85,8 +85,13 @@
 
         <script type="text/javascript"> // adicionei aqui por conta do método de exclusão 
             function confirmarExclusão(id, nome) {
-                if (confirm('Deseja desativar o agendamento ' + id +'?')) {
+                if (confirm('Deseja desativar o agendamento ' + id + '?')) {
                     location.href = 'gerenciar_agendamento.do?acao=deletar&idagendamento=' + id;
+                }
+            }
+            function confirmarAtivação(id, nome) {
+                if (confirm('Deseja Ativar o agendamento ' + id + '?')) {
+                    location.href = 'gerenciar_agendamento.do?acao=ativar&idagendamento=' + id;
                 }
             }
         </script>
@@ -225,9 +230,19 @@
 
                             </div>
                             <div class="acoes-div">
-                                <button class="botao-acoes" onclick="confirmarExclusão(${a.idagendamento})">
-                                    <i class="material-symbols-outlined">delete</i>
-                                </button>
+                                <div>
+                                    <i onclick="showDeletarDiv(this)" style="cursor: pointer;" class="material-symbols-outlined"style="color:var(--dourado)">settings</i>
+                                    <span class="deletar scale-in-center" style="display:none">
+                                        <a onclick="confirmarExclusão(${c.idcliente})">
+                                            <i class="material-symbols-outlined">close</i>
+                                            Desativar
+                                        </a>
+                                        <a onclick="confirmarAtivação(${c.idcliente})">
+                                            <i class="material-symbols-outlined">check_box</i>
+                                            Ativar
+                                        </a>
+                                    </span>
+                                </div> 
                                 <a class="botao-acoes" href="gerenciar_agendamento.do?acao=alterar&idagendamento=${a.idagendamento}">
                                     <i class="material-symbols-outlined">edit</i>
                                 </a>

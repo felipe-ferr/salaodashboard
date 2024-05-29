@@ -116,6 +116,7 @@
                             <input class="cpf" required type="text" name="cpf" value="${cliente.cpf}">
                             <p>CPF: </p>
                             <i class="material-symbols-outlined">description</i>
+                            
                         </div>
 
 
@@ -126,7 +127,9 @@
                         </div>
                     </div>
 
-
+                            <div class="inputContainerRow" style="justify-content: flex-start">
+                                <span class="erroMensagem"></span>
+                            </div>
 
                     <div class="inputContainerRow">
                         <div class="containerColumn">
@@ -164,5 +167,6 @@
             });
         </script>    
         <script src="./static/js/dropdownForms.js"></script>
+        <script src="./static/js/TestaCPF.js"></script>
     </body>
 </html>

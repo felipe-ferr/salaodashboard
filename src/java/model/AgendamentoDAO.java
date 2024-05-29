@@ -166,6 +166,22 @@ public class AgendamentoDAO extends DatabaseDAO {
             return false;
         }
     }
+    public boolean ativar (Agendamento a) {
+
+        try {
+            this.conectar();
+            String sql = "UPDATE agendamento SET status=1 WHERE idagendamento=? ";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setInt(1, a.getIdagendamento());
+            pstm.execute();
+            this.desconectar();
+            return true;
+
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
+    }
 
     public ArrayList<Agendamento> getListaIndex() throws Exception {
 

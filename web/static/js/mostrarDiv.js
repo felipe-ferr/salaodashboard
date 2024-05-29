@@ -12,3 +12,10 @@ function fecharConsulta(){
         c.style.display = "none";
         gridcontainer.style.filter = "brightness(100%)";
 }
+
+function abrirAtivarDesativar(){
+    let c = document.getElementById("ativardesativar");
+    let gridcontainer = document.getElementById("containergeral");
+        c.style.display = "flex";
+        gridcontainer.style.filter = "brightness(50%)";
+}

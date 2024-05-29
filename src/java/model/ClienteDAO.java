@@ -105,5 +105,20 @@ public class ClienteDAO extends DatabaseDAO {
             return false;
         }
     }
-    
+        public boolean ativar (Cliente c){
+        
+        try{
+            this.conectar();
+            String sql = "UPDATE cliente SET status=1 WHERE idcliente=? ";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setInt(1, c.getIdcliente());
+            pstm.execute();
+            this.desconectar();
+            return true;
+            
+        }catch(Exception e){
+            System.out.println(e);
+            return false;
+        }
+    }
 }

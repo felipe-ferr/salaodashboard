@@ -65,6 +65,15 @@ public class GerenciarCliente extends HttpServlet {
                     mensagem = "Erro ao desativar o usuário!";
                 }
             }
+            
+            if (acao.equals("ativar")) {
+                c.setIdcliente(Integer.parseInt(idcliente));
+                if (cDAO.ativar(c)) {
+                    mensagem = "Ativado com sucesso!";
+                } else {
+                    mensagem = "Erro ao ativar o usuário!";
+                }
+            }
 
         } catch (Exception e) {
             out.print(e);
