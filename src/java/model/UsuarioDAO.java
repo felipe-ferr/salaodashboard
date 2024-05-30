@@ -119,7 +119,24 @@ public class UsuarioDAO extends DatabaseDAO{
         
         
     }
-
+    public boolean ativar(Usuario u){
+        
+        try{
+            String sql = "UPDATE usuario SET status=1 WHERE idusuario=? ";
+            this.conectar();
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setInt(1, u.getIdusuario());
+            pstm.execute();
+            this.desconectar();
+            return true;
+            
+        }catch(Exception e){
+            System.out.println(e);
+            return false;
+        }
+        
+        
+    }
     public Usuario getRecuperarUsuario(String login){
             
             Usuario u = new Usuario();

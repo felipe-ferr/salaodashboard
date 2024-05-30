@@ -222,22 +222,24 @@
                             <div class="status">
 
                                 <c:if test="${a.status==1}">
-                                    <span class="ativo">Pendente</span>
+                                    <span id="ativo" class="ativo">Pendente</span>
                                 </c:if>
                                 <c:if test="${a.status==0}">
-                                    <span class="inativo">Cancelado</span>
+                                    <span id="inativo" class="inativo">Cancelado</span>                
                                 </c:if>
+                                    <span id="concluido" class="concluido">Concluído</span>
+                                   
 
                             </div>
                             <div class="acoes-div">
                                 <div>
                                     <i onclick="showDeletarDiv(this)" style="cursor: pointer;" class="material-symbols-outlined"style="color:var(--dourado)">settings</i>
                                     <span class="deletar scale-in-center" style="display:none">
-                                        <a onclick="confirmarExclusão(${c.idcliente})">
+                                        <a onclick="confirmarExclusão(${a.idagendamento})">
                                             <i class="material-symbols-outlined">close</i>
                                             Desativar
                                         </a>
-                                        <a onclick="confirmarAtivação(${c.idcliente})">
+                                        <a onclick="confirmarAtivação(${a.idagendamento})">
                                             <i class="material-symbols-outlined">check_box</i>
                                             Ativar
                                         </a>
@@ -283,6 +285,7 @@
         <script src="./static/js/showDesc.js"></script>
         <script src="./static/js/dropdownRegistros.js"></script>
         <script src="./static/js/filtrosTabela.js"></script>
+        <script src="./static/js/marcarConcluido.js"></script>
 
 
 

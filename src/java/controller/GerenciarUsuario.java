@@ -67,6 +67,15 @@ public class GerenciarUsuario extends HttpServlet {
                 }
 
             }
+            if (acao.equals("ativar")) {
+                u.setIdusuario(Integer.parseInt(idusuario));
+                if (uDAO.ativar(u)) {
+                    mensagem = "Usuário ativado com sucesso!";
+                } else {
+                    mensagem = "Falha ao gravar informações no banco de dados. Tente novamente";
+                }
+
+            }
 
         } catch (Exception e) {
             out.print(e);

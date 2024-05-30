@@ -1,6 +1,6 @@
 function definirDataHoje() {
   // Pega o elemento de data
-  var inputData = document.getElementById("date");  // Substitua "seuIdDeEntradaDeData" pelo ID real do seu elemento
+  var inputData = document.getElementById("date"); 
 
   // Cria um novo objeto Date
   var hoje = new Date();

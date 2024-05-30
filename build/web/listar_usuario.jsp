@@ -87,6 +87,11 @@
                     location.href = 'gerenciar_usuario.do?acao=deletar&idusuario=' + id;
                 }
             }
+            function confirmarAtivação(id, nome) {
+                if (confirm('Deseja ativar o usuario ' + id + '?')) {
+                    location.href = 'gerenciar_usuario.do?acao=ativar&idusuario=' + id;
+                }
+            }
         </script>
 
 
@@ -175,7 +180,7 @@
                         <div>Telefone</div>
                         <div>Usuario</div>
                         <div>Status</div>
-                        <div>Ações</div>
+                        <div class="id-row">Ações</div>
                     </div>
                 </div>
                 <div id="table" class="tabela-container container">
@@ -203,10 +208,20 @@
                                 </c:if>
                             </div>
 
-                            <div class="acoes-div">
-                                <button class="botao-acoes" onclick="confirmarExclusão(${u.idusuario})">
-                                    <i class="material-symbols-outlined">delete</i>
-                                </button>
+                            <div class="acoes-div id-row">
+                                <div>
+                                    <i onclick="showDeletarDiv(this)" style="cursor: pointer;" class="material-symbols-outlined"style="color:var(--dourado)">settings</i>
+                                    <span class="deletar scale-in-center" style="display:none">
+                                            <a onclick="confirmarExclusão(${u.idusuario})">
+                                                <i class="material-symbols-outlined">close</i>
+                                                Desativar
+                                            </a>
+                                                <a onclick="confirmarAtivação(${u.idusuario})">
+                                                <i class="material-symbols-outlined">check_box</i>
+                                                Ativar
+                                            </a>
+                                    </span>
+                                </div>
                                 <a class="botao-acoes" href="gerenciar_usuario.do?acao=alterar&idusuario=${u.idusuario}">
                                     <i class="material-symbols-outlined">edit</i>
                                 </a>

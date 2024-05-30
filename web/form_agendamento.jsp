@@ -84,7 +84,7 @@
 
     </head>
     <body>
-        <div style="display: none" id="consulta" class="consulta-container">
+        <div style="display: none" id="consulta" class="consulta-container scale-in-center">
             <div style="justify-content: space-between" class="row-container">
                 <span>Datas Reservadas:</span>
                 <i onclick="fecharConsulta()" style="cursor: pointer" class="material-symbols-outlined">close</i>
@@ -110,11 +110,89 @@
                 </c:forEach>
             </div>
         </div>
+
+        <div style="display: none" id="escolher-usuario" class="consulta-container scale-in-center">
+            <div style="justify-content: space-between" class="row-container">
+                <span>Escolher Funcionário:</span>
+                <i onclick="fecharUsuario()" style="cursor: pointer" class="material-symbols-outlined">close</i>
+            </div>
+            <div class="row-container">
+                <div id="nav" class="thead">
+                    <div>Nome</div>          
+                </div>
+            </div>
+            <div id="table" class="tabela-container">
+                <jsp:useBean class="model.UsuarioDAO" id="u"/>
+
+                <c:forEach var="u" items="${u.lista}">
+
+                    <div id="item" class="tabela" style="font-size: 0.9vw">
+                        <label class="labelEscolher" onclick="fecharUsuario()"><input form="form" type="radio" name="idusuario" value="${u.idusuario}">${u.nome}</label>
+                    </div>
+
+                </c:forEach>
+            </div>
+        </div>
+
+        <div style="display: none" id="escolher-cliente" class="consulta-container scale-in-center">
+            <div style="justify-content: space-between" class="row-container">
+                <div class="searchContainer">
+                    <input type="text" id="searchInput" placeholder="Pesquisar">
+                    <i class="material-symbols-outlined">search</i>
+                </div>
+                <i onclick="fecharCliente()" style="cursor: pointer" class="material-symbols-outlined">close</i>
+            </div>
+            <div class="row-container">
+                <div id="nav" class="thead">
+                    <div>Escolher Cliente</div>          
+                </div>
+            </div>
+            <div id="table" class="tabela-container">
+                <jsp:useBean class="model.ClienteDAO" id="c"/>
+
+                <c:forEach var="c" items="${c.lista}">
+
+                    <div id="item" class="tabela" style="font-size: 0.9vw">
+                        <label class="labelEscolher" onclick="fecharCliente()"><input form="form" type="radio" name="idcliente" value="${c.idcliente}">${c.nome}</label>
+                    </div>
+
+                </c:forEach>
+            </div>
+        </div>
+
+        <div style="display: none" id="escolher-servico" class="consulta-container scale-in-center">
+            <div style="justify-content: space-between" class="row-container">
+                <div class="searchContainer">
+                    <input type="text" id="searchInputServico" placeholder="Pesquisar">
+                    <i class="material-symbols-outlined">search</i>
+                </div>
+                <i onclick="fecharServico()" style="cursor: pointer" class="material-symbols-outlined">close</i>
+            </div>
+            <div class="row-container">
+                <div id="nav" class="thead">
+                    <div>Escolher Serviço</div>          
+                </div>
+            </div>
+            <div id="table" class="tabela-container">
+                <jsp:useBean class="model.ServicoDAO" id="s"/>
+
+                <c:forEach var="s" items="${s.lista}">
+
+                    <div id="item" class="tabela" style="font-size: 0.9vw">
+                        <label class="labelEscolher" onclick="fecharServico()"><input form="form" type="radio" name="idservico" value="${s.idservico}">${s.nome}</label>
+                    </div>
+
+                </c:forEach>
+            </div>
+        </div>
+
+
+
         <div id="containergeral" class="grid-container">
             <%@include file="sidebar.jsp" %>
 
             <div class="container-principal">
-                <form method="POST" action="gerenciar_agendamento.do" value="" accept-charset="ISO-8859-1" >
+                <form id="form" method="POST" action="gerenciar_agendamento.do" value="" accept-charset="ISO-8859-1" >
 
                     <a class="botaoinicio" href="index.jsp">
                         <i class="material-symbols-outlined">arrow_back</i>Voltar ao início
@@ -141,7 +219,7 @@
                         </div>
 
                     </div>
-                            
+
                     <div class="inputContainerRow" style="justify-content: flex-end">
                         <span class="erroMensagem"></span>
                         <div onclick="abrirConsulta()" class="botaoConsulta">Mostrar Datas Reservadas</div>
@@ -152,52 +230,52 @@
                     <span style="display: flex" id="titlehorario">Horário</span>
                     <div class="horarios-container fade-in" id="semana" style="display: flex">
                         <label id="inputElement" id="inputElement" class="horario">
-                            <input onclick="checarConflito()" id="hora" type="radio" name="horario" value="9:00" />
+                            <input  id="hora" type="radio" name="horario" value="9:00" />
                             <p>9:00</p>
                             <i class="material-symbols-outlined">schedule</i>
                         </label>
                         <label id="inputElement" class="horario">
-                            <input onclick="checarConflito()" id="hora"  type="radio" name="horario" value="10:00" />
+                            <input  id="hora"  type="radio" name="horario" value="10:00" />
                             <p>10:00</p>
                             <i class="material-symbols-outlined">schedule</i>
                         </label>
                         <label id="inputElement" class="horario">
-                            <input onclick="checarConflito()" id="hora"  type="radio" name="horario" value="11:00" />
+                            <input  id="hora"  type="radio" name="horario" value="11:00" />
                             <p>11:00</p>
                             <i class="material-symbols-outlined">schedule</i>
                         </label>
                         <label id="inputElement" class="horario">
-                            <input onclick="checarConflito()" id="hora"  type="radio" name="horario" value="13:00" />
+                            <input  id="hora"  type="radio" name="horario" value="13:00" />
                             <p>13:00</p>
                             <i class="material-symbols-outlined">schedule</i>
                         </label>
                         <label id="inputElement" class="horario">
-                            <input onclick="checarConflito()" id="hora"  type="radio" name="horario" value="14:00" />
+                            <input  id="hora"  type="radio" name="horario" value="14:00" />
                             <p>14:00</p>
                             <i class="material-symbols-outlined">schedule</i>
                         </label>
                         <label id="inputElement" class="horario">
-                            <input onclick="checarConflito()" id="hora"  type="radio" name="horario" value="15:00" />
+                            <input  id="hora"  type="radio" name="horario" value="15:00" />
                             <p>15:00</p>
                             <i class="material-symbols-outlined">schedule</i>
                         </label>
                         <label id="inputElement" class="horario">
-                            <input onclick="checarConflito()" id="hora"  type="radio" name="horario" value="16:00" />
+                            <input  id="hora"  type="radio" name="horario" value="16:00" />
                             <p>16:00</p>
                             <i class="material-symbols-outlined">schedule</i>
                         </label>
                         <label id="inputElement" class="horario">
-                            <input onclick="checarConflito()" id="hora"  type="radio" name="horario" value="17:00" />
+                            <input  id="hora"  type="radio" name="horario" value="17:00" />
                             <p>17:00</p>
                             <i class="material-symbols-outlined">schedule</i>
                         </label>
                         <label id="inputElement" class="horario">
-                            <input onclick="checarConflito()" id="hora"  type="radio" name="horario" value="18:00" />
+                            <input  id="hora"  type="radio" name="horario" value="18:00" />
                             <p>18:00</p>
                             <i class="material-symbols-outlined">schedule</i>
                         </label>
                         <label id="inputElement" class="horario">
-                            <input onclick="checarConflito()" id="hora"  type="radio" name="horario" value="19:00" />
+                            <input  id="hora"  type="radio" name="horario" value="19:00" />
                             <p>19:00</p>
                             <i class="material-symbols-outlined">schedule</i>
                         </label>
@@ -206,17 +284,17 @@
 
                     <div class="horarios-container fade-in" id="domingo" style="display:none">
                         <label id="inputElement" id="inputElement" class="horario">
-                            <input onclick="checarConflito()" id="hora" type="radio" name="horario" value="9:00" />
+                            <input  id="hora" type="radio" name="horario" value="9:00" />
                             <p>9:00</p>
                             <i class="material-symbols-outlined">schedule</i>
                         </label>
                         <label id="inputElement" class="horario">
-                            <input onclick="checarConflito()" id="hora" type="radio" name="horario" value="10:00" />
+                            <input  id="hora" type="radio" name="horario" value="10:00" />
                             <p>10:00</p>
                             <i class="material-symbols-outlined">schedule</i>
                         </label>
                         <label id="inputElement" class="horario">
-                            <input onclick="checarConflito()" id="hora" type="radio" name="horario" value="11:00" />
+                            <input  id="hora" type="radio" name="horario" value="11:00" />
                             <p>11:00</p>
                             <i class="material-symbols-outlined">schedule</i>
                         </label>                    
@@ -233,8 +311,6 @@
 
 
                     </div>
-
-
 
 
                     <hr>
@@ -255,54 +331,37 @@
                                 </div>
                             </div>
                         </div>
-                        
 
-                        
+
+
                         <div class="containerColumn">
                             <span>Serviço</span>
-                            <div id="dropdownBtnServico" class="dropdownContainer">
+                            <div onclick="abrirServico()" class="dropdownContainer">
                                 <div class="dropdownBtnContainer">
                                     <div class="dropdownBtn" id="selectedOptionServico">Selecionar</div>
-                                    <i class="material-symbols-outlined">keyboard_arrow_down</i>
-                                </div>
-                                <div id="dropservico" class="dropdownMenu hidden">
-                                    <jsp:useBean class="model.ServicoDAO" id="servico"/>                   
-                                    <c:forEach var="s" items="${servico.lista}">
-                                        <label class="label"><input checked type="radio" name="idservico" value="${s.idservico}">${s.nome}</label>
-                                        </c:forEach>
+                                    <i class="material-symbols-outlined">add</i>
                                 </div>
                             </div>
                         </div>
 
                         <div class="containerColumn">
                             <span>Cliente</span>
-                            <div id="dropdownBtnCliente" class="dropdownContainer">
+                            <div onclick="abrirCliente()" class="dropdownContainer">
                                 <div class="dropdownBtnContainer">
                                     <div class="dropdownBtn" id="selectedOptionCliente">Selecionar</div>
-                                    <i class="material-symbols-outlined">keyboard_arrow_down</i>
-                                </div>
-                                <div id="dropcliente" class="dropdownMenu hidden">
-                                    <jsp:useBean class="model.ClienteDAO" id="cliente"/>
-                                    <c:forEach var="c" items="${cliente.lista}">
-                                        <label class="label"><input checked type="radio" name="idcliente" value="${c.idcliente}">${c.nome}</label>
-                                        </c:forEach>
+                                    <i class="material-symbols-outlined">add</i>
                                 </div>
                             </div>
                         </div>
 
                         <div class="containerColumn">
                             <span>Usuário</span>
-                            <div id="dropdownBtnUsuario" class="dropdownContainer">
+                            <div onclick="abrirUsuario()" class="dropdownContainer">
                                 <div class="dropdownBtnContainer">
                                     <div class="dropdownBtn" id="selectedOptionUsuario">Selecionar</div>
-                                    <i class="material-symbols-outlined">keyboard_arrow_down</i>
+                                    <i class="material-symbols-outlined">add</i>
                                 </div>
-                                <div id="dropusuario" class="dropdownMenu hidden">
-                                    <jsp:useBean class="model.UsuarioDAO" id="usuario"/>
-                                    <c:forEach var="u" items="${usuario.lista}">
-                                        <label class="label"><input checked type="radio" name="idusuario" value="${u.idusuario}">${u.nome}</label>
-                                        </c:forEach>
-                                </div>
+
 
                             </div>
                         </div>
@@ -332,7 +391,8 @@
         <script src="./static/js/mascaras.js"></script>
         <script src="./static/js/fillDate.js"></script>
         <script src="./static/js/mostrarDiv.js"></script>
-        <script src="./static/js/agendamentoExistente.js"></script>
+        <script src="./static/js/dropdownPopup.js"></script>
+        <script src="./static/js/searchPopup.js"></script>
         <script>
                                 $(document).ready(function () {
                                     $('#date').mask('00/00/0000');

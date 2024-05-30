@@ -88,6 +88,11 @@
                     location.href = 'gerenciar_servico.do?acao=deletar&idservico=' + id;
                 }
             }
+            function confirmarAtivação(id, nome) {
+                if (confirm('Deseja ativar o servico ' + id + '?')) {
+                    location.href = 'gerenciar_servico.do?acao=ativar&idservico=' + id;
+                }
+            }
         </script>
 
 
@@ -176,7 +181,7 @@
                         <div>Nome</div>
                         <div>Descrição</div>
                         <div>Status</div>
-                        <div>Ações</div>
+                        <div class="id-row">Ações</div>
                     </div>
                 </div>
                 <div id="table" class="tabela-container container">
@@ -207,10 +212,20 @@
                                 </c:if>
                             </div>
 
-                            <div class="acoes-div">
-                                <button class="botao-acoes" onclick="confirmarExclusão(${s.idservico})">
-                                    <i class="material-symbols-outlined">delete</i>
-                                </button>
+                            <div class="acoes-div id-row">
+                                <div>
+                                    <i onclick="showDeletarDiv(this)" style="cursor: pointer;" class="material-symbols-outlined"style="color:var(--dourado)">settings</i>
+                                    <span class="deletar scale-in-center" style="display:none">
+                                            <a onclick="confirmarExclusão(${s.idservico})">
+                                                <i class="material-symbols-outlined">close</i>
+                                                Desativar
+                                            </a>
+                                                <a onclick="confirmarAtivação(${s.idservico})">
+                                                <i class="material-symbols-outlined">check_box</i>
+                                                Ativar
+                                            </a>
+                                    </span>
+                                </div>
                                 <a class="botao-acoes" href="gerenciar_servico.do?acao=alterar&idservico=${s.idservico}">
                                     <i class="material-symbols-outlined">edit</i>
                                 </a>

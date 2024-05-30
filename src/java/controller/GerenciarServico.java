@@ -65,6 +65,15 @@ public class GerenciarServico extends HttpServlet {
                     mensagem = "Erro ao desativar o serviço!";
                 }
             }
+            
+            if (acao.equals("ativar")) {
+                s.setIdservico(Integer.parseInt(idservico));
+                if (sDAO.ativar(s)) {
+                    mensagem = "Ativado com sucesso!";
+                } else {
+                    mensagem = "Erro ao ativar o serviço!";
+                }
+            }
 
         } catch (Exception e) {
             out.print(e);

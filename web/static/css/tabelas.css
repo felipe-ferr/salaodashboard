@@ -235,6 +235,7 @@ a{
     font-size: 1vw;
     border-radius: 10px;
     font-family: 'Montserrat', sans-serif;
+    transition-duration: 0.3s;
 }
 
 /* ícone no fim do input */
@@ -252,12 +253,14 @@ a{
     padding: 0px 1vw;
     box-shadow: inset 0px 0px 0px 2px var(--dourado); 
     background-color: var(--cor-escura);
+    transition-duration: 0.3s;
 }
 /* aumentar padding de volta depois de clicar no campo de texto */
 .searchContainer input::after{
     background-color: var(--cor-clara);
     outline: none;
     box-shadow: inset 0px 0px 0px 2px var(--dourado);
+    transition-duration: 0.3s;
 }
 /* diminuir e mover para cima o nome dos campos */
 .searchContainer input:focus ~ p{
@@ -268,6 +271,7 @@ a{
     margin-left: 3%;
     border-radius: 5px;
     color: var(--cor-texto);
+    transition-duration: 0.3s;
 }
 .searchContainer input:focus ~ i{
     color: var(--dourado);
@@ -372,7 +376,7 @@ a{
     padding: 1vh;
     background-color: var(--cor-clara);
     position: absolute;
-    z-index: 2;
+    z-index: 5;
     right: 8%;
     box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.55);
     -webkit-box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.55);
