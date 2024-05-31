@@ -25,7 +25,7 @@ document.getElementById('dateInput').addEventListener('input', function (e) {
 
         // Referências para os elementos de input, mensagem de erro e containers
         let dateInput = document.getElementById('dateInput');
-        var errorMessageElement = document.querySelector('.erroMensagem');
+        var errorMessageElement = document.getElementById('erroMensagem');
         var semanaContainer = document.getElementById('semana');
         var domingoContainer = document.getElementById('domingo');
         var titulohorario = document.getElementById('titlehorario');

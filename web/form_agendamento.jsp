@@ -277,7 +277,58 @@
                     <hr>
 
                     <input type="hidden" name="idagendamento" value="${agendamento.idagendamento}"/>
+                    <div class="inputContainerRow">
 
+                        <div class="containerColumn">
+                            <span>Status</span>
+                            <div id="dropdownBtnContainer" class="dropdownContainer">
+                                <div class="dropdownBtnContainer">
+                                    <div class="dropdownBtn" id="selectedOptionMostrar">Ativo</div>
+                                    <i class="material-symbols-outlined">keyboard_arrow_down</i>
+                                </div>
+                                <div id="dropstatus" class="dropdownMenu hidden">
+                                    <label class="label"><input type="radio" checked name="status" value="1">Ativo</label>
+                                    <label class="label"><input type="radio" name="status" value="0">Inativo</label>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="containerColumn">
+                            <span>Serviço</span>
+                            <div onclick="abrirServico()" class="dropdownContainer">
+                                <div class="dropdownBtnContainer">
+                                    <div class="dropdownBtn" id="selectedOptionServico">Selecionar</div>
+                                    <i class="material-symbols-outlined">add</i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="containerColumn">
+                            <span>Cliente</span>
+                            <div onclick="abrirCliente()" class="dropdownContainer">
+                                <div class="dropdownBtnContainer">
+                                    <div class="dropdownBtn" id="selectedOptionCliente">Selecionar</div>
+                                    <i class="material-symbols-outlined">add</i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="containerColumn">
+                            <span>Usuário</span>
+                            <div onclick="abrirUsuario()" class="dropdownContainer">
+                                <div class="dropdownBtnContainer">
+                                    <div class="dropdownBtn" id="selectedOptionUsuario">Selecionar</div>
+                                    <i class="material-symbols-outlined">add</i>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        
+                    </div>
+       
                     <div class="inputContainerRow">
                         <div class="inputContainer">
                             <input id="money" oninput="maskMoneyValue()" required type="number" name="valor" value="${agendamento.valor}">
@@ -288,14 +339,13 @@
                         <div class="inputContainer">                      
                             <input id="dateInput" required type="text" name="data" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${agendamento.data}"/>">
                             <p>Data:</p>
-
                             <i class="material-symbols-outlined">calendar_month</i>
                         </div>
 
                     </div>
 
                     <div class="inputContainerRow" style="justify-content: flex-end">
-                        <span class="erroMensagem"></span>
+                        <span id="erroMensagem" class="erroMensagem"></span>
                         <div onclick="abrirConsulta()" class="botaoConsulta">Mostrar Datas Reservadas</div>
                     </div>
 
@@ -390,57 +440,7 @@
                     <hr>
 
 
-                    <div class="inputContainerRow">
-
-                        <div class="containerColumn">
-                            <span>Status</span>
-                            <div id="dropdownBtnContainer" class="dropdownContainer">
-                                <div class="dropdownBtnContainer">
-                                    <div class="dropdownBtn" id="selectedOptionMostrar">Ativo</div>
-                                    <i class="material-symbols-outlined">keyboard_arrow_down</i>
-                                </div>
-                                <div id="dropstatus" class="dropdownMenu hidden">
-                                    <label class="label"><input type="radio" checked name="status" value="1">Ativo</label>
-                                    <label class="label"><input type="radio" name="status" value="0">Inativo</label>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                        <div class="containerColumn">
-                            <span>Serviço</span>
-                            <div onclick="abrirServico()" class="dropdownContainer">
-                                <div class="dropdownBtnContainer">
-                                    <div class="dropdownBtn" id="selectedOptionServico">Selecionar</div>
-                                    <i class="material-symbols-outlined">add</i>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="containerColumn">
-                            <span>Cliente</span>
-                            <div onclick="abrirCliente()" class="dropdownContainer">
-                                <div class="dropdownBtnContainer">
-                                    <div class="dropdownBtn" id="selectedOptionCliente">Selecionar</div>
-                                    <i class="material-symbols-outlined">add</i>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="containerColumn">
-                            <span>Usuário</span>
-                            <div onclick="abrirUsuario()" class="dropdownContainer">
-                                <div class="dropdownBtnContainer">
-                                    <div class="dropdownBtn" id="selectedOptionUsuario">Selecionar</div>
-                                    <i class="material-symbols-outlined">add</i>
-                                </div>
-
-
-                            </div>
-                        </div>
-
-                    </div>
+                    
 
 
 
