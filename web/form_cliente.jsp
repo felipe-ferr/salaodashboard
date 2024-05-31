@@ -134,7 +134,7 @@
                     <div class="inputContainerRow">
                         <div class="containerColumn">
                             <span>Status</span>
-                            <div style="width: 30%" onclick="setupDropdown()" id="dropdownBtnContainer" class="dropdownContainer">
+                            <div style="width: 30%" id="dropdownBtnContainer" class="dropdownContainer">
                                 <div class="dropdownBtnContainer">
                                     <div class="dropdownBtn" id="selectedOptionMostrar">Ativo</div>
                                     <i class="material-symbols-outlined">keyboard_arrow_down</i>

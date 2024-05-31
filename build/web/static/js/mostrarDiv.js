@@ -56,4 +56,20 @@ function fecharServico(){
         c.style.display = "none";
         gridcontainer.style.filter = "brightness(100%)";
 }
+function abrirFormCliente(){
+    let c = document.getElementById("formCliente");
+    let cliente = document.getElementById("escolher-cliente");
+    let gridcontainer = document.getElementById("containergeral");
+        c.style.display = "flex";
+        cliente.style.display = "none";
+        gridcontainer.style.filter = "brightness(30%)";
+}
+function fecharFormCliente(){
+    let c = document.getElementById("formCliente");
+    let gridcontainer = document.getElementById("containergeral");
+        c.style.display = "none";
+        gridcontainer.style.filter = "brightness(100%)";
+}
+
+
 
