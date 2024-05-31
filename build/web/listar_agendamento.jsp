@@ -207,7 +207,7 @@
 
                             <div class="id-row">${a.idagendamento}</div>
                             <div class="valor-row">${a.valor}</div>
-                            <div class="data"><fmt:formatDate pattern="dd/MM/yyyy" value="${a.data}"/></div>                           
+                            <div id="data"><fmt:formatDate pattern="dd/MM/yyyy" value="${a.data}"/></div>                           
                             <div>
                                 <i onclick="showDescDiv(this)" style="cursor: pointer;" class="material-symbols-outlined">comment</i>
                                 <span class="desc" style="display:none">
@@ -220,14 +220,14 @@
                             <div class="nome-row">${a.cliente.nome}</div>
                             <div>${a.usuario.nome}</div>
                             <div class="status">
-
+                                
                                 <c:if test="${a.status==1}">
-                                    <span id="ativo" class="ativo">Pendente</span>
+                                    <span id="pendente" class="ativo">Pendente</span>
                                 </c:if>
                                 <c:if test="${a.status==0}">
                                     <span id="inativo" class="inativo">Cancelado</span>                
                                 </c:if>
-                                    <span id="concluido" class="concluido">Concluído</span>
+                                    
                                    
 
                             </div>

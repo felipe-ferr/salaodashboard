@@ -138,10 +138,10 @@ public final class listar_005fagendamento_jsp extends org.apache.jasper.runtime.
       out.write("        <link rel=\"stylesheet\" href=\"./static/css/tabelas.css\">\r\n");
       out.write("        <script src=\"./static/js/modoescuro.js\"></script>\r\n");
       out.write("        <meta charset=\"UTF-8\">\r\n");
-      out.write("        \r\n");
+      out.write("\r\n");
       out.write("        <link rel=\"icon\" type=\"image/x-icon\" href=\"static/favicon/favicon.ico\">\r\n");
       out.write("\r\n");
-      out.write("        \r\n");
+      out.write("\r\n");
       out.write("        <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\r\n");
       out.write("        <link rel=\"preconnect\" href=\"https://fonts.gstatis.com\" crossorigin>\r\n");
       out.write("        <link href=\"https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap\" rel=\"stylesheet\">\r\n");
@@ -151,8 +151,13 @@ public final class listar_005fagendamento_jsp extends org.apache.jasper.runtime.
       out.write("\r\n");
       out.write("        <script type=\"text/javascript\"> // adicionei aqui por conta do método de exclusão \r\n");
       out.write("            function confirmarExclusão(id, nome) {\r\n");
-      out.write("                if (confirm('Deseja desativar o agendamento ' + id +'?')) {\r\n");
+      out.write("                if (confirm('Deseja desativar o agendamento ' + id + '?')) {\r\n");
       out.write("                    location.href = 'gerenciar_agendamento.do?acao=deletar&idagendamento=' + id;\r\n");
+      out.write("                }\r\n");
+      out.write("            }\r\n");
+      out.write("            function confirmarAtivação(id, nome) {\r\n");
+      out.write("                if (confirm('Deseja Ativar o agendamento ' + id + '?')) {\r\n");
+      out.write("                    location.href = 'gerenciar_agendamento.do?acao=ativar&idagendamento=' + id;\r\n");
       out.write("                }\r\n");
       out.write("            }\r\n");
       out.write("        </script>\r\n");
@@ -210,12 +215,12 @@ public final class listar_005fagendamento_jsp extends org.apache.jasper.runtime.
       out.write("                    <a href=\"gerenciar_login.do\" style=\"width: auto\"><span class=\"material-symbols-outlined logout\">logout</span></a>\r\n");
       out.write("                </div>\r\n");
       out.write("                <span class=\"switch-container\">\r\n");
-      out.write("                    <span class=\"material-symbols-outlined\">dark_mode</span>\r\n");
+      out.write("                    <span class=\"material-symbols-outlined\">light_mode</span>\r\n");
       out.write("                    <label class=\"switch\">\r\n");
       out.write("                        <input type=\"checkbox\" id=\"switch\" onchange=\"toggleTheme()\">\r\n");
       out.write("                        <span class=\"slider round\"></span>\r\n");
       out.write("                    </label>\r\n");
-      out.write("                    <span class=\"material-symbols-outlined\">light_mode</span>\r\n");
+      out.write("                    <span class=\"material-symbols-outlined\">dark_mode</span>\r\n");
       out.write("                </span>\r\n");
       out.write("            </div>\r\n");
       out.write("\r\n");
@@ -357,6 +362,7 @@ public final class listar_005fagendamento_jsp extends org.apache.jasper.runtime.
       out.write("        <script src=\"./static/js/showDesc.js\"></script>\r\n");
       out.write("        <script src=\"./static/js/dropdownRegistros.js\"></script>\r\n");
       out.write("        <script src=\"./static/js/filtrosTabela.js\"></script>\r\n");
+      out.write("        <script src=\"./static/js/marcarConcluido.js\"></script>\r\n");
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
@@ -471,14 +477,28 @@ public final class listar_005fagendamento_jsp extends org.apache.jasper.runtime.
           if (_jspx_meth_c_if_2((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
             return true;
           out.write("\r\n");
+          out.write("                                    <span id=\"concluido\" class=\"concluido\">Concluído</span>\r\n");
+          out.write("                                   \r\n");
           out.write("\r\n");
           out.write("                            </div>\r\n");
           out.write("                            <div class=\"acoes-div\">\r\n");
-          out.write("                                <button class=\"botao-acoes\" onclick=\"confirmarExclusão(");
+          out.write("                                <div>\r\n");
+          out.write("                                    <i onclick=\"showDeletarDiv(this)\" style=\"cursor: pointer;\" class=\"material-symbols-outlined\"style=\"color:var(--dourado)\">settings</i>\r\n");
+          out.write("                                    <span class=\"deletar scale-in-center\" style=\"display:none\">\r\n");
+          out.write("                                        <a onclick=\"confirmarExclusão(");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.idagendamento}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write(")\">\r\n");
-          out.write("                                    <i class=\"material-symbols-outlined\">delete</i>\r\n");
-          out.write("                                </button>\r\n");
+          out.write("                                            <i class=\"material-symbols-outlined\">close</i>\r\n");
+          out.write("                                            Desativar\r\n");
+          out.write("                                        </a>\r\n");
+          out.write("                                        <a onclick=\"confirmarAtivação(");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.idagendamento}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write(")\">\r\n");
+          out.write("                                            <i class=\"material-symbols-outlined\">check_box</i>\r\n");
+          out.write("                                            Ativar\r\n");
+          out.write("                                        </a>\r\n");
+          out.write("                                    </span>\r\n");
+          out.write("                                </div> \r\n");
           out.write("                                <a class=\"botao-acoes\" href=\"gerenciar_agendamento.do?acao=alterar&idagendamento=");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${a.idagendamento}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("\">\r\n");
@@ -560,7 +580,7 @@ public final class listar_005fagendamento_jsp extends org.apache.jasper.runtime.
     if (_jspx_eval_c_if_1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("                                    <span class=\"ativo\">Pendente</span>\r\n");
+        out.write("                                    <span id=\"ativo\" class=\"ativo\">Pendente</span>\r\n");
         out.write("                                ");
         int evalDoAfterBody = _jspx_th_c_if_1.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -588,7 +608,7 @@ public final class listar_005fagendamento_jsp extends org.apache.jasper.runtime.
     if (_jspx_eval_c_if_2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("                                    <span class=\"inativo\">Cancelado</span>\r\n");
+        out.write("                                    <span id=\"inativo\" class=\"inativo\">Cancelado</span>                \r\n");
         out.write("                                ");
         int evalDoAfterBody = _jspx_th_c_if_2.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)

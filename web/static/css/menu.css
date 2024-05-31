@@ -208,17 +208,16 @@ body{
 }
 .concluido{
     display: flex;
-    position: absolute;
     align-items: center;
     justify-content: center;
     background-color: burlywood;
     padding: 1vh 0.5vw;
-    width:5%;
+    width: 80%;
     border-radius: 20px;
     color: whitesmoke;
     font-size: 0.8vw;
     font-weight: 600;
-    z-index: 1;
+     z-index: 2;
 }
 .switch-container{
     display: flex;

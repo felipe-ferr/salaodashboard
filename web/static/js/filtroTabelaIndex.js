@@ -26,33 +26,7 @@ function hidePastRows() {
 // chamar a função
 window.addEventListener('DOMContentLoaded', hidePastRows);
 
-function showPastRows() {
-  // Pega a data de hoje
-  var today = new Date();
-  today.setHours(0, 0, 0, 0); 
 
-  var dateElements = document.querySelectorAll('.dataconcluido');
-
-  dateElements.forEach(function(element) {
-    var dateString = element.textContent.trim();
-
-    var parts = dateString.split('/');
-    var day = parseInt(parts[0], 10);
-    var month = parseInt(parts[1], 10) - 1; 
-    var year = parseInt(parts[2], 10);
-
-    var rowDate = new Date(year, month, day);
-
-    if (rowDate > today) {
-      // se a data for menor que hoje, ela esconde a linha
-      var row = element.parentElement;
-      row.style.display = 'none';
-    }
-  });
-}
-
-// chamar a função
-window.addEventListener('DOMContentLoaded', showPastRows);
 
 function countRowsAndDisplay() {
     // Pega todas as divs com a classe "id-row" (para contar a quantidade de clientes)

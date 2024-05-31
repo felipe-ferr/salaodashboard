@@ -94,6 +94,7 @@
                     <div>Data</div>          
                     <div>Horário</div>
                     <div>Cliente</div>
+                    <div>Funcionário</div>
                 </div>
             </div>
             <div id="table" class="tabela-container">
@@ -105,6 +106,7 @@
                         <div class="data"><fmt:formatDate pattern="dd/MM/yyyy" value="${a.data}"/></div>                           
                         <div class="horario">${a.horario}</div>
                         <div class="nome-row">${a.cliente.nome}</div>
+                        <div class="nome-row">${a.usuario.nome}</div>
                     </div>
 
                 </c:forEach>
@@ -140,6 +142,7 @@
                     <input type="text" id="searchInput" placeholder="Pesquisar">
                     <i class="material-symbols-outlined">search</i>
                 </div>
+                <span class="botaoConsulta"><i class="material-symbols-outlined">add</i>Adicionar Cliente</span>
                 <i onclick="fecharCliente()" style="cursor: pointer" class="material-symbols-outlined">close</i>
             </div>
             <div class="row-container">
@@ -385,15 +388,82 @@
             </div>
         </div>
 
+                    <div class="form-cliente">
+                        <form method="POST"action="gerenciar_cliente.do" value="" accept-charset="ISO-8859-1" >
+
+                    <a class="botaoinicio" href="index.jsp">
+                        <i class="material-symbols-outlined">arrow_back</i>Voltar ao início
+                    </a>
+
+                    <h1>Cadastrar Cliente</h1>
+
+                    <input type="hidden" name="idcliente" value="${cliente.idcliente}"/>
+
+                    <div class="inputContainerRow">
+                        <div class="inputContainer">
+                            <input required type="text" name="nome" value="${cliente.nome}">
+                            <p>Nome:</p>
+                            <i class="material-symbols-outlined">person</i>
+                        </div>
+
+                        <div class="inputContainer">
+                            <input required type="text" name="email" value="${cliente.email}">
+                            <p>Email: </p>
+                            <i class="material-symbols-outlined">mail</i>
+                        </div>
+                    </div>
+
+                    <div class="inputContainerRow">
+                        <div class="inputContainer">
+                            <input class="cpf" required type="text" name="cpf" value="${cliente.cpf}">
+                            <p>CPF: </p>
+                            <i class="material-symbols-outlined">description</i>
+                            
+                        </div>
+
+
+                        <div class="inputContainer">
+                            <input class="phone" required type="text" name="telefone" value="${cliente.telefone}">
+                            <p>Telefone: </p>
+                            <i class="material-symbols-outlined">phone</i>
+                        </div>
+                    </div>
+
+                            <div class="inputContainerRow" style="justify-content: flex-start">
+                                <span class="erroMensagem"></span>
+                            </div>
+
+                    <div class="inputContainerRow">
+                        <div class="containerColumn">
+                            <span>Status</span>
+                            <div style="width: 30%" onclick="setupDropdown()" id="dropdownBtnContainer" class="dropdownContainer">
+                                <div class="dropdownBtnContainer">
+                                    <div class="dropdownBtn" id="selectedOptionMostrar">Ativo</div>
+                                    <i class="material-symbols-outlined">keyboard_arrow_down</i>
+                                </div>
+                                <div id="dropstatus" class="dropdownMenu hidden">
+                                    <label class="label"><input type="radio" checked name="status" value="1">Ativo</label>
+                                    <label class="label"><input type="radio" name="status" value="0">Inativo</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <button type="submit"class="submit">Cadastrar cliente</button>
+
+                </form>
+                    </div>
+
 
         <script src="./static/js/dropdownForms.js"></script>
-        <script src="./static/js/modoescuro.js"></script>
-        <script src="./static/js/mascaras.js"></script>
-        <script src="./static/js/fillDate.js"></script>
-        <script src="./static/js/mostrarDiv.js"></script>
-        <script src="./static/js/dropdownPopup.js"></script>
-        <script src="./static/js/searchPopup.js"></script>
-        <script>
+            <script src="./static/js/modoescuro.js"></script>
+            <script src="./static/js/mascaras.js"></script>
+            <script src="./static/js/fillDate.js"></script>
+            <script src="./static/js/mostrarDiv.js"></script>
+            <script src="./static/js/dropdownPopup.js"></script>
+            <script src="./static/js/searchPopup.js"></script>
+            <script>
                                 $(document).ready(function () {
                                     $('#date').mask('00/00/0000');
                                     $('.time').mask('00:00:00');
@@ -402,7 +472,7 @@
                                     $('.cpf').mask('000.000.000-00');
 
                                 });
-        </script>
+            </script>
 
     </body>
 </html>

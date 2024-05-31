@@ -166,7 +166,8 @@ public class AgendamentoDAO extends DatabaseDAO {
             return false;
         }
     }
-    public boolean ativar (Agendamento a) {
+
+    public boolean ativar(Agendamento a) {
 
         try {
             this.conectar();
@@ -231,7 +232,7 @@ public class AgendamentoDAO extends DatabaseDAO {
         return lista;
 
     }
-    
+
     public ArrayList<Agendamento> getListaIndexConcluidos() throws Exception {
 
         ArrayList<Agendamento> lista = new ArrayList<Agendamento>();
@@ -240,8 +241,9 @@ public class AgendamentoDAO extends DatabaseDAO {
                 + "INNER JOIN servico s ON s.idservico = a.idservico \n"
                 + "INNER JOIN cliente c ON c.idcliente = a.idcliente \n"
                 + "INNER JOIN usuario u ON u.idusuario = a.idusuario \n"
-                + "WHERE a.status = 1 \n"
-                + "ORDER BY a.data ASC";
+                + "WHERE a.status = 1\n"
+                + "AND a.data < CURDATE()\n"
+                + "ORDER BY a.data ASC;";
         this.conectar();
         Statement stm = conn.createStatement();
         ResultSet rs = stm.executeQuery(SQL);
