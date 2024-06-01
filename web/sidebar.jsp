@@ -21,7 +21,7 @@
     <body>
 
         <div id="side" class="sidebar">
-            <a href="index.jsp" class="sidebar-titulo">Salão do Luciano</a>
+            <a href="index.jsp" class="sidebar-titulo"><img class="sidebar-img" src="imagens/logo.png">Salão do Luciano</a>
             <a href="listar_agendamento.jsp"><span class="material-symbols-outlined sidebar-icone">calendar_month</span>Agendamentos</a>
             <a href="listar_cliente.jsp"><span class="material-symbols-outlined sidebar-icone">person</span>Clientes</a>
             <a href="listar_servico.jsp"><span class="material-symbols-outlined sidebar-icone">cut</span>Serviços</a>

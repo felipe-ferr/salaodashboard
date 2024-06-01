@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Agendamento;
 import model.AgendamentoDAO;
+import model.AgendamentoDAO.HorarioConflitoException;
 import model.Cliente;
 import model.Servico;
 import model.Usuario;
@@ -172,6 +173,8 @@ public class GerenciarAgendamento extends HttpServlet {
 
             if (data.equals("") || status.equals("") || data_cadastro.equals("") || horario.equals("") || idservico.equals("") || idcliente.equals("") || idusuario.equals("")) {
                 mensagem = "Campos obrigatórios deverão ser preenchidos";
+                request.setAttribute("mensagemErro", mensagem);
+                request.getRequestDispatcher("erro.jsp").forward(request, response);
             } else {
                 a.setValor(Float.parseFloat(valor));
                 if (!data.isEmpty()) {
@@ -198,14 +201,20 @@ public class GerenciarAgendamento extends HttpServlet {
 
                 if (aDAO.gravar(a)) {
                     mensagem = "Gravado com sucesso!";
+                    request.setAttribute("mensagemSucesso", mensagem);
                 } else {
                     mensagem = "Falha ao gravar informações no banco de dados. Tente novamente";
+                    request.setAttribute("mensagemErro", mensagem);
                 }
             }
 
+        } catch (HorarioConflitoException e) {
+            mensagem = e.getMessage();
+            request.setAttribute("mensagemErro", mensagem);
         } catch (Exception e) {
             out.print(e);
             mensagem = "Erro ao executar";
+            request.setAttribute("mensagemErro", mensagem);
         }
 
         out.println("<html>");

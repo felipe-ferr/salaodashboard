@@ -130,11 +130,17 @@ body{
     align-items: center;
     color: var(--cor-texto);
     justify-content: space-around;
+    text-wrap: nowrap;
     font-family: 'Montserrat';
-    font-size: 150%;
+    font-size: 140%;
     box-sizing: border-box;
     padding: 5%;
     border-bottom: 1px solid var(--cor-clara);
+}
+.sidebar-img{
+    width: 36px;
+    height: 36px;
+    margin: 0;
 }
 .container-principal{
     display: flex;
