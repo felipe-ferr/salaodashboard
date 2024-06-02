@@ -154,6 +154,77 @@
 
             </form>
         </div>
+                        
+                        <div id="formCliente" class="form-cliente slide-in-right">
+            <form id="form-cliente" style="height: 100vh; width: 100%;" method="POST"action="gerenciar_cliente.do" value="" accept-charset="ISO-8859-1" >
+
+                <div class="row-container">
+                    <h1>Cadastrar Cliente</h1>
+                    <span class="botaoinicio" href="index.jsp">
+                        <i onclick="fecharFormCliente()" style="cursor: pointer" class="material-symbols-outlined">close</i>
+                    </span>
+                </div>
+
+                <input type="hidden" name="idcliente" value="${cliente.idcliente}"/>
+
+                <div class="inputContainerRow">
+                    <div class="inputContainer">
+                        <input required type="text" name="nome" value="${cliente.nome}">
+                        <p>Nome:</p>
+                        <i class="material-symbols-outlined">person</i>
+                    </div>
+
+                    <div class="inputContainer">
+                        <input required type="text" name="email" value="${cliente.email}">
+                        <p>Email: </p>
+                        <i class="material-symbols-outlined">mail</i>
+                    </div>
+                </div>
+
+                <div class="inputContainerRow">
+                    <div class="inputContainer">
+                        <input class="cpf" required type="text" name="cpf" value="${cliente.cpf}">
+                        <p>CPF: </p>
+                        <i class="material-symbols-outlined">description</i>
+
+                    </div>
+
+
+                    <div class="inputContainer">
+                        <input class="phone" required type="text" name="telefone" value="${cliente.telefone}">
+                        <p>Telefone: </p>
+                        <i class="material-symbols-outlined">phone</i>
+                    </div>
+                </div>
+
+                <div class="inputContainerRow" style="justify-content: flex-start">
+                    <span class="erroMensagemCPF"></span>
+                </div>
+
+                <div class="inputContainerRow">
+                    <div class="containerColumn">
+                        <span>Status</span>
+                        <div style="width: 30%" onclick="setupDropdown()" id="dropdownBtnContainer" class="dropdownContainer">
+                            <div class="dropdownBtnContainer">
+                                <div class="dropdownBtn" id="selectedOptionMostrar">Ativo</div>
+                                <i class="material-symbols-outlined">keyboard_arrow_down</i>
+                            </div>
+                            <div id="dropstatus" class="dropdownMenu hidden">
+                                <label class="label"><input type="radio" checked name="status" value="1">Ativo</label>
+                                <label class="label"><input type="radio" name="status" value="0">Inativo</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div style="justify-content: center; gap: 1vw" class="row-container">
+                    <button onclick="fecharFormCliente(); enviarFormulario(); recarregarLista()" id="submit-btn" type="submit"class="submit">Cadastrar cliente</button>
+                    <button onclick="fecharFormCliente()" type="button"class="submit">Cancelar</button>
+                </div>
+
+            </form>
+        </div>
 
         <div style="display: none" id="consulta" class="consulta-container scale-in-center">
             <div style="justify-content: space-between" class="row-container">
@@ -224,7 +295,7 @@
             <div id="table" class="tabela-container">
                 <jsp:useBean class="model.ClienteDAO" id="c"/>
 
-                <c:forEach var="c" items="${c.lista}">
+                <c:forEach var="c" items="${c.listaAtivos}">
 
                     <div id="item" class="tabela" style="font-size: 0.9vw">
                         <label class="labelEscolher" onclick="fecharCliente()"><input form="form" type="radio" name="idcliente" value="${c.idcliente}">${c.nome}</label>
@@ -268,8 +339,8 @@
             <div class="container-principal">
                 <form id="form" method="POST" action="gerenciar_agendamento.do" value="" accept-charset="ISO-8859-1" >
 
-                    <a class="botaoinicio" href="index.jsp">
-                        <i class="material-symbols-outlined">arrow_back</i>Voltar ao início
+                    <a class="botaoinicio" href="listar_agendamento.jsp">
+                        <i class="material-symbols-outlined">arrow_back</i>Voltar
                     </a>
 
                     <h1>Cadastrar Agendamento</h1>
@@ -292,24 +363,23 @@
                                 </div>
                             </div>
                         </div>
-
-
-
-                        <div class="containerColumn">
-                            <span>Serviço</span>
-                            <div onclick="abrirServico()" class="dropdownContainer">
-                                <div class="dropdownBtnContainer">
-                                    <div class="dropdownBtn" id="selectedOptionServico">Selecionar</div>
-                                    <i class="material-symbols-outlined">add</i>
-                                </div>
-                            </div>
-                        </div>
+            
 
                         <div class="containerColumn">
                             <span>Cliente</span>
                             <div onclick="abrirCliente()" class="dropdownContainer">
                                 <div class="dropdownBtnContainer">
                                     <div class="dropdownBtn" id="selectedOptionCliente">Selecionar</div>
+                                    <i class="material-symbols-outlined">add</i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="containerColumn">
+                            <span>Serviço</span>
+                            <div onclick="abrirServico()" class="dropdownContainer">
+                                <div class="dropdownBtnContainer">
+                                    <div class="dropdownBtn" id="selectedOptionServico">Selecionar</div>
                                     <i class="material-symbols-outlined">add</i>
                                 </div>
                             </div>
@@ -468,6 +538,7 @@
         <script src="./static/js/mostrarDiv.js"></script>
         <script src="./static/js/dropdownPopup.js"></script>
         <script src="./static/js/searchPopup.js"></script>
+        <script src="./static/js/TestaCPF.js"></script>
         <script>
                                 $(document).ready(function () {
                                     $('#date').mask('00/00/0000');

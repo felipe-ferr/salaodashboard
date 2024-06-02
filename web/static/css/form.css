@@ -480,6 +480,15 @@ hr {
     padding: 1vh;
     border-radius: 20px;
 }
+.erroMensagemCPF{
+    display: none;
+    position: absolute;
+    color: var(--cor-texto-preto);
+    z-index: 2;
+    background-color: chocolate;
+    padding: 1vh;
+    border-radius: 20px;
+}
 .preencherHoje{
     display: flex;
     text-wrap nowrap;

@@ -119,7 +119,7 @@
 
             <div id="principal" class="container-principal">
 
-                           
+
 
 
                 <div class="row-container">
@@ -134,7 +134,7 @@
                         <i class="material-symbols-outlined">search</i>
                     </div>
 
-                     <div class="dropdown-texto-container">
+                    <div class="dropdown-texto-container">
                         <p>Ordenar Por:</p>
                         <div id="dropdownBtnContainer" onmouseover="toggleDropdownMenu()" class="dropdownContainer">
                             <div class="dropdownBtnContainer">
@@ -148,7 +148,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="dropdown-texto-container">
                         <p>Mostrar: </p>
                         <div id="dropdownBtnContainerMostrar" onmouseover="hoverDropdownMenuMostrar()" class="dropdownContainer">
@@ -160,7 +160,7 @@
                                 <span onclick="displayAll()">Todas</span>
                                 <span onclick="filterItemsByStatusInativo()">Inativos</span>
                                 <span onclick="filterItemsByStatusAtivo()">Ativos</span>
-                              
+
                             </div>
                         </div>
                     </div>
@@ -216,14 +216,14 @@
                                 <div>
                                     <i onclick="showDeletarDiv(this)" style="cursor: pointer;" class="material-symbols-outlined"style="color:var(--dourado)">settings</i>
                                     <span class="deletar scale-in-center" style="display:none">
-                                            <a onclick="confirmarExclusão(${s.idservico})">
-                                                <i class="material-symbols-outlined">close</i>
-                                                Desativar
-                                            </a>
-                                                <a onclick="confirmarAtivação(${s.idservico})">
-                                                <i class="material-symbols-outlined">check_box</i>
-                                                Ativar
-                                            </a>
+                                        <a onclick="confirmarExclusão(${s.idservico})">
+                                            <i class="material-symbols-outlined">close</i>
+                                            Desativar
+                                        </a>
+                                        <a onclick="confirmarAtivação(${s.idservico})">
+                                            <i class="material-symbols-outlined">check_box</i>
+                                            Ativar
+                                        </a>
                                     </span>
                                 </div>
                                 <a class="botao-acoes" href="gerenciar_servico.do?acao=alterar&idservico=${s.idservico}">
@@ -259,8 +259,16 @@
             </div>
 
         </div>
-
-        <script src="./static/bulma/jquery-3.7.1.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const descElements = document.querySelectorAll('.desc');
+                descElements.forEach(function (descElement) {
+                    if (descElement.textContent.trim() === '') {
+                        descElement.textContent = 'Este agendamento não possui uma descrição';
+                    }
+                });
+            });
+        </script>
         <script type="text/javascript" src="static/js/modoescuro.js"></script>
         <script type="text/javascript" src="static/js/sumirTextoTextarea.js"></script>
         <script type="text/javascript" src="static/js/PesquisaTabelajs"></script>

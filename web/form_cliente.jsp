@@ -89,8 +89,8 @@
             <div class="container-principal">
                 <form method="POST"action="gerenciar_cliente.do" value="" accept-charset="ISO-8859-1" >
 
-                    <a class="botaoinicio" href="index.jsp">
-                        <i class="material-symbols-outlined">arrow_back</i>Voltar ao início
+                    <a class="botaoinicio" href="listar_cliente.jsp">
+                        <i class="material-symbols-outlined">arrow_back</i>Voltar
                     </a>
 
                     <h1>Cadastrar Cliente</h1>
@@ -128,7 +128,7 @@
                     </div>
 
                             <div class="inputContainerRow" style="justify-content: flex-start">
-                                <span class="erroMensagem"></span>
+                                <span class="erroMensagemCPF"></span>
                             </div>
 
                     <div class="inputContainerRow">

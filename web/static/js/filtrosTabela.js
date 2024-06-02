@@ -176,6 +176,22 @@ function filterItemsByStatusPendente() {
   });
   updatePageInfo();
 }
+function filterItemsByStatusConcluido() {
+  const items = document.querySelectorAll('.tabela.td');
+
+  items.forEach(item => {
+
+    const statusText = item.textContent;
+
+    // Procura se o item possui a palavra concluído para escondê-la ou não
+    if (!statusText.includes("Concluído")) {
+      item.style.display = 'none';
+    } else {
+      item.style.display = '';
+    }
+  });
+  updatePageInfo();
+}
 
 
 function filterItemsByStatusCancelado() {

@@ -85,8 +85,8 @@
             <div class="container-principal">
                 <form method="POST"action="gerenciar_perfil.do" value="" accept-charset="ISO-8859-1" >
 
-                    <a class="botaoinicio"href="#">
-                        <i class="material-symbols-outlined">arrow_back</i>Voltar ao início
+                    <a class="botaoinicio"href="listar_perfil.jsp">
+                        <i class="material-symbols-outlined">arrow_back</i>Voltar
                     </a>
 
                     <h1>Cadastrar Perfil</h1>

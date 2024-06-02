@@ -165,6 +165,7 @@
                                 <span onclick="displayAll()">Todas</span>
                                 <span onclick="filterItemsByStatusCancelado()">Canceladas</span>
                                 <span onclick="filterItemsByStatusPendente()">Pendentes</span>
+                                <span onclick="filterItemsByStatusConcluido()">Concluídos</span>
 
                             </div>
                         </div>
@@ -183,14 +184,14 @@
                 <div class="row-container">
                     <div id="nav" class="thead">
                         <div class="id-row">ID</div>
-                        <div>Valor</div>
-                        <div>Data</div>          
-                        <div>Descrição</div>
-                        <div>Data de Agendamento</div>
-                        <div>Horário</div>
-                        <div>Serviço</div>
                         <div>Cliente</div>
-                        <div>Usuário</div>
+                        <div>Data</div>          
+                        <div>Horario</div>
+                        <div>Serviço</div>
+                        <div>Usuario</div>
+                        <div>Valor</div>
+                        <div>Data de Agendamento</div>
+                        <div>Descrição</div>
                         <div>Status</div>
                         <div>Ações</div>
                     </div>
@@ -206,30 +207,26 @@
                         <div id="item" class="tabela td" style="font-size: 0.9vw">
 
                             <div class="id-row">${a.idagendamento}</div>
+                            <div class="nome-row">${a.cliente.nome}</div>
+                            <div class="data "id="data"><fmt:formatDate pattern="dd/MM/yyyy" value="${a.data}"/></div>                       
+                            <div>${a.horario}</div>
+                            <div>${a.servico.nome}</div>
+                            <div>${a.usuario.nome}</div>
                             <div class="valor-row">${a.valor}</div>
-                            <div id="data"><fmt:formatDate pattern="dd/MM/yyyy" value="${a.data}"/></div>                           
+                            <div class="datacadastro"><fmt:formatDate pattern="dd/MM/yyyy" value="${a.data_cadastro}"/></div>                 
                             <div>
                                 <i onclick="showDescDiv(this)" style="cursor: pointer;" class="material-symbols-outlined">comment</i>
                                 <span class="desc" style="display:none">
                                     ${a.descricao}
                                 </span>
                             </div>
-                            <div class="datacadastro"><fmt:formatDate pattern="dd/MM/yyyy" value="${a.data_cadastro}"/></div>
-                            <div>${a.horario}</div>
-                            <div>${a.servico.nome}</div>
-                            <div class="nome-row">${a.cliente.nome}</div>
-                            <div>${a.usuario.nome}</div>
                             <div class="status">
-                                
                                 <c:if test="${a.status==1}">
                                     <span id="pendente" class="ativo">Pendente</span>
                                 </c:if>
                                 <c:if test="${a.status==0}">
                                     <span id="inativo" class="inativo">Cancelado</span>                
                                 </c:if>
-                                    
-                                   
-
                             </div>
                             <div class="acoes-div">
                                 <div>
@@ -278,7 +275,16 @@
             </div>
 
         </div>
-
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const descElements = document.querySelectorAll('.desc');
+                descElements.forEach(function (descElement) {
+                    if (descElement.textContent.trim() === '') {
+                        descElement.textContent = 'Este agendamento não possui uma descrição';
+                    }
+                });
+            });
+        </script>
         <script type="text/javascript" src="static/js/modoescuro.js"></script>
         <script src="./static/js/pagination.js"></script>
         <script src="http://code.jquery.com/jquery-latest.js"></script>

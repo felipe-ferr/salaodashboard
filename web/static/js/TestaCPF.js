@@ -1,6 +1,6 @@
 document.querySelector('.cpf').addEventListener('input', function() {
             let cpf = this.value;
-            let errorMessage = document.querySelector('.erroMensagem');
+            let errorMessage = document.querySelector('.erroMensagemCPF');
             let submitButton = document.querySelector('.submit');
 
             // Remove todos os caracteres não numéricos

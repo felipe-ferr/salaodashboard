@@ -86,8 +86,8 @@
             <div class="container-principal">
                 <form method="POST"action="gerenciar_servico.do" value="" accept-charset="ISO-8859-1 ">
 
-                    <a class="botaoinicio" href="index.jsp">
-                        <i class="material-symbols-outlined">arrow_back</i>Voltar ao início
+                    <a class="botaoinicio" href="listar_servico.jsp">
+                        <i class="material-symbols-outlined">arrow_back</i>Voltar
                     </a>
 
                     <h1>Cadastrar serviço</h1>

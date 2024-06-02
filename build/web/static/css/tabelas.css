@@ -356,7 +356,7 @@ a{
     position: fixed;
     top: 20%;  
     left: 30%;
-    z-index: 2;
+    z-index: 3;
     box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.55);
     -webkit-box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.55);
     -moz-box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.55);

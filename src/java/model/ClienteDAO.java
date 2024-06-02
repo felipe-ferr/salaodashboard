@@ -32,6 +32,29 @@ public class ClienteDAO extends DatabaseDAO {
         
     }
     
+    public ArrayList<Cliente> getListaAtivos() throws Exception{
+        
+        ArrayList<Cliente> listaAtivos = new ArrayList<Cliente>();
+        String SQL = "Select * FROM cliente WHERE status = 1";
+        this.conectar();
+        Statement stm = conn.createStatement();
+        ResultSet rs = stm.executeQuery(SQL);
+        
+        while(rs.next()){
+            Cliente c = new Cliente();
+            c.setIdcliente(rs.getInt("idcliente"));
+            c.setNome(rs.getString("nome"));
+            c.setCpf(rs.getString("cpf"));
+            c.setTelefone(rs.getString("telefone"));
+            c.setEmail(rs.getString("email"));
+            c.setStatus(rs.getInt("status"));
+            listaAtivos.add(c);
+        }
+        this.desconectar();
+        return listaAtivos;
+        
+    }
+    
     public boolean gravar (Cliente c){
         
         try{

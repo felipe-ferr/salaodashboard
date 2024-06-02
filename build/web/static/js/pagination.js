@@ -6,6 +6,7 @@ function paginateTable(itemsPerPage) {
     let searchAll = document.getElementById('searchAll');
     let paginationDiv = document.getElementById('pagination');
     let pageInfoDiv = document.getElementById('pageInfoDiv');
+    var itemsOnPage = document.querySelectorAll('#item[style="display: flex;"]').length;
 
     let currentPage = 1;
     let numPages = Math.ceil(items.length / itemsPerPage);
@@ -16,7 +17,7 @@ function paginateTable(itemsPerPage) {
         let totalItems = items.length;
         let itemsOnPage = document.querySelectorAll('#item[style="display: flex;"]').length;
         let pageInfoDiv = document.getElementById('pageInfo');
-        pageInfoDiv.innerHTML = `Mostrando ${itemsOnPage} de ${totalItems} registros totais`;
+        pageInfoDiv.innerHTML = `${totalItems} registros totais`;
     }
 
     // mostra as páginas na página atual
@@ -165,8 +166,8 @@ function paginateTable(itemsPerPage) {
 }
 
 
-// Chamar a função com 15 itens por página
-paginateTable(15);
+// Chamar a função com 10 itens por página
+paginateTable(10);
 updatePageInfo();
 
 
